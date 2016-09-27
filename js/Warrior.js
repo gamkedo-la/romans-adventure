@@ -1,4 +1,4 @@
-const PLAYER_MOVE_SPEED = 8.0;
+const PLAYER_MOVE_SPEED = 3.0;
 
 function warriorClass() {
 	this.x = 75;
@@ -79,45 +79,14 @@ function warriorClass() {
 				this.x = nextX;
 				this.y = nextY;
 				break;
-			case TILE_CHAINED_DOOR:
-				if (this.crowbarHeld && this.currentLevel == levelOne) {
-					worldGrid[walkIntoTileIndex] = TILE_GROUND;
-					loadLevel(levelTwo);
-					this.currentLevel = levelTwo;
-					console.log("Entering basement...");
-					console.log(this.currentLevel);
-				}
-				else if (this.crowbarHeld && this.currentLevel == levelTwo) {
-					worldGrid[walkIntoTileIndex] = TILE_GROUND;
-					loadLevel(levelOne_B);
-					this.currentLevel = levelOne;
-					console.log("Entering library...");
-				}
-				else
-				{
-					console.log("The trap door is chained shut.");
-				}
-				break;
 			case TILE_DOOR:
-				if(this.doorKeyHeld) {
-					worldGrid[walkIntoTileIndex] = TILE_GROUND;
-					console.log("Game Over");
-					console.log("All too easy");
-					loadLevel(levelGameOver);
-				}
-				else {
-					console.log("You do not have a key to the door.");
-				}
+				console.log("You do not have a key to the door.");
 				break;
 			case TILE_KEY:
 				this.doorKeyHeld = true;
 				console.log("Picked up the door key.");
 				worldGrid[walkIntoTileIndex] = TILE_GROUND;
 				break;
-			case TILE_CROWBAR:
-				this.crowbarHeld = true;
-				console.log("Picked up the crowbar.");
-				worldGrid[walkIntoTileIndex] = TILE_GROUND;
 			case TILE_WALL:
 			default:
 				break;

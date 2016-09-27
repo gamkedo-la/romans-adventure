@@ -18,7 +18,7 @@ function setupInput() {
 	document.addEventListener('keyup', keyReleased);
 
 	blueWarrior.setupInput(KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW);
-} 
+}
 
 function updateMousePos(evt) {
 	var rect = canvas.getBoundingClientRect();
@@ -59,4 +59,10 @@ function keyPressed(evt) {
 function keyReleased(evt) {
 	// console.log("Key pressed: "+evt.keyCode);
 	keySet(evt, false);
+}
+
+function keyDown(e){
+	if (e.keyCode == 80) {
+		console.log("Pressed 'P' button");
+	}
 }
