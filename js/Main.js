@@ -1,11 +1,7 @@
-var canvas, canvasContext;
+var roman = new heroClass();
 
-var blueWarrior = new warriorClass();
-
-window.onload = function() {
-//	canvas = document.getElementById('gameCanvas');
-//	canvasContext = canvas.getContext('2d');
-
+window.onload = function()
+{
 	scaledCanvas = document.getElementById('gameCanvas');
 	canvas = document.createElement('canvas');
 	canvas.width  = WORLD_W * WORLD_COLS;
@@ -29,38 +25,40 @@ window.onload = function() {
 
 	colorRect(0,0, canvas.width,canvas.height, 'black');
 	colorText("LOADING IMAGES", canvas.width/2, canvas.height/2, 'white');
-
 	loadImages();
 }
 
-function imageLoadingDoneSoStartGame() {
+function imageLoadingDoneSoStartGame()
+{
 	var framesPerSecond = 30;
 
 	setInterval(updateAll, 1000/framesPerSecond);
-
 	setupInput();
-
 	loadLevel(levelOne);
 }
 
-function loadLevel(whichLevel) {
+function loadLevel(whichLevel)
+{
 	worldGrid = whichLevel.slice();
-	blueWarrior.reset(warriorPic, "Roman");
+	roman.reset(heroPic, "Roman");
 }
 
-function updateAll() {
+function updateAll()
+{
 	moveAll();
 	drawAll();
 }
 
-function moveAll() {
-	blueWarrior.move();
+function moveAll()
+{
+	roman.move();
 }
 
-function drawAll() {
+function drawAll()
+{
 	drawWorld();
-	blueWarrior.draw();
+	roman.draw();
 
 	scaledContext.drawImage(canvas,0,0,canvas.width,canvas.height,
-									0,0,scaledCanvas.width,scaledCanvas.height);
+		0,0,scaledCanvas.width,scaledCanvas.height);
 }

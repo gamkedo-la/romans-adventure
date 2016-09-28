@@ -1,10 +1,11 @@
 const PLAYER_MOVE_SPEED = 3.0;
 
-function warriorClass() {
-	this.x = 75;
-	this.y = 75;
-	this.myWarriorPic; // which picture to use
-	this.name = "Untitled Warrior";
+function heroClass()
+{
+	this.x;
+	this.y;
+	this.myHeroPic; // which picture to use
+	this.name = "Roman";
 	this.doorKeyHeld = false;
 	this.crowbarHeld = false;
 	this.currentLevel = levelOne;
@@ -19,23 +20,28 @@ function warriorClass() {
 	this.controlKeyDown;
 	this.controlKeyLeft;
 
-	this.setupInput = function(upKey, rightKey, downKey, leftKey) {
+	this.setupInput = function(upKey, rightKey, downKey, leftKey)
+	{
 		this.controlKeyUp = upKey;
 		this.controlKeyRight = rightKey;
 		this.controlKeyDown = downKey;
 		this.controlKeyLeft = leftKey;
 	}
 
-	this.reset = function(whichImage, warriorName) {
-		this.name = warriorName;
-		this.myWarriorPic = whichImage;
+	this.reset = function(whichImage, heroName)
+	{
+		this.name = heroName;
+		this.myHeroPic = whichImage;
 		//this.keysHeld = 0;
 		//this.updateKeyReadout();
 
-		for(var eachRow=0;eachRow<WORLD_ROWS;eachRow++) {
-			for(var eachCol=0;eachCol<WORLD_COLS;eachCol++) {
+		for(var eachRow = 0;eachRow<WORLD_ROWS;eachRow++)
+		{
+			for(var eachCol = 0;eachCol<WORLD_COLS;eachCol++)
+			{
 				var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
-				if(worldGrid[arrayIndex] == TILE_PLAYERSTART) {
+				if(worldGrid[arrayIndex] == TILE_PLAYERSTART)
+				{
 					worldGrid[arrayIndex] = TILE_GROUND;
 					this.x = eachCol * WORLD_W + WORLD_W/2;
 					this.y = eachRow * WORLD_H + WORLD_H/2;
@@ -44,37 +50,40 @@ function warriorClass() {
 			} // end of col for
 		} // end of row for
 		console.log("NO PLAYER START FOUND!");
-	} // end of warriorReset func
+	} // end of heroReset func
 
-	/*this.updateKeyReadout = function() {
-		document.getElementById("debugText").innerHTML = "Keys: " + this.keysHeld;
-	}*/
-
-	this.move = function() {
+	this.move = function()
+	{
 		var nextX = this.x;
 		var nextY = this.y;
 
-		if(this.keyHeld_North) {
+		if(this.keyHeld_North)
+		{
 			nextY -= PLAYER_MOVE_SPEED;
 		}
-		if(this.keyHeld_East) {
+		if(this.keyHeld_East)
+		{
 			nextX += PLAYER_MOVE_SPEED;
 		}
-		if(this.keyHeld_South) {
+		if(this.keyHeld_South)
+		{
 			nextY += PLAYER_MOVE_SPEED;
 		}
-		if(this.keyHeld_West) {
+		if(this.keyHeld_West)
+		{
 			nextX -= PLAYER_MOVE_SPEED;
 		}
 
-		var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX, nextY);
+		var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX, nextY); //World.js
 		var walkIntoTileType = TILE_WALL;
-
-		if(walkIntoTileIndex != undefined) {
+		if(walkIntoTileIndex != undefined)
+		{
 			walkIntoTileType = worldGrid[walkIntoTileIndex];
 		}
 
-		switch(walkIntoTileType) {
+		//Check the tile you just collided with
+		switch(walkIntoTileType)
+		{
 			case TILE_GROUND:
 				this.x = nextX;
 				this.y = nextY;
@@ -93,7 +102,8 @@ function warriorClass() {
 		}
 	}
 
-	this.draw = function() {
-		drawBitmapCenteredWithRotation(this.myWarriorPic, this.x,this.y, 0);
+	this.draw = function()
+	{
+		drawBitmapCenteredWithRotation(this.myHeroPic, this.x,this.y, 0); //GraphicCommon.js
 	}
 }

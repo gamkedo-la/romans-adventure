@@ -5,80 +5,101 @@ const WORLD_COLS = 16;
 const WORLD_ROWS = 12;
 const PIXEL_SCALE_UP = 4;
 
+//******BEGIN MAP EDITOR******
+
 var levelOne =
-				[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-				 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1,
-				 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+	[
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		 1, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 1,
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+	 ];
+
+//******END MAP EDITOR******
 
 var worldGrid = [];
 
+//******BEGIN TILE KEY******
+
+//environment
 const TILE_GROUND = 0;
 const TILE_WALL = 1;
-const TILE_PLAYERSTART = 2;
-const TILE_GOAL = 3;
-const TILE_KEY = 4;
-const TILE_DOOR = 5;
 
+//player and pickups
+const TILE_PLAYERSTART = 100;
 
+//doors
+const TILE_DOOR = 200; //needs KEY @ 300
+const TILE_DOOR_A = 201; //needs KEY_A @ 301
 
-function returnTileTypeAtColRow(col, row) {
+//keys
+const TILE_KEY = 300; //unlocks DOOR @ 200
+const TILE_KEY_A = 301; //unlocks DOOR_A @ 201
+
+//******END TILE KEY******
+
+function returnTileTypeAtColRow(col, row)
+{
 	if(col >= 0 && col < WORLD_COLS &&
-		row >= 0 && row < WORLD_ROWS) {
+		row >= 0 && row < WORLD_ROWS)
+	{
 		 var worldIndexUnderCoord = rowColToArrayIndex(col, row);
 		 return worldGrid[worldIndexUnderCoord];
-	} else {
+	}
+	else
+	{
 		return WORLD_WALL;
 	}
 }
 
-function getTileIndexAtPixelCoord(atX, atY) {
-	var warriorWorldCol = Math.floor(atX / WORLD_W);
-	var warriorWorldRow = Math.floor(atY / WORLD_H);
-	var worldIndexUnderWarrior = rowColToArrayIndex(warriorWorldCol, warriorWorldRow);
+function getTileIndexAtPixelCoord(atX, atY)
+{
+	var heroWorldCol = Math.floor(atX / WORLD_W);
+	var heroWorldRow = Math.floor(atY / WORLD_H);
+	var worldIndexUnderhero = rowColToArrayIndex(heroWorldCol, heroWorldRow);
 
-	if(warriorWorldCol >= 0 && warriorWorldCol < WORLD_COLS &&
-		warriorWorldRow >= 0 && warriorWorldRow < WORLD_ROWS) {
-		return worldIndexUnderWarrior;
+	if(heroWorldCol >= 0 && heroWorldCol < WORLD_COLS &&
+		heroWorldRow >= 0 && heroWorldRow < WORLD_ROWS)
+	{
+		return worldIndexUnderhero;
 	} // end of valid col and row
-
 	return undefined;
-} // end of warriorWorldHandling func
+} // end of getTileIndexAtPixelCoord func
 
-function rowColToArrayIndex(col, row) {
+function rowColToArrayIndex(col, row)
+{
 	return col + WORLD_COLS * row;
 }
 
-function tileTypeHasTransparency(checkTileType) {
-	return (checkTileType == TILE_GOAL ||
-			checkTileType == TILE_KEY ||
-			checkTileType == TILE_DOOR) ;
-//			checkTileType == TILE_STAIRSUP) ||
-//			checkTileType == TILE_STAIRSDOWN);
-
+function tileTypeHasTransparency(checkTileType)
+{
+	return (checkTileType == TILE_DOOR ||
+			checkTileType == TILE_KEY );
 }
 
-function drawWorld() {
-
+function drawWorld()
+{
 	var arrayIndex = 0;
 	var drawTileX = 0;
 	var drawTileY = 0;
-	for(var eachRow=0;eachRow<WORLD_ROWS;eachRow++) {
-		for(var eachCol=0;eachCol<WORLD_COLS;eachCol++) {
-
+	for(var eachRow=0;eachRow<WORLD_ROWS;eachRow++)
+	{
+		for(var eachCol=0;eachCol<WORLD_COLS;eachCol++)
+		{
 			var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 			var tileKindHere = worldGrid[arrayIndex];
 			var useImg = worldPics[tileKindHere];
 
-			if( tileTypeHasTransparency(tileKindHere) ) {
+			if(tileTypeHasTransparency(tileKindHere))
+			{
 				canvasContext.drawImage(worldPics[TILE_GROUND],drawTileX,drawTileY);
 			}
 			canvasContext.drawImage(useImg,drawTileX,drawTileY);
@@ -88,5 +109,4 @@ function drawWorld() {
 		drawTileY += WORLD_H;
 		drawTileX = 0;
 	} // end of for each row
-
 } // end of drawWorld func
