@@ -85,7 +85,7 @@ function heroClass()
 			walkIntoTileType = worldGrid[walkIntoTileIndex];
 		}
 
-		//Check the tile you just collided with
+		// Check the tile you just collided with
 		switch(walkIntoTileType)
 		{
 			case TILE_GROUND:
@@ -108,6 +108,6 @@ function heroClass()
 
 	this.draw = function()
 	{
-		drawBitmapCenteredWithRotation(this.myHeroPic, this.x,this.y, 0); //GraphicCommon.js
+		drawBitmapCenteredWithRotation(this.myHeroPic, this.x,this.y, 0); // GraphicCommon.js
 	}
 }

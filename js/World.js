@@ -1,11 +1,12 @@
 const WORLD_W = 14;
 const WORLD_H = 14;
-const WORLD_GAP = 2;
 const WORLD_COLS = 16;
 const WORLD_ROWS = 12;
 const PIXEL_SCALE_UP = 4;
 
-//******BEGIN MAP EDITOR******
+var worldGrid = [];
+
+// ******BEGIN MAP EDITOR******
 
 var levelOne =
 	[
@@ -23,31 +24,31 @@ var levelOne =
 		 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
 	 ];
 
-//******END MAP EDITOR******
+// ******END MAP EDITOR******
 
-var worldGrid = [];
 
-//******BEGIN TILE KEY******
+// ******BEGIN TILE KEY******
 
-//environment
+// environment
 const TILE_GROUND = 0;
 const TILE_WALL = 1;
 
-//player and pickups
+// player and pickups
 const TILE_PLAYERSTART = 100;
 
-//doors
+// doors
 const TILE_DOOR = 200; //needs KEY @ 300
 const TILE_DOOR_A = 201; //needs KEY_A @ 301
 
-//keys
+// keys
 const TILE_KEY = 300; //unlocks DOOR @ 200
 const TILE_KEY_A = 301; //unlocks DOOR_A @ 201
 
-//misc
+// misc
 const TILE_UI_PLACEHOLDER = 400; //placeholder for incoming inventory UI
 
-//******END TILE KEY******
+// ******END TILE KEY******
+
 
 function returnTileTypeAtColRow(col, row)
 {
@@ -82,6 +83,7 @@ function rowColToArrayIndex(col, row)
 	return col + WORLD_COLS * row;
 }
 
+// all tiles with transparency must be listed below
 function tileTypeHasTransparency(checkTileType)
 {
 	return (checkTileType == TILE_DOOR ||

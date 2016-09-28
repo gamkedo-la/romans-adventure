@@ -9,7 +9,7 @@ function countLoadedImagesAndLaunchIfReady()
 	console.log(picsToLoad);
 	if(picsToLoad == 0)
 	{
-		imageLoadingDoneSoStartGame(); //Main.js
+		imageLoadingDoneSoStartGame(); // Main.js
 	}
 }
 
@@ -29,22 +29,22 @@ function loadImages()
 {
 	var imageList =
 	[
-		//hero and pickup tiles
+		// hero and pickup tiles
 		{varName: heroPic, theFile: "roman.png"},
 
-		//environmental tiles
+		// environmental tiles
 		{worldType: TILE_GROUND, theFile: "world_ground.png"},
 		{worldType: TILE_WALL, theFile: "world_wall.png"},
 
-		//door tiles
+		// door tiles
 		{worldType: TILE_DOOR, theFile: "world_door.png"},
 		{worldType: TILE_DOOR_A, theFile: "world_door.png"},
 
-		//key tiles
+		// key tiles
 		{worldType: TILE_KEY, theFile: "key.png"},
 		{worldType: TILE_KEY_A, theFile: "key.png"},
 
-		//misc tiles
+		// misc tiles
 		{worldType: TILE_UI_PLACEHOLDER, theFile: "ui.png"}
 	];
 
