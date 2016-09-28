@@ -17,10 +17,10 @@ var levelOne =
 		 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
+		 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
 	 ];
 
 //******END MAP EDITOR******
@@ -43,6 +43,9 @@ const TILE_DOOR_A = 201; //needs KEY_A @ 301
 //keys
 const TILE_KEY = 300; //unlocks DOOR @ 200
 const TILE_KEY_A = 301; //unlocks DOOR_A @ 201
+
+//misc
+const TILE_UI_PLACEHOLDER = 400; //placeholder for incoming inventory UI
 
 //******END TILE KEY******
 
@@ -90,9 +93,9 @@ function drawWorld()
 	var arrayIndex = 0;
 	var drawTileX = 0;
 	var drawTileY = 0;
-	for(var eachRow=0;eachRow<WORLD_ROWS;eachRow++)
+	for(var eachRow = 0;eachRow<WORLD_ROWS;eachRow++)
 	{
-		for(var eachCol=0;eachCol<WORLD_COLS;eachCol++)
+		for(var eachCol = 0;eachCol<WORLD_COLS;eachCol++)
 		{
 			var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 			var tileKindHere = worldGrid[arrayIndex];

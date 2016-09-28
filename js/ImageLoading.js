@@ -42,7 +42,10 @@ function loadImages()
 
 		//key tiles
 		{worldType: TILE_KEY, theFile: "key.png"},
-		{worldType: TILE_KEY_A, theFile: "key.png"}
+		{worldType: TILE_KEY_A, theFile: "key.png"},
+
+		//misc tiles
+		{worldType: TILE_UI_PLACEHOLDER, theFile: "ui.png"}
 	];
 
 	picsToLoad = imageList.length;

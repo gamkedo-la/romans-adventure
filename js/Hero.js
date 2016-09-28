@@ -1,4 +1,4 @@
-const PLAYER_MOVE_SPEED = 3.0;
+const PLAYER_MOVE_SPEED = 2.0;
 
 function heroClass()
 {
@@ -57,19 +57,23 @@ function heroClass()
 		var nextX = this.x;
 		var nextY = this.y;
 
-		if(this.keyHeld_North)
+		if(this.keyHeld_North && !this.keyHeld_East
+			&& !this.keyHeld_South && !this.keyHeld_West)
 		{
 			nextY -= PLAYER_MOVE_SPEED;
 		}
-		if(this.keyHeld_East)
+		if(this.keyHeld_East && !this.keyHeld_North
+			&& !this.keyHeld_South && !this.keyHeld_West)
 		{
 			nextX += PLAYER_MOVE_SPEED;
 		}
-		if(this.keyHeld_South)
+		if(this.keyHeld_South && !this.keyHeld_East
+			&& !this.keyHeld_North && !this.keyHeld_West)
 		{
 			nextY += PLAYER_MOVE_SPEED;
 		}
-		if(this.keyHeld_West)
+		if(this.keyHeld_West && !this.keyHeld_East
+			&& !this.keyHeld_North && !this.keyHeld_South)
 		{
 			nextX -= PLAYER_MOVE_SPEED;
 		}
