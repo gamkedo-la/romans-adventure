@@ -8,7 +8,7 @@ function heroClass()
 	this.name = "Roman";
 	this.doorKeyHeld = false;
 	this.crowbarHeld = false;
-	this.currentLevel = levelOne;
+	this.currentLevel = levelFoyerEntrance;
 
 	this.keyHeld_North = false;
 	this.keyHeld_South = false;

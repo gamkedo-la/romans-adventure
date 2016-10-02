@@ -34,7 +34,7 @@ function imageLoadingDoneSoStartGame()
 
 	setInterval(updateAll, 1000/framesPerSecond);
 	setupInput();
-	loadLevel(levelOne);
+	loadLevel(levelFoyerEntrance);
 }
 
 function loadLevel(whichLevel)
