@@ -21,8 +21,11 @@ function colorCircle(centerX,centerY, radius, fillColor)
 	canvasContext.fill();
 }
 
-function colorText(showWords, textX,textY, fillColor)
+function displayUIText(showWords)
 {
-	canvasContext.fillStyle = fillColor;
-	canvasContext.fillText(showWords, textX, textY);
+	scaledUIContext.fillStyle = "black";
+	scaledUIContext.fillRect(0, 0, scaledUICanvas.width, scaledUICanvas.height);
+	scaledUIContext.font = "bold 15px Arial";
+	scaledUIContext.fillStyle = "white";
+	scaledUIContext.fillText(showWords, 600, 30);
 }

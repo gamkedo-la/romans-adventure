@@ -2,18 +2,36 @@ var roman = new heroClass();
 
 window.onload = function()
 {
+	// Get references for gameCanvas
 	scaledCanvas = document.getElementById('gameCanvas');
 	canvas = document.createElement('canvas');
+
+	// Size gameCanvas
 	canvas.width  = WORLD_W * WORLD_COLS;
 	canvas.height = WORLD_H * WORLD_ROWS;
-
 	scaledCanvas.width = PIXEL_SCALE_UP * canvas.width;
 	scaledCanvas.height = PIXEL_SCALE_UP * canvas.height;
-	console.log(scaledCanvas.width,scaledCanvas.height);
+
 	canvasContext = canvas.getContext('2d');
 	scaledContext = scaledCanvas.getContext('2d');
 
-	// helps it not blur from the scaling:
+
+	// Get references for uiCanvas
+	scaledUICanvas = document.getElementById('uiCanvas');
+	uiCanvas = document.createElement('canvas');
+
+	// Size uiCanvas
+	uiCanvas.width = WORLD_W * WORLD_COLS;
+	uiCanvas.height = WORLD_H * 2;
+	scaledUICanvas.width = PIXEL_SCALE_UP * uiCanvas.width;
+	scaledUICanvas.height = PIXEL_SCALE_UP * uiCanvas.height;
+
+	canvasUIContext = uiCanvas.getContext('2d');
+	scaledUIContext = scaledUICanvas.getContext('2d');
+	scaledUIContext.fillStyle = "black";
+	scaledUIContext.fillRect(0, 0, scaledUICanvas.width, scaledUICanvas.height);
+
+	// Helps it not blur from the scaling:
 	canvasContext.mozImageSmoothingEnabled = false;
 	canvasContext.imageSmoothingEnabled = false;
 	canvasContext.msImageSmoothingEnabled = false;
@@ -24,7 +42,7 @@ window.onload = function()
 	scaledContext.imageSmoothingEnabled = false;
 
 	colorRect(0,0, canvas.width,canvas.height, 'black');
-	colorText("LOADING IMAGES", canvas.width/2, canvas.height/2, 'white');
+	//colorText("LOADING IMAGES", canvas.width/2, canvas.height/2, 'white');
 	loadImages();
 }
 
@@ -56,7 +74,7 @@ function moveAll()
 
 function drawAll()
 {
-	drawWorld();
+	drawWorld(); // World.js
 	roman.draw();
 
 	scaledContext.drawImage(canvas,0,0,canvas.width,canvas.height,

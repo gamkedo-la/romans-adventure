@@ -86,6 +86,7 @@ function heroClass()
 		}
 
 		// Check the tile you just collided with
+		// !!!!!! Need a better system for checking tiles !!!!!!!
 		switch(walkIntoTileType)
 		{
 			case TILE_GROUND:
@@ -93,7 +94,10 @@ function heroClass()
 				this.y = nextY;
 				break;
 			case TILE_DOOR:
-				console.log("You do not have a key to the door.");
+				displayUIText("You do not have a key to this door.");
+				break;
+			case TILE_DOOR_HOUSEENTRANCE:
+				displayUIText("This is the front door.");
 				break;
 			case TILE_KEY:
 				this.doorKeyHeld = true;
