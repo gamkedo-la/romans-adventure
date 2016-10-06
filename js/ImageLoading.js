@@ -1,4 +1,6 @@
 var heroPic = document.createElement("img");
+var doorStrip = document.createElement("img");
+var keyStrip = document.createElement("img");
 var worldPics = [];
 
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
@@ -37,14 +39,13 @@ function loadImages()
 		{worldType: TILE_WALL, theFile: "world_wall.png"},
 
 		// door tiles
-		{worldType: TILE_DOOR, theFile: "world_door.png"},
-		{worldType: TILE_DOOR_STUDY, theFile: "world_door.png"},
-		{worldType: TILE_DOOR_HOUSEENTRANCE, theFile: "world_door.png"},
-
+		{varName: doorStrip, theFile: "door_strip.png"},
+		//{worldType: TILE_DOOR_STUDY, theFile: "world_door.png"},
+		//{worldType: TILE_DOOR_HOUSEENTRANCE, theFile: "world_door.png"},
 
 		// key tiles
-		{worldType: TILE_KEY, theFile: "key.png"},
-		{worldType: TILE_KEY_STUDY, theFile: "key.png"},
+		{varName: keyStrip, theFile: "key_strip.png"},
+		// {worldType: TILE_KEY_STUDY, theFile: "key.png"},
 
 	];
 

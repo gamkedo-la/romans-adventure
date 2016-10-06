@@ -88,24 +88,24 @@ function heroClass()
 
 		// Check the tile you just collided with
 		// !!!!!! Need a better system for checking tiles !!!!!!!
-		if (walkIntoTileType >= TILE_KEY_FIRST &&
-		    walkIntoTileType < TILE_KEY_LAST) {
-			var whichKey = walkIntoTileType - TILE_KEY_FIRST;
+		if (tileTypeIsKey(walkIntoTileType)) {
+			var whichKey = tileTypeToIndexForKey(walkIntoTileType);
 
 			this.doorKeyRing[whichKey] = true;
 			worldGrid[walkIntoTileIndex] = TILE_GROUND;
-			displayUIText("Picked up key #" + whichKey + ".");
+			displayUIText("Picked up " + idxToTextKey(whichKey) + ".");
 
-		} else if (walkIntoTileType >= TILE_DOOR_FIRST &&
-			       walkIntoTileType < TILE_DOOR_LAST) {
-			var whichDoor = walkIntoTileType - TILE_DOOR_FIRST;
+		} else if (tileTypeIsDoor(walkIntoTileType)) {
+			var whichDoor = tileTypeToIndexForDoor(walkIntoTileType);
 
 			if (this.doorKeyRing[whichDoor] == true) {
 				this.doorKeyRing[whichDoor] = false;
-				displayUIText("Used key #" + whichDoor + " to open door.");
+				displayUIText("Used " + idxToTextKey(whichDoor) + " to open "+
+										idxToTextDoor(whichDoor)+".");
 				worldGrid[walkIntoTileIndex] = TILE_GROUND;
 			} else {
-				displayUIText("Need key #" + whichDoor + " to open door.");
+				displayUIText("Need something to open "+
+										idxToTextDoor(whichDoor)+".");
 			}
 
 		} else switch(walkIntoTileType) {
