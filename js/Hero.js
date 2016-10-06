@@ -6,8 +6,8 @@ function heroClass()
 	this.y;
 	this.myHeroPic; // which picture to use
 	this.name = "Roman";
-	this.doorKeyHeld = false;
-	this.crowbarHeld = false;
+	this.doorKeyRing = [];
+	this.crowbarHeld = false; // Can probably remove, door key ring can do this.
 	this.currentLevel = levelFoyerEntrance;
 
 	this.keyHeld_North = false;
@@ -34,6 +34,7 @@ function heroClass()
 		this.myHeroPic = whichImage;
 		//this.keysHeld = 0;
 		//this.updateKeyReadout();
+		this.doorKeyRing = [];
 
 		for(var eachRow = 0;eachRow<WORLD_ROWS;eachRow++)
 		{
@@ -87,22 +88,30 @@ function heroClass()
 
 		// Check the tile you just collided with
 		// !!!!!! Need a better system for checking tiles !!!!!!!
-		switch(walkIntoTileType)
-		{
+		if (walkIntoTileType >= TILE_KEY_FIRST &&
+		    walkIntoTileType < TILE_KEY_LAST) {
+			var whichKey = walkIntoTileType - TILE_KEY_FIRST;
+
+			this.doorKeyRing[whichKey] = true;
+			worldGrid[walkIntoTileIndex] = TILE_GROUND;
+			displayUIText("Picked up key #" + whichKey + ".");
+
+		} else if (walkIntoTileType >= TILE_DOOR_FIRST &&
+			       walkIntoTileType < TILE_DOOR_LAST) {
+			var whichDoor = walkIntoTileType - TILE_DOOR_FIRST;
+
+			if (this.doorKeyRing[whichDoor] == true) {
+				this.doorKeyRing[whichDoor] = false;
+				displayUIText("Used key #" + whichDoor + " to open door.");
+				worldGrid[walkIntoTileIndex] = TILE_GROUND;
+			} else {
+				displayUIText("Need key #" + whichDoor + " to open door.");
+			}
+
+		} else switch(walkIntoTileType) {
 			case TILE_GROUND:
 				this.x = nextX;
 				this.y = nextY;
-				break;
-			case TILE_DOOR:
-				displayUIText("You do not have a key to this door.");
-				break;
-			case TILE_DOOR_HOUSEENTRANCE:
-				displayUIText("This is the front door.");
-				break;
-			case TILE_KEY:
-				this.doorKeyHeld = true;
-				console.log("Picked up the door key.");
-				worldGrid[walkIntoTileIndex] = TILE_GROUND;
 				break;
 			case TILE_WALL:
 			default:

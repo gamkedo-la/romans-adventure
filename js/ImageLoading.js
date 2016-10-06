@@ -38,11 +38,13 @@ function loadImages()
 
 		// door tiles
 		{worldType: TILE_DOOR, theFile: "world_door.png"},
+		{worldType: TILE_DOOR_STUDY, theFile: "world_door.png"},
 		{worldType: TILE_DOOR_HOUSEENTRANCE, theFile: "world_door.png"},
 
 
 		// key tiles
 		{worldType: TILE_KEY, theFile: "key.png"},
+		{worldType: TILE_KEY_STUDY, theFile: "key.png"},
 
 	];
 

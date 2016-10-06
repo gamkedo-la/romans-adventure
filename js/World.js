@@ -25,15 +25,15 @@ var levelStudy =
 
 var levelFoyerEntrance =
 	[ // Tables, Wall lamps, Rug
-		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, // <--Reaching top row takes you to FoyerStairs level
-		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200,
-		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 1,
+		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, // <--Reaching top row takes you to FoyerStairs level
+		1, 0, 0, 202, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		1, 0, 0, 0, 302, 0, 0, 0, 0, 0, 200, 0, 0, 0, 0, 1,
+		200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200,
+		1, 0, 0, 0, 0, 0, 0, 0, 0, 300, 0, 0, 0, 0, 0, 1,
+		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		1, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 1, 1, 1, 1, 1, 1, 201, 1, 1, 1, 1, 1, 1, 1, 1,
 	];
 
@@ -304,23 +304,26 @@ const TILE_DOOR_BEDROOMTWO = 209; // Door from Hallway to BedroomTwo
 const TILE_DOOR_BEDROOMTHREE = 210; // Door from Hallway to BedroomThree
 const TILE_DOOR_BEDROOMFOUR = 211; // Door from Hallway to BedroomFour
 const TILE_DOOR_ATTIC = 212; // Door from Hallway to Attic
+const TILE_DOOR_FIRST = TILE_DOOR;
+const TILE_DOOR_LAST = TILE_DOOR_ATTIC;
 
 
 // Keys
 const TILE_KEY = 300; //unlocks DOOR @ 200
-const TILE_KEY_HOUSEENTRANCE = 201; // Exit the house, this is the goal!
-const TILE_KEY_STUDY = 202; // Key for FoyerEntrance to Study
-const TILE_KEY_DEN = 203; // Key for FoyerEntrance to Den
-const TILE_KEY_BASEMENT = 204; // Key for FoyerStairs room to Basement
-const TILE_KEY_GARDEN = 205; // Key for Kitchen to Garden
-const TILE_KEY_GARDEN_BASEMENT = 206; // Key for Garden into Basement
-const TILE_KEY_STAIRS_SECONDFLOOR = 207; // Key for Stairs to Hallway (2nd floor)
-const TILE_KEY_BEDROOMONE = 208; // Key for Hallway to BedroomOne
-const TILE_KEY_BEDROOMTWO = 209; // Key for Hallway to BedroomTwo
-const TILE_KEY_BEDROOMTHREE = 210; // Key for Hallway to BedroomThree
-const TILE_KEY_BEDROOMFOUR = 211; // Key for Hallway to BedroomFour
-const TILE_KEY_ATTIC = 212; // Key for Hallway to Attic
-
+const TILE_KEY_HOUSEENTRANCE = 301; // Exit the house, this is the goal!
+const TILE_KEY_STUDY = 302; // Key for FoyerEntrance to Study
+const TILE_KEY_DEN = 303; // Key for FoyerEntrance to Den
+const TILE_KEY_BASEMENT = 304; // Key for FoyerStairs room to Basement
+const TILE_KEY_GARDEN = 305; // Key for Kitchen to Garden
+const TILE_KEY_GARDEN_BASEMENT = 306; // Key for Garden into Basement
+const TILE_KEY_STAIRS_SECONDFLOOR = 307; // Key for Stairs to Hallway (2nd floor)
+const TILE_KEY_BEDROOMONE = 308; // Key for Hallway to BedroomOne
+const TILE_KEY_BEDROOMTWO = 309; // Key for Hallway to BedroomTwo
+const TILE_KEY_BEDROOMTHREE = 310; // Key for Hallway to BedroomThree
+const TILE_KEY_BEDROOMFOUR = 311; // Key for Hallway to BedroomFour
+const TILE_KEY_ATTIC = 312; // Key for Hallway to Attic
+const TILE_KEY_FIRST = TILE_KEY;
+const TILE_KEY_LAST = TILE_KEY_ATTIC;
 
 // ******END TILE KEY******
 
