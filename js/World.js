@@ -236,7 +236,7 @@ var levelBedroomFour =
 
 // Basement and Attic Areas
 
-var levelBasementFoyerEntrace =
+var levelBasementFoyerEntrance =
 	[ // Chests, Boxes, Shelves
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
@@ -277,6 +277,31 @@ var levelAttic =
 		 1, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1,
 	];
+
+	var levelList =
+	[
+	levelFoyerEntrance,
+	levelStudy,
+	levelDen,
+	levelFoyerStairs,
+	levelDiningRoom,
+	levelStairs,
+	levelKitchen,
+	levelGardenLeft,
+	levelGardenRight,
+	levelBedroomOne,
+	levelBedroomTwo,
+	levelBedroomThree,
+	levelHallwayLeft,
+	levelHallwayMiddle,
+	levelHallwayRight,
+	levelBedroomFour,
+	levelBasementFoyerEntrance,
+	levelBasementGardenExit,
+	levelAttic
+	];
+
+	var currentRoomIndex = 0;
 
 // ******END MAP EDITOR******
 
