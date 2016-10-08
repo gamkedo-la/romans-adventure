@@ -1,3 +1,8 @@
+var uiTextPaddingX = 600;
+var uiTextPaddingY = 30;
+var debugTextPaddingX = 10;
+var debugTextPaddingY = 20;
+
 function drawBitmapCenteredWithRotation(useBitmap, atX,atY, withAng)
 {
 	canvasContext.save();
@@ -21,11 +26,23 @@ function colorCircle(centerX,centerY, radius, fillColor)
 	canvasContext.fill();
 }
 
-function displayUIText(showWords)
+function displayUIText(showText)
 {
 	scaledUIContext.fillStyle = "black";
 	scaledUIContext.fillRect(0, 0, scaledUICanvas.width, scaledUICanvas.height);
 	scaledUIContext.font = "bold 15px Arial";
 	scaledUIContext.fillStyle = "white";
-	scaledUIContext.fillText(showWords, 600, 30);
+	if (isEditorMode)
+	{
+		scaledUIContext.fillText(showText, debugTextPaddingX, debugTextPaddingY);
+	}
+	else
+	{
+		scaledUIContext.fillText(showText, uiTextPaddingX, uiTextPaddingY);
+	}
+}
+
+function drawStrokeRect(canvasContext, topLeftX, topLeftY, boxWidth, boxHeight, strokeColor) {
+  canvasContext.strokeStyle = strokeColor;
+  canvasContext.strokeRect(topLeftX, topLeftY, boxWidth, boxHeight);
 }

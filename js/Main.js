@@ -44,6 +44,8 @@ window.onload = function()
 	colorRect(0,0, canvas.width,canvas.height, 'black');
 	//colorText("LOADING IMAGES", canvas.width/2, canvas.height/2, 'white');
 	loadImages();
+
+	scaledCanvas.addEventListener("mousemove", updateMousePos);
 }
 
 function imageLoadingDoneSoStartGame()
@@ -63,8 +65,18 @@ function loadLevel(whichLevel)
 
 function updateAll()
 {
-	moveAll();
-	drawAll();
+	if(isEditorMode)
+	{
+		moveAll();
+		drawAll();
+		levelGridCoordinate();
+	}
+	else
+	{
+		moveAll();
+		drawAll();
+	}
+
 }
 
 function moveAll()
