@@ -9,7 +9,7 @@ var mouseY = 0;
 // Get current mouse position on screen
 function updateMousePos(evt)
 {
-	var rect = canvas.getBoundingClientRect();
+	var rect = scaledCanvas.getBoundingClientRect();
 	var root = document.documentElement;
 
 	mouseX = evt.clientX - rect.left - root.scrollLeft - 8; // ??-8 accounts for padding from edge of window to canvas

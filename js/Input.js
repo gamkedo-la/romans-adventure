@@ -3,6 +3,8 @@ const KEY_UP_ARROW = 38;
 const KEY_RIGHT_ARROW = 39;
 const KEY_DOWN_ARROW = 40;
 
+const KEY_L = 76;
+
 function setupInput()
 {
 	document.addEventListener('keydown', keyPressed);
@@ -33,7 +35,10 @@ function keySet(keyEvent, setTo)
 
 function keyPressed(evt)
 {
-	// console.log("Key pressed: "+evt.keyCode);
+	//console.log("Key pressed: "+evt.keyCode);
+	if(evt.keyCode == KEY_L) {
+		isEditorMode = !isEditorMode;
+	}
 	keySet(evt, true);
 
 	evt.preventDefault();
