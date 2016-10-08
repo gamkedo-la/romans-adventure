@@ -17,12 +17,18 @@ function updateMousePos(evt)
 	mouseY = evt.clientY - rect.top - root.scrollTop;
 }
 
-function editorKeyHandle(keyEvt) {
-  if(keyEvt.keyCode == KEY_1) {
-    if(mouseOverTileIdx != -1) {
-      worldGrid[mouseOverTileIdx] = TILE_KEY_STUDY;
-    }
-  }
+function editorKeyHandle(keyEvt)
+{
+	switch(keyEvt.keyCode)
+	{
+		case KEY_1:
+			worldGrid[mouseOverTileIdx] = TILE_GROUND;
+			break;
+		case KEY_2:
+			worldGrid[mouseOverTileIdx] = TILE_WALL;
+		default:
+			break;
+	}
 }
 
 // Round mouse position and return grid coordinate mouse cursor is currently hovering over. Draw rect around tile.
