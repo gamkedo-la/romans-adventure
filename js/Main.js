@@ -65,18 +65,12 @@ function loadLevel(whichLevel)
 
 function updateAll()
 {
+	moveAll();
+	drawAll();
 	if(isEditorMode)
 	{
-		moveAll();
-		drawAll();
 		levelGridCoordinate();
 	}
-	else
-	{
-		moveAll();
-		drawAll();
-	}
-
 }
 
 function moveAll()
