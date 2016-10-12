@@ -3,6 +3,7 @@ const WORLD_H = 14;
 const WORLD_COLS = 16;
 const WORLD_ROWS = 10;
 const PIXEL_SCALE_UP = 4;
+const TILE_ART_KITCHEN = 5;
 
 var worldGrid = [];
 
@@ -105,6 +106,7 @@ var levelKitchen =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1,
+		 TILE_ART_KITCHEN
 	];
 
 var levelGardenLeft =
@@ -118,6 +120,20 @@ var levelGardenLeft =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+	];
+
+var levelGardenMiddle =
+	[ // Plants
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0,
+		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 	];
 
@@ -280,15 +296,15 @@ var levelAttic =
 
 	var levelList =
 	[
+	levelGardenLeft,levelGardenMiddle,levelGardenRight,
+	levelBasementGardenExit, levelStairs, levelKitchen,
+
 	levelFoyerEntrance,
 	levelStudy,
 	levelDen,
 	levelFoyerStairs,
 	levelDiningRoom,
-	levelStairs,
-	levelKitchen,
-	levelGardenLeft,
-	levelGardenRight,
+
 	levelBedroomOne,
 	levelBedroomTwo,
 	levelBedroomThree,
@@ -297,11 +313,10 @@ var levelAttic =
 	levelHallwayRight,
 	levelBedroomFour,
 	levelBasementFoyerEntrance,
-	levelBasementGardenExit,
 	levelAttic
 	];
 
-	var currentRoomIndex = 0;
+	var currentRoomIndex = 0; //column, row
 
 // ******END MAP EDITOR******
 
@@ -455,7 +470,7 @@ function drawWorld()
 		{
 			var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 			var tileKindHere = worldGrid[arrayIndex];
-			var useImg = worldPics[tileKindHere];
+			var useImg = worldPics[tileKindHere]; //roomArtStrips[currentRoomArtIndex]
 
 			if(tileTypeHasTransparency(tileKindHere))
 			{

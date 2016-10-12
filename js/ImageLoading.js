@@ -2,6 +2,8 @@ var heroPic = document.createElement("img");
 var doorStrip = document.createElement("img");
 var keyStrip = document.createElement("img");
 var worldPics = [];
+var roomArtStrips = [];
+//var currentRoomArtIndex = TILE_ART_KITCHEN;
 
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
 

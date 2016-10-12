@@ -54,12 +54,13 @@ function imageLoadingDoneSoStartGame()
 
 	setInterval(updateAll, 1000/framesPerSecond);
 	setupInput();
-	loadLevel(levelFoyerEntrance);
+	loadLevel(0);
 }
 
-function loadLevel(whichLevel)
+function loadLevel(whichLevelIdx)
 {
-	worldGrid = whichLevel.slice();
+	currentRoomIndex = whichLevelIdx;
+	worldGrid = levelList[currentRoomIndex].slice();
 	roman.reset(heroPic, "Roman");
 }
 
