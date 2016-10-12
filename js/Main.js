@@ -59,9 +59,9 @@ function imageLoadingDoneSoStartGame()
 
 function loadLevel(whichLevelIdx)
 {
-	currentRoomIndex = whichLevelIdx;
-	worldGrid = levelList[currentRoomIndex].slice();
-	roman.reset(heroPic, "Roman");
+    currentRoomIndex = whichLevelIdx;
+    worldGrid = roomLayout[currentRoomIndex].slice();
+    roman.reset(heroPic, "Roman");
 }
 
 function updateAll()

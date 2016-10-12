@@ -4,6 +4,9 @@ const WORLD_COLS = 16;
 const WORLD_ROWS = 10;
 const PIXEL_SCALE_UP = 4;
 const TILE_ART_KITCHEN = 5;
+const BUILDING_ROOMS_COLS = 3;
+const BUILDING_ROOMS_ROWS = 4;
+const BUILDING_FLOORS = 2;
 
 var worldGrid = [];
 
@@ -25,7 +28,7 @@ var levelStudy =
 	];
 
 var levelFoyerEntrance =
-	[ // Tables, Wall lamps, Rug
+    [ // Tables, Wall lamps, Rug
 		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, // <--Reaching top row takes you to FoyerStairs level
 		1, 0, 0, 202, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		1, 0, 0, 0, 0, 0, 0, 305, 0, 205, 0, 0, 0, 0, 0, 1,
@@ -294,29 +297,28 @@ var levelAttic =
 		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1,
 	];
 
-	var levelList =
-	[
-	levelGardenLeft,levelGardenMiddle,levelGardenRight,
-	levelBasementGardenExit, levelStairs, levelKitchen,
+var roomLayout =
+    [   
+	    levelGardenLeft, levelGardenMiddle, levelGardenRight,
+	    levelBasementGardenExit, levelStairs, levelKitchen,
+        levelBasementFoyerEntrance, levelFoyerStairs, levelDiningRoom,
+	    levelStudy, levelFoyerEntrance, levelDen,
 
-	levelFoyerEntrance,
-	levelStudy,
-	levelDen,
-	levelFoyerStairs,
-	levelDiningRoom,
+        //Second floor below
+        0, 0, 0,
+	    levelAttic, levelStairs, levelBedroomFour,
+        levelHallwayLeft, levelHallwayMiddle, levelHallwayRight,
+        levelBedroomOne, levelBedroomTwo, levelBedroomThree	    
+    ];
 
-	levelBedroomOne,
-	levelBedroomTwo,
-	levelBedroomThree,
-	levelHallwayLeft,
-	levelHallwayMiddle,
-	levelHallwayRight,
-	levelBedroomFour,
-	levelBasementFoyerEntrance,
-	levelAttic
-	];
+var currentRoomRow = 3, currentRoomCol = 1, currentRoomFloor = 0;
+var currentRoomIndex = 0;
 
-	var currentRoomIndex = 0; //column, row
+function roomCoordToIndex()
+{
+    return currentRoomCol + BUILDING_ROOMS_COLS * currentRoomRow
+        + (BUILDING_ROOMS_ROWS * BUILDING_ROOMS_COLS * currentRoomFloor);
+}
 
 // ******END MAP EDITOR******
 
