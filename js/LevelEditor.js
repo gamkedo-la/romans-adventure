@@ -35,17 +35,17 @@ function editorKeyHandle(keyEvt)
 // Round mouse position and return grid coordinate mouse cursor is currently hovering over. Draw rect around tile.
 function levelGridCoordinate()
 {
-  var levelCol = Math.floor(mouseX / tileWidthScaled);
-  var levelRow = Math.floor(mouseY / tileHeightScaled);
+    var levelCol = Math.floor(mouseX / tileWidthScaled);
+    var levelRow = Math.floor(mouseY / tileHeightScaled);
 
-  var gridX = (levelCol * tileWidthScaled);
-  var gridY = (levelRow * tileHeightScaled);
+    var gridX = (levelCol * tileWidthScaled);
+    var gridY = (levelRow * tileHeightScaled);
 
-  mouseOverTileIdx = rowColToArrayIndex(levelCol, levelRow);
+    mouseOverTileIdx = rowColToArrayIndex(levelCol, levelRow);
 
-  // Display grid coordinate in UI
-  displayUIText("Grid coordinate: "+levelCol+","+levelRow + " Index: " + mouseOverTileIdx);
+    // Display grid coordinate in UI
+    displayUIText("Grid coordinate: "+levelCol+","+levelRow + " Index: " + mouseOverTileIdx);
 
-  // Draw outline around highlighted tile, snap to grid
-  drawStrokeRect(scaledContext, gridX, gridY, tileWidthScaled, tileHeightScaled, 'red');
+    // Draw outline around highlighted tile, snap to grid
+    drawStrokeRect(scaledContext, gridX, gridY, tileWidthScaled, tileHeightScaled, 'red');
 }

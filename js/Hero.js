@@ -93,7 +93,7 @@ function heroClass()
 
 			this.doorKeyRing[whichKey] = true;
 			worldGrid[walkIntoTileIndex] = TILE_GROUND;
-			levelList[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND;
+			roomLayout[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND;
 			displayUIText("Picked up " + idxToTextKey(whichKey) + ".");
 
 		} else if (tileTypeIsDoor(walkIntoTileType)) {
