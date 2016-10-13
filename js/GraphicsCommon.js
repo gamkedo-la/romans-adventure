@@ -28,7 +28,7 @@ function colorCircle(centerX,centerY, radius, fillColor)
 
 function displayUIText(showText)
 {
-	scaledUIContext.fillStyle = "black";
+    scaledUIContext.fillStyle = "black";
 	scaledUIContext.fillRect(0, 0, scaledUICanvas.width, scaledUICanvas.height);
 	scaledUIContext.font = "bold 15px Arial";
 	scaledUIContext.fillStyle = "white";
