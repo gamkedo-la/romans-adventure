@@ -66,7 +66,7 @@ function levelGridCoordinate()
     mouseOverTileIdx = rowColToArrayIndex(levelCol, levelRow);
 
     // Display grid coordinate in UI
-    displayUIText("Grid coordinate: "+levelCol+","+levelRow + "  |  Index: " + mouseOverTileIdx + "  |  Room: " + roomNames[currentRoomIndex], debugTileCoordPaddingX, debugTileCoordPaddingY);
+    displayUIText("Grid coordinate: "+levelCol+","+levelRow + "  |  Index: " + mouseOverTileIdx + "  |  Room: " + roomNames[currentRoomIndex]);
 
     // Draw outline around highlighted tile, snap to grid
     drawStrokeRect(scaledContext, gridX, gridY, tileWidthScaled, tileHeightScaled, 'red');
