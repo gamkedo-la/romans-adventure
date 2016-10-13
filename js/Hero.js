@@ -59,22 +59,22 @@ function heroClass()
 		var nextY = this.y;
 
 		if(this.keyHeld_North && !this.keyHeld_East
-			&& !this.keyHeld_South && !this.keyHeld_West)
+			&& !this.keyHeld_South && !this.keyHeld_West && !isEditorMode)
 		{
 			nextY -= PLAYER_MOVE_SPEED;
 		}
 		if(this.keyHeld_East && !this.keyHeld_North
-			&& !this.keyHeld_South && !this.keyHeld_West)
+			&& !this.keyHeld_South && !this.keyHeld_West && !isEditorMode)
 		{
 			nextX += PLAYER_MOVE_SPEED;
 		}
 		if(this.keyHeld_South && !this.keyHeld_East
-			&& !this.keyHeld_North && !this.keyHeld_West)
+			&& !this.keyHeld_North && !this.keyHeld_West && !isEditorMode)
 		{
 			nextY += PLAYER_MOVE_SPEED;
 		}
 		if(this.keyHeld_West && !this.keyHeld_East
-			&& !this.keyHeld_North && !this.keyHeld_South)
+			&& !this.keyHeld_North && !this.keyHeld_South && !isEditorMode)
 		{
 			nextX -= PLAYER_MOVE_SPEED;
 		}

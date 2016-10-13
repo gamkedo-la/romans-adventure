@@ -54,7 +54,7 @@ function imageLoadingDoneSoStartGame()
 
 	setInterval(updateAll, 1000/framesPerSecond);
 	setupInput();
-	loadLevel(0);
+	loadLevel(currentRoomIndex);
 }
 
 function loadLevel(whichLevelIdx)
@@ -70,7 +70,7 @@ function updateAll()
 	drawAll();
 	if(isEditorMode)
 	{
-		levelGridCoordinate();
+	    levelGridCoordinate();
 	}
 }
 
