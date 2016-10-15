@@ -46,3 +46,30 @@ function drawStrokeRect(canvasContext, topLeftX, topLeftY, boxWidth, boxHeight, 
   canvasContext.strokeStyle = strokeColor;
   canvasContext.strokeRect(topLeftX, topLeftY, boxWidth, boxHeight);
 }
+
+function wrapText(text)
+{
+    scaledUIContext.fillStyle = "black";
+    scaledUIContext.fillRect(0, 0, scaledUICanvas.width, scaledUICanvas.height);
+    scaledUIContext.font = "bold 15px Arial";
+    scaledUIContext.fillStyle = "white";
+
+    var maxWidth = scaledUICanvas.width - uiTextPaddingX - uiTextPaddingY;
+    var words = text.split(' ');
+    var line = '';
+
+    for (var n = 0; n < words.length; n++) {
+        var testLine = line + words[n] + ' ';
+        var metrics = scaledUIContext.measureText(testLine);
+        var testWidth = metrics.width;
+        if (testWidth > 286 && n > 0) {
+            scaledUIContext.fillText(line, uiTextPaddingX, uiTextPaddingY);
+            line = words[n] + ' ';
+            uiTextPaddingY += 20;
+        }
+        else {
+            line = testLine;
+        }
+    }
+    scaledUIContext.fillText(line, uiTextPaddingX, uiTextPaddingY);
+}

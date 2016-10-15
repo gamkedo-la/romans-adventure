@@ -1,10 +1,9 @@
 var heroPic = document.createElement("img");
 var doorStrip = document.createElement("img");
 var keyStrip = document.createElement("img");
+var studyStrip = document.createElement("img");
 var worldPics = [];
-var roomArtStrips = [];
-//var currentRoomArtIndex = TILE_ART_KITCHEN;
-
+var roomArtStrips = []; //Need to implement <<< also on World.js
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
 
 function countLoadedImagesAndLaunchIfReady()
@@ -25,8 +24,8 @@ function beginLoadingImage(imgVar, fileName)
 
 function loadImageForWorldCode(worldCode, fileName)
 {
-	worldPics[worldCode] = document.createElement("img");
-	beginLoadingImage(worldPics[worldCode], fileName);
+	roomArtStrips[worldCode] = document.createElement("img");
+	beginLoadingImage(roomArtStrips[worldCode], fileName);
 }
 
 function loadImages()
@@ -34,20 +33,20 @@ function loadImages()
 	var imageList =
 	[
 		// hero and pickup tiles
-		{varName: heroPic, theFile: "roman.png"},
+		{ varName: heroPic, theFile: "roman.png" },
 
 		// environmental tiles
-		{worldType: TILE_GROUND, theFile: "world_ground.png"},
-		{worldType: TILE_WALL, theFile: "world_wall.png"},
+		{ worldType: TILE_GROUND, theFile: "world_ground.png" },
+		{ worldType: TILE_WALL, theFile: "world_wall.png" },
 
 		// door tiles
-		{varName: doorStrip, theFile: "door_strip.png"},
-		//{worldType: TILE_DOOR_STUDY, theFile: "world_door.png"},
-		//{worldType: TILE_DOOR_HOUSEENTRANCE, theFile: "world_door.png"},
+		{ varName: doorStrip, theFile: "door_strip.png"},
 
 		// key tiles
-		{varName: keyStrip, theFile: "key_strip.png"},
-		// {worldType: TILE_KEY_STUDY, theFile: "key.png"},
+		{ varName: keyStrip, theFile: "key_strip.png" },
+
+        // Room tiles
+        { varName: studyStrip, theFile: "study_strip.png" },
 
 	];
 

@@ -3,7 +3,7 @@ const WORLD_H = 14;
 const WORLD_COLS = 16;
 const WORLD_ROWS = 10;
 const PIXEL_SCALE_UP = 4;
-const TILE_ART_KITCHEN = 5;
+const TILE_ART_STUDY = 10;
 const BUILDING_ROOMS_COLS = 3;
 const BUILDING_ROOMS_ROWS = 4;
 const BUILDING_FLOORS = 2;
@@ -25,6 +25,7 @@ var levelStudy =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         TILE_ART_STUDY
 	];
 
 var levelFoyerEntrance =
@@ -109,7 +110,6 @@ var levelKitchen =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1,
-		 TILE_ART_KITCHEN
 	];
 
 var levelGardenLeft =
@@ -332,7 +332,7 @@ var roomNames =
 //const BUILDING_ROOMS_COLS = 3;
 //const BUILDING_ROOMS_ROWS = 4;
 //const BUILDING_FLOORS = 2;
-var currentRoomRow = 3, currentRoomCol = 1, currentRoomFloor = 0;
+var currentRoomRow = 3, currentRoomCol = 1, currentRoomFloor = 0; // Foyer entrance room
 var currentRoomIndex = roomCoordToIndex();
 
 function roomCoordToIndex()
@@ -405,6 +405,28 @@ const TILE_KEY_ATTIC = TILE_KEY+KEYDOOR_IDX_ATTIC; // Key for Hallway to Attic
 const TILE_KEY_FIRST = TILE_KEY;
 const TILE_KEY_LAST = TILE_KEY_ATTIC;
 
+//Study
+const TILE_RUG_CENTER = 400;
+const TILE_RUG_TOP_LEFT = 401;
+const TILE_RUG_BOTTOM_LEFT = 402;
+const TILE_RUG_TOP = 403;
+const TILE_RUG_BOTTOM = 404;
+const TILE_RUG_TOP_RIGHT = 405;
+const TILE_RUG_BOTTOM_RIGHT = 406;
+const TILE_BOOKSHELF_A = 407;
+const TILE_BOOKSHELF_B = 408;
+const TILE_BOOKSHELF_C = 409;
+const TILE_BOOKSHELF_D = 410;
+const TILE_BOOKSHELF_E = 411;
+const TILE_BOOKSHELF_F = 412;
+const TILE_BOOKSHELF_G = 413;
+const TILE_BOOKSHELF_H = 414;
+const TILE_BOOKSHELF_I = 415;
+const TILE_BOOKSHELF_J = 416;
+const TILE_STUDY_FIRST = TILE_RUG_CENTER;
+const TILE_STUDY_LAST = TILE_BOOKSHELF_J;
+
+
 var doorLabels = [];
 var keyLabels = [];
 doorLabels[KEYDOOR_IDX_STUDY] = "chained door";
@@ -471,8 +493,19 @@ function tileTypeIsDoor(checkTileType) {
 	return (checkTileType >= TILE_DOOR_FIRST &&
 		    checkTileType <= TILE_DOOR_LAST)
 }
+function tileTypeIsStudy(checkTileType) {
+    return (checkTileType >= TILE_STUDY_FIRST &&
+		    checkTileType <= TILE_STUDY_LAST)
+}
+function tileTypeIsRoom(checkTileType) {
+    return (checkTileType >= TILE_DOOR_FIRST &&
+		    checkTileType <= TILE_DOOR_LAST)
+}
 function tileTypeToIndexForDoor(checkTileType) {
 	return checkTileType-TILE_DOOR_FIRST;
+}
+function tileTypeToIndexForStudy(checkTileType) {
+    return checkTileType - TILE_STUDY_FIRST;
 }
 
 // all tiles with transparency must be listed below
@@ -492,26 +525,33 @@ function drawWorld()
 		for(var eachCol = 0;eachCol<WORLD_COLS;eachCol++)
 		{
 			var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
-			var tileKindHere = worldGrid[arrayIndex];
-			var useImg = worldPics[tileKindHere]; //roomArtStrips[currentRoomArtIndex]
+			var currentRoomArtIndex = worldGrid[arrayIndex];
+//			var useImg = worldPics[tileKindHere];
+			var useImg = roomArtStrips[currentRoomArtIndex];
 
-			if(tileTypeHasTransparency(tileKindHere))
+			if(tileTypeHasTransparency(currentRoomArtIndex))
 			{
-				canvasContext.drawImage(worldPics[TILE_GROUND],drawTileX,drawTileY);
+				canvasContext.drawImage(roomArtStrips[TILE_GROUND],drawTileX,drawTileY);
 			}
 
-			if(tileTypeIsKey(tileKindHere)) {
-				var whichKey = tileTypeToIndexForKey(tileKindHere);
+			if(tileTypeIsKey(currentRoomArtIndex)) {
+				var whichKey = tileTypeToIndexForKey(currentRoomArtIndex);
 				canvasContext.drawImage(keyStrip,0,WORLD_H*whichKey,
 										WORLD_W,WORLD_H,
 										drawTileX,drawTileY,
 										WORLD_W,WORLD_H);
-			} else if(tileTypeIsDoor(tileKindHere)) {
-				var whichDoor = tileTypeToIndexForDoor(tileKindHere);
+			} else if(tileTypeIsDoor(currentRoomArtIndex)) {
+				var whichDoor = tileTypeToIndexForDoor(currentRoomArtIndex);
 				canvasContext.drawImage(doorStrip,0,WORLD_H*whichDoor,
 										WORLD_W,WORLD_H,
 										drawTileX,drawTileY,
-										WORLD_W,WORLD_H);
+										WORLD_W, WORLD_H);
+			} else if (tileTypeIsStudy(currentRoomArtIndex)) {
+			    var whichStudyTile = tileTypeToIndexForStudy(currentRoomArtIndex);
+			    canvasContext.drawImage(studyStrip, 0, WORLD_H * whichStudyTile,
+										WORLD_W, WORLD_H,
+										drawTileX, drawTileY,
+										WORLD_W, WORLD_H);
 			} else {
 				canvasContext.drawImage(useImg,drawTileX,drawTileY);
 			}

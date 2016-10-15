@@ -28,8 +28,9 @@ window.onload = function()
 
 	canvasUIContext = uiCanvas.getContext('2d');
 	scaledUIContext = scaledUICanvas.getContext('2d');
-	scaledUIContext.fillStyle = "black";
+	scaledUIContext.fillStyle = "white";
 	scaledUIContext.fillRect(0, 0, scaledUICanvas.width, scaledUICanvas.height);
+	scaledUIContext.strokeStyle = "white";
 
 	// Helps it not blur from the scaling:
 	canvasContext.mozImageSmoothingEnabled = false;

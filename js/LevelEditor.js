@@ -27,6 +27,12 @@ function editorKeyHandle(keyEvt)
 	    case KEY_2:
 	        worldGrid[mouseOverTileIdx] = TILE_WALL;
 	        break;
+	    case KEY_3:
+	        placeTile();
+	        break;
+	    case KEY_4:
+	        worldGrid[mouseOverTileIdx] = 400;
+	        break;
 	    case KEY_LEFT_ARROW:
 	        currentRoomCol--;
 	        moveToNextRoom();
@@ -106,4 +112,11 @@ function moveToNextRoom()
         return;
     }
     loadLevel(roomCoordToIndex());
+}
+
+function placeTile()
+{
+    //need to work on this
+    worldGrid[mouseOverTileIdx]++;
+    console.log(worldGrid[mouseOverTileIdx]);
 }

@@ -7,7 +7,6 @@ function heroClass()
 	this.myHeroPic; // which picture to use
 	this.name = "Roman";
 	this.doorKeyRing = [];
-	this.crowbarHeld = false; // Can probably remove, door key ring can do this.
 	this.currentLevel = levelFoyerEntrance;
 
 	this.keyHeld_North = false;

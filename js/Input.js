@@ -7,6 +7,14 @@ const KEY_SPACE = 32;
 const KEY_L = 76;
 const KEY_1 = 49;
 const KEY_2 = 50;
+const KEY_3 = 51;
+const KEY_4 = 52;
+const KEY_5 = 53;
+const KEY_6 = 54;
+const KEY_7 = 55;
+const KEY_8 = 56;
+const KEY_9 = 57;
+const KEY_0 = 48;
 
 function setupInput()
 {
