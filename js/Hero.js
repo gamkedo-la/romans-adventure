@@ -86,7 +86,6 @@ function heroClass()
 		}
 
 		// Check the tile you just collided with
-		// !!!!!! Need a better system for checking tiles !!!!!!!
 		if (tileTypeIsKey(walkIntoTileType)) {
 			var whichKey = tileTypeToIndexForKey(walkIntoTileType);
 
@@ -108,7 +107,15 @@ function heroClass()
 										idxToTextDoor(whichDoor)+".");
 			}
 
-		} else switch(walkIntoTileType) {
+		}
+        // TEMPORARY CHECK FOR STUDY TILES, NEED TO CHANGE
+		else if (walkIntoTileType >= TILE_STUDY_FIRST || walkIntoTileType <= TILE_STUDY_LAST)
+		{
+		    this.x = nextX;
+		    this.y = nextY;
+		}
+		else switch (walkIntoTileType)
+		{
 			case TILE_GROUND:
 				this.x = nextX;
 				this.y = nextY;

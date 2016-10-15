@@ -47,6 +47,7 @@ window.onload = function()
 	loadImages();
 
 	scaledCanvas.addEventListener("mousemove", updateMousePos);
+	scaledCanvas.addEventListener("mouseup", editTileUnderMousePos);
 }
 
 function imageLoadingDoneSoStartGame()
@@ -82,7 +83,7 @@ function moveAll()
 
 function drawAll()
 {
-	drawWorld(); // World.js
+    drawWorld();
 	roman.draw();
 
 	scaledContext.drawImage(canvas,0,0,canvas.width,canvas.height,

@@ -47,11 +47,16 @@ function keySet(keyEvent, setTo)
 function keyPressed(evt)
 {
 	// console.log("Key pressed: "+evt.keyCode);
-	if(evt.keyCode == KEY_L) {
-		isEditorMode = !isEditorMode;
+    if (evt.keyCode == KEY_L)
+    {
+	    isEditorMode = !isEditorMode;
+	    editorTileSelected = !editorTileSelected;
+	    console.log(isEditorMode);
+	    console.log(editorTileSelected);
 	}
 
-	if(isEditorMode) {
+    if (isEditorMode)
+    {
 		editorKeyHandle(evt);
 	}
 

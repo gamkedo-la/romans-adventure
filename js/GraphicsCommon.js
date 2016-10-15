@@ -42,7 +42,8 @@ function displayUIText(showText)
 	}
 }
 
-function drawStrokeRect(canvasContext, topLeftX, topLeftY, boxWidth, boxHeight, strokeColor) {
+function drawStrokeRect(canvasContext, topLeftX, topLeftY, boxWidth, boxHeight, strokeColor) 
+{
   canvasContext.strokeStyle = strokeColor;
   canvasContext.strokeRect(topLeftX, topLeftY, boxWidth, boxHeight);
 }

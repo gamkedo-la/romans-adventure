@@ -3,9 +3,12 @@ var tileWidthScaled = WORLD_W * PIXEL_SCALE_UP;
 var tileHeightScaled = WORLD_H * PIXEL_SCALE_UP;
 
 var mouseOverTileIdx = -1;
+var copiedTile = 0; // Which editor tile you selected from below
 
 var mouseX = 0;
 var mouseY = 0;
+
+editorTileSelected = false; // Check whether or not a tile from the editor has been selected
 
 // Get current mouse position on screen
 function updateMousePos(evt)
@@ -17,22 +20,14 @@ function updateMousePos(evt)
 	mouseY = evt.clientY - rect.top - root.scrollTop;
 }
 
+// Key commands when in Level Editor Mode
 function editorKeyHandle(keyEvt)
 {
 	switch(keyEvt.keyCode)
 	{
 		case KEY_1:
-			worldGrid[mouseOverTileIdx] = TILE_GROUND;
-			break;
-	    case KEY_2:
-	        worldGrid[mouseOverTileIdx] = TILE_WALL;
-	        break;
-	    case KEY_3:
-	        placeTile();
-	        break;
-	    case KEY_4:
-	        worldGrid[mouseOverTileIdx] = 400;
-	        break;
+		    displayCurrentRoomTiles();
+		    break;
 	    case KEY_LEFT_ARROW:
 	        currentRoomCol--;
 	        moveToNextRoom();
@@ -78,9 +73,10 @@ function levelGridCoordinate()
     drawStrokeRect(scaledContext, gridX, gridY, tileWidthScaled, tileHeightScaled, 'red');
 }
 
-//Checks if player is moving to a valid room and then loads the room
+// Checks if player is moving to a valid room and then loads the room
 function moveToNextRoom()
 {
+    editorTileSelected = false; // Turn off the ability to place tile until the new room's tile has been selected
     if (currentRoomCol < 0)
     {
         currentRoomCol = 0;
@@ -114,9 +110,30 @@ function moveToNextRoom()
     loadLevel(roomCoordToIndex());
 }
 
-function placeTile()
+function displayCurrentRoomTiles()
 {
-    //need to work on this
-    worldGrid[mouseOverTileIdx]++;
-    console.log(worldGrid[mouseOverTileIdx]);
+    for (var eachCol = 0; eachCol < WORLD_COLS; eachCol++)
+    {
+        worldGrid[rowColToArrayIndex(eachCol, 9)] = roomCoordToIndex() * 100 + eachCol;
+        console.log(eachCol);
+    }
+}
+
+// Check if you  are clicking in the Editor Tiles area. If you are copy the tile. If not, place the tile that was copied.
+function editTileUnderMousePos()
+{
+    if (mouseOverTileIdx > 143 && mouseOverTileIdx < 159)
+    {
+        editorTileSelected = true;
+        copiedTile = worldGrid[mouseOverTileIdx];
+        console.log("Copied tile index is: " + copiedTile); // Debug purposes
+    }
+    else if (editorTileSelected)
+    {
+        worldGrid[mouseOverTileIdx] = copiedTile;
+    }
+    else
+    {
+        return;
+    }
 }

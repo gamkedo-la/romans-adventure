@@ -346,11 +346,12 @@ function roomCoordToIndex()
 
 // ******BEGIN TILE KEY******
 
-// Environment
+// Common Environment Tiles
+// These are tiles that will be shared amongst most rooms
 const TILE_GROUND = 0;
 const TILE_WALL = 1;
 
-// Player and pickups
+// Player And Pickup Tiles
 const TILE_PLAYERSTART = 100;
 
 // key and door tile consts share offsets to ensure they'll match up
@@ -371,7 +372,7 @@ const KEYDOOR_IDX_ATTIC = 12;
 const KEYDOOR_IDX_FIRST = KEYDOOR_IDX_DEBUG;
 const KEYDOOR_IDX_LAST = KEYDOOR_IDX_ATTIC;
 
-// Doors
+// Door Tiles
 const TILE_DOOR = 200; // base door (only used for debug, otherwise basis for door #s)
 const TILE_DOOR_HOUSEENTRANCE = TILE_DOOR+KEYDOOR_IDX_HOUSEENTRANCE; // Exit the house, this is the goal!
 const TILE_DOOR_STUDY = TILE_DOOR+KEYDOOR_IDX_STUDY; // Door from FoyerEntrance to Study
@@ -388,7 +389,7 @@ const TILE_DOOR_ATTIC = TILE_DOOR+KEYDOOR_IDX_ATTIC; // Door from Hallway to Att
 const TILE_DOOR_FIRST = TILE_DOOR;
 const TILE_DOOR_LAST = TILE_DOOR_ATTIC;
 
-// Keys
+// Key Tiles
 const TILE_KEY = 300; // base key
 const TILE_KEY_HOUSEENTRANCE = TILE_KEY+KEYDOOR_IDX_HOUSEENTRANCE; // Exit the house, this is the goal!
 const TILE_KEY_STUDY = TILE_KEY+KEYDOOR_IDX_STUDY; // Key for FoyerEntrance to Study
@@ -405,27 +406,48 @@ const TILE_KEY_ATTIC = TILE_KEY+KEYDOOR_IDX_ATTIC; // Key for Hallway to Attic
 const TILE_KEY_FIRST = TILE_KEY;
 const TILE_KEY_LAST = TILE_KEY_ATTIC;
 
-//Study
-const TILE_RUG_CENTER = 400;
-const TILE_RUG_TOP_LEFT = 401;
-const TILE_RUG_BOTTOM_LEFT = 402;
-const TILE_RUG_TOP = 403;
-const TILE_RUG_BOTTOM = 404;
-const TILE_RUG_TOP_RIGHT = 405;
-const TILE_RUG_BOTTOM_RIGHT = 406;
-const TILE_BOOKSHELF_A = 407;
-const TILE_BOOKSHELF_B = 408;
-const TILE_BOOKSHELF_C = 409;
-const TILE_BOOKSHELF_D = 410;
-const TILE_BOOKSHELF_E = 411;
-const TILE_BOOKSHELF_F = 412;
-const TILE_BOOKSHELF_G = 413;
-const TILE_BOOKSHELF_H = 414;
-const TILE_BOOKSHELF_I = 415;
-const TILE_BOOKSHELF_J = 416;
+// Study Tiles
+const TILE_RUG_CENTER = 900;
+const TILE_RUG_TOP_LEFT = 901;
+const TILE_RUG_BOTTOM_LEFT = 902;
+const TILE_RUG_TOP = 903;
+const TILE_RUG_BOTTOM = 904;
+const TILE_RUG_TOP_RIGHT = 905;
+const TILE_RUG_BOTTOM_RIGHT = 906;
+const TILE_BOOKSHELF_A = 910;
+const TILE_BOOKSHELF_B = 911;
+const TILE_BOOKSHELF_C = 912;
+const TILE_BOOKSHELF_D = 913;
+const TILE_BOOKSHELF_E = 914;
+const TILE_BOOKSHELF_F = 915;
+const TILE_BOOKSHELF_G = 916;
+const TILE_BOOKSHELF_H = 917;
+const TILE_BOOKSHELF_I = 918;
+const TILE_BOOKSHELF_J = 919;
 const TILE_STUDY_FIRST = TILE_RUG_CENTER;
 const TILE_STUDY_LAST = TILE_BOOKSHELF_J;
 
+//currently not being used
+var studyTileArt =
+[
+    TILE_RUG_CENTER,
+    TILE_RUG_TOP_LEFT,
+    TILE_RUG_BOTTOM_LEFT,
+    TILE_RUG_TOP,
+    TILE_RUG_BOTTOM,
+    TILE_RUG_TOP_RIGHT,
+    TILE_RUG_BOTTOM_RIGHT,
+    TILE_BOOKSHELF_A,
+    TILE_BOOKSHELF_B,
+    TILE_BOOKSHELF_C,
+    TILE_BOOKSHELF_D,
+    TILE_BOOKSHELF_E,
+    TILE_BOOKSHELF_F,
+    TILE_BOOKSHELF_G,
+    TILE_BOOKSHELF_H,
+    TILE_BOOKSHELF_I,
+    TILE_BOOKSHELF_J
+]
 
 var doorLabels = [];
 var keyLabels = [];
