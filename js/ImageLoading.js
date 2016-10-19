@@ -1,7 +1,7 @@
 var heroPic = document.createElement("img");
 var doorStrip = document.createElement("img");
 var keyStrip = document.createElement("img");
-var studyStrip = document.createElement("img");
+var roomStrips = document.createElement("img");
 var worldPics = [];
 var roomArtStrips = []; //Need to implement <<< also on World.js
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
@@ -46,7 +46,7 @@ function loadImages()
 		{ varName: keyStrip, theFile: "key_strip.png" },
 
         // Room tiles
-        { varName: studyStrip, theFile: "study_strip.png" },
+        { varName: roomStrips, theFile: "roomart.png" },
 
 	];
 

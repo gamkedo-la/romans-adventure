@@ -5,9 +5,8 @@ window.onload = function()
 	// Get references for gameCanvas
 	scaledCanvas = document.getElementById('gameCanvas');
 	canvas = document.createElement('canvas');
-
-	// Size gameCanvas
-	canvas.width  = WORLD_W * WORLD_COLS;
+    // Size gameCanvas
+	canvas.width = WORLD_W * WORLD_COLS;
 	canvas.height = WORLD_H * WORLD_ROWS;
 	scaledCanvas.width = PIXEL_SCALE_UP * canvas.width;
 	scaledCanvas.height = PIXEL_SCALE_UP * canvas.height;
@@ -19,7 +18,6 @@ window.onload = function()
 	// Get references for uiCanvas
 	scaledUICanvas = document.getElementById('uiCanvas');
 	uiCanvas = document.createElement('canvas');
-
 	// Size uiCanvas
 	uiCanvas.width = WORLD_W * WORLD_COLS;
 	uiCanvas.height = WORLD_H * 2;
@@ -28,9 +26,10 @@ window.onload = function()
 
 	canvasUIContext = uiCanvas.getContext('2d');
 	scaledUIContext = scaledUICanvas.getContext('2d');
-	scaledUIContext.fillStyle = "white";
+	scaledUIContext.fillStyle = "black";
 	scaledUIContext.fillRect(0, 0, scaledUICanvas.width, scaledUICanvas.height);
 	scaledUIContext.strokeStyle = "white";
+
 
 	// Helps it not blur from the scaling:
 	canvasContext.mozImageSmoothingEnabled = false;
@@ -47,6 +46,7 @@ window.onload = function()
 	loadImages();
 
 	scaledCanvas.addEventListener("mousemove", updateMousePos);
+	scaledUICanvas.addEventListener("mousemove", updateMousePos);
 	scaledCanvas.addEventListener("mouseup", editTileUnderMousePos);
 }
 
@@ -61,8 +61,9 @@ function imageLoadingDoneSoStartGame()
 
 function loadLevel(whichLevelIdx)
 {
-    currentRoomIndex = whichLevelIdx;
+    currentRoomIndex = whichLevelIdx; // This is calculated in World.js
     worldGrid = roomLayout[currentRoomIndex].slice();
+    roomArtSet = currentRoomIndex; // Not being used currently, may use later
     roman.reset(heroPic, "Roman");
 }
 
@@ -70,10 +71,6 @@ function updateAll()
 {
 	moveAll();
 	drawAll();
-	if(isEditorMode)
-	{
-	    levelGridCoordinate();
-	}
 }
 
 function moveAll()
@@ -84,8 +81,13 @@ function moveAll()
 function drawAll()
 {
     drawWorld();
-	roman.draw();
+    roman.draw();
 
 	scaledContext.drawImage(canvas,0,0,canvas.width,canvas.height,
-		0,0,scaledCanvas.width,scaledCanvas.height);
+		0, 0, scaledCanvas.width, scaledCanvas.height);
+
+	if (isEditorMode)
+	{
+	    levelGridCoordinate();
+	}
 }

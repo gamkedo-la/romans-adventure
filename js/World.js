@@ -1,14 +1,15 @@
-const WORLD_W = 14;
-const WORLD_H = 14;
-const WORLD_COLS = 16;
-const WORLD_ROWS = 10;
-const PIXEL_SCALE_UP = 4;
-const TILE_ART_STUDY = 10;
-const BUILDING_ROOMS_COLS = 3;
-const BUILDING_ROOMS_ROWS = 4;
-const BUILDING_FLOORS = 2;
+const WORLD_W = 14; // Original tile art width
+const WORLD_H = 14; // Original tie art height
+const WORLD_COLS = 16; // Number of columns in room
+const WORLD_ROWS = 10; // Number of rows in room
+const PIXEL_SCALE_UP = 4; // Number of times to scale up art tiles
+//const TILE_ART_STUDY = 10;
+const BUILDING_ROOMS_COLS = 3; // Number of columns of rooms in the house
+const BUILDING_ROOMS_ROWS = 4; // Number of rows of rooms in the house
+const BUILDING_FLOORS = 2; // Number of floors in the house
 
 var worldGrid = [];
+var roomArtSet = 0;
 
 // ******BEGIN MAP EDITOR******
 
@@ -24,13 +25,12 @@ var levelStudy =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-         TILE_ART_STUDY
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelFoyerEntrance =
     [ // Tables, Wall lamps, Rug
-		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, // <--Reaching top row takes you to FoyerStairs level
+		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		1, 0, 0, 202, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		1, 0, 0, 0, 0, 0, 0, 305, 0, 205, 0, 0, 0, 0, 0, 1,
 		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 307, 0, 1,
@@ -39,7 +39,7 @@ var levelFoyerEntrance =
 		1, 0, 0, 0, 0, 0, 0, 0, 0, 300, 0, 0, 207, 0, 0, 1,
 		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 201, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 201, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelDen =
@@ -53,7 +53,7 @@ var levelDen =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelFoyerStairs =
@@ -67,7 +67,7 @@ var levelFoyerStairs =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, // <--Reaching bottom row takes you to FoyerEntrance level
+		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
 	];
 
 var levelDiningRoom =
@@ -81,7 +81,7 @@ var levelDiningRoom =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelStairs =
@@ -95,7 +95,7 @@ var levelStairs =
 		 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1,
+		 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1
 	];
 
 var levelKitchen =
@@ -109,7 +109,7 @@ var levelKitchen =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelGardenLeft =
@@ -123,7 +123,7 @@ var levelGardenLeft =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelGardenMiddle =
@@ -137,7 +137,7 @@ var levelGardenMiddle =
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelGardenRight =
@@ -151,7 +151,7 @@ var levelGardenRight =
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 // Second Level Areas
@@ -166,7 +166,7 @@ var levelBedroomOne =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelBedroomTwo =
@@ -180,7 +180,7 @@ var levelBedroomTwo =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelBedroomThree =
@@ -194,7 +194,7 @@ var levelBedroomThree =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelHallwayLeft =
@@ -208,7 +208,7 @@ var levelHallwayLeft =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelHallwayMiddle =
@@ -222,7 +222,7 @@ var levelHallwayMiddle =
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelHallwayRight =
@@ -236,7 +236,7 @@ var levelHallwayRight =
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelBedroomFour =
@@ -250,7 +250,7 @@ var levelBedroomFour =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 // Basement and Attic Areas
@@ -266,7 +266,7 @@ var levelBasementFoyerEntrance =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var levelBasementGardenExit =
@@ -280,7 +280,7 @@ var levelBasementGardenExit =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
 	];
 
 var levelAttic =
@@ -294,7 +294,7 @@ var levelAttic =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1,
+		 1, 1, 1, 1, 1, 1, 1, 200, 1, 1, 1, 1, 1, 1, 1, 1
 	];
 
 var roomLayout =
@@ -329,11 +329,9 @@ var roomNames =
         "BedroomOne", "BedroomTwo", "BedroomThree"
     ];
 
-//const BUILDING_ROOMS_COLS = 3;
-//const BUILDING_ROOMS_ROWS = 4;
-//const BUILDING_FLOORS = 2;
-var currentRoomRow = 3, currentRoomCol = 1, currentRoomFloor = 0; // Foyer entrance room
-var currentRoomIndex = roomCoordToIndex();
+
+var currentRoomRow = 3, currentRoomCol = 1, currentRoomFloor = 0;
+var currentRoomIndex = roomCoordToIndex(); // Calculates starting room in Main.js
 
 function roomCoordToIndex()
 {
@@ -426,6 +424,9 @@ const TILE_BOOKSHELF_I = 918;
 const TILE_BOOKSHELF_J = 919;
 const TILE_STUDY_FIRST = TILE_RUG_CENTER;
 const TILE_STUDY_LAST = TILE_BOOKSHELF_J;
+
+const TILE_ANYROOM_FIRST = 0;
+const TILE_ANYROOM_LAST = 20;
 
 //currently not being used
 var studyTileArt =
@@ -520,8 +521,8 @@ function tileTypeIsStudy(checkTileType) {
 		    checkTileType <= TILE_STUDY_LAST)
 }
 function tileTypeIsRoom(checkTileType) {
-    return (checkTileType >= TILE_DOOR_FIRST &&
-		    checkTileType <= TILE_DOOR_LAST)
+    return (checkTileType >= TILE_ANYROOM_FIRST &&
+		    checkTileType <= TILE_ANYROOM_LAST)
 }
 function tileTypeToIndexForDoor(checkTileType) {
 	return checkTileType-TILE_DOOR_FIRST;
@@ -548,12 +549,14 @@ function drawWorld()
 		{
 			var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 			var currentRoomArtIndex = worldGrid[arrayIndex];
-//			var useImg = worldPics[tileKindHere];
 			var useImg = roomArtStrips[currentRoomArtIndex];
 
 			if(tileTypeHasTransparency(currentRoomArtIndex))
 			{
-				canvasContext.drawImage(roomArtStrips[TILE_GROUND],drawTileX,drawTileY);
+			     canvasContext.drawImage(roomStrips, WORLD_W * roomArtSet, 0, // 0 = Room specific ground under items
+										WORLD_W, WORLD_H,
+										drawTileX, drawTileY,
+										WORLD_W, WORLD_H);
 			}
 
 			if(tileTypeIsKey(currentRoomArtIndex)) {
@@ -568,9 +571,9 @@ function drawWorld()
 										WORLD_W,WORLD_H,
 										drawTileX,drawTileY,
 										WORLD_W, WORLD_H);
-			} else if (tileTypeIsStudy(currentRoomArtIndex)) {
-			    var whichStudyTile = tileTypeToIndexForStudy(currentRoomArtIndex);
-			    canvasContext.drawImage(studyStrip, 0, WORLD_H * whichStudyTile,
+			} else if (tileTypeIsRoom(currentRoomArtIndex)) {
+			    var whichRoomTile = currentRoomArtIndex;
+			    canvasContext.drawImage(roomStrips, WORLD_W * roomArtSet, WORLD_H * whichRoomTile,
 										WORLD_W, WORLD_H,
 										drawTileX, drawTileY,
 										WORLD_W, WORLD_H);

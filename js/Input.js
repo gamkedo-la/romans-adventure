@@ -51,8 +51,6 @@ function keyPressed(evt)
     {
 	    isEditorMode = !isEditorMode;
 	    editorTileSelected = !editorTileSelected;
-	    console.log(isEditorMode);
-	    console.log(editorTileSelected);
 	}
 
     if (isEditorMode)

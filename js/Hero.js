@@ -78,6 +78,34 @@ function heroClass()
 			nextX -= PLAYER_MOVE_SPEED;
 		}
 
+
+	    // Load room when nearing edge of screen
+		if (nextY < 0)
+		{
+		    currentRoomRow--;
+		    loadLevel(roomCoordToIndex());
+		    nextY = 130;
+		}
+		if (nextY > 135)
+		{
+		    currentRoomRow++;
+		    loadLevel(roomCoordToIndex());
+		    nextY = 0;
+		}
+		if (nextX < 1)
+		{
+		    currentRoomCol--;
+		    loadLevel(roomCoordToIndex());
+		    nextX = 220;
+		}
+		if (nextX > 220)
+		{
+		    currentRoomCol++;
+		    loadLevel(roomCoordToIndex());
+		    nextX = 0;
+		}
+
+
 		var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX, nextY); //World.js
 		var walkIntoTileType = TILE_WALL;
 		if(walkIntoTileIndex != undefined)
@@ -91,7 +119,7 @@ function heroClass()
 
 			this.doorKeyRing[whichKey] = true;
 			worldGrid[walkIntoTileIndex] = TILE_GROUND;
-			roomLayout[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND;
+			roomLayout[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
 			displayUIText("Picked up " + idxToTextKey(whichKey) + ".");
 
 		} else if (tileTypeIsDoor(walkIntoTileType)) {
@@ -102,17 +130,12 @@ function heroClass()
 				displayUIText("Used " + idxToTextKey(whichDoor) + " to open "+
 										idxToTextDoor(whichDoor)+".");
 				worldGrid[walkIntoTileIndex] = TILE_GROUND;
+				roomLayout[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
 			} else {
 				displayUIText("Need something to open "+
 										idxToTextDoor(whichDoor)+".");
 			}
 
-		}
-        // TEMPORARY CHECK FOR STUDY TILES, NEED TO CHANGE
-		else if (walkIntoTileType >= TILE_STUDY_FIRST || walkIntoTileType <= TILE_STUDY_LAST)
-		{
-		    this.x = nextX;
-		    this.y = nextY;
 		}
 		else switch (walkIntoTileType)
 		{
@@ -120,6 +143,10 @@ function heroClass()
 				this.x = nextX;
 				this.y = nextY;
 				break;
+		    case (walkIntoTileType >= TILE_STUDY_FIRST || walkIntoTileType <= TILE_STUDY_LAST):
+		        this.x = nextX;
+		        this.y = nextY;
+		        break;
 			case TILE_WALL:
 			default:
 				break;
