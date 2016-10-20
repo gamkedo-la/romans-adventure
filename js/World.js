@@ -7,6 +7,7 @@ const PIXEL_SCALE_UP = 4; // Number of times to scale up art tiles
 const BUILDING_ROOMS_COLS = 3; // Number of columns of rooms in the house
 const BUILDING_ROOMS_ROWS = 4; // Number of rows of rooms in the house
 const BUILDING_FLOORS = 2; // Number of floors in the house
+const UI_ROWS = 2;
 
 var worldGrid = [];
 var roomArtSet = 0;
@@ -21,7 +22,7 @@ var levelStudy =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 1,
-		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200,
+		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
@@ -35,7 +36,7 @@ var levelFoyerEntrance =
 		1, 0, 0, 0, 0, 0, 0, 305, 0, 205, 0, 0, 0, 0, 0, 1,
 		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 307, 0, 1,
 		1, 0, 0, 0, 302, 0, 0, 100, 0, 0, 200, 0, 0, 0, 0, 1,
-		200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		1, 0, 0, 0, 0, 0, 0, 0, 0, 300, 0, 0, 207, 0, 0, 1,
 		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
@@ -49,7 +50,7 @@ var levelDen =
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 1,
-		 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 		 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
@@ -319,14 +320,14 @@ var roomLayout =
 
 var roomNames =
     [
-        "GardenLeft", "GardenMiddle", "GardenRight",
-        "BasementGardenExit", "Stairs", "Kitchen",
-        "BasementFoyerEntrance", "FoyerStairs", "DiningRoom",
-        "Study", "FoyerEntrance", "Den",
+        "levelGardenLeft", "levelGardenMiddle", "levelGardenRight",
+        "levelBasementGardenExit", "levelStairs", "levelKitchen",
+        "levelBasementFoyerEntrance", "levelFoyerStairs", "levelDiningRoom",
+        "levelStudy", "levelFoyerEntrance", "levelDen",
         "Undefined Area", "Undefined Area", "Undefined Area",
-        "Attic", "Stairs (duplicate)", "BedroomFour",
-        "HallwayLeft", "HallwayMiddle", "HallwayRight",
-        "BedroomOne", "BedroomTwo", "BedroomThree"
+        "levelAttic", "levelStairs (duplicate)", "levelBedroomFour",
+        "levelHallwayLeft", "levelHallwayMiddle", "levelHallwayRight",
+        "levelBedroomOne", "levelBedroomTwo", "levelBedroomThree"
     ];
 
 
@@ -348,6 +349,7 @@ function roomCoordToIndex()
 // These are tiles that will be shared amongst most rooms
 const TILE_GROUND = 0;
 const TILE_WALL = 1;
+const TILE_BLANK = 2;
 
 // Player And Pickup Tiles
 const TILE_PLAYERSTART = 100;
@@ -584,6 +586,20 @@ function drawWorld()
 			arrayIndex++;
 		} // end of for each col
 		drawTileY += WORLD_H;
-		drawTileX = 0;
+	    drawTileX = 0;
 	} // end of for each row
+    //draw UI rows
+	//for (var eachUIRow = 0; eachUIRow < UI_ROWS; eachUIRow++)
+	//{
+	//    var drawTileX = 0;
+	//    var drawTileY = 140;
+	//    for (var eachCol = 0; eachCol < WORLD_COLS; eachCol++)
+	//    {
+	//        canvasContext.drawImage(useImg, drawTileX, drawTileY);
+	//        console.log(drawTileX + ", " + drawTileY);
+	//        drawTileX += WORLD_W;
+	//    }
+	//    drawTileY += WORLD_H;
+	//    drawTileX = 0;
+	//}
 } // end of drawWorld func

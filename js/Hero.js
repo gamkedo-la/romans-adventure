@@ -1,7 +1,10 @@
 const PLAYER_MOVE_SPEED = 2.0;
 
+
 function heroClass()
 {
+
+
 	this.x;
 	this.y;
 	this.myHeroPic; // which picture to use
@@ -79,30 +82,33 @@ function heroClass()
 		}
 
 
+		const EDGE_OF_SCREEN_X = ((WORLD_W * WORLD_COLS) - (WORLD_W / 2)); // Distance Roman can walk to the right edge before loading next room
+		const EDGE_OF_SCREEN_Y = ((WORLD_H * WORLD_ROWS) - (WORLD_H / 2)); // Distance Roman can walk to the top edge before loading next room
+
 	    // Load room when nearing edge of screen
-		if (nextY < 0)
+		if (nextY < WORLD_H)
 		{
 		    currentRoomRow--;
 		    loadLevel(roomCoordToIndex());
-		    nextY = 130;
+		    nextY = EDGE_OF_SCREEN_Y;
 		}
-		if (nextY > 135)
+		if (nextY > EDGE_OF_SCREEN_Y)
 		{
 		    currentRoomRow++;
 		    loadLevel(roomCoordToIndex());
-		    nextY = 0;
+		    nextY = WORLD_H;
 		}
-		if (nextX < 1)
+		if (nextX < WORLD_W)
 		{
 		    currentRoomCol--;
 		    loadLevel(roomCoordToIndex());
-		    nextX = 220;
+		    nextX = EDGE_OF_SCREEN_X;
 		}
-		if (nextX > 220)
+		if (nextX > EDGE_OF_SCREEN_X)
 		{
 		    currentRoomCol++;
 		    loadLevel(roomCoordToIndex());
-		    nextX = 0;
+		    nextX = WORLD_W;
 		}
 
 
@@ -150,7 +156,7 @@ function heroClass()
 			case TILE_WALL:
 			default:
 				break;
-		}
+	    }
 	}
 
 	this.draw = function()

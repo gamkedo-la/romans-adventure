@@ -7,29 +7,13 @@ window.onload = function()
 	canvas = document.createElement('canvas');
     // Size gameCanvas
 	canvas.width = WORLD_W * WORLD_COLS;
-	canvas.height = WORLD_H * WORLD_ROWS;
+	canvas.height = WORLD_H * WORLD_ROWS + WORLD_H * UI_ROWS;
 	scaledCanvas.width = PIXEL_SCALE_UP * canvas.width;
 	scaledCanvas.height = PIXEL_SCALE_UP * canvas.height;
 
 	canvasContext = canvas.getContext('2d');
 	scaledContext = scaledCanvas.getContext('2d');
-
-
-	// Get references for uiCanvas
-	scaledUICanvas = document.getElementById('uiCanvas');
-	uiCanvas = document.createElement('canvas');
-	// Size uiCanvas
-	uiCanvas.width = WORLD_W * WORLD_COLS;
-	uiCanvas.height = WORLD_H * 2;
-	scaledUICanvas.width = PIXEL_SCALE_UP * uiCanvas.width;
-	scaledUICanvas.height = PIXEL_SCALE_UP * uiCanvas.height;
-
-	canvasUIContext = uiCanvas.getContext('2d');
-	scaledUIContext = scaledUICanvas.getContext('2d');
-	scaledUIContext.fillStyle = "black";
-	scaledUIContext.fillRect(0, 0, scaledUICanvas.width, scaledUICanvas.height);
-	scaledUIContext.strokeStyle = "white";
-
+	scaledContext.fillStyle = "black";
 
 	// Helps it not blur from the scaling:
 	canvasContext.mozImageSmoothingEnabled = false;
@@ -46,7 +30,6 @@ window.onload = function()
 	loadImages();
 
 	scaledCanvas.addEventListener("mousemove", updateMousePos);
-	scaledUICanvas.addEventListener("mousemove", updateMousePos);
 	scaledCanvas.addEventListener("mouseup", editTileUnderMousePos);
 }
 

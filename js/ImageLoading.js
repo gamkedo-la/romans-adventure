@@ -5,6 +5,7 @@ var roomStrips = document.createElement("img");
 var worldPics = [];
 var roomArtStrips = []; //Need to implement <<< also on World.js
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
+var artStripGroupLimit = 10;
 
 function countLoadedImagesAndLaunchIfReady()
 {
@@ -46,7 +47,7 @@ function loadImages()
 		{ varName: keyStrip, theFile: "key_strip.png" },
 
         // Room tiles
-        { varName: roomStrips, theFile: "roomart.png" },
+        { varName: roomStrips, theFile: "roomart.png" }
 
 	];
 
