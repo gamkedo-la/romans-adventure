@@ -135,7 +135,6 @@ function moveToNextRoom()
 
 function displayCurrentRoomTiles()
 {
-    console.log("Working at top");
     var arrayIndex = 0;
     var drawTileX = 0;
     var drawTileY = 0;
@@ -149,7 +148,6 @@ function displayCurrentRoomTiles()
                                     WORLD_W, WORLD_H,
                                     drawTileX, startY,
                                     WORLD_W, WORLD_H);
-            console.log(drawTileX + ", " + drawTileY);
             drawTileX += WORLD_W;
             arrayIndex++;
             drawTileY += WORLD_H;
