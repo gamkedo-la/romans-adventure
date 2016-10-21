@@ -86,7 +86,7 @@ function heroClass()
 		const EDGE_OF_SCREEN_Y = ((WORLD_H * WORLD_ROWS) - (WORLD_H / 2)); // Distance Roman can walk to the top edge before loading next room
 
 	    // Load room when nearing edge of screen
-		if (nextY < WORLD_H)
+		if (nextY < WORLD_H /2)
 		{
 		    currentRoomRow--;
 		    loadLevel(roomCoordToIndex());
@@ -98,7 +98,7 @@ function heroClass()
 		    loadLevel(roomCoordToIndex());
 		    nextY = WORLD_H;
 		}
-		if (nextX < WORLD_W)
+		if (nextX < WORLD_W / 2)
 		{
 		    currentRoomCol--;
 		    loadLevel(roomCoordToIndex());
@@ -143,20 +143,25 @@ function heroClass()
 			}
 
 		}
-		else switch (walkIntoTileType)
+		//else switch (walkIntoTileType)
+		//{
+		//	case TILE_GROUND:
+		//		this.x = nextX;
+		//		this.y = nextY;
+		//		break;
+		//    case (walkIntoTileType >= TILE_STUDY_FIRST || walkIntoTileType <= TILE_STUDY_LAST):
+		//        this.x = nextX;
+		//        this.y = nextY;
+		//        break;
+		//	case TILE_WALL:
+		//	default:
+		//		break;
+	    //}
+		if (walkIntoTileType < 10)
 		{
-			case TILE_GROUND:
-				this.x = nextX;
-				this.y = nextY;
-				break;
-		    case (walkIntoTileType >= TILE_STUDY_FIRST || walkIntoTileType <= TILE_STUDY_LAST):
-		        this.x = nextX;
-		        this.y = nextY;
-		        break;
-			case TILE_WALL:
-			default:
-				break;
-	    }
+		    this.x = nextX;
+		    this.y = nextY;
+		}
 	}
 
 	this.draw = function()

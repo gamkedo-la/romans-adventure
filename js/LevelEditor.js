@@ -13,6 +13,13 @@ var uiGrid = [];
 var levelCol = 0;
 var levelRow = 0;
 
+const UI_ROWS = 2;
+var artStripGroupLimit = 10; // Max tiles in the roomStrips that are grouped (walkable, not walkable)
+
+
+
+
+
 var editorTileSelected = false; // Check whether or not a tile from the editor has been selected
 
 // Get current mouse position on screen
@@ -30,36 +37,39 @@ function editorKeyHandle(keyEvt)
 {
 	switch(keyEvt.keyCode)
 	{
-		case KEY_1:
-		    displayCurrentRoomTiles(0);
+	    case KEY_1:
+	        displayCurrentRoomTiles();
 		    break;
 	    case KEY_2:
-	        displayCurrentRoomTiles(140);
 	        break;
 	    case KEY_3:
-	        outputWorldGrid();
             break;
 	    case KEY_LEFT_ARROW:
 	        currentRoomCol--;
 	        moveToNextRoom();
+	        displayCurrentRoomTiles();
 	        break;
 	    case KEY_RIGHT_ARROW:
 	        currentRoomCol++;
 	        moveToNextRoom();
+	        displayCurrentRoomTiles();
 	        break;
 	        currentRoomCol--;
 	        break;
 	    case KEY_DOWN_ARROW:
 	        currentRoomRow++;
 	        moveToNextRoom();
+	        displayCurrentRoomTiles();
 	        break;
 	    case KEY_UP_ARROW:
 	        currentRoomRow--;
 	        moveToNextRoom();
+	        displayCurrentRoomTiles();
 	        break;
 	    case KEY_SPACE:
 	        currentRoomFloor++;
 	        moveToNextRoom();
+	        displayCurrentRoomTiles();
 	        break;
 		default:
 			break;
@@ -78,7 +88,8 @@ function levelGridCoordinate()
     mouseOverTileIdx = rowColToArrayIndex(levelCol, levelRow);
 
     // Display grid coordinate in UI
-    displayUIText("Grid coordinate: "+levelCol+","+levelRow + "  |  Index: " + mouseOverTileIdx + "  |  Room: " + roomNames[currentRoomIndex]);
+    displayUIText("Grid coordinate: " + levelCol + "," + levelRow + "  |  Index: " + mouseOverTileIdx, 580, 590);
+    displayUIText("Room: " + roomNames[currentRoomIndex], 580, 610);
 
     // Draw outline around highlighted tile, snap to grid
     drawStrokeRect(scaledContext, gridX, gridY, tileWidthScaled, tileHeightScaled, 'red');
@@ -121,37 +132,34 @@ function moveToNextRoom()
     loadLevel(roomCoordToIndex());
 }
 
-function displayCurrentRoomTiles(tileModifier)
+
+function displayCurrentRoomTiles()
 {
+    console.log("Working at top");
+    var arrayIndex = 0;
     var drawTileX = 0;
-    var drawTileY = WORLD_H * WORLD_ROWS;
-    var artTileIndex = 0;
-    var uiIndex = 0; // Keeps track of the uiGrid index
-    var artStripGroupLimit = 10; // Max tiles in the roomStrips that are grouped (walkable, not walkable)
-    if (editorTileSelected == true)
+    var drawTileY = 0;
+    var startY = WORLD_H * WORLD_ROWS;
+
+    for (var eachRow = 0; eachRow < UI_ROWS; eachRow++)
     {
-        for (var eachCol = 0; eachCol < 10; eachCol++)
+        for (var eachCol = 0; eachCol < artStripGroupLimit; eachCol++)
         {
-            //worldGrid[rowColToArrayIndex(eachCol, 9)] = roomCoordToIndex() * 100 + eachCol;
-            canvasContext.drawImage(roomStrips, WORLD_W * roomArtSet, artTileIndex + tileModifier,
-                           WORLD_W, WORLD_H,
-                           drawTileX, drawTileY,
-                           WORLD_W, WORLD_H);
+            canvasContext.drawImage(roomStrips, WORLD_W * roomArtSet, drawTileY, // 0 = Room specific ground under items
+                                    WORLD_W, WORLD_H,
+                                    drawTileX, startY,
+                                    WORLD_W, WORLD_H);
+            console.log(drawTileX + ", " + drawTileY);
             drawTileX += WORLD_W;
-            artTileIndex += WORLD_H;
-            if (tileModifier >= 140)
-            {
-                uiGrid[uiIndex] = eachCol + artStripGroupLimit;
-            }
-            else
-            {
-                uiGrid[uiIndex] = eachCol;
-            }
-            uiIndex++;
-        }
-        uiIndex = 0;
+            arrayIndex++;
+            drawTileY += WORLD_H;
+        } // end of for each col
+        startY += WORLD_H;
+        drawTileX = 0;
     }
-}
+
+    
+} // end of drawWorld func
 
 // Check if you  are clicking in the Editor Tiles area. If you are copy the tile. If not, place the tile that was copied.
 function editTileUnderMousePos()
@@ -159,7 +167,12 @@ function editTileUnderMousePos()
     if (mouseOverTileIdx > 159 && mouseOverTileIdx < 170)
     {
         editorTileSelected = true;
-        copiedTile = uiGrid[levelCol];
+        copiedTile = levelCol;
+    }
+    else if (mouseOverTileIdx > 175 && mouseOverTileIdx < 186)
+    {
+        editorTileSelected = true;
+        copiedTile = levelCol + 10;
     }
     else if (editorTileSelected)
     {

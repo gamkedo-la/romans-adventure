@@ -51,6 +51,7 @@ function keyPressed(evt)
     {
 	    isEditorMode = !isEditorMode;
 	    editorTileSelected = !editorTileSelected;
+	    displayCurrentRoomTiles();
 	}
 
     if (isEditorMode)

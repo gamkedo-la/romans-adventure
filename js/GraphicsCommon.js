@@ -21,17 +21,17 @@ function colorCircle(centerX,centerY, radius, fillColor)
 	canvasContext.fill();
 }
 
-function displayUIText(showText)
+var debugTextPaddingX = 0;
+var debugTextPaddingY = 0;
+function displayUIText(showText, x, y)
 {
     var uiTextPaddingX = 600;
     var uiTextPaddingY = 140
-    var debugTextPaddingX = 10;
-    var debugTextPaddingY = 650;
 	scaledContext.font = "bold 15px Arial";
 	scaledContext.fillStyle = "white";
 	if (isEditorMode)
 	{
-	    scaledContext.fillText(showText, debugTextPaddingX, debugTextPaddingY);
+	    scaledContext.fillText(showText, x, y);
 	}
 	else
 	{
