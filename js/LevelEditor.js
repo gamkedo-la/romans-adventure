@@ -41,6 +41,7 @@ function editorKeyHandle(keyEvt)
 	        displayCurrentRoomTiles();
 		    break;
 	    case KEY_2:
+	        outputWorldGrid();
 	        break;
 	    case KEY_3:
             break;
