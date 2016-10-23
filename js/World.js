@@ -10,6 +10,7 @@ const BUILDING_FLOORS = 2; // Number of floors in the house
 
 var worldGrid = [];
 var roomArtSet = 0;
+var rotDoor;
 
 // ******BEGIN MAP EDITOR******
 
@@ -30,12 +31,12 @@ var levelStudy =
 
 var levelFoyerEntrance =
     [ // Tables, Wall lamps, Rug
- 		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+ 		10, 0, 0, 0, 0, 0, 0, 0, 201, 0, 0, 0, 0, 0, 0, 10,
  		10, 0, 0, 202, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		10, 0, 0, 0, 0, 0, 0, 305, 0, 205, 0, 0, 0, 0, 0, 10,
 		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 307, 0, 10,
 		10, 0, 0, 0, 302, 0, 0, 100, 0, 0, 200, 0, 0, 0, 0, 10,
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		201, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 201,
 		10, 0, 0, 0, 0, 0, 0, 0, 0, 300, 0, 0, 207, 0, 0, 10,
 		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
@@ -517,6 +518,7 @@ function tileTypeHasTransparency(checkTileType)
 			tileTypeIsDoor(checkTileType);
 }
 
+
 function drawWorld()
 {
 	var arrayIndex = 0;
@@ -545,11 +547,29 @@ function drawWorld()
 										drawTileX,drawTileY,
 										WORLD_W,WORLD_H);
 			} else if(tileTypeIsDoor(currentRoomArtIndex)) {
-				var whichDoor = tileTypeToIndexForDoor(currentRoomArtIndex);
-				canvasContext.drawImage(doorStrip,0,WORLD_H*whichDoor,
-										WORLD_W,WORLD_H,
-										drawTileX,drawTileY,
-										WORLD_W, WORLD_H);
+			    var whichDoor = tileTypeToIndexForDoor(currentRoomArtIndex);
+			    var angleOfDoorRotation = 0;
+
+			    if (drawTileX <= WORLD_W)
+			    {
+			        angleOfDoorRotation = 0;
+			    }
+			    else if (drawTileX > WORLD_COLS * WORLD_W  / 2)
+                {
+			        angleOfDoorRotation = 180;
+			    }
+			    else if (drawTileY <= WORLD_W)
+			    {
+			        angleOfDoorRotation = 90;
+			    }
+			    else if (drawTileY > WORLD_ROWS * WORLD_H / 2)
+			    {
+			        angleOfDoorRotation = 270;
+			    }
+			    drawRotatedTile(doorStrip, 0, WORLD_H * whichDoor, // which image, start drawing image from X = 0, start drawing image from Y = WORLD_H * whichDoor
+                                        WORLD_W, WORLD_H, // image width, image height
+                                        drawTileX, drawTileY, // draw tile x coord at drawTileX, draw tile x coord at drawTileY
+                                        WORLD_W, WORLD_H, angleOfDoorRotation); // tile width, tile height, angle of rotation
 			} else if (tileTypeIsRoom(currentRoomArtIndex)) {
 			    var whichRoomTile = currentRoomArtIndex;
 			    canvasContext.drawImage(roomStrips, WORLD_W * roomArtSet, WORLD_H * whichRoomTile,
@@ -563,6 +583,6 @@ function drawWorld()
 			arrayIndex++;
 		} // end of for each col
 		drawTileY += WORLD_H;
-	    drawTileX = 0;
+		drawTileX = 0;
 	} // end of for each row
 } // end of drawWorld func

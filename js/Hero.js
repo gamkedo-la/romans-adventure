@@ -143,20 +143,7 @@ function heroClass()
 			}
 
 		}
-		//else switch (walkIntoTileType)
-		//{
-		//	case TILE_GROUND:
-		//		this.x = nextX;
-		//		this.y = nextY;
-		//		break;
-		//    case (walkIntoTileType >= TILE_STUDY_FIRST || walkIntoTileType <= TILE_STUDY_LAST):
-		//        this.x = nextX;
-		//        this.y = nextY;
-		//        break;
-		//	case TILE_WALL:
-		//	default:
-		//		break;
-	    //}
+
 		if (walkIntoTileType < 10)
 		{
 		    this.x = nextX;
@@ -166,6 +153,6 @@ function heroClass()
 
 	this.draw = function()
 	{
-		drawBitmapCenteredWithRotation(this.myHeroPic, this.x,this.y, 0); // GraphicCommon.js
+	    drawBitmapCenteredWithRotation(this.myHeroPic, this.x, this.y, 0); // GraphicCommon.js
 	}
 }

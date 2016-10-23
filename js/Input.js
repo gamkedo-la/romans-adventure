@@ -49,9 +49,20 @@ function keyPressed(evt)
 	// console.log("Key pressed: "+evt.keyCode);
     if (evt.keyCode == KEY_L)
     {
-	    isEditorMode = !isEditorMode;
-	    editorTileSelected = !editorTileSelected;
-	    displayCurrentRoomTiles();
+        if (isEditorMode)
+        {
+            isEditorMode = false;
+            editorTileSelected = false;
+            colorRect(0, 0, canvas.width, canvas.height, 'black');
+        }
+        else
+        {
+            isEditorMode = true;
+            editorTileSelected = true;
+            displayCurrentRoomTiles();
+        }
+
+
 	}
 
     if (isEditorMode)

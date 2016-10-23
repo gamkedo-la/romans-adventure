@@ -3,8 +3,26 @@ function drawBitmapCenteredWithRotation(useBitmap, atX,atY, withAng)
 	canvasContext.save();
 	canvasContext.translate(atX, atY);
 	canvasContext.rotate(withAng);
-	canvasContext.drawImage(useBitmap, -useBitmap.width/2, -useBitmap.height/2);
+	canvasContext.drawImage(useBitmap, -useBitmap.width / 2, -useBitmap.height / 2);
 	canvasContext.restore();
+}
+
+// Rotates around center, instead of top left
+function drawRotatedTile(image, imageSourceX, imageSourceY, imageXWidth, imageYHeight, drawXLoc, drawYLoc, drawWidth, drawHeight, angle)
+{
+    const TO_RADIANS = Math.PI / 180;
+    var xyCoord = -image.width / 2;
+
+    canvasContext.save();
+    canvasContext.translate(drawXLoc, drawYLoc);
+    canvasContext.translate(image.width / 2, image.width / 2);
+    console.log("drawXLoc2 = " + drawXLoc + ", " + "drawYLoc2 = " + drawYLoc);
+    canvasContext.rotate(angle * TO_RADIANS);
+
+    canvasContext.drawImage(image, imageSourceX, imageSourceY, imageXWidth, imageYHeight, xyCoord, xyCoord, drawWidth, drawHeight);
+    console.log("xyCoord = " + xyCoord);
+    canvasContext.restore();
+
 }
 
 function colorRect(topLeftX,topLeftY, boxWidth,boxHeight, fillColor)
@@ -56,18 +74,22 @@ function wrapText(text)
     var words = text.split(' ');
     var line = '';
 
-    for (var n = 0; n < words.length; n++) {
+    for (var n = 0; n < words.length; n++)
+    {
         var testLine = line + words[n] + ' ';
         var metrics = scaledContext.measureText(testLine);
         var testWidth = metrics.width;
-        if (testWidth > 286 && n > 0) {
+        if (testWidth > 286 && n > 0)
+        {
             scaledContext.fillText(line, uiTextPaddingX, uiTextPaddingY);
             line = words[n] + ' ';
             uiTextPaddingY += 20;
         }
-        else {
+        else
+        {
             line = testLine;
         }
     }
     scaledContext.fillText(line, uiTextPaddingX, uiTextPaddingY);
 }
+
