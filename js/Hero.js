@@ -119,6 +119,16 @@ function heroClass()
 			walkIntoTileType = worldGrid[walkIntoTileIndex];
 		}
 
+		//merge floors
+		if(walkIntoTileType == 15){
+			console.log('ready to merge darling');
+			//TODO 24 is the correct index but isn't working
+			//loadLevel(24);
+			//provisional means of demoing the floor merge, it's just the guts of the loadLevel function
+			worldGrid = levelKitchenBedroomFourMerged.slice();
+			roman.reset(heroPic, "Roman");
+		}
+
 		// Check the tile you just collided with
 		if (tileTypeIsKey(walkIntoTileType)) {
 			var whichKey = tileTypeToIndexForKey(walkIntoTileType);
