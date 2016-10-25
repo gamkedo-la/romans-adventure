@@ -444,6 +444,11 @@ const TILE_STUDY_LAST = TILE_BOOKSHELF_J;
 const TILE_ANYROOM_FIRST = 0;
 const TILE_ANYROOM_LAST = 20;
 
+// Merge Tiles
+//TODO these are only PLACEHOLDERS will likely become their own strip
+const TILE_MERGE_ROOMS = 15; //a pink drawer
+const TILE_UNMERGE_ROOMS  = 19 // a white drawer
+
 var doorLabels = [];
 var keyLabels = [];
 doorLabels[KEYDOOR_IDX_STUDY] = "chained door";
