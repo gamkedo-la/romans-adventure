@@ -129,6 +129,12 @@ function heroClass()
 			roman.reset(heroPic, "Roman");
 		}
 
+		if(walkIntoTileType == 19){
+			//TODO change to unmergeRooms
+			console.log('unmerged dear');
+			loadLevel(5);
+		}
+
 		// Check the tile you just collided with
 		if (tileTypeIsKey(walkIntoTileType)) {
 			var whichKey = tileTypeToIndexForKey(walkIntoTileType);
