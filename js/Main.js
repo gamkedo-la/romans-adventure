@@ -39,15 +39,24 @@ function imageLoadingDoneSoStartGame()
 
 	setInterval(updateAll, 1000/framesPerSecond);
 	setupInput();
-	loadLevel(currentRoomIndex);
+	loadLevel(currentRoomIndex, true);
+	roman.reset(heroPic, "Roman");
 }
 
-function loadLevel(whichLevelIdx)
+function loadLevel(whichLevelIdx, preservePlayerStart)
 {
+	if (preservePlayerStart === undefined)
+	{
+		preservePlayerStart = false;
+	}
     currentRoomIndex = whichLevelIdx; // This is calculated in World.js
     worldGrid = roomLayout[currentRoomIndex].slice();
     roomArtSet = currentRoomIndex; // Not being used currently, may use later
-    roman.reset(heroPic, "Roman");
+	if (preservePlayerStart == false)
+	{
+		console.log("Trying to remove player starts");
+		removePlayerStarts();
+	}
 }
 
 function updateAll()

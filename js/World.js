@@ -323,14 +323,18 @@ var roomLayout =
 	    levelStudy, levelFoyerEntrance, levelDen,
 
         //Second floor below
+				//12        13          14
         -1, -1, -1, //No rooms above the garden area
-            //12        13          14
-	    levelAttic, levelStairs, levelBedroomFour,
-            //15                16                  17
+				//15                16                  17
+	    levelAttic, levelFoyerEntrance /*Should never see this */, levelBedroomFour,
+			//18                19              20
         levelHallwayLeft, levelHallwayMiddle, levelHallwayRight,
-            //18                19              20                       21 - maybe merges shouldn't go here.
+				//21                22             23                       24 - maybe merges shouldn't go here.
         levelBedroomOne, levelBedroomTwo, levelBedroomThree, levelKitchenBedroomFourMerged
     ];
+
+const ROOM_ID_STAIRS = 4; // Based on room layout array ^^
+const ROOM_ID_UPSTAIRS_GOING_DOWN = 19; // Based on room layout array ^^
 
 var roomNames =
     [
@@ -535,6 +539,22 @@ function tileTypeHasTransparency(checkTileType)
 {
 	return tileTypeIsKey(checkTileType) ||
 			tileTypeIsDoor(checkTileType);
+}
+
+function removePlayerStarts()
+{
+	for(var eachRow = 0;eachRow<WORLD_ROWS;eachRow++)
+	{
+		for(var eachCol = 0;eachCol<WORLD_COLS;eachCol++)
+		{
+			var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
+			if(worldGrid[arrayIndex] == TILE_PLAYERSTART)
+			{
+				worldGrid[arrayIndex] = TILE_GROUND;
+				console.log("Player start removed");
+			} // end of player start if
+		} // end of col for
+	} // end of row for
 }
 
 

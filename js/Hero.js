@@ -88,13 +88,19 @@ function heroClass()
 	    // Load room when nearing edge of screen
 		if (nextY < WORLD_H /2)
 		{
+			if (roomCoordToIndex() == ROOM_ID_UPSTAIRS_GOING_DOWN) {
+				currentRoomFloor--;
+			}
 		    currentRoomRow--;
 		    loadLevel(roomCoordToIndex());
 		    nextY = EDGE_OF_SCREEN_Y;
 		}
 		if (nextY > EDGE_OF_SCREEN_Y)
 		{
-		    currentRoomRow++;
+				if (roomCoordToIndex() == ROOM_ID_STAIRS && nextX > canvas.width / 2) {
+					currentRoomFloor++;
+				}
+				currentRoomRow++;
 		    loadLevel(roomCoordToIndex());
 		    nextY = WORLD_H;
 		}
