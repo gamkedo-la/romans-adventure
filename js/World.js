@@ -327,9 +327,9 @@ var roomLayout =
         -1, -1, -1, //No rooms above the garden area
 				//15                16                  17
 	    levelAttic, levelFoyerEntrance /*Should never see this */, levelBedroomFour,
-			//18                19              20
+			      //18                19              20
         levelHallwayLeft, levelHallwayMiddle, levelHallwayRight,
-				//21                22             23                       24 - maybe merges shouldn't go here.
+				     //21                22             23                       24 - maybe merges shouldn't go here.
         levelBedroomOne, levelBedroomTwo, levelBedroomThree, levelKitchenBedroomFourMerged
     ];
 
@@ -551,7 +551,6 @@ function removePlayerStarts()
 			if(worldGrid[arrayIndex] == TILE_PLAYERSTART)
 			{
 				worldGrid[arrayIndex] = TILE_GROUND;
-				console.log("Player start removed");
 			} // end of player start if
 		} // end of col for
 	} // end of row for

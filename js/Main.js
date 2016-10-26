@@ -54,7 +54,6 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
     roomArtSet = currentRoomIndex; // Not being used currently, may use later
 	if (preservePlayerStart == false)
 	{
-		console.log("Trying to remove player starts");
 		removePlayerStarts();
 	}
 }
