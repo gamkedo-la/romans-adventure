@@ -459,7 +459,6 @@ doorLabels[KEYDOOR_IDX_STUDY] = "chained door";
 keyLabels[KEYDOOR_IDX_STUDY] = "crowbar";
 
 function idxToTextDoor(forIdx) {
-	console.log(forIdx);
 	if(doorLabels[forIdx] !== undefined) {
 		return doorLabels[forIdx];
 	}
