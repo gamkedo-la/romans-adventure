@@ -19,7 +19,6 @@ var artStripGroupLimit = 10; // Max tiles in the roomStrips that are grouped (wa
 
 
 
-
 var editorTileSelected = false; // Check whether or not a tile from the editor has been selected
 
 // Get current mouse position on screen
@@ -152,13 +151,13 @@ function displayCurrentRoomTiles()
             drawTileX += WORLD_W;
             arrayIndex++;
             drawTileY += WORLD_H;
-        } // end of for each col
+        }
         startY += WORLD_H;
         drawTileX = 0;
     }
 
     
-} // end of drawWorld func
+}
 
 // Check if you  are clicking in the Editor Tiles area. If you are copy the tile. If not, place the tile that was copied.
 function editTileUnderMousePos()
@@ -190,3 +189,4 @@ function outputWorldGrid()
                                                                            + " = <br>[<br>" + worldGrid
                                                                            + "<br>]";
 }
+

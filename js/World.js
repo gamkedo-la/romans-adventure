@@ -31,15 +31,15 @@ var levelStudy =
 
 var levelFoyerEntrance =
     [ // Tables, Wall lamps, Rug
- 		10, 0, 0, 0, 0, 0, 0, 0, 201, 0, 0, 0, 0, 0, 0, 10,
- 		10, 0, 0, 202, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		10, 0, 0, 0, 0, 0, 0, 305, 0, 205, 0, 0, 0, 0, 0, 10,
-		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 307, 0, 10,
-		10, 0, 0, 0, 302, 0, 0, 100, 0, 0, 200, 0, 0, 0, 0, 10,
-		201, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 201,
-		10, 0, 0, 0, 0, 0, 0, 0, 15, 300, 0, 0, 207, 0, 0, 10,
+ 		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+ 		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		10, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 10,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        10, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 0, 0, 10,
+		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+        10, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 0, 15, 10,
 		10, 10, 10, 10, 10, 10, 10, 201, 10, 10, 10, 10, 10, 10, 10, 10,
     ];
 
@@ -587,20 +587,21 @@ function drawWorld()
 			} else if(tileTypeIsDoor(currentRoomArtIndex)) {
 			    var whichDoor = tileTypeToIndexForDoor(currentRoomArtIndex);
 			    var angleOfDoorRotation = 0;
-
-			    if (drawTileX <= WORLD_W)
+                
+                // Rotate doors according to their placement in the room
+			    if (drawTileX == 0)
 			    {
 			        angleOfDoorRotation = 0;
 			    }
-			    else if (drawTileX > WORLD_COLS * WORLD_W  / 2)
+			    else if (drawTileX == WORLD_COLS * WORLD_W  - WORLD_W)
                 {
 			        angleOfDoorRotation = 180;
 			    }
-			    else if (drawTileY <= WORLD_W)
+			    else if (drawTileY == 0)
 			    {
 			        angleOfDoorRotation = 90;
 			    }
-			    else if (drawTileY > WORLD_ROWS * WORLD_H / 2)
+			    else if (drawTileY == WORLD_ROWS * WORLD_H -WORLD_H)
 			    {
 			        angleOfDoorRotation = 270;
 			    }

@@ -37,12 +37,10 @@ function colorCircle(centerX,centerY, radius, fillColor)
 	canvasContext.fill();
 }
 
-var debugTextPaddingX = 0;
-var debugTextPaddingY = 0;
 function displayUIText(showText, x, y)
 {
-    var uiTextPaddingX = 600;
-    var uiTextPaddingY = 140
+    uiTextPaddingX = 580;
+    uiTextPaddingY = 590;
 	scaledContext.font = "bold 15px Arial";
 	scaledContext.fillStyle = "white";
 	if (isEditorMode)
@@ -51,7 +49,7 @@ function displayUIText(showText, x, y)
 	}
 	else
 	{
-		scaledContext.fillText(showText, uiTextPaddingX, uiTextPaddingY);
+		scaledContext.fillText(showText, x, y);
 	}
 }
 
@@ -63,8 +61,8 @@ function drawStrokeRect(canvasContext, topLeftX, topLeftY, boxWidth, boxHeight, 
 
 function wrapText(text)
 {
-    scaledContext.fillStyle = "black";
-    scaledContext.fillRect(0, 0, scaledCanvas.width, scaledCanvas.height);
+    uiTextPaddingX = 580;
+    uiTextPaddingY = 610;
     scaledContext.font = "bold 15px Arial";
     scaledContext.fillStyle = "white";
 

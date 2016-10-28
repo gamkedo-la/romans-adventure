@@ -1,5 +1,7 @@
 const PLAYER_MOVE_SPEED = 2.0;
 
+var keyStripLimit = 8; // Max number of keys displayed per line in the UI
+
 
 function heroClass()
 {
@@ -140,6 +142,7 @@ function heroClass()
 
 			this.doorKeyRing[whichKey] = true;
 			worldGrid[walkIntoTileIndex] = TILE_GROUND;
+			pickedUpItem(keyStrip, whichKey);
 			roomLayout[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
 			displayUIText("Picked up " + idxToTextKey(whichKey) + ".");
 
@@ -171,3 +174,51 @@ function heroClass()
 	    drawBitmapCenteredWithRotation(this.myHeroPic, this.x, this.y, 0); // GraphicCommon.js
 	}
 }
+
+/*function displayInventory(artStrip)
+{
+    var arrayIndex = 0;
+    var drawTileX = 0;
+    var drawTileY = WORLD_H * WORLD_ROWS;
+    var imageIdxY = 0;
+
+    for (var eachRow = 0; eachRow < UI_ROWS; eachRow++)
+    {
+        for (var eachCol = 0; eachCol < keyStripLimit; eachCol++)
+        {
+            canvasContext.drawImage(artStrip, 0, imageIdxY, WORLD_W, WORLD_H,
+                                              drawTileX, drawTileY, WORLD_W, WORLD_H);
+            arrayIndex++;
+            drawTileX += WORLD_W;
+            imageIdxY += WORLD_H;
+        }
+        drawTileX = 0;
+        drawTileY += WORLD_H;
+    }
+}*/
+
+function pickedUpItem(artStrip, itemIdx)
+{
+    var drawTileX = itemIdx * WORLD_W;
+    var drawTileY = WORLD_H * WORLD_ROWS;
+    var imageIdxY = itemIdx * WORLD_H;
+
+    if (itemIdx >= keyStripLimit)
+    {
+        drawTileY = WORLD_H * WORLD_ROWS + WORLD_H;
+        drawTileX = (itemIdx - keyStripLimit) * WORLD_W;
+    }
+    canvasContext.drawImage(artStrip, 0, imageIdxY, WORLD_W, WORLD_H,
+                                  drawTileX, drawTileY, WORLD_W, WORLD_H);
+}
+
+function drawTextBoundingBox()
+{
+    var textBoxTopLeftX = keyStripLimit * WORLD_W;
+    var textBoxTopLeftY = WORLD_H * WORLD_ROWS;
+    var textBoxWidth = (WORLD_W * WORLD_COLS) - (keyStripLimit * WORLD_W);
+    var textBoxHeight = (WORLD_H * UI_ROWS);
+    //drawStrokeRect(canvasContext, textBoxTopLeftX, textBoxTopLeftY, textBoxWidth, textBoxHeight, 'white');
+    colorRect(textBoxTopLeftX, textBoxTopLeftY, textBoxWidth, textBoxHeight, 'white');
+}
+
