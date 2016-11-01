@@ -33,9 +33,9 @@ var levelFoyerEntrance =
     [ // Tables, Wall lamps, Rug
  		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
  		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		10, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 10,
+		10, 0, 0, 0,210,210,210,210,210,210,210, 0, 0, 0, 0, 10,
+		10, 0, 0, 0,210, 0,210, 0,210,210,210,210, 0, 0, 0, 10,
+		10, 0, 0, 0, 0, 0,210, 100, 0, 0,210,210, 0, 0, 0, 10,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         10, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 0, 0, 10,
 		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
@@ -390,6 +390,8 @@ const KEYDOOR_IDX_ATTIC = 12;
 const KEYDOOR_IDX_FIRST = KEYDOOR_IDX_DEBUG;
 const KEYDOOR_IDX_LAST = KEYDOOR_IDX_ATTIC;
 
+const ITEM_IDX_ICEBOOT = KEYDOOR_IDX_BEDROOMFOUR-1; // -1 offsets debug case of 0
+
 // Door Tiles
 const TILE_DOOR = 200; // base door (only used for debug, otherwise basis for door #s)
 const TILE_DOOR_HOUSEENTRANCE = TILE_DOOR+KEYDOOR_IDX_HOUSEENTRANCE; // Exit the house, this is the goal!
@@ -406,6 +408,8 @@ const TILE_DOOR_BEDROOMFOUR = TILE_DOOR+KEYDOOR_IDX_BEDROOMFOUR; // Door from Ha
 const TILE_DOOR_ATTIC = TILE_DOOR+KEYDOOR_IDX_ATTIC; // Door from Hallway to Attic
 const TILE_DOOR_FIRST = TILE_DOOR;
 const TILE_DOOR_LAST = TILE_DOOR_ATTIC;
+
+const TILE_ALIAS_ICE = TILE_DOOR+ITEM_IDX_ICEBOOT;
 
 // Key Tiles
 const TILE_KEY = 300; // base key

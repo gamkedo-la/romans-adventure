@@ -13,6 +13,9 @@ function heroClass()
 	this.name = "Roman";
 	this.doorKeyRing = [];
 	this.currentLevel = levelFoyerEntrance;
+	this.movingX = 0;
+	this.movingY = 0;
+	this.isSliding = false;
 
 	this.keyHeld_North = false;
 	this.keyHeld_South = false;
@@ -62,27 +65,34 @@ function heroClass()
 		var nextX = this.x;
 		var nextY = this.y;
 
-		if(this.keyHeld_North && !this.keyHeld_East
-			&& !this.keyHeld_South && !this.keyHeld_West && !isEditorMode)
-		{
-			nextY -= PLAYER_MOVE_SPEED;
-		}
-		if(this.keyHeld_East && !this.keyHeld_North
-			&& !this.keyHeld_South && !this.keyHeld_West && !isEditorMode)
-		{
-			nextX += PLAYER_MOVE_SPEED;
-		}
-		if(this.keyHeld_South && !this.keyHeld_East
-			&& !this.keyHeld_North && !this.keyHeld_West && !isEditorMode)
-		{
-			nextY += PLAYER_MOVE_SPEED;
-		}
-		if(this.keyHeld_West && !this.keyHeld_East
-			&& !this.keyHeld_North && !this.keyHeld_South && !isEditorMode)
-		{
-			nextX -= PLAYER_MOVE_SPEED;
+		if(this.isSliding == false) {
+			this.movingX = 0;
+			this.movingY = 0;
+
+			if(this.keyHeld_North && !this.keyHeld_East
+				&& !this.keyHeld_South && !this.keyHeld_West && !isEditorMode)
+			{
+				this.movingY = -PLAYER_MOVE_SPEED;
+			}
+			if(this.keyHeld_East && !this.keyHeld_North
+				&& !this.keyHeld_South && !this.keyHeld_West && !isEditorMode)
+			{
+				this.movingX = PLAYER_MOVE_SPEED;
+			}
+			if(this.keyHeld_South && !this.keyHeld_East
+				&& !this.keyHeld_North && !this.keyHeld_West && !isEditorMode)
+			{
+				this.movingY = PLAYER_MOVE_SPEED;
+			}
+			if(this.keyHeld_West && !this.keyHeld_East
+				&& !this.keyHeld_North && !this.keyHeld_South && !isEditorMode)
+			{
+				this.movingX = -PLAYER_MOVE_SPEED;
+			}
 		}
 
+		nextX += this.movingX;
+		nextY += this.movingY;
 
 		const EDGE_OF_SCREEN_X = ((WORLD_W * WORLD_COLS) - (WORLD_W / 2)); // Distance Roman can walk to the right edge before loading next room
 		const EDGE_OF_SCREEN_Y = ((WORLD_H * WORLD_ROWS) - (WORLD_H / 2)); // Distance Roman can walk to the top edge before loading next room
@@ -136,6 +146,8 @@ function heroClass()
 			unmergeRooms();
 		}
 
+		this.isSliding = false; // assume traction unless ice proves otherwise
+
 		// Check the tile you just collided with
 		if (tileTypeIsKey(walkIntoTileType)) {
 			var whichKey = tileTypeToIndexForKey(walkIntoTileType);
@@ -149,20 +161,29 @@ function heroClass()
 		} else if (tileTypeIsDoor(walkIntoTileType)) {
 			var whichDoor = tileTypeToIndexForDoor(walkIntoTileType);
 
-			if (this.doorKeyRing[whichDoor] == true) {
-				this.doorKeyRing[whichDoor] = false;
-				displayUIText("Used " + idxToTextKey(whichDoor) + " to open "+
-										idxToTextDoor(whichDoor)+".");
-				worldGrid[walkIntoTileIndex] = TILE_GROUND;
-				roomLayout[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
-			} else {
-				displayUIText("Need something to open "+
-										idxToTextDoor(whichDoor)+".");
+			if(walkIntoTileType == TILE_ALIAS_ICE) {
+				if (this.doorKeyRing[whichDoor] == true) {
+					this.isSliding = false;
+				} else {
+					this.isSliding = true;
+				}
+			} else { // generic key/door fallback, no special behavior defined
+
+				if (this.doorKeyRing[whichDoor] == true) {
+					this.doorKeyRing[whichDoor] = false;
+					displayUIText("Used " + idxToTextKey(whichDoor) + " to open "+
+											idxToTextDoor(whichDoor)+".");
+					worldGrid[walkIntoTileIndex] = TILE_GROUND;
+					roomLayout[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
+				} else {
+					displayUIText("Need something to open "+
+											idxToTextDoor(whichDoor)+".");
+				}
 			}
 
 		}
 
-		if (walkIntoTileType < 10)
+		if (walkIntoTileType < 10 || walkIntoTileType == TILE_ALIAS_ICE)
 		{
 		    this.x = nextX;
 		    this.y = nextY;
@@ -171,7 +192,7 @@ function heroClass()
 
 	this.draw = function()
 	{
-	    drawBitmapCenteredWithRotation(this.myHeroPic, this.x, this.y, 0); // GraphicCommon.js
+	    drawBitmapCenteredWithRotation(this.myHeroPic, this.x, this.y-this.myHeroPic.height/2+1, 0); // GraphicCommon.js
 	}
 }
 
