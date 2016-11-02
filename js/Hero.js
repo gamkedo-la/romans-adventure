@@ -157,6 +157,7 @@ function heroClass()
 			pickedUpItem(keyStrip, whichKey);
 			roomLayout[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
 			displayUIText("Picked up " + idxToTextKey(whichKey) + ".");
+			Sounds.pick_up.play();
 
 		} else if (tileTypeIsDoor(walkIntoTileType)) {
 			var whichDoor = tileTypeToIndexForDoor(walkIntoTileType);
@@ -171,6 +172,7 @@ function heroClass()
 
 				if (this.doorKeyRing[whichDoor] == true) {
 					this.doorKeyRing[whichDoor] = false;
+					Sounds.unlock.play();
 					displayUIText("Used " + idxToTextKey(whichDoor) + " to open "+
 											idxToTextDoor(whichDoor)+".");
 					worldGrid[walkIntoTileIndex] = TILE_GROUND;

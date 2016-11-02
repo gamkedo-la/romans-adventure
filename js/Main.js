@@ -27,7 +27,7 @@ window.onload = function()
 
 	colorRect(0,WORLD_H * WORLD_ROWS, canvas.width,canvas.height, 'black'); // Draws the UI black box
 	//colorText("LOADING IMAGES", canvas.width/2, canvas.height/2, 'white');
-	loadImages();
+	Sounds.initialize(loadImages);
 
 	scaledCanvas.addEventListener("mousemove", updateMousePos);
 	scaledCanvas.addEventListener("mouseup", editTileUnderMousePos);
@@ -56,6 +56,7 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	{
 		removePlayerStarts();
 	}
+	Sounds.enter_room.play();
 }
 
 function updateAll()
