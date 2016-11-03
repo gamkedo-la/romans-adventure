@@ -1,5 +1,8 @@
 var roman = new heroClass();
 
+var scaledCanvas, scaledContext;
+var canvas, canvasContext;
+
 window.onload = function()
 {
 	// Get references for gameCanvas
@@ -31,7 +34,7 @@ window.onload = function()
 
 	scaledCanvas.addEventListener("mousemove", updateMousePos);
 	scaledCanvas.addEventListener("mouseup", editTileUnderMousePos);
-}
+};
 
 function imageLoadingDoneSoStartGame()
 {
@@ -49,7 +52,7 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	{
 		preservePlayerStart = false;
 	}
-    currentRoomIndex = whichLevelIdx; // This is calculated in World.js
+    var currentRoomIndex = whichLevelIdx; // This is calculated in World.js
     worldGrid = roomLayout[currentRoomIndex].slice();
     roomArtSet = currentRoomIndex; // Not being used currently, may use later
 	if (preservePlayerStart == false)
