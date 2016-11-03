@@ -46,6 +46,7 @@ var Sounds = new (function() {
     var index = 0;
     var file = new Audio(_file);
     file.addEventListener('canplaythrough', callback);
+    file.load();
     var queue = [file];
 
     for (var i = 1; i < numSounds; i++) {
