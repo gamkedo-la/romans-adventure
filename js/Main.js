@@ -25,7 +25,7 @@ window.onload = function()
 	scaledContext.msImageSmoothingEnabled = false;
 	scaledContext.imageSmoothingEnabled = false;
 
-	colorRect(0,WORLD_H * WORLD_ROWS, canvas.width,canvas.height, 'black'); // Draws the UI black box
+	colorRect(0,WORLD_H * WORLD_ROWS, canvas.width,canvas.height, '#444'); // Draws the UI box background
 	//colorText("LOADING IMAGES", canvas.width/2, canvas.height/2, 'white');
 	Sounds.initialize(loadImages);
 
@@ -77,6 +77,10 @@ function drawAll()
 
 	scaledContext.drawImage(canvas,0,0,canvas.width,canvas.height,
 		0, 0, scaledCanvas.width, scaledCanvas.height);
+
+	if(isFlashLightNeededButMissing()) {
+		displayUIText("it's too dark...",20,30);
+	}
 
 	if (isEditorMode)
 	{

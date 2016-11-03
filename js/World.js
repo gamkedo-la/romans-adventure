@@ -335,6 +335,7 @@ var roomLayout =
 
 const ROOM_ID_STAIRS = 4; // Based on room layout array ^^
 const ROOM_ID_UPSTAIRS_GOING_DOWN = 19; // Based on room layout array ^^
+const ROOM_ID_DARKROOM_NEED_LIGHT = 9; // study for now (just a test)
 
 var roomNames =
     [
@@ -390,6 +391,7 @@ const KEYDOOR_IDX_ATTIC = 12;
 const KEYDOOR_IDX_FIRST = KEYDOOR_IDX_DEBUG;
 const KEYDOOR_IDX_LAST = KEYDOOR_IDX_ATTIC;
 
+const ITEM_IDX_FLASHLIGHT = KEYDOOR_IDX_BEDROOMTHREE-1;
 const ITEM_IDX_ICEBOOT = KEYDOOR_IDX_BEDROOMFOUR-1; // -1 offsets debug case of 0
 
 // Door Tiles
@@ -460,7 +462,8 @@ const TILE_UNMERGE_ROOMS  = 19 // a white drawer
 var doorLabels = [];
 var keyLabels = [];
 doorLabels[KEYDOOR_IDX_STUDY] = "chained door";
-keyLabels[KEYDOOR_IDX_STUDY] = "crowbar";
+keyLabels[ITEM_IDX_FLASHLIGHT] = "flashlight";
+keyLabels[ITEM_IDX_ICEBOOT] = "spike boot";
 
 function idxToTextDoor(forIdx) {
 	if(doorLabels[forIdx] !== undefined) {
@@ -559,12 +562,22 @@ function removePlayerStarts()
 	} // end of row for
 }
 
+function isFlashLightNeededButMissing() {
+	var hasFlashLight = roman.doorKeyRing[ITEM_IDX_FLASHLIGHT];
+	return (hasFlashLight != true && roomCoordToIndex() == ROOM_ID_DARKROOM_NEED_LIGHT);
+}
 
 function drawWorld()
 {
 	var arrayIndex = 0;
 	var drawTileX = 0;
 	var drawTileY = 0;
+
+	if(isFlashLightNeededButMissing()) {
+		colorRect(0,0,canvas.width,WORLD_ROWS*WORLD_H,"black");
+		return;
+	}
+
 	for(var eachRow = 0;eachRow<WORLD_ROWS;eachRow++)
 	{
 		for(var eachCol = 0;eachCol<WORLD_COLS;eachCol++)

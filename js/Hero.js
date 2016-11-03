@@ -91,6 +91,12 @@ function heroClass()
 			}
 		}
 
+		if(isFlashLightNeededButMissing()) {
+			if(this.movingX < 0) { // disallow moving further into dark room
+				this.movingX = 0; // (note: direction is hardcoded for now...)
+			}
+		}
+
 		nextX += this.movingX;
 		nextY += this.movingY;
 
