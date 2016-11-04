@@ -1,6 +1,9 @@
 var roman = new heroClass();
 var enemyList = [];
 
+var animationFrameDelay = 0; // cycles to slow down animation steps
+const CYCLES_PER_ANIM_FRAME = 2;
+
 var scaledCanvas, scaledContext;
 var canvas, canvasContext;
 
@@ -85,6 +88,10 @@ function moveAll()
 
 function drawAll()
 {
+	animationFrameDelay++;
+	if(animationFrameDelay >= CYCLES_PER_ANIM_FRAME) {
+		animationFrameDelay = 0;
+	}
     drawWorld();
 	for(var i=0;i<enemyList.length;i++) {
 		enemyList[i].draw();

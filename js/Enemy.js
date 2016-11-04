@@ -86,7 +86,9 @@ function EnemyClass()
 		if(roomCoordToIndex() != this.inRoomIndex) {
 			return;
 		}
-		this.animFrame++;
+		if(animationFrameDelay == 0) {
+			this.animFrame++;
+		}
 		var frameCap = Math.floor(enemyArtStrips[this.myMonsterKindID].width / FRAME_DIM);
 		this.animFrame %= frameCap;
 	    canvasContext.drawImage(enemyArtStrips[this.myMonsterKindID],
