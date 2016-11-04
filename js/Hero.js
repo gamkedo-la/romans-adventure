@@ -2,7 +2,6 @@ const PLAYER_MOVE_SPEED = 2.0;
 
 var keyStripLimit = 8; // Max number of keys displayed per line in the UI
 
-
 function heroClass()
 {
 
@@ -99,9 +98,6 @@ function heroClass()
 
 		nextX += this.movingX;
 		nextY += this.movingY;
-
-		const EDGE_OF_SCREEN_X = ((WORLD_W * WORLD_COLS) - (WORLD_W / 2)); // Distance Roman can walk to the right edge before loading next room
-		const EDGE_OF_SCREEN_Y = ((WORLD_H * WORLD_ROWS) - (WORLD_H / 2)); // Distance Roman can walk to the top edge before loading next room
 
 	    // Load room when nearing edge of screen
 		if (nextY < WORLD_H /2)

@@ -1,4 +1,5 @@
 var roman = new heroClass();
+var enemyList = [];
 
 var scaledCanvas, scaledContext;
 var canvas, canvasContext;
@@ -59,6 +60,12 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	{
 		removePlayerStarts();
 	}
+	enemyList = [];
+	var tempEnemy = new EnemyClass();
+	while ( tempEnemy.reset() ) {
+		enemyList.push(tempEnemy);
+		tempEnemy = new EnemyClass();
+	}
 	Sounds.enter_room.play();
 }
 
@@ -70,12 +77,18 @@ function updateAll()
 
 function moveAll()
 {
+	for(var i=0;i<enemyList.length;i++) {
+		enemyList[i].move();
+	}
 	roman.move();
 }
 
 function drawAll()
 {
     drawWorld();
+	for(var i=0;i<enemyList.length;i++) {
+		enemyList[i].draw();
+	}
     roman.draw();
 
 	scaledContext.drawImage(canvas,0,0,canvas.width,canvas.height,

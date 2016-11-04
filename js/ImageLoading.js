@@ -3,8 +3,7 @@ var doorStrip = document.createElement("img");
 var keyStrip = document.createElement("img");
 var keyStripEmpty = document.createElement("img");
 var roomStrips = document.createElement("img");
-var worldPics = [];
-var roomArtStrips = [];
+var enemyArtStrips = [];
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
 var artStripGroupLimit = 10;
 
@@ -24,10 +23,10 @@ function beginLoadingImage(imgVar, fileName)
 	imgVar.src = "img/"+fileName;
 }
 
-function loadImageForWorldCode(worldCode, fileName)
+function loadImageForEnemyCode(enemyCode, fileName)
 {
-	roomArtStrips[worldCode] = document.createElement("img");
-	beginLoadingImage(roomArtStrips[worldCode], fileName);
+	enemyArtStrips[enemyCode] = document.createElement("img");
+	beginLoadingImage(enemyArtStrips[enemyCode], fileName);
 }
 
 function loadImages()
@@ -37,9 +36,11 @@ function loadImages()
 		// hero and pickup tiles
 		{ varName: heroPic, theFile: "roman.png" },
 
-		// environmental tiles
-		{ worldType: TILE_GROUND, theFile: "world_ground.png" },
-		{ worldType: TILE_WALL, theFile: "world_wall.png" },
+		// enemy graphics (many are strips, though not all)
+		{ enemyType: ENEMY_BAT, theFile: "enemy_bat.png" },
+		{ enemyType: ENEMY_GHOST, theFile: "enemy_ghost.png" },
+		{ enemyType: ENEMY_SKULL, theFile: "enemy_skull01.png" },
+		{ enemyType: ENEMY_SLIME, theFile: "enemy_slime.png" },
 
 		// door tiles
 		{ varName: doorStrip, theFile: "door_strip.png"},
@@ -50,7 +51,7 @@ function loadImages()
 
 
         // Room tiles
-        { varName: roomStrips, theFile: "roomart.png" }
+        { varName: roomStrips, theFile: "roomart.png" },
 
 	];
 
@@ -64,7 +65,7 @@ function loadImages()
 		}
 		else
 		{
-			loadImageForWorldCode(imageList[i].worldType, imageList[i].theFile);
+			loadImageForEnemyCode(imageList[i].enemyType, imageList[i].theFile);
 		}
 	}
 }

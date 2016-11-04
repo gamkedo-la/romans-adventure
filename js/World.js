@@ -8,6 +8,9 @@ const BUILDING_ROOMS_COLS = 3; // Number of columns of rooms in the house
 const BUILDING_ROOMS_ROWS = 4; // Number of rows of rooms in the house
 const BUILDING_FLOORS = 2; // Number of floors in the house
 
+const EDGE_OF_SCREEN_X = ((WORLD_W * WORLD_COLS) - (WORLD_W / 2)); // Distance Roman can walk to the right edge before loading next room
+const EDGE_OF_SCREEN_Y = ((WORLD_H * WORLD_ROWS) - (WORLD_H / 2)); // Distance Roman can walk to the top edge before loading next room
+
 var worldGrid = [];
 var roomArtSet = 0;
 var rotDoor;
@@ -32,9 +35,9 @@ var levelStudy =
 var levelFoyerEntrance =
     [ // Tables, Wall lamps, Rug
  		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
- 		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		10, 0, 0, 0,210,210,210,210,210,210,210, 0, 0, 0, 0, 10,
-		10, 0, 0, 0,210, 0,210, 0,210,210,210,210, 0, 0, 0, 10,
+ 		10, 0, 0, 0,402, 0,403, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		10, 0,400, 0,210,210,210,210,210,210,210, 0, 0, 0, 0, 10,
+		10, 0, 0,401,210, 0,210, 0,210,210,210,210, 0, 0, 0, 10,
 		10, 0, 0, 0, 0, 0,210, 100, 0, 0,210,210, 0, 0, 0, 10,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         10, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 0, 0, 10,
@@ -372,6 +375,13 @@ const TILE_BLANK = 2;
 
 // Player And Pickup Tiles
 const TILE_PLAYERSTART = 100;
+// these should stay in sync/order with enemy id numbers in Enemy.js:
+const TILE_START_ENEMY_BAT = 400;
+const TILE_START_ENEMY_GHOST = 401;
+const TILE_START_ENEMY_SKULL = 402;
+const TILE_START_ENEMY_SLIME = 403;
+const TILE_START_ENEMY_FIRST_ENUM = TILE_START_ENEMY_BAT;
+const TILE_START_ENEMY_LAST_ENUM = TILE_START_ENEMY_SLIME;
 
 // key and door tile consts share offsets to ensure they'll match up
 // these also double as the index values into the keyring array
@@ -584,7 +594,7 @@ function drawWorld()
 		{
 			var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 			var currentRoomArtIndex = worldGrid[arrayIndex];
-			var useImg = roomArtStrips[currentRoomArtIndex];
+			// var useImg = roomArtStrips[currentRoomArtIndex];
 
 			if(tileTypeHasTransparency(currentRoomArtIndex))
 			{
@@ -632,7 +642,8 @@ function drawWorld()
 										drawTileX, drawTileY,
 										WORLD_W, WORLD_H);
 			} else {
-				canvasContext.drawImage(useImg,drawTileX,drawTileY);
+				console.log("tried to draw a tile type ("+currentRoomArtIndex+
+					") that has no defined draw behavior");
 			}
 			drawTileX += WORLD_W;
 			arrayIndex++;
