@@ -1,4 +1,5 @@
-var heroPic = document.createElement("img");
+var heroPicLeft = document.createElement("img");
+var heroPicRight = document.createElement("img");
 var doorStrip = document.createElement("img");
 var keyStrip = document.createElement("img");
 var keyStripEmpty = document.createElement("img");
@@ -34,13 +35,16 @@ function loadImages()
 	var imageList =
 	[
 		// hero and pickup tiles
-		{ varName: heroPic, theFile: "roman.png" },
+		{ varName: heroPicLeft, theFile: "roman_left.png" },
+  		{ varName: heroPicRight, theFile: "roman_right.png" },
 
 		// enemy graphics (many are strips, though not all)
 		{ enemyType: ENEMY_BAT, theFile: "enemy_bat.png" },
 		{ enemyType: ENEMY_GHOST, theFile: "enemy_ghost.png" },
 		{ enemyType: ENEMY_SKULL, theFile: "enemy_skull01.png" },
 		{ enemyType: ENEMY_SLIME, theFile: "enemy_slime.png" },
+        { enemyType: ENEMY_ROMAN, theFile: "enemy_roman.png" },
+
 
 		// door tiles
 		{ varName: doorStrip, theFile: "door_strip.png"},

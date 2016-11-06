@@ -47,7 +47,7 @@ function imageLoadingDoneSoStartGame()
 	setInterval(updateAll, 1000/framesPerSecond);
 	setupInput();
 	loadLevel(currentRoomIndex, true);
-	roman.reset(heroPic, "Roman");
+	roman.reset("Roman");
 }
 
 function loadLevel(whichLevelIdx, preservePlayerStart)

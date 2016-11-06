@@ -3,6 +3,7 @@ const ENEMY_BAT = 0;
 const ENEMY_GHOST = 1;
 const ENEMY_SKULL = 2;
 const ENEMY_SLIME = 3;
+const ENEMY_ROMAN = 4;
 
 const FRAME_DIM = 14; // pixel dimensions of each frame square
 
@@ -79,7 +80,20 @@ function EnemyClass()
 		    this.x = nextX;
 		    this.y = nextY;
 		}
-	}
+
+		if (this.myMonsterKindID == 4)
+		{
+		    this.y = roman.y;
+		    if (roman.keyHeld_East)
+		    {
+		        this.x -= PLAYER_MOVE_SPEED;
+		    }
+		    else if(roman.keyHeld_West)
+		    {
+		        this.x += PLAYER_MOVE_SPEED;
+		    }
+		}
+    }
 
 	this.draw = function()
 	{

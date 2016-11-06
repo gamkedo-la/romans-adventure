@@ -37,7 +37,7 @@ function heroClass()
 	this.reset = function(whichImage, heroName)
 	{
 		this.name = heroName;
-		this.myHeroPic = whichImage;
+		this.myHeroPic = heroPicLeft;
 		//this.keysHeld = 0;
 		//this.updateKeyReadout();
 		this.doorKeyRing = [];
@@ -76,17 +76,19 @@ function heroClass()
 			if(this.keyHeld_East && !this.keyHeld_North
 				&& !this.keyHeld_South && !this.keyHeld_West && !isEditorMode)
 			{
-				this.movingX = PLAYER_MOVE_SPEED;
+			    this.movingX = PLAYER_MOVE_SPEED;
+			    this.myHeroPic = heroPicRight;
 			}
 			if(this.keyHeld_South && !this.keyHeld_East
 				&& !this.keyHeld_North && !this.keyHeld_West && !isEditorMode)
 			{
-				this.movingY = PLAYER_MOVE_SPEED;
+			    this.movingY = PLAYER_MOVE_SPEED;
 			}
 			if(this.keyHeld_West && !this.keyHeld_East
 				&& !this.keyHeld_North && !this.keyHeld_South && !isEditorMode)
 			{
-				this.movingX = -PLAYER_MOVE_SPEED;
+			    this.movingX = -PLAYER_MOVE_SPEED;
+			    this.myHeroPic = heroPicLeft;
 			}
 		}
 
@@ -182,11 +184,11 @@ function heroClass()
 				} else {
 					displayUIText("Need something to open "+
 											idxToTextDoor(whichDoor)+".");
-				}
+				} 
 			}
 
-		}
 
+		}
 		if (walkIntoTileType < 10 || walkIntoTileType == TILE_ALIAS_ICE)
 		{
 		    this.x = nextX;
