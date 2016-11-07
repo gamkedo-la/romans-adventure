@@ -156,7 +156,7 @@ function displayCurrentRoomTiles()
         drawTileX = 0;
     }
 
-    
+
 }
 
 // Check if you  are clicking in the Editor Tiles area. If you are copy the tile. If not, place the tile that was copied.
@@ -185,8 +185,15 @@ function editTileUnderMousePos()
 // Outputs the current level's array to a text field under the UI
 function outputWorldGrid()
 {
+    //TODO format the string a lil better.
+    //console.log(worldGrid);
+    /*
+    var formattedWorldGrid = worldGrid;
+    for(i = 0; i < worldGrid.length; i++){
+
+    }
+    */
     document.getElementById("levelEditorOutputText").innerHTML = "var " + roomNames[roomCoordToIndex()]
                                                                            + " = <br>[<br>" + worldGrid
                                                                            + "<br>]";
 }
-
