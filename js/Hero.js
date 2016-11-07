@@ -14,6 +14,7 @@ function heroClass()
 	this.currentLevel = levelFoyerEntrance;
 	this.movingX = 0;
 	this.movingY = 0;
+	this.isMoving = false;
 	this.isSliding = false;
 
 	this.keyHeld_North = false;
@@ -71,7 +72,7 @@ function heroClass()
 			if(this.keyHeld_North && !this.keyHeld_East
 				&& !this.keyHeld_South && !this.keyHeld_West && !isEditorMode)
 			{
-				this.movingY = -PLAYER_MOVE_SPEED;
+			    this.movingY = -PLAYER_MOVE_SPEED;
 			}
 			if(this.keyHeld_East && !this.keyHeld_North
 				&& !this.keyHeld_South && !this.keyHeld_West && !isEditorMode)
@@ -191,9 +192,16 @@ function heroClass()
 		}
 		if (walkIntoTileType < 10 || walkIntoTileType == TILE_ALIAS_ICE)
 		{
+		    this.isMoving = (this.x != nextX || this.y != nextY);
 		    this.x = nextX;
 		    this.y = nextY;
 		}
+		else
+		{
+		    this.isMoving = false;
+		}
+		console.log(this.isMoving);
+
 	}
 
 	this.draw = function()
