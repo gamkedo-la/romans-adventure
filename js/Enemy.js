@@ -81,17 +81,9 @@ function EnemyClass()
 		    this.y = nextY;
 		}
 
-		if (this.myMonsterKindID == 4)
+		if (this.myMonsterKindID == ENEMY_ROMAN)
 		{
-		    this.y = roman.y;
-		    if (roman.keyHeld_East)
-		    {
-		        this.x -= PLAYER_MOVE_SPEED;
-		    }
-		    else if(roman.keyHeld_West)
-		    {
-		        this.x += PLAYER_MOVE_SPEED;
-		    }
+		    this.enemyRomanMove();
 		}
     }
 
@@ -111,6 +103,31 @@ function EnemyClass()
 	    	this.x-FRAME_DIM/2,
 	    	this.y-FRAME_DIM+1,
 	    	FRAME_DIM, FRAME_DIM);
+	}
+
+	this.enemyRomanMove = function()
+	{
+        //Need to a better way to track roman moving left/right
+	    var centerOfRoomCoord = (WORLD_W * WORLD_COLS / 2) - (WORLD_W / 2);
+	    this.y = roman.y;
+	    if (roman.isMoving)
+	    {
+	        if (roman.keyHeld_East)
+	        {
+	            this.x -= PLAYER_MOVE_SPEED;
+	        }
+	        else if (roman.keyHeld_West)
+	        {
+	            this.x += PLAYER_MOVE_SPEED;
+	        }
+	    }
+
+	    if (roman.x > centerOfRoomCoord)
+	    {
+	        // Display text from enemy roman
+	        roman.x = centerOfRoomCoord;
+	        displayUIText("Ghost Roman will not allow you to pass.");
+	    }
 	}
 }
 
