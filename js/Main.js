@@ -80,10 +80,13 @@ function updateAll()
 
 function moveAll()
 {
-	for(var i=0;i<enemyList.length;i++) {
-		enemyList[i].move();
-	}
-	roman.move();
+    for(var i=0;i<enemyList.length;i++) {
+        enemyList[i].move();
+    }
+    roman.move();
+    {
+    Sounds.footsteps.play ();
+    }
 }
 
 function drawAll()
