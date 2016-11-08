@@ -202,7 +202,6 @@ function heroClass()
 		{
 		    this.isMoving = false;
 		}
-		console.log(this.isMoving);
 	}
 
 	this.draw = function()
@@ -210,28 +209,6 @@ function heroClass()
 	    drawBitmapCenteredWithRotation(this.myHeroPic, this.x, this.y-this.myHeroPic.height/2+1, 0); // GraphicCommon.js
 	}
 }
-
-/*function displayInventory(artStrip)
-{
-    var arrayIndex = 0;
-    var drawTileX = 0;
-    var drawTileY = WORLD_H * WORLD_ROWS;
-    var imageIdxY = 0;
-
-    for (var eachRow = 0; eachRow < UI_ROWS; eachRow++)
-    {
-        for (var eachCol = 0; eachCol < keyStripLimit; eachCol++)
-        {
-            canvasContext.drawImage(artStrip, 0, imageIdxY, WORLD_W, WORLD_H,
-                                              drawTileX, drawTileY, WORLD_W, WORLD_H);
-            arrayIndex++;
-            drawTileX += WORLD_W;
-            imageIdxY += WORLD_H;
-        }
-        drawTileX = 0;
-        drawTileY += WORLD_H;
-    }
-}*/
 
 function pickedUpItem(artStrip, itemIdx)
 {
