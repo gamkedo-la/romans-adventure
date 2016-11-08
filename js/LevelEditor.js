@@ -175,7 +175,7 @@ function editTileUnderMousePos()
     else if (editorTileSelected)
     {
         worldGrid[mouseOverTileIdx] = copiedTile;
-        roomLayout[currentRoomIndex][mouseOverTileIdx] = copiedTile;
+        roomLayout[roomCoordToIndex()][mouseOverTileIdx] = copiedTile;
     }
     else
     {
