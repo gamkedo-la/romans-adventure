@@ -84,6 +84,9 @@ function moveAll()
 		enemyList[i].move();
 	}
 	roman.move();
+	{
+	    Sounds.footsteps.play();
+	}
 }
 
 function drawAll()
