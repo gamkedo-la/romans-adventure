@@ -53,7 +53,7 @@ function keyPressed(evt)
         {
             isEditorMode = false;
             editorTileSelected = false;
-            colorRect(0, 0, canvas.width, canvas.height, 'black');
+            colorRect(0, 0, canvas.width, canvas.height, '#444');
         }
         else
         {

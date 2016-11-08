@@ -15,6 +15,8 @@ function heroClass()
 	this.movingX = 0;
 	this.movingY = 0;
 	this.isSliding = false;
+	this.isMoving = false;
+	this.hasMirror = false;
 
 	this.keyHeld_North = false;
 	this.keyHeld_South = false;
@@ -194,6 +196,10 @@ function heroClass()
 		    this.x = nextX;
 		    this.y = nextY;
 		}
+		//else
+		//{
+		//    this.isMoving = false;
+		//}
 	}
 
 	this.draw = function()

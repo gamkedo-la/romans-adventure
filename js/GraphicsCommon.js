@@ -37,20 +37,34 @@ function colorCircle(centerX,centerY, radius, fillColor)
 	canvasContext.fill();
 }
 
-function displayUIText(showText, x, y)
+function displayUIText(text, uiTextPaddingX, uiTextPaddingY)
 {
-    uiTextPaddingX = 580;
-    uiTextPaddingY = 590;
 	scaledContext.font = "bold 15px Arial";
 	scaledContext.fillStyle = "white";
-	if (isEditorMode)
+
+	var maxWidth = scaledCanvas.width - uiTextPaddingX - uiTextPaddingY;
+	var words = text.split(' ');
+	var line = '';
+
+	for (var n = 0; n < words.length; n++)
 	{
-	    scaledContext.fillText(showText, x, y);
+	    var testLine = line + words[n] + ' ';
+	    var metrics = scaledContext.measureText(testLine);
+	    var testWidth = metrics.width;
+	    if (testWidth > 286 && n > 0)
+	    {
+	        scaledContext.fillText(line, uiTextPaddingX, uiTextPaddingY);
+	        line = words[n] + ' ';
+	        uiTextPaddingY += 20;
+	    }
+	    else
+	    {
+	        line = testLine;
+	    }
 	}
-	else
-	{
-		scaledContext.fillText(showText, x, y);
-	}
+	scaledContext.fillText(line, uiTextPaddingX, uiTextPaddingY);
+
+
 }
 
 function drawStrokeRect(canvasContext, topLeftX, topLeftY, boxWidth, boxHeight, strokeColor) 

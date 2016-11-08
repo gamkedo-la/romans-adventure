@@ -7,6 +7,22 @@ const CYCLES_PER_ANIM_FRAME = 2;
 var scaledCanvas, scaledContext;
 var canvas, canvasContext;
 
+var messageToShow = "";
+var framesLeftForMessage = 0;
+const FRAMES_TO_SHOW_MESSAGE = 80;
+
+function postMessage(str)
+{
+    messageToShow = str;
+    framesLeftForMessage = FRAMES_TO_SHOW_MESSAGE;
+}
+
+function clearMessage()
+{
+    framesLeftForMessage = 0;
+}
+
+
 window.onload = function()
 {
 	// Get references for gameCanvas
@@ -69,6 +85,14 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 		enemyList.push(tempEnemy);
 		tempEnemy = new EnemyClass();
 	}
+	if (isFlashLightNeededButMissing())
+	{
+	    postMessage("It's too dark...");
+	}
+	else
+	{
+	    clearMessage();
+	}
 	Sounds.enter_room.play();
 }
 
@@ -102,8 +126,10 @@ function drawAll()
 	scaledContext.drawImage(canvas,0,0,canvas.width,canvas.height,
 		0, 0, scaledCanvas.width, scaledCanvas.height);
 
-	if(isFlashLightNeededButMissing()) {
-		displayUIText("it's too dark...",20,30);
+	if (framesLeftForMessage > 0)
+	{
+	    displayUIText(messageToShow, 580, 590);
+	    framesLeftForMessage--;
 	}
 
 	if (isEditorMode)

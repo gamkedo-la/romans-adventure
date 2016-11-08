@@ -112,5 +112,38 @@ function EnemyClass()
 	    	this.y-FRAME_DIM+1,
 	    	FRAME_DIM, FRAME_DIM);
 	}
+
+	this.enemyRomanMove = function ()
+	{
+	    var centerOfRoomCoordRoman = (WORLD_W * WORLD_COLS / 2 - WORLD_W / 2);
+	    var centerOfRoomCoordEnemyRoman = (WORLD_W * WORLD_COLS / 2 + WORLD_W / 2)
+	    if (roman.isMoving && this.isFrozen == false)
+	    {
+	        this.y = roman.y;
+	        if (roman.keyHeld_East)
+	        {
+	            this.x -= PLAYER_MOVE_SPEED;
+	            if (this.x < centerOfRoomCoordEnemyRoman)
+	            {
+	                this.x = centerOfRoomCoordEnemyRoman;
+	            }
+	        }
+	        else if (roman.keyHeld_West)
+	        {
+	            this.x += PLAYER_MOVE_SPEED;
+	        }
+	    }
+
+	    if (roman.x > centerOfRoomCoordRoman && roman.hasMirror == false)
+	    {
+	        roman.x = centerOfRoomCoordRoman;
+	        postMessage(dialogueEnemyRomanWithoutMirror);
+	    }
+	    else if (roman.x > centerOfRoomCoordRoman && roman.hasMirror)
+	    {
+	        this.isFrozen = true;
+	    }
+
+	}
 }
 
