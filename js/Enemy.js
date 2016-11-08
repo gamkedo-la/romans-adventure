@@ -16,6 +16,7 @@ function EnemyClass()
 	this.movingX = 0;
 	this.movingY = 0;
 	this.animFrame = 0;
+	this.isFrozen = false;
 
 	this.reset = function()
 	{
@@ -81,17 +82,9 @@ function EnemyClass()
 		    this.y = nextY;
 		}
 
-		if (this.myMonsterKindID == 4)
+		if (this.myMonsterKindID == ENEMY_ROMAN)
 		{
-		    this.y = roman.y;
-		    if (roman.keyHeld_East)
-		    {
-		        this.x -= PLAYER_MOVE_SPEED;
-		    }
-		    else if(roman.keyHeld_West)
-		    {
-		        this.x += PLAYER_MOVE_SPEED;
-		    }
+		    this.enemyRomanMove();
 		}
     }
 

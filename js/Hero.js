@@ -162,7 +162,7 @@ function heroClass()
 			worldGrid[walkIntoTileIndex] = TILE_GROUND;
 			pickedUpItem(keyStrip, whichKey);
 			roomLayout[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
-			displayUIText("Picked up " + idxToTextKey(whichKey) + ".");
+			postMessage("Picked up " + idxToTextKey(whichKey) + ".");
 			Sounds.pick_up.play();
 
 		} else if (tileTypeIsDoor(walkIntoTileType)) {
@@ -179,12 +179,12 @@ function heroClass()
 				if (this.doorKeyRing[whichDoor] == true) {
 					this.doorKeyRing[whichDoor] = false;
 					Sounds.unlock.play();
-					displayUIText("Used " + idxToTextKey(whichDoor) + " to open "+
+					postMessage("Used " + idxToTextKey(whichDoor) + " to open "+
 											idxToTextDoor(whichDoor)+".");
 					worldGrid[walkIntoTileIndex] = TILE_GROUND;
 					roomLayout[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
 				} else {
-					displayUIText("Need something to open "+
+					postMessage("Need something to open "+
 											idxToTextDoor(whichDoor)+".");
 				} 
 			}
@@ -193,13 +193,16 @@ function heroClass()
 		}
 		if (walkIntoTileType < 10 || walkIntoTileType == TILE_ALIAS_ICE)
 		{
+		    this.isMoving = (this.x != nextX || this.y != nextY);
 		    this.x = nextX;
 		    this.y = nextY;
+
 		}
-		//else
-		//{
-		//    this.isMoving = false;
-		//}
+		else
+		{
+		    this.isMoving = false;
+		}
+		console.log(this.isMoving);
 	}
 
 	this.draw = function()

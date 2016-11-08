@@ -93,7 +93,7 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	{
 	    clearMessage();
 	}
-	Sounds.enter_room.play();
+	//Sounds.enter_room.play();
 }
 
 function updateAll()

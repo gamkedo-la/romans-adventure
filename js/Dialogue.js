@@ -1,0 +1,1 @@
+var dialogueEnemyRomanWithoutMirror = "Ghost Roman will not allow you to pass.";
