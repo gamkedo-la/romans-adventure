@@ -596,6 +596,9 @@ function drawWorld()
 		return;
 	}
 
+	//START OF WARP GHOST DRAW CODE
+	//handleWarpGhosts();
+
 	for(var eachRow = 0;eachRow<WORLD_ROWS;eachRow++)
 	{
 		for(var eachCol = 0;eachCol<WORLD_COLS;eachCol++)
@@ -603,6 +606,14 @@ function drawWorld()
 			var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 			var currentRoomArtIndex = worldGrid[arrayIndex];
 			// var useImg = roomArtStrips[currentRoomArtIndex];
+			//console.log(currentRoomArtIndex);
+
+			//summon warp ghost???TODO maybe move this back into a function
+			if(currentRoomArtIndex == 402){
+				console.log('boo!');
+				//if(framesLeftUntilWarpGhost == 0)
+					//currentRoomArtIndex = 401;
+			}
 
 			if(tileTypeHasTransparency(currentRoomArtIndex))
 			{
@@ -621,7 +632,7 @@ function drawWorld()
 			} else if(tileTypeIsDoor(currentRoomArtIndex)) {
 			    var whichDoor = tileTypeToIndexForDoor(currentRoomArtIndex);
 			    var angleOfDoorRotation = 0;
-                
+
                 // Rotate doors according to their placement in the room
 			    if (drawTileX == 0)
 			    {
