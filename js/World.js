@@ -7,6 +7,8 @@ const PIXEL_SCALE_UP = 4; // Number of times to scale up art tiles
 const BUILDING_ROOMS_COLS = 3; // Number of columns of rooms in the house
 const BUILDING_ROOMS_ROWS = 4; // Number of rows of rooms in the house
 const BUILDING_FLOORS = 2; // Number of floors in the house
+const TILES_SOLID_FIRST = 10;
+const TILES_PUSHABLE = 19;
 
 const EDGE_OF_SCREEN_X = ((WORLD_W * WORLD_COLS) - (WORLD_W / 2)); // Distance Roman can walk to the right edge before loading next room
 const EDGE_OF_SCREEN_Y = ((WORLD_H * WORLD_ROWS) - (WORLD_H / 2)); // Distance Roman can walk to the top edge before loading next room
@@ -39,7 +41,7 @@ var levelFoyerEntrance =
 		10, 0,400, 0,210,210,210,210,210,210,210, 0, 0, 0, 0, 10,
 		10, 0, 0,401,210, 0,210, 0,210,210,210,210, 0, 0, 0, 10,
 		10, 0, 0, 0, 0, 0,210, 100, 0, 0,210,210, 0, 0, 0, 10,
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 0, 0,
         10, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 0, 0, 10,
 		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
         10, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 0, 15, 10,

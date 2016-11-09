@@ -10,7 +10,7 @@ var Sounds = new (function() {
   var sounds = {
     // key: 'sounds/file_name'
     enter_room: 'sounds/enter room',
-    footsteps: 'sounds/footsteps',
+    footsteps: 'sounds/footsteps quiet',
     ghost: 'sounds/Ghost',
     key: 'sounds/key',
     open_door: 'sounds/open door',

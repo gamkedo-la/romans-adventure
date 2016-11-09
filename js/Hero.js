@@ -16,7 +16,7 @@ function heroClass()
 	this.movingY = 0;
 	this.isSliding = false;
 	this.isMoving = false;
-	this.hasMirror = false;
+	this.hasMirror = true;
 
 	this.keyHeld_North = false;
 	this.keyHeld_South = false;
@@ -143,18 +143,58 @@ function heroClass()
 			walkIntoTileType = worldGrid[walkIntoTileIndex];
 		}
 
-		//merging and unmerging rooms
-		if(walkIntoTileType == TILE_MERGE_ROOMS){
-			mergeRooms();
-		}
+		if (roomCoordToIndex() == 5 || roomCoordToIndex() == 17) // Checks whether in Kitchen or Bedroom 4
+		{
+		    //merging and unmerging rooms
+		    if (walkIntoTileType == TILE_MERGE_ROOMS)
+		    {
+		        mergeRooms();
+		    }
 
-		if(walkIntoTileType == TILE_UNMERGE_ROOMS){
-			unmergeRooms();
+		    if (walkIntoTileType == TILE_UNMERGE_ROOMS)
+		    {
+		        unmergeRooms();
+		    }
 		}
+		
 
 		this.isSliding = false; // assume traction unless ice proves otherwise
 
-		// Check the tile you just collided with
+	    // Check the tile you just collided with
+		if (walkIntoTileType == TILES_PUSHABLE)
+		{
+		    var bumpToTileIndex = walkIntoTileIndex;
+		    if (this.movingX > 0) // Moving right
+		    {
+		        bumpToTileIndex++;
+		    }
+		    if (this.movingX < 0) // Moving left
+		    {
+		        bumpToTileIndex--;
+		    }
+		    if (this.movingY > 0) // Moving down
+		    {
+		        bumpToTileIndex += WORLD_COLS;
+		    }
+		    if (this.movingY < 0) // Moving up
+		    {
+		        bumpToTileIndex -= WORLD_COLS;
+		    }
+		    var bumpIntoRow;
+		    var bumpIntoCol;
+		    bumpIntoRow = Math.floor(bumpToTileIndex / WORLD_COLS);
+		    bumpIntoCol = bumpToTileIndex % WORLD_COLS;
+		    if (worldGrid[bumpToTileIndex] == TILE_GROUND
+                    && bumpIntoRow > 0
+                    && bumpIntoRow < WORLD_ROWS - 1
+                    && bumpIntoCol > 0
+                    && bumpIntoCol < WORLD_COLS - 1)
+		    {
+		        worldGrid[walkIntoTileIndex] = TILE_GROUND;
+		        worldGrid[bumpToTileIndex] = TILES_PUSHABLE;
+		    }
+		}
+
 		if (tileTypeIsKey(walkIntoTileType)) {
 			var whichKey = tileTypeToIndexForKey(walkIntoTileType);
 
@@ -191,7 +231,7 @@ function heroClass()
 
 
 		}
-		if (walkIntoTileType < 10 || walkIntoTileType == TILE_ALIAS_ICE)
+		if (walkIntoTileType < TILES_SOLID_FIRST || walkIntoTileType == TILE_ALIAS_ICE)
 		{
 		    this.isMoving = (this.x != nextX || this.y != nextY);
 		    this.x = nextX;
