@@ -4,6 +4,7 @@ const ENEMY_GHOST = 1;
 const ENEMY_SKULL = 2;
 const ENEMY_SLIME = 3;
 const ENEMY_ROMAN = 4;
+const ENEMY_PUMKIN = 5;
 
 const FRAME_DIM = 14; // pixel dimensions of each frame square
 

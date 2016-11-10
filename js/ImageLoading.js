@@ -44,6 +44,7 @@ function loadImages()
 		{ enemyType: ENEMY_SKULL, theFile: "enemy_skull01.png" },
 		{ enemyType: ENEMY_SLIME, theFile: "enemy_slime.png" },
         { enemyType: ENEMY_ROMAN, theFile: "enemy_roman.png" },
+        { enemyType: ENEMY_PUMKIN, theFile: "enemy_pumkin.png" },
 
 
 		// door tiles

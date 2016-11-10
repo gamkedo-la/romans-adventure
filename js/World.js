@@ -37,7 +37,7 @@ var levelStudy =
 var levelFoyerEntrance =
     [ // Tables, Wall lamps, Rug
  		10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
- 		10, 0, 0, 0,402, 0,403, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+ 		10, 0, 0, 0,402, 0,403, 0, 0, 405, 0, 0, 0, 0, 0, 10,
 		10, 0,400, 0,210,210,210,210,210,210,210, 0, 0, 0, 0, 10,
 		10, 0, 0,401,210, 0,210, 0,210,210,210,210, 0, 0, 0, 10,
 		10, 0, 0, 0, 0, 0,210, 100, 0, 0,210,210, 0, 0, 0, 10,
@@ -383,8 +383,10 @@ const TILE_START_ENEMY_GHOST = 401;
 const TILE_START_ENEMY_SKULL = 402;
 const TILE_START_ENEMY_SLIME = 403;
 const TILE_START_ENEMY_ROMAN = 404;
+const TILE_START_ENEMY_PUMKIN = 405;
 const TILE_START_ENEMY_FIRST_ENUM = TILE_START_ENEMY_BAT;
-const TILE_START_ENEMY_LAST_ENUM = TILE_START_ENEMY_ROMAN;
+const TILE_START_ENEMY_LAST_ENUM = TILE_START_ENEMY_PUMKIN;
+
 
 // key and door tile consts share offsets to ensure they'll match up
 // these also double as the index values into the keyring array
