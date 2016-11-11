@@ -93,7 +93,7 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	{
 	    clearMessage();
 	}
-	//Sounds.enter_room.play();
+    //Sounds.enter_room.play();
 }
 
 function updateAll()
@@ -119,7 +119,7 @@ function drawAll()
 	}
     drawWorld();
 	for(var i=0;i<enemyList.length;i++) {
-		enemyList[i].draw();
+	    enemyList[i].draw();
 	}
     roman.draw();
 

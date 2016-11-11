@@ -85,59 +85,69 @@ function EnemyClass()
 
 		if (this.myMonsterKindID == ENEMY_ROMAN)
 		{
-		    this.enemyRomanMove();
+		    this.enemyRoman();
 		}
     }
 
 	this.draw = function()
 	{
-		if(roomCoordToIndex() != this.inRoomIndex) {
-			return;
-		}
-		if(animationFrameDelay == 0) {
-			this.animFrame++;
-		}
-		var frameCap = Math.floor(enemyArtStrips[this.myMonsterKindID].width / FRAME_DIM);
-		this.animFrame %= frameCap;
+	    if (roomCoordToIndex() != this.inRoomIndex)
+	    {
+	        return;
+	    }
+	    if (animationFrameDelay == 0)
+	    {
+	        this.animFrame++;
+	    }
+	    var frameCap = Math.floor(enemyArtStrips[this.myMonsterKindID].width / FRAME_DIM);
+	    this.animFrame %= frameCap;
 	    canvasContext.drawImage(enemyArtStrips[this.myMonsterKindID],
-	    	this.animFrame*FRAME_DIM,0,
-	    	FRAME_DIM,FRAME_DIM,
-	    	this.x-FRAME_DIM/2,
-	    	this.y-FRAME_DIM+1,
-	    	FRAME_DIM, FRAME_DIM);
+            this.animFrame * FRAME_DIM, 0,
+            FRAME_DIM, FRAME_DIM,
+            this.x - FRAME_DIM / 2,
+            this.y - FRAME_DIM + 1,
+            FRAME_DIM, FRAME_DIM);  
 	}
 
-	this.enemyRomanMove = function ()
+	this.enemyRoman = function ()
 	{
 	    var centerOfRoomCoordRoman = (WORLD_W * WORLD_COLS / 2 - WORLD_W / 2);
 	    var centerOfRoomCoordEnemyRoman = (WORLD_W * WORLD_COLS / 2 + WORLD_W / 2)
-	    if (roman.isMoving && this.isFrozen == false)
+	    if (stairsPuzzleSolved)
 	    {
-	        this.y = roman.y;
-	        if (roman.keyHeld_East)
+	        worldGrid[156] = TILE_GROUND;
+	    }
+	    else
+	    {
+	        if (roman.isMoving && this.isFrozen == false)
 	        {
-	            this.x -= PLAYER_MOVE_SPEED;
-	            if (this.x < centerOfRoomCoordEnemyRoman)
+	            this.y = roman.y;
+	            if (roman.keyHeld_East)
 	            {
-	                this.x = centerOfRoomCoordEnemyRoman;
+	                this.x -= PLAYER_MOVE_SPEED;
+	                if (this.x < centerOfRoomCoordEnemyRoman)
+	                {
+	                    this.x = centerOfRoomCoordEnemyRoman;
+	                }
+	            }
+	            else if (roman.keyHeld_West)
+	            {
+	                this.x += PLAYER_MOVE_SPEED;
 	            }
 	        }
-	        else if (roman.keyHeld_West)
+
+	        if (roman.x > centerOfRoomCoordRoman && worldGrid[24] != TILES_PUSHABLE)
 	        {
-	            this.x += PLAYER_MOVE_SPEED;
+	            roman.x = centerOfRoomCoordRoman;
+	            postMessage(dialogueEnemyRomanWithoutMirror);
 	        }
-	    }
-
-	    if (roman.x > centerOfRoomCoordRoman && roman.hasMirror == false)
-	    {
-	        roman.x = centerOfRoomCoordRoman;
-	        postMessage(dialogueEnemyRomanWithoutMirror);
-	    }
-	    else if (roman.x > centerOfRoomCoordRoman && roman.hasMirror)
-	    {
-	        this.isFrozen = true;
-	    }
-
+	        else if (roman.x > centerOfRoomCoordRoman && worldGrid[24] == TILES_PUSHABLE)
+	        {
+	            this.isFrozen = true;
+	            stairsPuzzleSolved = true;
+	            postMessage(dialogueEnemyRomanWithMirror);
+	        }
+	    }	    
 	}
 }
 

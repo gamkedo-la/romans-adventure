@@ -16,7 +16,6 @@ function heroClass()
 	this.movingY = 0;
 	this.isSliding = false;
 	this.isMoving = false;
-	this.hasMirror = true;
 
 	this.keyHeld_North = false;
 	this.keyHeld_South = false;
