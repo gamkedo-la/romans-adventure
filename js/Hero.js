@@ -160,9 +160,10 @@ function heroClass()
 		this.isSliding = false; // assume traction unless ice proves otherwise
 
 	    // Check the tile you just collided with
-		if (walkIntoTileType == TILES_PUSHABLE)
+		if (walkIntoTileType >= TILES_PUSHABLE_FIRST && walkIntoTileType <= TILES_PUSHABLE_LAST)
 		{
 		    var bumpToTileIndex = walkIntoTileIndex;
+		    var tileTypeBeingBumped = walkIntoTileType;
 		    if (this.movingX > 0) // Moving right
 		    {
 		        bumpToTileIndex++;
@@ -190,7 +191,7 @@ function heroClass()
                     && bumpIntoCol < WORLD_COLS - 1)
 		    {
 		        worldGrid[walkIntoTileIndex] = TILE_GROUND;
-		        worldGrid[bumpToTileIndex] = TILES_PUSHABLE;
+		        worldGrid[bumpToTileIndex] = tileTypeBeingBumped;
 		    }
 		}
 
