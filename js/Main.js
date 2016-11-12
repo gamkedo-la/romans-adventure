@@ -100,6 +100,7 @@ function updateAll()
 {
 	moveAll();
 	drawAll();
+	checkRoomLogic();
 }
 
 function moveAll()
