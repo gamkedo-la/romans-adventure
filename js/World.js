@@ -376,6 +376,8 @@ function roomCoordToIndex()
 const TILE_GROUND = 0;
 const TILE_WALL = 1;
 const TILE_BLANK = 2;
+const TILE_TRANSPARENT_SOLID_FIRST = 11;
+const TILE_TRANSPARENT_SOLID_LAST = 16;
 
 // Player And Pickup Tiles
 const TILE_PLAYERSTART = 100;
@@ -542,6 +544,11 @@ function tileTypeIsDoor(checkTileType) {
 	return (checkTileType >= TILE_DOOR_FIRST &&
 		    checkTileType <= TILE_DOOR_LAST)
 }
+function tileTypeIsTransparent(checkTileType)
+{
+    return (checkTileType >= TILE_TRANSPARENT_SOLID_FIRST &&
+		    checkTileType <= TILE_TRANSPARENT_SOLID_LAST)
+}
 function tileTypeIsEnemy(checkTileType)
 {
     return (checkTileType >= TILE_START_ENEMY_FIRST_ENUM &&
@@ -566,7 +573,8 @@ function tileTypeToIndexForStudy(checkTileType) {
 function tileTypeHasTransparency(checkTileType)
 {
 	return tileTypeIsKey(checkTileType) ||
-			tileTypeIsDoor(checkTileType);
+			tileTypeIsDoor(checkTileType) ||
+	        tileTypeIsTransparent(checkTileType);
 }
 
 function removePlayerStarts()
