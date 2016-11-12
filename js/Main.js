@@ -85,7 +85,11 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 		enemyList.push(tempEnemy);
 		tempEnemy = new EnemyClass();
 	}
-	if (isFlashLightNeededButMissing())
+	if (whichLevelIdx == ROOM_ID_DEN)
+	{
+	    postMessage("Hint: Top left piece of the table is already in the correct spot.");
+	}
+	else if (isFlashLightNeededButMissing())
 	{
 	    postMessage("It's too dark...");
 	}

@@ -8,7 +8,7 @@ const BUILDING_ROOMS_COLS = 3; // Number of columns of rooms in the house
 const BUILDING_ROOMS_ROWS = 4; // Number of rows of rooms in the house
 const BUILDING_FLOORS = 2; // Number of floors in the house
 const TILES_SOLID_FIRST = 10;
-const TILES_PUSHABLE_FIRST = 11;
+const TILES_PUSHABLE_FIRST = 12;
 const TILES_PUSHABLE_LAST = 19;
 
 const EDGE_OF_SCREEN_X = ((WORLD_W * WORLD_COLS) - (WORLD_W / 2)); // Distance Roman can walk to the right edge before loading next room
@@ -55,9 +55,9 @@ var levelDen =
 	[ // Fireplace, Armchairs, Rug
 		 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
          10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 11, 0, 12, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0, 10,
+		 10, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0, 10,
 		 10, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 16, 17, 0, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0, 0, 0, 11, 0, 16, 17, 0, 0, 0, 0, 0, 0, 10,
 		 205, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
