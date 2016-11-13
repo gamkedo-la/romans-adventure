@@ -136,12 +136,12 @@ function EnemyClass()
 	            }
 	        }
 
-	        if (roman.x > centerOfRoomCoordRoman && worldGrid[24] != TILES_PUSHABLE)
+	        if (roman.x > centerOfRoomCoordRoman && worldGrid[24] < TILES_PUSHABLE_FIRST)
 	        {
 	            roman.x = centerOfRoomCoordRoman;
 	            postMessage(dialogueEnemyRomanWithoutMirror);
 	        }
-	        else if (roman.x > centerOfRoomCoordRoman && worldGrid[24] == TILES_PUSHABLE)
+	        else if (roman.x > centerOfRoomCoordRoman && worldGrid[24] >= TILES_PUSHABLE_FIRST)
 	        {
 	            this.isFrozen = true;
 	            stairsPuzzleSolved = true;
