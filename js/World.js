@@ -8,6 +8,7 @@ const BUILDING_ROOMS_COLS = 3; // Number of columns of rooms in the house
 const BUILDING_ROOMS_ROWS = 4; // Number of rows of rooms in the house
 const BUILDING_FLOORS = 2; // Number of floors in the house
 const TILES_SOLID_FIRST = 10;
+const TILES_PUSHABLE_FIRST = 21;
 const TILES_PUSHABLE_LAST = 29;
 
 const EDGE_OF_SCREEN_X = ((WORLD_W * WORLD_COLS) - (WORLD_W / 2)); // Distance Roman can walk to the right edge before loading next room
