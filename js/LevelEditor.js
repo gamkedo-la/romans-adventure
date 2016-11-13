@@ -15,6 +15,7 @@ var levelRow = 0;
 
 const UI_ROWS = 2;
 var artStripGroupLimit = 10; // Max tiles in the roomStrips that are grouped (walkable, not walkable)
+var roomTileGroup = 0;
 
 
 
@@ -37,8 +38,17 @@ function editorKeyHandle(keyEvt)
 	switch(keyEvt.keyCode)
 	{
 	    case KEY_1:
-	        displayCurrentRoomTiles();
-		    break;
+	        if (roomTileGroup == 0)
+	        {
+	            roomTileGroup = 20;
+	            displayCurrentRoomTiles();
+	        }
+	        else
+	        {
+	            roomTileGroup = 0;
+	            displayCurrentRoomTiles();
+	        }
+	        break;
 	    case KEY_2:
 	        outputWorldGrid();
 	        break;
@@ -145,7 +155,7 @@ function displayCurrentRoomTiles()
     {
         for (var eachCol = 0; eachCol < artStripGroupLimit; eachCol++)
         {
-            canvasContext.drawImage(roomStrips, WORLD_W * roomArtSet, drawTileY, // 0 = Room specific ground under items
+            canvasContext.drawImage(roomStrips, WORLD_W * roomArtSet, drawTileY + roomTileGroup * WORLD_H, // 0 = Room specific ground under items
                                     WORLD_W, WORLD_H,
                                     drawTileX, startY,
                                     WORLD_W, WORLD_H);
