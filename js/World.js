@@ -526,7 +526,8 @@ function getTileIndexAtPixelCoord(atX, atY)
 	if(heroWorldCol >= 0 && heroWorldCol < WORLD_COLS &&
 		heroWorldRow >= 0 && heroWorldRow < WORLD_ROWS)
 	{
-		return worldIndexUnderhero;
+	    romanCurrentIndex = worldIndexUnderhero;
+	    return worldIndexUnderhero;
 	} // end of valid col and row
 	return undefined;
 } // end of getTileIndexAtPixelCoord func

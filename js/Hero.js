@@ -1,6 +1,7 @@
 const PLAYER_MOVE_SPEED = 2.0;
 
 var keyStripLimit = 8; // Max number of keys displayed per line in the UI
+var romanCurrentIndex = -1; // Global variable to keep track of roman's current index. Calculated in getTileIndexAtPixelCoord() in World.js.
 
 function heroClass()
 {
