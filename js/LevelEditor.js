@@ -176,12 +176,12 @@ function editTileUnderMousePos()
     if (mouseOverTileIdx > 159 && mouseOverTileIdx < 170)
     {
         editorTileSelected = true;
-        copiedTile = levelCol;
+        copiedTile = levelCol + roomTileGroup;
     }
     else if (mouseOverTileIdx > 175 && mouseOverTileIdx < 186)
     {
         editorTileSelected = true;
-        copiedTile = levelCol + 10;
+        copiedTile = levelCol + 10 + roomTileGroup;
     }
     else if (editorTileSelected)
     {

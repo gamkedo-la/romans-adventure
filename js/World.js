@@ -474,7 +474,7 @@ const TILE_STUDY_FIRST = TILE_RUG_CENTER;
 const TILE_STUDY_LAST = TILE_BOOKSHELF_J;
 
 const TILE_ANYROOM_FIRST = 0;
-const TILE_ANYROOM_LAST = 29;
+const TILE_ANYROOM_LAST = 39;
 
 // Merge Tiles
 //TODO these are only PLACEHOLDERS will likely become their own strip
