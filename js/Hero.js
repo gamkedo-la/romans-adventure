@@ -250,9 +250,21 @@ function heroClass()
 	    drawBitmapCenteredWithRotation(this.myHeroPic, this.x, this.y-this.myHeroPic.height/2+1, 0); // GraphicCommon.js
 	}
     
-	this.search = function(whichIndex)
+	this.search = function(whichRoom)
 	{
-	    console.log("Roman is searching at index " + whichIndex);
+	    whichItem = searchableTiles[whichRoom];
+	    if (worldGrid[romanCurrentIndex] == 9)
+	    {
+	        postMessage("Roman found " + idxToTextKey(whichItem) + ".");
+	        pickedUpItem(keyStrip, whichItem);
+	        Sounds.pick_up.play();
+	        worldGrid[romanCurrentIndex] = 8;
+	        roomLayout[roomCoordToIndex()][romanCurrentIndex] = 8;
+	    }
+	    else
+	    {
+	        postMessage("You didn't find anything.");
+	    }
 	}
 }
 

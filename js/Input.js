@@ -66,7 +66,7 @@ function keyPressed(evt)
 
     if (evt.keyCode == KEY_F)
     {
-        roman.search(romanCurrentIndex);
+        roman.search(roomCoordToIndex());
     }
 
     if (isEditorMode)

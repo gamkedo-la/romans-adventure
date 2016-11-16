@@ -1,6 +1,27 @@
 var denPuzzleSolved = false;
 var stairsPuzzleSolved = false;
 
+var searchableTiles =
+    [
+        //"levelGardenLeft", "levelGardenMiddle", "levelGardenRight",
+        //"levelBasementGardenExit", "levelStairs", "levelKitchen",
+        //"levelBasementFoyerEntrance", "levelFoyerStairs", "levelDiningRoom",
+        //"levelStudy", "levelFoyerEntrance", "levelDen",
+        //"Undefined Area", "Undefined Area", "Undefined Area",
+        //"levelAttic", "levelStairs (duplicate)", "levelBedroomFour",
+        //"levelHallwayLeft", "levelHallwayMiddle", "levelHallwayRight",
+        //"levelBedroomOne", "levelBedroomTwo", "levelBedroomThree", "levelKitchenBedroomFourMerged"
+        -1, -1, -1,
+        -1, -1, -1,
+        -1, -1, -1,
+        -1, ITEM_IDX_FLASHLIGHT, -1,
+        -1, -1, -1,
+        -1, -1, -1,
+        -1, -1, -1,
+        -1, -1, -1
+    ];
+
+
 function checkRoomLogic()
 {
     checkDen();
@@ -9,7 +30,10 @@ function checkRoomLogic()
 
 function checkFoyerEntrance()
 {
-
+    if (roman.search == true)
+    {
+        console.log("This is working.");
+    }
 }
 
 function checkDen()
@@ -24,7 +48,12 @@ function checkDen()
             denPuzzleSolved = true;
             spawnKey(TILE_KEY_GARDEN, 91);
             postMessage(dialogueDenPuzzleSolved);
+            roomLayout[roomCoordToIndex()] = worldGrid; // Save state of the room
         }
+    }
+    else if (roomCoordToIndex() == ROOM_ID_DEN && denPuzzleSolved == true && roman.doorKeyRing[KEYDOOR_IDX_GARDEN] == true)
+    {
+        worldGrid[91] = TILE_GROUND; // Delete key if roman already has it
     }
 }
 

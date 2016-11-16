@@ -343,6 +343,7 @@ var roomLayout =
 const ROOM_ID_STAIRS = 4; // Based on room layout array ^^
 const ROOM_ID_DININGROOM = 8;
 const ROOM_ID_DEN = 11;
+const ROOM_ID_FOYER_ENTRANCE = 10;
 const ROOM_ID_UPSTAIRS_GOING_DOWN = 19; // Based on room layout array ^^
 const ROOM_ID_DARKROOM_NEED_LIGHT = 9; // study for now (just a test)
 
