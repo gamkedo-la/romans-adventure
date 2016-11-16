@@ -5,6 +5,7 @@ const KEY_DOWN_ARROW = 40;
 const KEY_SPACE = 32;
 
 const KEY_L = 76;
+const KEY_F = 70;
 const KEY_1 = 49;
 const KEY_2 = 50;
 const KEY_3 = 51;
@@ -61,9 +62,12 @@ function keyPressed(evt)
             editorTileSelected = true;
             displayCurrentRoomTiles();
         }
+    }
 
-
-	}
+    if (evt.keyCode == KEY_F)
+    {
+        roman.search(romanCurrentIndex);
+    }
 
     if (isEditorMode)
     {

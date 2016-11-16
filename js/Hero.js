@@ -249,6 +249,11 @@ function heroClass()
 	{
 	    drawBitmapCenteredWithRotation(this.myHeroPic, this.x, this.y-this.myHeroPic.height/2+1, 0); // GraphicCommon.js
 	}
+    
+	this.search = function(whichIndex)
+	{
+	    console.log("Roman is searching at index " + whichIndex);
+	}
 }
 
 function pickedUpItem(artStrip, itemIdx)

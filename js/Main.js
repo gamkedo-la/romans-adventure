@@ -85,9 +85,13 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 		enemyList.push(tempEnemy);
 		tempEnemy = new EnemyClass();
 	}
-	if (whichLevelIdx == ROOM_ID_DEN)
+	if (whichLevelIdx == ROOM_ID_DEN && denPuzzleSolved == false)
 	{
-	    postMessage("Hint: Top left piece of the table is already in the correct spot.");
+	    postMessage(dialogueDenPuzzleNotSolved);
+	}
+	else if (whichLevelIdx == ROOM_ID_STAIRS && stairsPuzzleSolved == false)
+	{
+	    postMessage(dialogueStairsPuzzleNotSolved);
 	}
 	else if (isFlashLightNeededButMissing())
 	{
