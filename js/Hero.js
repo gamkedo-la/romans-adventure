@@ -256,6 +256,7 @@ function heroClass()
 	    if (worldGrid[romanCurrentIndex] == 9)
 	    {
 	        postMessage("Roman found " + idxToTextKey(whichItem) + ".");
+	        this.doorKeyRing[whichItem] = true;
 	        pickedUpItem(keyStrip, whichItem);
 	        Sounds.pick_up.play();
 	        worldGrid[romanCurrentIndex] = 8;
