@@ -356,7 +356,7 @@ const ROOM_ID_DEN = 11;
 const ROOM_ID_FOYER_ENTRANCE = 10;
 const ROOM_ID_UPSTAIRS_GOING_DOWN = 19; // Based on room layout array ^^
 const ROOM_ID_DARKROOM_NEED_LIGHT = 9; // study for now (just a test)
-const ROOM_ID_GARDENMIDDLE = 1;
+const ROOM_ID_GARDEN_MIDDLE = 1;
 
 
 var roomNames =

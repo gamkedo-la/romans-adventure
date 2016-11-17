@@ -27,13 +27,14 @@ function checkRoomLogic()
     checkDen();
     checkStairs();
     checkGardenMiddle();
+    checkFoyerEntrance();
 }
 
 function checkGardenMiddle()
 {
-    if (roomCoordToIndex() == ROOM_ID_GARDENMIDDLE)
+    if (roomCoordToIndex() == ROOM_ID_GARDEN_MIDDLE)
     {
-        toggleTileUnderRoman(29, 1, 2, 24, 11, 0);
+        triggerTileUnderRoman(29, 1, 2, 24, 11, 0);
     }
 }
 
@@ -68,14 +69,24 @@ function checkStairs()
     }
 }
 
-romanIsOnToggleTile = false;
-
-function toggleTileUnderRoman(indexOfTriggerTile, tileTypeOff, tileTypeOn,
-                                indexOfChangingTile, changingTileTypeOff, changingTileTypeOn)
+function checkFoyerEntrance()
 {
-    if (romanCurrentIndex == indexOfTriggerTile && romanIsOnToggleTile == false)
+    if (roomCoordToIndex() == ROOM_ID_FOYER_ENTRANCE)
     {
-        romanIsOnToggleTile = true;
+        triggerTileUnderRoman(86, 0, 1, 87, 0, 19, spawnKey, TILE_KEY_GARDEN, 88);
+    }
+}
+
+
+romanIsOnTriggerTile = false;
+
+function triggerTileUnderRoman(indexOfTriggerTile, tileTypeOff, tileTypeOn,
+                                indexOfChangingTile, changingTileTypeOff, changingTileTypeOn,
+                                functionToExecute, functionParam1, functionParam2, functionParam3)
+{
+    if (romanCurrentIndex == indexOfTriggerTile && romanIsOnTriggerTile == false)
+    {
+        romanIsOnTriggerTile = true;
         if (worldGrid[romanCurrentIndex] == tileTypeOff)
         {
             worldGrid[romanCurrentIndex] = tileTypeOn;
@@ -88,10 +99,14 @@ function toggleTileUnderRoman(indexOfTriggerTile, tileTypeOff, tileTypeOn,
             worldGrid[indexOfChangingTile] = changingTileTypeOff;
             roomLayout[roomCoordToIndex()][indexOfChangingTile] = changingTileTypeOff;
         }
+        if (arguments.length > 6)
+        {
+            functionToExecute(functionParam1, functionParam2, functionParam3);
+        } 
     }
-    if (romanCurrentIndex != indexOfTriggerTile && romanIsOnToggleTile == true)
+    if (romanCurrentIndex != indexOfTriggerTile && romanIsOnTriggerTile == true)
     {
-        romanIsOnToggleTile = false
+        romanIsOnTriggerTile = false
     }
 }
 
