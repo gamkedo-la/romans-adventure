@@ -26,13 +26,14 @@ function checkRoomLogic()
 {
     checkDen();
     checkStairs();
+    checkGardenMiddle();
 }
 
-function checkFoyerEntrance()
+function checkGardenMiddle()
 {
-    if (roman.search == true)
+    if (roomCoordToIndex() == ROOM_ID_GARDENMIDDLE)
     {
-        console.log("This is working.");
+        toggleTileUnderRoman(29, 1, 2, 24, 11, 0);
     }
 }
 
@@ -64,6 +65,33 @@ function checkStairs()
         roomLayout[roomCoordToIndex()][18] = 0; // Delete original mirror
         roomLayout[roomCoordToIndex()][24] = 19; // Move fixed mirror to midde
         roomLayout[roomCoordToIndex()][140] = 0; // Delete ghost roman
+    }
+}
+
+romanIsOnToggleTile = false;
+
+function toggleTileUnderRoman(indexOfTriggerTile, tileTypeOff, tileTypeOn,
+                                indexOfChangingTile, changingTileTypeOff, changingTileTypeOn)
+{
+    if (romanCurrentIndex == indexOfTriggerTile && romanIsOnToggleTile == false)
+    {
+        romanIsOnToggleTile = true;
+        if (worldGrid[romanCurrentIndex] == tileTypeOff)
+        {
+            worldGrid[romanCurrentIndex] = tileTypeOn;
+            worldGrid[indexOfChangingTile] = changingTileTypeOn;
+            roomLayout[roomCoordToIndex()][indexOfChangingTile] = changingTileTypeOn;
+        }
+        else
+        {
+            worldGrid[romanCurrentIndex] = tileTypeOff;
+            worldGrid[indexOfChangingTile] = changingTileTypeOff;
+            roomLayout[roomCoordToIndex()][indexOfChangingTile] = changingTileTypeOff;
+        }
+    }
+    if (romanCurrentIndex != indexOfTriggerTile && romanIsOnToggleTile == true)
+    {
+        romanIsOnToggleTile = false
     }
 }
 

@@ -89,10 +89,6 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	{
 	    postMessage(dialogueDenPuzzleNotSolved);
 	}
-	else if (whichLevelIdx == ROOM_ID_STAIRS && stairsPuzzleSolved == false)
-	{
-	    postMessage(dialogueStairsPuzzleNotSolved);
-	}
 	else if (isFlashLightNeededButMissing())
 	{
 	    postMessage("It's too dark...");
