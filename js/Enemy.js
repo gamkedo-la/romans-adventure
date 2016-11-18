@@ -128,18 +128,7 @@ function EnemyClass()
 	        if (roman.isMoving && this.isFrozen == false)
 	        {
 	            this.y = roman.y;
-	            if (roman.keyHeld_East)
-	            {
-	                this.x -= PLAYER_MOVE_SPEED;
-	                if (this.x < centerOfRoomCoordEnemyRoman)
-	                {
-	                    this.x = centerOfRoomCoordEnemyRoman;
-	                }
-	            }
-	            else if (roman.keyHeld_West)
-	            {
-	                this.x += PLAYER_MOVE_SPEED;
-	            }
+	            this.x = WORLD_W * WORLD_COLS - roman.x;
 	        }
 
 	        if (roman.x > centerOfRoomCoordRoman && worldGrid[24] < TILES_PUSHABLE_FIRST)

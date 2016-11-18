@@ -34,7 +34,9 @@ function checkGardenMiddle()
 {
     if (roomCoordToIndex() == ROOM_ID_GARDEN_MIDDLE)
     {
-        triggerTile(1, true, changeTile, 24, 11, 0);
+        triggerTile(1, false, changeTile, 26, 11, 0);
+        triggerTile(2, false, changeTile, 48, 11, 0);
+        triggerTile(3, false, changeTile, 128, 11, 0);
     }
 }
 
@@ -73,13 +75,14 @@ function checkFoyerEntrance()
 {
     if (roomCoordToIndex() == ROOM_ID_FOYER_ENTRANCE)
     {
-        triggerTile(3, false, spawnKey, TILE_KEY_GARDEN, 88);
+        triggerTile(1, true, changeTile, 26, 11, 0);
     }
 }
 
 
 // Checks if Roman is standing on a specific kind of tile, if so, call a function
-romanIsOnTriggerTile = false;
+var romanIsOnTriggerTile = false;
+
 function triggerTile(tileType, isPermanent, funcToExecute, funcParam1, funcParam2, funcParam3)
 {
     if (worldGrid[roman.currentIndex] == tileType && romanIsOnTriggerTile == false)
@@ -92,7 +95,7 @@ function triggerTile(tileType, isPermanent, funcToExecute, funcParam1, funcParam
             roomLayout[roomCoordToIndex()][roman.currentIndex] = TILE_GROUND; // Delete from scene in memory
         }
     }
-    if (worldGrid[roman.currentIndex] != tileType)
+    if (worldGrid[roman.currentIndex] != tileType && romanIsOnTriggerTile == true)
     {
         romanIsOnTriggerTile = false;
     } 
