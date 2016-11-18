@@ -18,6 +18,7 @@ function EnemyClass()
 	this.movingY = 0;
 	this.animFrame = 0;
 	this.isFrozen = false;
+	this.currentIndex;
 
 	this.reset = function()
 	{
@@ -70,7 +71,8 @@ function EnemyClass()
 		    nextX = EDGE_OF_SCREEN_X;
 		}
 
-		var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX, nextY); //World.js
+		this.currentIndex = getTileIndexAtPixelCoord(this.x, this.y);
+		var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX, nextY); 
 		var walkIntoTileType = TILE_WALL;
 		if(walkIntoTileIndex != undefined)
 		{
@@ -85,7 +87,11 @@ function EnemyClass()
 
 		if (this.myMonsterKindID == ENEMY_ROMAN)
 		{
-		    this.enemyRoman();
+		    this.enemyRomanBehavior();
+		}
+		else if (this.myMonsterKindID == ENEMY_GHOST)
+		{
+		    this.enemyGhostBehavior();
 		}
     }
 
@@ -109,7 +115,7 @@ function EnemyClass()
             FRAME_DIM, FRAME_DIM);
 	}
 
-	this.enemyRoman = function ()
+	this.enemyRomanBehavior = function ()
 	{
 	    var centerOfRoomCoordRoman = (WORLD_W * WORLD_COLS / 2 - WORLD_W / 2);
 	    var centerOfRoomCoordEnemyRoman = (WORLD_W * WORLD_COLS / 2 + WORLD_W / 2)
@@ -148,6 +154,16 @@ function EnemyClass()
 	            worldGrid[24] = 19;
 	            postMessage(dialogueStairsPuzzleSolved);
 	        }
+	    }
+	}
+    
+    // @ashcat <------------
+	this.enemyGhostBehavior = function()
+	{
+	    // Check if ghost enemy and roman are at the same worldGrid index
+	    if (roman.currentIndex == this.currentIndex)
+	    {
+	        console.log("Ghost and Roman are in the same place!");
 	    }
 	}
 }

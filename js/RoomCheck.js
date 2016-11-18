@@ -82,17 +82,17 @@ function checkFoyerEntrance()
 romanIsOnTriggerTile = false;
 function triggerTile(tileType, isPermanent, funcToExecute, funcParam1, funcParam2, funcParam3)
 {
-    if (worldGrid[romanCurrentIndex] == tileType && romanIsOnTriggerTile == false)
+    if (worldGrid[roman.currentIndex] == tileType && romanIsOnTriggerTile == false)
     {
         romanIsOnTriggerTile = true;
         funcToExecute(funcParam1, funcParam2, funcParam3);
         if (isPermanent == false) // Should the trigger tile disappear?
         {
-            worldGrid[romanCurrentIndex] = TILE_GROUND; // Delete from scene being drawn
-            roomLayout[roomCoordToIndex()][romanCurrentIndex] = TILE_GROUND; // Delete from scene in memory
+            worldGrid[roman.currentIndex] = TILE_GROUND; // Delete from scene being drawn
+            roomLayout[roomCoordToIndex()][roman.currentIndex] = TILE_GROUND; // Delete from scene in memory
         }
     }
-    if (worldGrid[romanCurrentIndex] != tileType)
+    if (worldGrid[roman.currentIndex] != tileType)
     {
         romanIsOnTriggerTile = false;
     } 

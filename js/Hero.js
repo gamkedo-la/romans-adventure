@@ -1,7 +1,6 @@
 const PLAYER_MOVE_SPEED = 2.0;
 
 var keyStripLimit = 8; // Max number of keys displayed per line in the UI
-var romanCurrentIndex = -1; // Global variable to keep track of roman's current index. Calculated in getTileIndexAtPixelCoord() in World.js.
 
 function heroClass()
 {
@@ -27,6 +26,8 @@ function heroClass()
 	this.controlKeyRight;
 	this.controlKeyDown;
 	this.controlKeyLeft;
+	this.currentIndex;
+
 
 	this.setupInput = function(upKey, rightKey, downKey, leftKey)
 	{
@@ -143,7 +144,7 @@ function heroClass()
 		    nextX = WORLD_W;
 		}
 
-
+		this.currentIndex = getTileIndexAtPixelCoord(this.x, this.y)
 		var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX, nextY); //World.js
 		var walkIntoTileType = TILE_WALL;
 		if(walkIntoTileIndex != undefined)
@@ -261,14 +262,14 @@ function heroClass()
 	this.search = function(whichRoom)
 	{
 	    whichItem = searchableTiles[whichRoom];
-	    if (worldGrid[romanCurrentIndex] == 9)
+	    if (worldGrid[roman.currentIndex] == 9)
 	    {
 	        postMessage("Roman found " + idxToTextKey(whichItem) + ".");
 	        this.doorKeyRing[whichItem] = true;
 	        pickedUpItem(keyStrip, whichItem);
 	        Sounds.pick_up.play();
-	        worldGrid[romanCurrentIndex] = 8;
-	        roomLayout[roomCoordToIndex()][romanCurrentIndex] = 8;
+	        worldGrid[roman.currentIndex] = 8;
+	        roomLayout[roomCoordToIndex()][roman.currentIndex] = 8;
 	    }
 	    else
 	    {

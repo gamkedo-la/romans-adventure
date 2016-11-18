@@ -113,7 +113,7 @@ var levelKitchen =
 		 10, 0, 0, 0, 11, 11, 11, 11, 11, 11, 11, 11, 0, 0, 0, 10,
 		 10, 0, 0, 0, 11, 11, 11, 11, 11, 11, 11, 11, 0, 11, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0, 0, 0, 0, 0, 0, 0, 401, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
@@ -538,7 +538,6 @@ function getTileIndexAtPixelCoord(atX, atY)
 	if(heroWorldCol >= 0 && heroWorldCol < WORLD_COLS &&
 		heroWorldRow >= 0 && heroWorldRow < WORLD_ROWS)
 	{
-	    romanCurrentIndex = worldIndexUnderhero;
 	    return worldIndexUnderhero;
 	} // end of valid col and row
 	return undefined;
