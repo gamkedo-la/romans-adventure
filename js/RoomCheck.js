@@ -34,7 +34,7 @@ function checkGardenMiddle()
 {
     if (roomCoordToIndex() == ROOM_ID_GARDEN_MIDDLE)
     {
-        triggerTileUnderRoman(29, 1, 2, 24, 11, 0);
+        triggerTile(1, false, changeTile, 24, 11, 0);
     }
 }
 
@@ -73,42 +73,43 @@ function checkFoyerEntrance()
 {
     if (roomCoordToIndex() == ROOM_ID_FOYER_ENTRANCE)
     {
-        triggerTileUnderRoman(86, 0, 1, 87, 0, 19, spawnKey, TILE_KEY_GARDEN, 88);
+        triggerTile(3, false, spawnKey, TILE_KEY_GARDEN, 88);
     }
 }
 
 
 romanIsOnTriggerTile = false;
 
-function triggerTileUnderRoman(indexOfTriggerTile, tileTypeOff, tileTypeOn,
-                                indexOfChangingTile, changingTileTypeOff, changingTileTypeOn,
-                                functionToExecute, functionParam1, functionParam2, functionParam3)
+function triggerTile(tileType, isPermanent, funcToExecute, funcParam1, funcParam2, funcParam3)
 {
-    if (romanCurrentIndex == indexOfTriggerTile && romanIsOnTriggerTile == false)
+    if (worldGrid[romanCurrentIndex] == tileType)
     {
+        funcToExecute(funcParam1, funcParam2, funcParam3);
+    }
+    if (isPermanent == false) // Should the trigger tile disappear?
+    {
+        worldGrid[romanCurrentIndex] == TILE_GROUND; // Delete from scene being drawn
+        roomLayout[roomCoordToIndex()][romanCurrentIndex] = TILE_GROUND; // Delete from scene in memory
+    }
+}
+
+var romanIsOnTriggerTile = false;
+var triggerTileType = -1;
+
+function changeTile(indexOfChangingTile, changingTileTypeOff, changingTileTypeOn)
+{
+    if (romanIsOnTriggerTile == false)
+    {
+        triggerTileType = worldGrid[romanCurrentIndex];
         romanIsOnTriggerTile = true;
-        if (worldGrid[romanCurrentIndex] == tileTypeOff)
+        if (worldGrid[indexOfChangingTile] == changingTileTypeOff)
         {
-            worldGrid[romanCurrentIndex] = tileTypeOn;
             worldGrid[indexOfChangingTile] = changingTileTypeOn;
             roomLayout[roomCoordToIndex()][indexOfChangingTile] = changingTileTypeOn;
         }
-        else
-        {
-            worldGrid[romanCurrentIndex] = tileTypeOff;
-            worldGrid[indexOfChangingTile] = changingTileTypeOff;
-            roomLayout[roomCoordToIndex()][indexOfChangingTile] = changingTileTypeOff;
-        }
-        if (arguments.length > 6)
-        {
-            functionToExecute(functionParam1, functionParam2, functionParam3);
-        } 
-    }
-    if (romanCurrentIndex != indexOfTriggerTile && romanIsOnTriggerTile == true)
-    {
-        romanIsOnTriggerTile = false
     }
 }
+
 
 function spawnKey(whichKey, whichTileIndex)
 {
