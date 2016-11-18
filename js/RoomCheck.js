@@ -88,7 +88,7 @@ function triggerTile(tileType, isPermanent, funcToExecute, funcParam1, funcParam
     }
     if (isPermanent == false) // Should the trigger tile disappear?
     {
-        worldGrid[romanCurrentIndex] == TILE_GROUND; // Delete from scene being drawn
+        worldGrid[romanCurrentIndex] = TILE_GROUND; // Delete from scene being drawn
         roomLayout[roomCoordToIndex()][romanCurrentIndex] = TILE_GROUND; // Delete from scene in memory
     }
 }
