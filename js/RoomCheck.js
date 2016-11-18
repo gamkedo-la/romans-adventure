@@ -34,7 +34,7 @@ function checkGardenMiddle()
 {
     if (roomCoordToIndex() == ROOM_ID_GARDEN_MIDDLE)
     {
-        triggerTile(1, false, changeTile, 24, 11, 0);
+        triggerTile(1, true, changeTile, 24, 11, 0);
     }
 }
 
@@ -78,35 +78,38 @@ function checkFoyerEntrance()
 }
 
 
+// Checks if Roman is standing on a specific kind of tile, if so, call a function
 romanIsOnTriggerTile = false;
-
 function triggerTile(tileType, isPermanent, funcToExecute, funcParam1, funcParam2, funcParam3)
 {
-    if (worldGrid[romanCurrentIndex] == tileType)
+    if (worldGrid[romanCurrentIndex] == tileType && romanIsOnTriggerTile == false)
     {
+        romanIsOnTriggerTile = true;
         funcToExecute(funcParam1, funcParam2, funcParam3);
+        if (isPermanent == false) // Should the trigger tile disappear?
+        {
+            worldGrid[romanCurrentIndex] = TILE_GROUND; // Delete from scene being drawn
+            roomLayout[roomCoordToIndex()][romanCurrentIndex] = TILE_GROUND; // Delete from scene in memory
+        }
     }
-    if (isPermanent == false) // Should the trigger tile disappear?
+    if (worldGrid[romanCurrentIndex] != tileType)
     {
-        worldGrid[romanCurrentIndex] = TILE_GROUND; // Delete from scene being drawn
-        roomLayout[roomCoordToIndex()][romanCurrentIndex] = TILE_GROUND; // Delete from scene in memory
-    }
+        romanIsOnTriggerTile = false;
+    } 
 }
 
-var romanIsOnTriggerTile = false;
-var triggerTileType = -1;
-
+// Toggles tile between two different types
 function changeTile(indexOfChangingTile, changingTileTypeOff, changingTileTypeOn)
 {
-    if (romanIsOnTriggerTile == false)
+    if (worldGrid[indexOfChangingTile] == changingTileTypeOff)
     {
-        triggerTileType = worldGrid[romanCurrentIndex];
-        romanIsOnTriggerTile = true;
-        if (worldGrid[indexOfChangingTile] == changingTileTypeOff)
-        {
-            worldGrid[indexOfChangingTile] = changingTileTypeOn;
-            roomLayout[roomCoordToIndex()][indexOfChangingTile] = changingTileTypeOn;
-        }
+        worldGrid[indexOfChangingTile] = changingTileTypeOn;
+        roomLayout[roomCoordToIndex()][indexOfChangingTile] = changingTileTypeOn;
+    }
+    else
+    {
+        worldGrid[indexOfChangingTile] = changingTileTypeOff;
+        roomLayout[roomCoordToIndex()][indexOfChangingTile] = changingTileTypeOff;
     }
 }
 
