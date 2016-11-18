@@ -66,6 +66,14 @@ function heroClass()
 		var nextX = this.x;
 		var nextY = this.y;
 
+		for(var i=0;i<enemyList.length;i++) {
+			enemyList[i].move();
+			//TODO need to implement colliders
+			if(nextX == enemyList[i].x && nextY == enemyList[i].y){
+				console.log('oh no its a ghost.');
+			}
+		}
+
 		if(this.isSliding == false) {
 			this.movingX = 0;
 			this.movingY = 0;
@@ -156,7 +164,7 @@ function heroClass()
 		        unmergeRooms();
 		    }
 		}
-		
+
 
 		this.isSliding = false; // assume traction unless ice proves otherwise
 
@@ -227,7 +235,7 @@ function heroClass()
 				} else {
 					postMessage("Need something to open "+
 											idxToTextDoor(whichDoor)+".");
-				} 
+				}
 			}
 
 
@@ -249,7 +257,7 @@ function heroClass()
 	{
 	    drawBitmapCenteredWithRotation(this.myHeroPic, this.x, this.y-this.myHeroPic.height/2+1, 0); // GraphicCommon.js
 	}
-    
+
 	this.search = function(whichRoom)
 	{
 	    whichItem = searchableTiles[whichRoom];
@@ -293,4 +301,3 @@ function drawTextBoundingBox()
     //drawStrokeRect(canvasContext, textBoxTopLeftX, textBoxTopLeftY, textBoxWidth, textBoxHeight, 'white');
     colorRect(textBoxTopLeftX, textBoxTopLeftY, textBoxWidth, textBoxHeight, 'white');
 }
-

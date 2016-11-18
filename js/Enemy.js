@@ -36,11 +36,11 @@ function EnemyClass()
 					this.y = eachRow * WORLD_H + WORLD_H/2;
 					this.inRoomIndex = roomCoordToIndex();
 					return true; // found a monster to spawn
-				} // end of player start if
+				} // end of enemy start if
 			} // end of col for
 		} // end of row for
 		return false; // scanned whole room and no monster spawn tiles left here to account for
-	} // end of heroReset func
+	} // end of enemy reset func
 
 	this.move = function()
 	{
@@ -106,7 +106,7 @@ function EnemyClass()
             FRAME_DIM, FRAME_DIM,
             this.x - FRAME_DIM / 2,
             this.y - FRAME_DIM + 1,
-            FRAME_DIM, FRAME_DIM);  
+            FRAME_DIM, FRAME_DIM);
 	}
 
 	this.enemyRoman = function ()
@@ -148,7 +148,6 @@ function EnemyClass()
 	            worldGrid[24] = 19;
 	            postMessage(dialogueStairsPuzzleSolved);
 	        }
-	    }	    
+	    }
 	}
 }
-
