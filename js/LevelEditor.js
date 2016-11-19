@@ -100,7 +100,7 @@ function levelGridCoordinate()
     // Display grid coordinate in UI
     displayUIText("Grid coordinate: " + levelCol + "," + levelRow + "  |  Index: " + mouseOverTileIdx, 580, 590);
     displayUIText("Tile type: " + worldGrid[mouseOverTileIdx], 580, 610);
-    displayUIText("Room: " + roomNames[currentRoomIndex], 580, 630);
+    displayUIText("Room: " + roomNames[roomCoordToIndex()], 580, 630);
 
     // Draw outline around highlighted tile, snap to grid
     drawStrokeRect(scaledContext, gridX, gridY, tileWidthScaled, tileHeightScaled, 'red');

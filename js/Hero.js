@@ -211,7 +211,7 @@ function heroClass()
 			this.doorKeyRing[whichKey] = true;
 			worldGrid[walkIntoTileIndex] = TILE_GROUND;
 			pickedUpItem(keyStrip, whichKey);
-			roomLayout[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
+			roomLayout[roomCoordToIndex()][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
 			postMessage("Picked up " + idxToTextKey(whichKey) + ".");
 			Sounds.pick_up.play();
 
@@ -232,7 +232,7 @@ function heroClass()
 					postMessage("Used " + idxToTextKey(whichDoor) + " to open "+
 											idxToTextDoor(whichDoor)+".");
 					worldGrid[walkIntoTileIndex] = TILE_GROUND;
-					roomLayout[currentRoomIndex][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
+					roomLayout[roomCoordToIndex()][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
 				} else {
 					postMessage("Need something to open "+
 											idxToTextDoor(whichDoor)+".");
