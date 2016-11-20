@@ -54,22 +54,23 @@ function EnemyClass()
 		nextX += this.movingX;
 		nextY += this.movingY;
 
-		if (nextY < WORLD_H)
-		{
-			nextY = WORLD_H;
-		}
-		if (nextY > EDGE_OF_SCREEN_Y)
-		{
-		    nextY = EDGE_OF_SCREEN_Y;
-		}
-		if (nextX < WORLD_W)
-		{
-		    nextX = WORLD_W;
-		}
-		if (nextX > EDGE_OF_SCREEN_X)
-		{
-		    nextX = EDGE_OF_SCREEN_X;
-		}
+        // Some enemies may want to go off the screen
+		//if (nextY < WORLD_H)
+		//{
+		//	nextY = WORLD_H;
+		//}
+		//if (nextY > EDGE_OF_SCREEN_Y)
+		//{
+		//    nextY = EDGE_OF_SCREEN_Y;
+		//}
+		//if (nextX < WORLD_W)
+		//{
+		//    nextX = WORLD_W;
+		//}
+		//if (nextX > EDGE_OF_SCREEN_X)
+		//{
+		//    nextX = EDGE_OF_SCREEN_X;
+		//}
 
 		this.currentIndex = getTileIndexAtPixelCoord(this.x, this.y);
 		var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX, nextY); 
@@ -147,12 +148,27 @@ function EnemyClass()
 	}
     
     // @ashcat <------------
-	this.enemyGhostBehavior = function()
+	var ghostSpeed = 1.5;
+	this.enemyGhostBehavior = function(whichRoom)
 	{
+
+	    whichRoom = roomCoordToIndex();
+
+        // Check behavior for kitchen
+	    if (whichRoom == ROOM_ID_KITCHEN)
+	    {
+	        this.x += ghostSpeed;
+
+	        if (this.x > canvas.width - WORLD_W || this.x < 0 + WORLD_W)	        {
+	            ghostSpeed *= -1;
+	        }
+
+	    }
 	    // Check if ghost enemy and roman are at the same worldGrid index
 	    if (roman.currentIndex == this.currentIndex)
 	    {
-	        console.log("Ghost and Roman are in the same place!");
+	        roman.x = 105;
+	        roman.y = 125;
 	    }
 	}
 }
