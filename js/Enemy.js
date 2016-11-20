@@ -73,7 +73,7 @@ function EnemyClass()
 		//}
 
 		this.currentIndex = getTileIndexAtPixelCoord(this.x, this.y);
-		var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX, nextY); 
+		var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX, nextY);
 		var walkIntoTileType = TILE_WALL;
 		if(walkIntoTileIndex != undefined)
 		{
@@ -146,7 +146,7 @@ function EnemyClass()
 	        }
 	    }
 	}
-    
+
     // @ashcat <------------
 	var ghostSpeed = 1.5;
 	this.enemyGhostBehavior = function(whichRoom)
@@ -154,8 +154,8 @@ function EnemyClass()
 
 	    whichRoom = roomCoordToIndex();
 
-        // Check behavior for kitchen
-	    if (whichRoom == ROOM_ID_KITCHEN)
+        // Check behavior for basement garden exit
+	    if (whichRoom == ROOM_ID_BASEMENT_GARDEN_EXIT)
 	    {
 	        this.x += ghostSpeed;
 
@@ -168,7 +168,7 @@ function EnemyClass()
 	    if (roman.currentIndex == this.currentIndex)
 	    {
 	        roman.x = 105;
-	        roman.y = 125;
+	        roman.y = 20;
 	    }
 	}
 }
