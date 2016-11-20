@@ -34,9 +34,9 @@ function checkGardenMiddle()
 {
     if (roomCoordToIndex() == ROOM_ID_GARDEN_MIDDLE)
     {
-        triggerTile(1, false, changeTile, 26, 11, 0);
-        triggerTile(2, false, changeTile, 48, 11, 0);
-        triggerTile(3, false, changeTile, 128, 11, 0);
+        triggerTile(1, false, changeTile, 26, 10, 0);
+        triggerTile(2, false, changeTile, 48, 10, 0);
+        triggerTile(3, false, changeTile, 128, 10, 0);
     }
 }
 
