@@ -188,10 +188,6 @@ function editTileUnderMousePos()
         worldGrid[mouseOverTileIdx] = copiedTile;
         roomLayout[roomCoordToIndex()][mouseOverTileIdx] = copiedTile;
     }
-    else
-    {
-        return;
-    }
 }
 
 // Outputs the current level's array to a text field under the UI

@@ -41,7 +41,7 @@ function EnemyClass()
 			} // end of col for
 		} // end of row for
 		return false; // scanned whole room and no monster spawn tiles left here to account for
-	} // end of enemy reset func
+	}; // end of enemy reset func
 
 	this.move = function()
 	{
@@ -94,7 +94,7 @@ function EnemyClass()
 		{
 		    this.enemyGhostBehavior();
 		}
-    }
+    };
 
 	this.draw = function()
 	{
@@ -114,7 +114,7 @@ function EnemyClass()
             this.x - FRAME_DIM / 2,
             this.y - FRAME_DIM + 1,
             FRAME_DIM, FRAME_DIM);
-	}
+	};
 
 	this.enemyRomanBehavior = function ()
 	{
@@ -145,7 +145,7 @@ function EnemyClass()
 	            postMessage(dialogueStairsPuzzleSolved);
 	        }
 	    }
-	}
+	};
 
     // @ashcat <------------
 	var ghostSpeed = 1.5;
@@ -159,7 +159,8 @@ function EnemyClass()
 	    {
 	        this.x += ghostSpeed;
 
-	        if (this.x > canvas.width - WORLD_W || this.x < 0 + WORLD_W)	        {
+	        if (this.x > canvas.width - WORLD_W || this.x < 0 + WORLD_W)
+	        {
 	            ghostSpeed *= -1;
 	        }
 
@@ -170,5 +171,5 @@ function EnemyClass()
 	        roman.x = 105;
 	        roman.y = 20;
 	    }
-	}
+	};
 }

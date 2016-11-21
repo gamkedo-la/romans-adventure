@@ -22,7 +22,6 @@ function clearMessage()
     framesLeftForMessage = 0;
 }
 
-
 window.onload = function()
 {
 	// Get references for gameCanvas

@@ -5,7 +5,6 @@ var keyStripLimit = 8; // Max number of keys displayed per line in the UI
 function heroClass()
 {
 
-
 	this.x;
 	this.y;
 	this.myHeroPic; // which picture to use
@@ -35,7 +34,7 @@ function heroClass()
 		this.controlKeyRight = rightKey;
 		this.controlKeyDown = downKey;
 		this.controlKeyLeft = leftKey;
-	}
+	};
 
 	this.reset = function(whichImage, heroName)
 	{
@@ -60,7 +59,7 @@ function heroClass()
 			} // end of col for
 		} // end of row for
 		console.log("NO PLAYER START FOUND!");
-	} // end of heroReset func
+	}; // end of heroReset func
 
 	this.move = function()
 	{
@@ -144,7 +143,7 @@ function heroClass()
 		    nextX = WORLD_W;
 		}
 
-		this.currentIndex = getTileIndexAtPixelCoord(this.x, this.y)
+		this.currentIndex = getTileIndexAtPixelCoord(this.x, this.y);
 		var walkIntoTileIndex = getTileIndexAtPixelCoord(nextX, nextY); //World.js
 		var walkIntoTileType = TILE_WALL;
 		if(walkIntoTileIndex != undefined)
@@ -252,12 +251,12 @@ function heroClass()
 		{
 		    this.isMoving = false;
 		}
-	}
+	};
 
 	this.draw = function()
 	{
 	    drawBitmapCenteredWithRotation(this.myHeroPic, this.x, this.y-this.myHeroPic.height/2+1, 0); // GraphicCommon.js
-	}
+	};
 
 	this.search = function(whichRoom)
 	{
