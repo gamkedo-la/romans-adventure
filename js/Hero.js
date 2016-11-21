@@ -151,7 +151,8 @@ function heroClass()
 			walkIntoTileType = worldGrid[walkIntoTileIndex];
 		}
 
-		if (roomCoordToIndex() == 5 || roomCoordToIndex() == 17) // Checks whether in Kitchen or Bedroom 4
+		var roomIndex = roomCoordToIndex();
+		if (roomIndex == ROOM_ID_KITCHEN || roomIndex == ROOM_ID_BEDROOM4) // Checks whether in Kitchen or Bedroom 4
 		{
 		    //merging and unmerging rooms
 		    if (walkIntoTileType == TILE_MERGE_ROOMS)
@@ -163,6 +164,13 @@ function heroClass()
 		    {
 		        unmergeRooms();
 		    }
+		}
+		else if (roomIndex == ROOM_ID_BEDROOM1) {
+			bedroom1ShowPath = (walkIntoTileType == TILE_SHOW_PATH);
+
+			if (bedroom1ShowPath) {
+				postMessage(dialogueBedroom1PuzzleShowPath);
+			}
 		}
 
 
@@ -260,7 +268,7 @@ function heroClass()
 
 	this.search = function(whichRoom)
 	{
-	    whichItem = searchableTiles[whichRoom];
+	    var whichItem = searchableTiles[whichRoom];
 	    if (worldGrid[roman.currentIndex] == 9)
 	    {
 	        postMessage("Roman found " + idxToTextKey(whichItem) + ".");

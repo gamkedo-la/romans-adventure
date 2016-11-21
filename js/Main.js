@@ -11,10 +11,13 @@ var messageToShow = "";
 var framesLeftForMessage = 0;
 const FRAMES_TO_SHOW_MESSAGE = 80;
 
-function postMessage(str)
+function postMessage(str, showMessageDuration)
 {
     messageToShow = str;
-    framesLeftForMessage = FRAMES_TO_SHOW_MESSAGE;
+	if (showMessageDuration == undefined || showMessageDuration < 0) {
+		showMessageDuration = FRAMES_TO_SHOW_MESSAGE;
+	}
+    framesLeftForMessage = showMessageDuration;
 }
 
 function clearMessage()
@@ -87,6 +90,13 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	if (whichLevelIdx == ROOM_ID_DEN && denPuzzleSolved == false)
 	{
 	    postMessage(dialogueDenPuzzleNotSolved);
+	}
+	if (whichLevelIdx == ROOM_ID_BEDROOM1)
+	{
+		if (bedroom1PuzzleSolved == false) {
+			postMessage(dialogueBedroom1PuzzleNotSolved);
+		}
+		enterBedroom1();
 	}
 	else if (isFlashLightNeededButMissing())
 	{

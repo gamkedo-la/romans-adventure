@@ -1,4 +1,8 @@
 var denPuzzleSolved = false;
+var bedroom1PuzzleSolved = false;
+var bedroom1ShowPath = false;
+var bedroom1ValidPath = [];
+
 var stairsPuzzleSolved = false;
 
 var searchableTiles =
@@ -28,6 +32,36 @@ function checkRoomLogic()
     checkStairs();
     checkGardenMiddle();
     checkFoyerEntrance();
+    checkBedroom1();
+}
+
+function enterBedroom1()
+{
+    // @todo generate a valid path from id 55 to 123
+    bedroom1ValidPath = [55, 71, 87, 103, 104, 105, 106, 107, 123];
+}
+
+function bedroom1RoomArtIndexAlter(tileType, index)
+{
+    if (bedroom1ShowPath && bedroom1ValidPath.indexOf(index) >= 0) {
+        tileType += 2;
+    }
+    return tileType;
+}
+
+function checkBedroom1()
+{
+    if (roomCoordToIndex() != ROOM_ID_BEDROOM1)
+    {
+        return;
+    }
+
+    // @todo if walking on non-path tile, reset to room-start
+    var tileIndex = getTileIndexAtPixelCoord(roman.x, roman.y);
+    if ((worldGrid[tileIndex] == 1 || worldGrid[tileIndex] == 2) && bedroom1ValidPath.indexOf(tileIndex) < 0) {
+        roman.x = 107;
+        roman.y = 14;
+    }
 }
 
 function checkGardenMiddle()

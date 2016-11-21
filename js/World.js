@@ -175,21 +175,25 @@ var levelGardenMiddle =
 var levelGardenRight =
 [
 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10
-]
+];
 
 // Second Level Areas
+// var levelBedroomOne =
+// 	[ // Bed, Rug, Nightstand
+// 		 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10,
+// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+// 		 10, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 10,
+// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+// 		 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+// 	];
 var levelBedroomOne =
-	[ // Bed, Rug, Nightstand
-		 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+	[
+		10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,1,2,1,2,1,5,0,0,1,2,1,2,1,2,10,10,2,1,2,1,2,0,0,0,2,1,2,1,2,1,10,10,1,2,1,2,1,2,1,2,1,2,1,2,1,2,10,10,2,1,2,1,2,1,2,1,2,1,2,1,2,1,10,10,1,2,1,2,1,2,1,2,1,2,1,2,1,2,10,10,2,1,2,1,2,1,2,1,2,1,2,0,0,0,10,10,1,2,1,2,1,2,1,2,1,2,1,0,0,0,10,10,2,1,2,1,2,1,2,1,2,1,2,0,0,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10
 	];
 
 var levelBedroomTwo =
@@ -364,6 +368,8 @@ const ROOM_ID_DARKROOM_NEED_LIGHT = 9; // study for now (just a test)
 const ROOM_ID_GARDEN_MIDDLE = 1;
 const ROOM_ID_KITCHEN = 5;
 const ROOM_ID_BASEMENT_GARDEN_EXIT = 3;
+const ROOM_ID_BEDROOM1 = 21;
+const ROOM_ID_BEDROOM4 = 17;
 
 
 var roomNames =
@@ -498,7 +504,9 @@ const TILE_ANYROOM_LAST = 39;
 // Merge Tiles
 //TODO these are only PLACEHOLDERS will likely become their own strip
 const TILE_MERGE_ROOMS = 15; //a pink drawer
-const TILE_UNMERGE_ROOMS  = 19 // a white drawer
+const TILE_UNMERGE_ROOMS  = 19; // a white drawer
+
+const TILE_SHOW_PATH = 5;
 
 var doorLabels = [];
 var keyLabels = [];
@@ -689,8 +697,8 @@ function drawWorld()
                                         drawTileX, drawTileY, // draw tile x coord at drawTileX, draw tile x coord at drawTileY
                                         WORLD_W, WORLD_H, angleOfDoorRotation); // tile width, tile height, angle of rotation
 			} else if (tileTypeIsRoom(currentRoomArtIndex)) {
-			    var whichRoomTile = currentRoomArtIndex;
-			    canvasContext.drawImage(roomStrips, WORLD_W * roomArtSet, WORLD_H * whichRoomTile,
+				currentRoomArtIndex = bedroom1RoomArtIndexAlter(currentRoomArtIndex, arrayIndex);
+			    canvasContext.drawImage(roomStrips, WORLD_W * roomArtSet, WORLD_H * currentRoomArtIndex,
 										WORLD_W, WORLD_H,
 										drawTileX, drawTileY,
 										WORLD_W, WORLD_H);

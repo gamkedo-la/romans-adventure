@@ -203,5 +203,5 @@ function outputWorldGrid()
     */
     document.getElementById("levelEditorOutputText").innerHTML = "var " + roomNames[roomCoordToIndex()]
                                                                            + " = <br>[<br>" + worldGrid
-                                                                           + "<br>]";
+                                                                           + "<br>];";
 }
