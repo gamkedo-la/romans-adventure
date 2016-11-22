@@ -59,6 +59,7 @@ function checkBedroom1()
     // @todo if walking on non-path tile, reset to room-start
     var tileIndex = getTileIndexAtPixelCoord(roman.x, roman.y);
     if ((worldGrid[tileIndex] == 1 || worldGrid[tileIndex] == 2) && bedroom1ValidPath.indexOf(tileIndex) < 0) {
+        postMessage(dialogueBedroom1PuzzleSteppedOffPath);
         roman.x = 107;
         roman.y = 14;
     }

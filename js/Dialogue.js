@@ -7,6 +7,7 @@ var dialogueDenPuzzleSolved = "Dialogue bark for den puzzle solved.";
 
 var dialogueBedroom1PuzzleNotSolved = "Hint: Be careful where you walk!";
 var dialogueBedroom1PuzzleShowPath = "Oh look! That is a safe path!";
+var dialogueBedroom1PuzzleSteppedOffPath = "Huh!? What happened? I must've walked on the wrong tiles.";
 var dialogueBedroom1PuzzleSolved = "Dialogue bark for bedroom 1 puzzle solved.";
 
 //var dialogueStudyPuzzleNotSolved = "Sorry, but there are no pictures in these books.";
