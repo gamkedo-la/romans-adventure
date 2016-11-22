@@ -21,4 +21,4 @@ var dialogueBedroom1PuzzleSolved = "Dialogue bark for bedroom 1 puzzle solved.";
 /*Generic barks
 - "For your sake, you'd better not muddy up my floors.";
 - "The suspense is killing me. Watching you makes me wish it would...";
-- "Do take your time. We have the rest of eternity together.";
+- "Do take your time. We have the rest of eternity together.";*/
