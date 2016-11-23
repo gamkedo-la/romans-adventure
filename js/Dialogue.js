@@ -11,9 +11,9 @@ var dialogueBedroom1PuzzleSteppedOffPath = "Huh!? What happened? I must've walke
 var dialogueBedroom1PuzzleSolved = "Dialogue bark for bedroom 1 puzzle solved.";
 
 //var dialogueStudyPuzzleNotSolved = "Sorry, but there are no pictures in these books.";
-//var dialogueStudyPuzzleSolved = "";
+//var dialogueStudyPuzzleSolved = "How lucky can you get?";
 
-//var dialogueGardenPuzzleNotSolved = "";
+//var dialogueGardenPuzzleNotSolved = "You may catch cold. Maybe it'll become serious...";
 //var dialogueGardenPuzzleSolved = "I am amazed you made it through.";
 
 //var dialogueBasementPuzzleNotSolved = "";
