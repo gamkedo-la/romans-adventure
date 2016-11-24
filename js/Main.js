@@ -28,7 +28,7 @@ function clearMessage()
 window.onload = function()
 {
 	// Get references for gameCanvas
-	scaledCanvas = document.getElementById('gameCanvas');
+    scaledCanvas = document.getElementById('gameCanvas');
 	canvas = document.createElement('canvas');
     // Size gameCanvas
 	canvas.width = WORLD_W * WORLD_COLS;
@@ -122,7 +122,6 @@ function moveAll()
 		enemyList[i].move();
 	}
 	roman.move();
-	// Sounds.footsteps.play();
 }
 
 function drawAll()

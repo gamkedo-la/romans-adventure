@@ -108,10 +108,7 @@ function checkStairs()
 
 function checkFoyerEntrance()
 {
-    if (roomCoordToIndex() == ROOM_ID_FOYER_ENTRANCE)
-    {
-        triggerTile(1, true, changeTile, 26, 11, 0);
-    }
+
 }
 
 
