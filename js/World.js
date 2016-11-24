@@ -280,7 +280,7 @@ var levelKitchenBedroomFourMerged =
 
 var levelBasementFoyerEntrance = 
 [
-10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,1,10,10,6,0,0,9,0,0,0,0,0,9,0,0,0,3,10,10,7,1,4,4,4,4,4,4,4,4,4,4,6,0,10,10,8,2,24,0,21,0,23,0,22,0,25,0,7,0,10,10,0,2,11,0,11,0,11,0,12,0,11,0,7,0,0,10,0,3,5,5,5,5,5,5,5,5,5,5,8,0,10,10,4,4,4,6,0,0,0,0,0,0,1,4,4,4,10,10,0,9,0,7,0,1,4,4,6,0,2,0,9,0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10
+10,0,0,0,0,0,1,4,6,0,0,0,0,0,0,10,10,0,0,0,0,0,2,0,7,0,0,0,0,0,1,10,10,6,0,0,9,0,3,5,8,0,9,0,0,0,3,10,10,7,1,4,4,4,4,4,4,4,4,4,4,6,0,10,10,8,2,24,0,21,0,23,0,22,0,25,0,7,0,10,10,0,2,11,0,11,0,11,0,11,0,11,0,7,0,0,10,0,3,5,5,5,5,5,5,5,5,5,5,8,0,10,10,4,4,4,6,0,0,0,0,0,0,1,4,4,4,10,10,0,9,0,7,0,1,4,4,6,0,2,0,9,0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10
 ];
 
 var levelBasementGardenExit =
@@ -337,6 +337,7 @@ const ROOM_ID_DININGROOM = 8;
 const ROOM_ID_DEN = 11;
 const ROOM_ID_FOYER_ENTRANCE = 10;
 const ROOM_ID_UPSTAIRS_GOING_DOWN = 19; // Based on room layout array ^^
+const ROOM_ID_BASEMENT_STATUE_AREA = 6;
 const ROOM_ID_DARKROOM_NEED_LIGHT = 9; // study for now (just a test)
 const ROOM_ID_GARDEN_MIDDLE = 1;
 const ROOM_ID_KITCHEN = 5;
@@ -449,6 +450,7 @@ const TILE_KEY_BEDROOMFOUR = TILE_KEY+KEYDOOR_IDX_BEDROOMFOUR; // Door from Hall
 const TILE_KEY_ATTIC = TILE_KEY+KEYDOOR_IDX_ATTIC; // Key for Hallway to Attic
 const TILE_KEY_FIRST = TILE_KEY;
 const TILE_KEY_LAST = TILE_KEY_ATTIC;
+const TILE_KEY_ALIAS_SNOWBOOT = TILE_KEY+ITEM_IDX_ICEBOOT;
 
 // Study Tiles
 const TILE_RUG_CENTER = 900;
@@ -595,6 +597,45 @@ function removePlayerStarts()
 	} // end of row for
 }
 
+var awardedBootYet = false;
+function checkBootsStatuePuzzle() {
+	var roomIdxHere = roomCoordToIndex();
+	if( awardedBootYet == false &&
+		roomIdxHere == ROOM_ID_BASEMENT_STATUE_AREA) {
+
+		// pumpkin: 23
+		// goblin: 22
+		// bat: 25
+		// slime: 21
+		// ghost: 24
+
+		if(worldGrid[67] == 23 &&
+			worldGrid[69] == 22 &&
+			worldGrid[71] == 25 &&
+			worldGrid[73] == 21 &&
+			worldGrid[75] == 24) {
+			awardedBootYet = true;
+			var spikeBootDestIdx = 23;
+			worldGrid[spikeBootDestIdx] = 
+				roomLayout[roomIdxHere][spikeBootDestIdx] =
+				TILE_KEY_ALIAS_SNOWBOOT;
+			for(var i=0;i<WORLD_ROWS * WORLD_COLS;i++) {
+				if(worldGrid[i] == 11) { // unlit box
+					worldGrid[i] = 
+					roomLayout[roomIdxHere][i] =
+						12; // lit box
+				}
+				if(worldGrid[i] >= 21 &&
+					worldGrid[i] <= 25) {
+					worldGrid[i] = 
+					roomLayout[roomIdxHere][i] =
+						0; // remove rolling statues
+				}
+			}
+		}
+	}
+}
+
 function isFlashLightNeededButMissing() {
 	var hasFlashLight = roman.doorKeyRing[ITEM_IDX_FLASHLIGHT];
 	return (hasFlashLight != true && roomCoordToIndex() == ROOM_ID_DARKROOM_NEED_LIGHT);
@@ -605,6 +646,8 @@ function drawWorld()
 	var arrayIndex = 0;
 	var drawTileX = 0;
 	var drawTileY = 0;
+
+	checkBootsStatuePuzzle();
 
 	if(isFlashLightNeededButMissing()) {
 		colorRect(0,0,canvas.width,WORLD_ROWS*WORLD_H,"black");
