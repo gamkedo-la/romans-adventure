@@ -79,13 +79,14 @@ function checkDen()
 {
     if (roomCoordToIndex() == ROOM_ID_DEN && denPuzzleSolved == false)
     {
-        if (worldGrid[69] == 20 && worldGrid[70] == 21 && worldGrid[71] == 22
-                && worldGrid[85] == 23 && worldGrid[86] == 24 && worldGrid[87] == 25
-                && worldGrid[101] == 26 && worldGrid[102] == 27 && worldGrid[103] == 28
+        if (worldGrid[70] == 20 && worldGrid[71] == 21 && worldGrid[72] == 22
+                && worldGrid[86] == 23 && worldGrid[87] == 24 && worldGrid[88] == 25
+                && worldGrid[102] == 26 && worldGrid[103] == 27 && worldGrid[104] == 28
                 && denPuzzleSolved == false) // Check if all table pieces are assembled in the correct order
         {
             denPuzzleSolved = true;
-            spawnKey(TILE_KEY_GARDEN, 91);
+            spawnTile(19, 70);
+            spawnTile(TILE_KEY_GARDEN, 94);
             postMessage(dialogueDenPuzzleSolved);
             roomLayout[roomCoordToIndex()] = worldGrid; // Save state of the room
         }
@@ -149,7 +150,7 @@ function changeTile(indexOfChangingTile, changingTileTypeOff, changingTileTypeOn
 }
 
 
-function spawnKey(whichKey, whichTileIndex)
+function spawnTile(whichKey, whichTileIndex)
 {
     worldGrid[whichTileIndex] = whichKey;
 }
