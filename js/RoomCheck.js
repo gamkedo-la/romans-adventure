@@ -2,6 +2,7 @@ var denPuzzleSolved = false;
 var bedroom1PuzzleSolved = false;
 var bedroom1ShowPath = false;
 var bedroom1ValidPath = [];
+var gardenMiddlePuzzleSolved = false;
 
 var stairsPuzzleSolved = false;
 
@@ -67,12 +68,19 @@ function checkBedroom1()
 
 function checkGardenMiddle()
 {
-    if (roomCoordToIndex() == ROOM_ID_GARDEN_MIDDLE)
+    if (roomCoordToIndex() == ROOM_ID_GARDEN_MIDDLE && gardenMiddlePuzzleSolved == false)
     {
-        triggerTile(1, false, changeTile, 26, 10, 0);
-        triggerTile(2, false, changeTile, 48, 10, 0);
-        triggerTile(3, false, changeTile, 128, 10, 0);
+        triggerTile(1, false, changeTile, 42, 10, 0);
+        triggerTile(2, false, changeTile, 119, 10, 0);
+        triggerTile(3, false, changeTile, 56, 10, 0);
+        if (worldGrid[49] == 23)
+        {
+            gardenMiddlePuzzleSolved = true;
+            console.log("skull is in the right place");
+            roomLayout[roomCoordToIndex()][129] = TILE_KEY_GARDEN_BASEMENT;
+        }
     }
+
 }
 
 function checkDen()
