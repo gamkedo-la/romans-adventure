@@ -203,21 +203,14 @@ function heroClass()
 		    var bumpIntoCol;
 		    bumpIntoRow = Math.floor(bumpToTileIndex / WORLD_COLS);
 		    bumpIntoCol = bumpToTileIndex % WORLD_COLS;
-		    if (worldGrid[bumpToTileIndex] <= TILE_WALKABLE_LAST
+		    if (worldGrid[bumpToTileIndex] == TILE_GROUND
                     && bumpIntoRow > 0
                     && bumpIntoRow < WORLD_ROWS - 1
                     && bumpIntoCol > 0
                     && bumpIntoCol < WORLD_COLS - 1)
 		    {
-		        if (originalRoomState[walkIntoTileIndex] <= TILE_WALKABLE_LAST) 
-		        {
-		            worldGrid[walkIntoTileIndex] = originalRoomState[walkIntoTileIndex]; // Replace ground with what was originally there
-		        }
-		        else
-		        {
-		            worldGrid[walkIntoTileIndex] = TILE_GROUND; // Replace ground with default ground tile if nothing was there originally
-		        }
-		        worldGrid[bumpToTileIndex] = tileTypeBeingBumped; // Replace the tile with the pushable tile
+		        worldGrid[walkIntoTileIndex] = TILE_GROUND;
+		        worldGrid[bumpToTileIndex] = tileTypeBeingBumped;
 		    }
 		}
 

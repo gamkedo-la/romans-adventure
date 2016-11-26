@@ -116,7 +116,6 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	{
 	    postMessage("It's too dark...");
 	}
-	originalRoomState = roomLayout[roomCoordToIndex()];
 	searchableTileType = -1;
 	formattedWorldGrid = "";
 	strWorldGrid = "";
