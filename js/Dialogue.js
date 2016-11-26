@@ -10,6 +10,9 @@ var dialogueBedroom1PuzzleShowPath = "Oh look! That is a safe path!";
 var dialogueBedroom1PuzzleSteppedOffPath = "Huh!? What happened? I must've walked on the wrong tiles.";
 var dialogueBedroom1PuzzleSolved = "Dialogue bark for bedroom 1 puzzle solved.";
 
+var dialogueGardenMiddlePuzzleNotSolved = "Dialogue bark for Garden Middle puzzle.";
+var dialogueGardenMiddlePuzzleSolved = "Dialogue bark for Garden Middle puzzle solved.";
+
 //var dialogueStudyPuzzleNotSolved = "Sorry, but there are no pictures in these books.";
 //var dialogueStudyPuzzleSolved = "How lucky can you get?";
 

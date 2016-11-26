@@ -70,14 +70,33 @@ function checkGardenMiddle()
 {
     if (roomCoordToIndex() == ROOM_ID_GARDEN_MIDDLE && gardenMiddlePuzzleSolved == false)
     {
-        triggerTile(1, false, changeTile, 42, 10, 0);
-        triggerTile(2, false, changeTile, 119, 10, 0);
-        triggerTile(3, false, changeTile, 56, 10, 0);
-        if (worldGrid[49] == 23)
+        triggerTile(1, 4, spawnTile, 0, 30);
+        triggerTile(2, 4, spawnTile, 0, 26);
+        triggerTile(3, 4, spawnTile, 0, 119);
+        
+        // Check if Roman is standing on pressure plate
+        if (roman.currentIndex == 105 || roman.currentIndex == 49)
+        {
+            postMessage("Roman: I need to place something heavy here, it won't budge!");
+        }
+
+        // Check if skull is on pressure plate
+        if (worldGrid[105] == 21)
+        {
+            spawnTile(0, 56);
+            if (worldGrid[119] == 10)
+            {
+                postMessage("Uh oh, looks like you got ahead of yourself! Guess you'll have to try again.");
+                spawnTile(10, 56);
+            }
+        }
+
+        // Check if skull is on final pressure plate
+        if (worldGrid[49] == 21)
         {
             gardenMiddlePuzzleSolved = true;
-            console.log("skull is in the right place");
-            roomLayout[roomCoordToIndex()][129] = TILE_KEY_GARDEN_BASEMENT;
+            spawnTile(TILE_KEY_GARDEN_BASEMENT, 129);
+            postMessage(dialogueGardenMiddlePuzzleSolved);
         }
     }
 
@@ -101,7 +120,7 @@ function checkDen()
     }
     else if (roomCoordToIndex() == ROOM_ID_DEN && denPuzzleSolved == true && roman.doorKeyRing[KEYDOOR_IDX_GARDEN] == true)
     {
-        worldGrid[91] = TILE_GROUND; // Delete key if roman already has it
+        worldGrid[91] = originalRoomState[91]; // Delete key if roman already has it
     }
 }
 
@@ -124,17 +143,14 @@ function checkFoyerEntrance()
 // Checks if Roman is standing on a specific kind of tile, if so, call a function
 var romanIsOnTriggerTile = false;
 
-function triggerTile(tileType, isPermanent, funcToExecute, funcParam1, funcParam2, funcParam3)
+function triggerTile(tileType, activatedTileType, funcToExecute, funcParam1, funcParam2, funcParam3)
 {
     if (worldGrid[roman.currentIndex] == tileType && romanIsOnTriggerTile == false)
     {
         romanIsOnTriggerTile = true;
         funcToExecute(funcParam1, funcParam2, funcParam3);
-        if (isPermanent == false) // Should the trigger tile disappear?
-        {
-            worldGrid[roman.currentIndex] = TILE_GROUND; // Delete from scene being drawn
-            roomLayout[roomCoordToIndex()][roman.currentIndex] = TILE_GROUND; // Delete from scene in memory
-        }
+        worldGrid[roman.currentIndex] = activatedTileType;
+        roomLayout[roman.currentIndex] = activatedTileType;
     }
     if (worldGrid[roman.currentIndex] != tileType && romanIsOnTriggerTile == true)
     {
@@ -142,23 +158,9 @@ function triggerTile(tileType, isPermanent, funcToExecute, funcParam1, funcParam
     } 
 }
 
-// Toggles tile between two different types
-function changeTile(indexOfChangingTile, changingTileTypeOff, changingTileTypeOn)
-{
-    if (worldGrid[indexOfChangingTile] == changingTileTypeOff)
-    {
-        worldGrid[indexOfChangingTile] = changingTileTypeOn;
-        roomLayout[roomCoordToIndex()][indexOfChangingTile] = changingTileTypeOn;
-    }
-    else
-    {
-        worldGrid[indexOfChangingTile] = changingTileTypeOff;
-        roomLayout[roomCoordToIndex()][indexOfChangingTile] = changingTileTypeOff;
-    }
-}
 
-
-function spawnTile(whichKey, whichTileIndex)
+function spawnTile(whichTile, whichTileIndex)
 {
-    worldGrid[whichTileIndex] = whichKey;
+    worldGrid[whichTileIndex] = whichTile;
+    roomLayout[roomCoordToIndex()][whichTileIndex] = whichTile;
 }
