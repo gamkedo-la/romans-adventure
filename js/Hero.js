@@ -278,14 +278,14 @@ function heroClass()
 	this.search = function(whichRoom)
 	{
 	    var whichItem = searchableTiles[whichRoom];
-	    if (worldGrid[roman.currentIndex] == 9)
+	    if (worldGrid[roman.currentIndex] == searchableTileType)
 	    {
 	        postMessage("Roman found " + idxToTextKey(whichItem) + ".");
 	        this.doorKeyRing[whichItem] = true;
 	        pickedUpItem(keyStrip, whichItem);
 	        Sounds.pick_up.play();
-	        worldGrid[roman.currentIndex] = 8;
-	        roomLayout[roomCoordToIndex()][roman.currentIndex] = 8;
+	        worldGrid[roman.currentIndex] = --searchableTileType;
+	        roomLayout[roomCoordToIndex()][roman.currentIndex] = --searchableTileType;
 	    }
 	    else
 	    {

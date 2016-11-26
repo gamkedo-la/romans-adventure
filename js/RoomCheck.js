@@ -3,9 +3,9 @@ var bedroom1PuzzleSolved = false;
 var bedroom1ShowPath = false;
 var bedroom1ValidPath = [];
 var gardenMiddlePuzzleSolved = false;
-
 var stairsPuzzleSolved = false;
 
+var searchableTileType = -1;
 var searchableTiles =
     [
         //"levelGardenLeft", "levelGardenMiddle", "levelGardenRight",
@@ -106,6 +106,7 @@ function checkDen()
 {
     if (roomCoordToIndex() == ROOM_ID_DEN && denPuzzleSolved == false)
     {
+        searchableTileType = 8;
         if (worldGrid[70] == 20 && worldGrid[71] == 21 && worldGrid[72] == 22
                 && worldGrid[86] == 23 && worldGrid[87] == 24 && worldGrid[88] == 25
                 && worldGrid[102] == 26 && worldGrid[103] == 27 && worldGrid[104] == 28
@@ -136,7 +137,10 @@ function checkStairs()
 
 function checkFoyerEntrance()
 {
-
+    if (roomCoordToIndex() == ROOM_ID_FOYER_ENTRANCE)
+    {
+        searchableTileType = 9;
+    }
 }
 
 
