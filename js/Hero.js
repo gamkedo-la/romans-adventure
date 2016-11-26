@@ -1,6 +1,8 @@
 const PLAYER_MOVE_SPEED = 2.0;
 
 var keyStripLimit = 8; // Max number of keys displayed per line in the UI
+var tileUnderPushable = 0;
+var originalRoomState = [];
 
 function heroClass()
 {
@@ -201,14 +203,21 @@ function heroClass()
 		    var bumpIntoCol;
 		    bumpIntoRow = Math.floor(bumpToTileIndex / WORLD_COLS);
 		    bumpIntoCol = bumpToTileIndex % WORLD_COLS;
-		    if (worldGrid[bumpToTileIndex] == TILE_GROUND
+		    if (worldGrid[bumpToTileIndex] <= TILE_WALKABLE_LAST
                     && bumpIntoRow > 0
                     && bumpIntoRow < WORLD_ROWS - 1
                     && bumpIntoCol > 0
                     && bumpIntoCol < WORLD_COLS - 1)
 		    {
-		        worldGrid[walkIntoTileIndex] = TILE_GROUND;
-		        worldGrid[bumpToTileIndex] = tileTypeBeingBumped;
+		        if (originalRoomState[walkIntoTileIndex] <= TILE_WALKABLE_LAST) 
+		        {
+		            worldGrid[walkIntoTileIndex] = originalRoomState[walkIntoTileIndex]; // Replace ground with what was originally there
+		        }
+		        else
+		        {
+		            worldGrid[walkIntoTileIndex] = TILE_GROUND; // Replace ground with default ground tile if nothing was there originally
+		        }
+		        worldGrid[bumpToTileIndex] = tileTypeBeingBumped; // Replace the tile with the pushable tile
 		    }
 		}
 

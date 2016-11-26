@@ -87,25 +87,36 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 		enemyList.push(tempEnemy);
 		tempEnemy = new EnemyClass();
 	}
-	if (whichLevelIdx == ROOM_ID_DEN && denPuzzleSolved == false)
+	switch (whichLevelIdx)
 	{
-	    postMessage(dialogueDenPuzzleNotSolved);
+	    case ROOM_ID_DEN:
+	        if (denPuzzleSolved == false)
+	        {
+	            postMessage(dialogueDenPuzzleNotSolved);
+	        }
+	        break;
+	    case ROOM_ID_BEDROOM1:
+	        if (bedroom1PuzzleSolved == false) 
+	        {
+	            postMessage(dialogueBedroom1PuzzleNotSolved);
+	        }
+	        enterBedroom1();
+	        break;
+	    case ROOM_ID_GARDEN_MIDDLE:
+	        if (gardenMiddlePuzzleSolved == false) 
+	        {
+	            postMessage(dialogueGardenMiddlePuzzleNotSolved);
+	        }
+	        break;
+	    default:
+	        break;
+
 	}
-	if (whichLevelIdx == ROOM_ID_BEDROOM1)
-	{
-		if (bedroom1PuzzleSolved == false) {
-			postMessage(dialogueBedroom1PuzzleNotSolved);
-		}
-		enterBedroom1();
-	}
-	else if (isFlashLightNeededButMissing())
+	if (isFlashLightNeededButMissing())
 	{
 	    postMessage("It's too dark...");
 	}
-	else
-	{
-	    clearMessage();
-	}
+	originalRoomState = roomLayout[roomCoordToIndex()];
     //Sounds.enter_room.play();
 }
 
