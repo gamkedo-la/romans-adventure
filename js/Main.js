@@ -13,11 +13,16 @@ const FRAMES_TO_SHOW_MESSAGE = 80;
 
 function postMessage(str, showMessageDuration)
 {
-    messageToShow = str;
-	if (showMessageDuration == undefined || showMessageDuration < 0) {
-		showMessageDuration = FRAMES_TO_SHOW_MESSAGE;
-	}
-    framesLeftForMessage = showMessageDuration;
+    if (!isEditorMode)
+    {
+        messageToShow = str;
+        if (showMessageDuration == undefined || showMessageDuration < 0)
+        {
+            showMessageDuration = FRAMES_TO_SHOW_MESSAGE;
+        }
+        framesLeftForMessage = showMessageDuration;
+    }
+
 }
 
 function clearMessage()
