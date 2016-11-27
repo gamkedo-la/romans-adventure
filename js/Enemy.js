@@ -132,16 +132,16 @@ function EnemyClass()
 	            this.x = WORLD_W * WORLD_COLS - roman.x;
 	        }
 
-	        if (roman.x > centerOfRoomCoordRoman && worldGrid[24] < TILES_PUSHABLE_FIRST)
+	        if (roman.x > centerOfRoomCoordRoman && worldGrid[24] != 21)
 	        {
 	            roman.x = centerOfRoomCoordRoman;
 	            postMessage(dialogueGhostRoman);
 	        }
-	        else if (roman.x > centerOfRoomCoordRoman && worldGrid[24] >= TILES_PUSHABLE_FIRST)
+	        else if (worldGrid[24] == 21)
 	        {
 	            this.isFrozen = true;
 	            stairsPuzzleSolved = true;
-	            worldGrid[24] = 19;
+	            worldGrid[24] = 20;
 	            postMessage(dialogueStairsPuzzleSolved);
 	        }
 	    }

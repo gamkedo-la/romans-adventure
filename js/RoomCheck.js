@@ -5,7 +5,6 @@ var bedroom1ValidPath = [];
 var gardenMiddlePuzzleSolved = false;
 var stairsPuzzleSolved = false;
 
-var canPushOverNonGroundTiles = false;
 var searchableTileType = -1;
 var searchableTiles =
     [
@@ -17,7 +16,7 @@ var searchableTiles =
         //"levelAttic", "levelStairs (duplicate)", "levelBedroomFour",
         //"levelHallwayLeft", "levelHallwayMiddle", "levelHallwayRight",
         //"levelBedroomOne", "levelBedroomTwo", "levelBedroomThree", "levelKitchenBedroomFourMerged"
-        -1, -1, -1,
+        -1, KEYDOOR_IDX_GARDEN_BASEMENT, -1,
         -1, -1, -1,
         -1, -1, -1,
         -1, ITEM_IDX_FLASHLIGHT, -1,
@@ -71,7 +70,7 @@ function checkGardenMiddle()
 {
     if (roomCoordToIndex() == ROOM_ID_GARDEN_MIDDLE && gardenMiddlePuzzleSolved == false)
     {
-        canPushOverNonGroundTiles = true;
+        searchableTileType = 6;
         triggerTile(1, 4, spawnTile, 0, 30);
         triggerTile(2, 4, spawnTile, 0, 26);
         triggerTile(3, 4, spawnTile, 0, 119);
@@ -97,7 +96,7 @@ function checkGardenMiddle()
         if (worldGrid[49] == 21)
         {
             gardenMiddlePuzzleSolved = true;
-            spawnTile(TILE_KEY_GARDEN_BASEMENT, 129);
+            spawnTile(6, 129);
             postMessage(dialogueGardenMiddlePuzzleSolved);
         }
     }
@@ -131,7 +130,7 @@ function checkStairs()
     if (roomCoordToIndex() == ROOM_ID_STAIRS && stairsPuzzleSolved)
     {      
         roomLayout[roomCoordToIndex()][18] = 0; // Delete original mirror
-        roomLayout[roomCoordToIndex()][24] = 19; // Move fixed mirror to midde
+        roomLayout[roomCoordToIndex()][24] = 20; // Move fixed mirror to midde
         roomLayout[roomCoordToIndex()][140] = 0; // Delete ghost roman
     }
 }
