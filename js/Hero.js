@@ -70,7 +70,6 @@ function heroClass()
 
 		for(var i=0;i<enemyList.length;i++) {
 			enemyList[i].move();
-			//TODO need to implement colliders
 			if(nextX == enemyList[i].x && nextY == enemyList[i].y){
 				console.log('oh no its a ghost.');
 			}
@@ -203,7 +202,23 @@ function heroClass()
 		    var bumpIntoCol;
 		    bumpIntoRow = Math.floor(bumpToTileIndex / WORLD_COLS);
 		    bumpIntoCol = bumpToTileIndex % WORLD_COLS;
-		    if (worldGrid[bumpToTileIndex] == TILE_GROUND
+		    if ((roomCoordToIndex() == ROOM_ID_GARDEN_MIDDLE) && (worldGrid[bumpToTileIndex] <= TILE_WALKABLE_LAST
+                    && bumpIntoRow > 0
+                    && bumpIntoRow < WORLD_ROWS - 1
+                    && bumpIntoCol > 0
+                    && bumpIntoCol < WORLD_COLS - 1))
+		    {
+		        if (originalRoomState[walkIntoTileIndex] <= TILE_WALKABLE_LAST)
+		        {
+		            worldGrid[walkIntoTileIndex] = originalRoomState[walkIntoTileIndex]; // Replace ground with what was originally there
+		        }
+		        else
+		        {
+		            worldGrid[walkIntoTileIndex] = TILE_GROUND; // Replace ground with default ground tile if nothing was there originally
+		        }
+                worldGrid[bumpToTileIndex] = tileTypeBeingBumped;
+            }
+		    else if (worldGrid[bumpToTileIndex] == TILE_GROUND
                     && bumpIntoRow > 0
                     && bumpIntoRow < WORLD_ROWS - 1
                     && bumpIntoCol > 0

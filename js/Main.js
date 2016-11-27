@@ -116,18 +116,9 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	{
 	    postMessage("It's too dark...");
 	}
-	searchableTileType = -1;
-	formattedWorldGrid = "";
-	strWorldGrid = "";
-	for (var i = 0; i < worldGrid.length; i++)
-	{
-	    if (i % 16 == 0)
-	    {
-	        formattedWorldGrid.concat("<br>")
-	    }
-	    formattedWorldGrid = strWorldGrid.concat(worldGrid[i] + ", ");
-	}
-	console.log(formattedWorldGrid);
+	searchableTileType = -1; // Reset this variable when loading room
+
+	originalRoomState = roomLayout[roomCoordToIndex()];
     //Sounds.enter_room.play();
 }
 

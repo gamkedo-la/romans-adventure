@@ -5,6 +5,7 @@ var bedroom1ValidPath = [];
 var gardenMiddlePuzzleSolved = false;
 var stairsPuzzleSolved = false;
 
+var canPushOverNonGroundTiles = false;
 var searchableTileType = -1;
 var searchableTiles =
     [
@@ -70,6 +71,7 @@ function checkGardenMiddle()
 {
     if (roomCoordToIndex() == ROOM_ID_GARDEN_MIDDLE && gardenMiddlePuzzleSolved == false)
     {
+        canPushOverNonGroundTiles = true;
         triggerTile(1, 4, spawnTile, 0, 30);
         triggerTile(2, 4, spawnTile, 0, 26);
         triggerTile(3, 4, spawnTile, 0, 119);
@@ -113,7 +115,6 @@ function checkDen()
                 && denPuzzleSolved == false) // Check if all table pieces are assembled in the correct order
         {
             denPuzzleSolved = true;
-            spawnTile(19, 70);
             spawnTile(TILE_KEY_GARDEN, 94);
             postMessage(dialogueDenPuzzleSolved);
             roomLayout[roomCoordToIndex()] = worldGrid; // Save state of the room
@@ -154,7 +155,7 @@ function triggerTile(tileType, activatedTileType, funcToExecute, funcParam1, fun
         romanIsOnTriggerTile = true;
         funcToExecute(funcParam1, funcParam2, funcParam3);
         worldGrid[roman.currentIndex] = activatedTileType;
-        roomLayout[roman.currentIndex] = activatedTileType;
+        roomLayout[roomCoordToIndex()][roman.currentIndex] = activatedTileType;
     }
     if (worldGrid[roman.currentIndex] != tileType && romanIsOnTriggerTile == true)
     {
