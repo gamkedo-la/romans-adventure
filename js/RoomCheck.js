@@ -4,6 +4,8 @@ var bedroom1ShowPath = false;
 var bedroom1ValidPath = [];
 var gardenMiddlePuzzleSolved = false;
 var stairsPuzzleSolved = false;
+var correctOrderOfBooks = [0, 1, 2, 3, 4, 5];
+var orderOfBooksRead = [];
 
 var searchableTileType = -1;
 var searchableTiles =
@@ -34,6 +36,7 @@ function checkRoomLogic()
     checkGardenMiddle();
     checkFoyerEntrance();
     checkBedroom1();
+    checkStudy();
 }
 
 function enterBedroom1()
@@ -143,6 +146,35 @@ function checkFoyerEntrance()
     }
 }
 
+function checkStudy()
+{
+    if (roomCoordToIndex() == ROOM_ID_STUDY)
+    {
+        enemyList[0].passage = "This is the first part of the story";
+        enemyList[1].passage = "This is the second part of the story";
+        enemyList[2].passage = "This is the third part of the story";
+        enemyList[3].passage = "This is the fourth part of the story";
+        enemyList[4].passage = "This is the fifth part of the story";
+        enemyList[5].passage = "This is the sixth part of the story";
+
+        if (orderOfBooksRead.length >= enemyList.length)
+        {
+            if (checkForCorrectBookOrder() == true)
+            {
+                postMessage("You read them in the correct order!");
+            }
+            else
+            {
+                postMessage("Uh oh, looks like you need to start over again.");
+                roman.resetBeginningOfRoom();
+                resetBooks();
+            }
+        }
+
+
+    }
+}
+
 
 // Checks if Roman is standing on a specific kind of tile, if so, call a function
 var romanIsOnTriggerTile = false;
@@ -167,4 +199,36 @@ function spawnTile(whichTile, whichTileIndex)
 {
     worldGrid[whichTileIndex] = whichTile;
     roomLayout[roomCoordToIndex()][whichTileIndex] = whichTile;
+}
+
+function checkForCorrectBookOrder()
+{
+    if (orderOfBooksRead.length != correctOrderOfBooks.length)
+        return false;
+    for (var i = 0, l = orderOfBooksRead.length; i < l; i++)
+    {
+        if (orderOfBooksRead[i] instanceof Array && correctOrderOfBooks[i] instanceof Array)
+        {
+            if (!orderOfBooksRead[i].equals(correctOrderOfBooks[i]))
+                return false;
+            else if (orderOfBooksRead[i] != correctOrderOfBooks[i])
+            {
+                return false;
+            }
+        }
+        else if (orderOfBooksRead[i] != correctOrderOfBooks[i])
+        {
+            return false;
+        }
+        return true;
+    }
+}
+
+function resetBooks()
+{
+    for (var i = 0; i < enemyList.length; i++)
+    {
+        enemyList[i].isRead = false;
+    }
+    orderOfBooksRead = [];
 }

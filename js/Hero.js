@@ -28,7 +28,8 @@ function heroClass()
 	this.controlKeyDown;
 	this.controlKeyLeft;
 	this.currentIndex;
-
+	this.roomLoadedX; // Roman's X position when the room was loaded
+	this.roomLoadedY; // Romans Y position when the room was loaded
 
 	this.setupInput = function(upKey, rightKey, downKey, leftKey)
 	{
@@ -70,9 +71,6 @@ function heroClass()
 
 		for(var i=0;i<enemyList.length;i++) {
 			enemyList[i].move();
-			if(nextX == enemyList[i].x && nextY == enemyList[i].y){
-				console.log('oh no its a ghost.');
-			}
 		}
 
 		if(this.isSliding == false) {
@@ -121,6 +119,8 @@ function heroClass()
 		    currentRoomRow--;
 		    loadLevel(roomCoordToIndex());
 		    nextY = EDGE_OF_SCREEN_Y;
+		    roman.roomLoadeX = roman.x;
+		    roman.roomLoadedY = EDGE_OF_SCREEN_Y;
 		}
 		if (nextY > EDGE_OF_SCREEN_Y)
 		{
@@ -130,18 +130,24 @@ function heroClass()
 				currentRoomRow++;
 		    loadLevel(roomCoordToIndex());
 		    nextY = WORLD_H;
+		    roman.roomLoadedX = roman.x;
+		    roman.roomLoadedY = WORLD_W;
 		}
 		if (nextX < WORLD_W / 2)
 		{
 		    currentRoomCol--;
 		    loadLevel(roomCoordToIndex());
 		    nextX = EDGE_OF_SCREEN_X;
+		    roman.roomLoadedX = EDGE_OF_SCREEN_X;
+		    roman.roomLoadedY = roman.y;
 		}
 		if (nextX > EDGE_OF_SCREEN_X)
 		{
 		    currentRoomCol++;
 		    loadLevel(roomCoordToIndex());
 		    nextX = WORLD_W;
+		    roman.roomLoadedX = WORLD_W;
+		    roman.roomLoadedY = roman.y;
 		}
 
 		this.currentIndex = getTileIndexAtPixelCoord(this.x, this.y);
@@ -299,6 +305,12 @@ function heroClass()
 	    {
 	        postMessage("You didn't find anything.");
 	    }
+	}
+
+	this.resetBeginningOfRoom = function()
+	{
+	    this.x = this.roomLoadedX;
+	    this.y = this.roomLoadedY;
 	}
 }
 

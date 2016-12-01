@@ -45,6 +45,8 @@ function loadImages()
 		{ enemyType: ENEMY_SLIME, theFile: "enemy_slime.png" },
         { enemyType: ENEMY_ROMAN, theFile: "enemy_roman.png" },
         { enemyType: ENEMY_PUMKIN, theFile: "enemy_pumkin.png" },
+        { enemyType: ENEMY_BOOK, theFile: "book.png" },
+
 
 
 		// door tiles
@@ -56,7 +58,7 @@ function loadImages()
 
 
         // Room tiles
-        { varName: roomStrips, theFile: "roomart.png" },
+        { varName: roomStrips, theFile: "roomart.png" }
 
 	];
 

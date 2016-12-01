@@ -5,6 +5,7 @@ const ENEMY_SKULL = 2;
 const ENEMY_SLIME = 3;
 const ENEMY_ROMAN = 4;
 const ENEMY_PUMKIN = 5;
+const ENEMY_BOOK = 6;
 
 const FRAME_DIM = 14; // pixel dimensions of each frame square
 
@@ -18,7 +19,9 @@ function EnemyClass()
 	this.movingY = 0;
 	this.animFrame = 0;
 	this.isFrozen = false;
+	this.isRead = false;
 	this.currentIndex;
+	this.index = 0;
 
 	this.reset = function()
 	{
@@ -93,6 +96,10 @@ function EnemyClass()
 		else if (this.myMonsterKindID == ENEMY_GHOST)
 		{
 		    this.enemyGhostBehavior();
+		}
+		else if (this.myMonsterKindID == ENEMY_BOOK)
+		{
+		    this.enemyBookBehavior();
 		}
     };
 
@@ -171,5 +178,33 @@ function EnemyClass()
 	        roman.x = 105;
 	        roman.y = 20;
 	    }
-	};
+	}
+
+	var bookSpeed = Math.floor(Math.random() * 2) + 1;
+
+	this.enemyBookBehavior = function()
+	{
+	    var passage = "";
+	    if (isFlashLightNeededButMissing())
+	    {
+	        return;
+	    }
+	    else
+	    {
+	        this.y += bookSpeed;
+
+	        if (this.y > EDGE_OF_SCREEN_Y - WORLD_H || this.y < 0 + WORLD_H * 2)
+	        {
+	            bookSpeed *= -1;
+	        }
+
+	        if (roman.currentIndex == this.currentIndex && this.isRead == false)
+	        {
+	            this.isRead = true;
+	            orderOfBooksRead.push(this.index);
+	            postMessage(this.passage);
+	        }
+	    }
+
+	}
 }

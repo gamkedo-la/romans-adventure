@@ -13,6 +13,7 @@ const FRAMES_TO_SHOW_MESSAGE = 80;
 
 function postMessage(str, showMessageDuration)
 {
+    clearMessage();
     if (!isEditorMode)
     {
         messageToShow = str;
@@ -87,9 +88,13 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 		removePlayerStarts();
 	}
 	enemyList = [];
+	var enemyOrder = 0;
 	var tempEnemy = new EnemyClass();
-	while ( tempEnemy.reset() ) {
-		enemyList.push(tempEnemy);
+	while (tempEnemy.reset())
+	{
+	    enemyList.push(tempEnemy);
+	    enemyList[enemyOrder].index = enemyOrder;
+	    enemyOrder++;
 		tempEnemy = new EnemyClass();
 	}
 	switch (whichLevelIdx)
@@ -122,8 +127,9 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	    postMessage("It's too dark...");
 	}
 	searchableTileType = -1; // Reset this variable when loading room
-
 	originalRoomState = roomLayout[roomCoordToIndex()];
+	roman.roomLoadedX = roman.x;
+	roman.roomLoadedY = roman.y;
     //Sounds.enter_room.play();
 }
 
