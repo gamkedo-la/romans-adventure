@@ -3,7 +3,7 @@ var dialogueGhostRoman = "Ghost Roman will not allow you to pass."; //"You're al
 var dialogueStairsPuzzleSolved = "Ghost Roman is mesmerized by his reflection.";  //"Your vanity knows no bounds.";
 
 var dialogueDenPuzzleNotSolved = "Hint: Top left piece of the table is already in the correct spot.";
-var dialogueDenPuzzleSolved = "Dialogue bark for den puzzle solved.";
+var dialogueDenPuzzleSolved = "How lucky can you get?";
 
 var dialogueBedroom1PuzzleNotSolved = "Hint: Be careful where you walk!";
 var dialogueBedroom1PuzzleShowPath = "Oh look! That is a safe path!";
@@ -14,7 +14,7 @@ var dialogueGardenMiddlePuzzleNotSolved = "Dialogue bark for Garden Middle puzzl
 var dialogueGardenMiddlePuzzleSolved = "Dialogue bark for Garden Middle puzzle solved.";
 
 //var dialogueStudyPuzzleNotSolved = "Sorry, but there are no pictures in these books.";
-//var dialogueStudyPuzzleSolved = "How lucky can you get?";
+//var dialogueStudyPuzzleSolved = "Dialogue bark for Study puzzle solved.";
 
 //var dialogueGardenPuzzleNotSolved = "You may catch cold. Maybe it'll become serious...";
 //var dialogueGardenPuzzleSolved = "I am amazed you made it through.";
