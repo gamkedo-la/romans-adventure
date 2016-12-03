@@ -62,6 +62,8 @@ window.onload = function()
 
 	scaledCanvas.addEventListener("mousemove", updateMousePos);
 	scaledCanvas.addEventListener("mouseup", editTileUnderMousePos);
+
+	backgroundMusic.volume = .4;
 };
 
 function imageLoadingDoneSoStartGame()
