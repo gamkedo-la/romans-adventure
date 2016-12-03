@@ -163,7 +163,6 @@ function checkStudy()
             {
               postMessage("Uh oh, looks like you need to start over again.");
               roman.resetBeginningOfRoom();
-              roman.currentIndex =
               resetBooks();
             }
             else if (checkForCorrectBookOrder() == true)

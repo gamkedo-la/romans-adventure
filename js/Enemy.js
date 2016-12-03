@@ -175,8 +175,7 @@ function EnemyClass()
 	    // Check if ghost enemy and roman are at the same worldGrid index
 	    if (roman.currentIndex == this.currentIndex)
 	    {
-	        roman.x = 105;
-	        roman.y = 20;
+					roman.resetBeginningOfRoom();
 	    }
 	}
 

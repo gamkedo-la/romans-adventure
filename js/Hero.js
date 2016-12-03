@@ -119,7 +119,7 @@ function heroClass()
 		    currentRoomRow--;
 		    loadLevel(roomCoordToIndex());
 		    nextY = EDGE_OF_SCREEN_Y;
-		    roman.roomLoadeX = roman.x;
+		    roman.roomLoadedX = roman.x;
 		    roman.roomLoadedY = EDGE_OF_SCREEN_Y;
 		}
 		if (nextY > EDGE_OF_SCREEN_Y)
