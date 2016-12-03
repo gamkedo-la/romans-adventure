@@ -150,12 +150,12 @@ function checkStudy()
 {
     if (roomCoordToIndex() == ROOM_ID_STUDY)
     {
-        enemyList[0].passage = "I remained in the house, watching for her return.";
-        enemyList[1].passage = "Her father would never understand.";
-        enemyList[2].passage = "Together forever, age and beauty.";
-        enemyList[3].passage = "And I wait, cursed and alone.";
-        enemyList[4].passage = "Snuffed out his light, the deed was done.";
-        enemyList[5].passage = "She left to secure land and title.";
+        enemyList[0].passage = "We would be together forever, age and beauty.";
+        enemyList[1].passage = "But her father would never understand.";
+        enemyList[2].passage = "So I snuffed out his light, the deed was done.";
+        enemyList[3].passage = "Then she left to secure land and title.";
+        enemyList[4].passage = "I remained in the house, watching for her return.";
+        enemyList[5].passage = "And still I wait, cursed and alone.";
 
         if (orderOfBooksRead.length == 6)
         {
