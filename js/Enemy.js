@@ -181,7 +181,6 @@ function EnemyClass()
 	}
 
 	var bookSpeed = Math.floor(Math.random() * 2) + 1;
-
 	this.enemyBookBehavior = function()
 	{
 	    var passage = "";

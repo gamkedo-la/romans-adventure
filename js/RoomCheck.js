@@ -77,7 +77,7 @@ function checkGardenMiddle()
         triggerTile(1, 4, spawnTile, 0, 30);
         triggerTile(2, 4, spawnTile, 0, 26);
         triggerTile(3, 4, spawnTile, 0, 119);
-        
+
         // Check if Roman is standing on pressure plate
         if (roman.currentIndex == 105 || roman.currentIndex == 49)
         {
@@ -131,7 +131,7 @@ function checkDen()
 function checkStairs()
 {
     if (roomCoordToIndex() == ROOM_ID_STAIRS && stairsPuzzleSolved)
-    {      
+    {
         roomLayout[roomCoordToIndex()][18] = 0; // Delete original mirror
         roomLayout[roomCoordToIndex()][24] = 20; // Move fixed mirror to midde
         roomLayout[roomCoordToIndex()][140] = 0; // Delete ghost roman
@@ -150,24 +150,25 @@ function checkStudy()
 {
     if (roomCoordToIndex() == ROOM_ID_STUDY)
     {
-        enemyList[0].passage = "This is the first part of the story";
-        enemyList[1].passage = "This is the second part of the story";
-        enemyList[2].passage = "This is the third part of the story";
-        enemyList[3].passage = "This is the fourth part of the story";
-        enemyList[4].passage = "This is the fifth part of the story";
-        enemyList[5].passage = "This is the sixth part of the story";
+        enemyList[0].passage = "I remained in the house, watching for her return.";
+        enemyList[1].passage = "Her father would never understand.";
+        enemyList[2].passage = "Together forever, age and beauty.";
+        enemyList[3].passage = "And I wait, cursed and alone.";
+        enemyList[4].passage = "Snuffed out his light, the deed was done.";
+        enemyList[5].passage = "She left to secure land and title.";
 
-        if (orderOfBooksRead.length >= enemyList.length)
+        if (orderOfBooksRead.length == 6)
         {
-            if (checkForCorrectBookOrder() == true)
+            if (checkForCorrectBookOrder() == false)
+            {
+              postMessage("Uh oh, looks like you need to start over again.");
+              roman.resetBeginningOfRoom();
+              roman.currentIndex =
+              resetBooks();
+            }
+            else if (checkForCorrectBookOrder() == true)
             {
                 postMessage("You read them in the correct order!");
-            }
-            else
-            {
-                postMessage("Uh oh, looks like you need to start over again.");
-                roman.resetBeginningOfRoom();
-                resetBooks();
             }
         }
 
@@ -191,7 +192,7 @@ function triggerTile(tileType, activatedTileType, funcToExecute, funcParam1, fun
     if (worldGrid[roman.currentIndex] != tileType && romanIsOnTriggerTile == true)
     {
         romanIsOnTriggerTile = false;
-    } 
+    }
 }
 
 
@@ -204,13 +205,17 @@ function spawnTile(whichTile, whichTileIndex)
 function checkForCorrectBookOrder()
 {
     if (orderOfBooksRead.length != correctOrderOfBooks.length)
-        return false;
+    {
+      return false;
+    }
     for (var i = 0, l = orderOfBooksRead.length; i < l; i++)
     {
         if (orderOfBooksRead[i] instanceof Array && correctOrderOfBooks[i] instanceof Array)
         {
             if (!orderOfBooksRead[i].equals(correctOrderOfBooks[i]))
-                return false;
+            {
+              return false;
+            }
             else if (orderOfBooksRead[i] != correctOrderOfBooks[i])
             {
                 return false;

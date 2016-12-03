@@ -311,6 +311,7 @@ function heroClass()
 	{
 	    this.x = this.roomLoadedX;
 	    this.y = this.roomLoadedY;
+			roman.currentIndex = getTileIndexAtPixelCoord(this.roomLoadedX, this.roomLoadedY);
 	}
 }
 

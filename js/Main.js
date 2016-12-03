@@ -106,14 +106,14 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	        }
 	        break;
 	    case ROOM_ID_BEDROOM1:
-	        if (bedroom1PuzzleSolved == false) 
+	        if (bedroom1PuzzleSolved == false)
 	        {
 	            postMessage(dialogueBedroom1PuzzleNotSolved);
 	        }
 	        enterBedroom1();
 	        break;
 	    case ROOM_ID_GARDEN_MIDDLE:
-	        if (gardenMiddlePuzzleSolved == false) 
+	        if (gardenMiddlePuzzleSolved == false)
 	        {
 	            postMessage(dialogueGardenMiddlePuzzleNotSolved);
 	        }
@@ -128,8 +128,6 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	}
 	searchableTileType = -1; // Reset this variable when loading room
 	originalRoomState = roomLayout[roomCoordToIndex()];
-	roman.roomLoadedX = roman.x;
-	roman.roomLoadedY = roman.y;
     //Sounds.enter_room.play();
 }
 
