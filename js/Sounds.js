@@ -15,7 +15,8 @@ var Sounds = new (function() {
     key: 'sounds/key',
     open_door: 'sounds/open door',
     pick_up: 'sounds/pick up',
-    unlock: 'sounds/unlock'
+    unlock: 'sounds/unlock',
+    victory: 'sounds/victory'
   };
 
   this.initialize = function(callback) {

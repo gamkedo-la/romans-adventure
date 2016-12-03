@@ -168,6 +168,10 @@ function checkStudy()
             else if (checkForCorrectBookOrder() == true)
             {
                 postMessage("You read them in the correct order!");
+                for (var i = 0; i < enemyList.length; i++) {
+                  enemyList[i].isFrozen = true;
+                }
+                spawnTile(301, 81);
             }
         }
 

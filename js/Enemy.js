@@ -182,12 +182,13 @@ function EnemyClass()
 	var bookSpeed = Math.floor(Math.random() * 2) + 1;
 	this.enemyBookBehavior = function()
 	{
+			var isFrozen = false;
 	    var passage = "";
 	    if (isFlashLightNeededButMissing())
 	    {
 	        return;
 	    }
-	    else
+	    else if (!this.isFrozen)
 	    {
 	        this.y += bookSpeed;
 

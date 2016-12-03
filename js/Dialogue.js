@@ -2,6 +2,8 @@ var dialogueStairsPuzzleNotSolved = "Ghost Roman will not allow you to pass."; /
 var dialogueGhostRoman = "Ghost Roman will not allow you to pass."; //"You're always getting in your own way.";
 var dialogueStairsPuzzleSolved = "Ghost Roman is mesmerized by his reflection.";  //"Your vanity knows no bounds.";
 
+var dialogueDiningRoomEntered = "There's a key over there! I should be able to get to it if I push this stuff out of the way.";
+
 var dialogueDenPuzzleNotSolved = "Hint: Top left piece of the table is already in the correct spot.";
 var dialogueDenPuzzleSolved = "How lucky can you get?";
 

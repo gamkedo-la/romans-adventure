@@ -127,6 +127,12 @@ function heroClass()
 				if (roomCoordToIndex() == ROOM_ID_STAIRS && nextX > canvas.width / 2) {
 					currentRoomFloor++;
 				}
+				else if (roomCoordToIndex() == ROOM_ID_FOYER_ENTRANCE)
+				{
+					Sounds.victory.play();
+					postMessage("Make a game over screen you lazy bum!");
+					return;
+				}
 				currentRoomRow++;
 		    loadLevel(roomCoordToIndex());
 		    nextY = WORLD_H;

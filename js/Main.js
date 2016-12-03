@@ -118,6 +118,11 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	            postMessage(dialogueGardenMiddlePuzzleNotSolved);
 	        }
 	        break;
+      case ROOM_ID_DININGROOM:
+          if (worldGrid[77] == TILE_KEY_DEN)
+          {
+            postMessage(dialogueDiningRoomEntered);
+          }
 	    default:
 	        break;
 
