@@ -1,7 +1,7 @@
 var denPuzzleSolved = false;
-var bedroom1PuzzleSolved = false;
-var bedroom1ShowPath = false;
-var bedroom1ValidPath = [];
+var atticPuzzleSolved = false;
+var atticShowPath = false;
+var atticValidPath = [];
 var gardenMiddlePuzzleSolved = false;
 var stairsPuzzleSolved = false;
 var correctOrderOfBooks = [0, 1, 2, 3, 4, 5];
@@ -23,7 +23,7 @@ var searchableTiles =
         -1, -1, -1,
         -1, ITEM_IDX_FLASHLIGHT, -1,
         -1, -1, -1,
-        -1, -1, -1,
+        KEYDOOR_IDX_HOUSEENTRANCE, -1, -1,
         -1, -1, -1,
         -1, -1, -1
     ];
@@ -35,37 +35,38 @@ function checkRoomLogic()
     checkStairs();
     checkGardenMiddle();
     checkFoyerEntrance();
-    checkBedroom1();
+    checkAttic();
     checkStudy();
 }
 
-function enterBedroom1()
+function enterAttic()
 {
-    // @todo generate a valid path from id 55 to 123
-    bedroom1ValidPath = [55, 71, 87, 103, 104, 105, 106, 107, 123];
+    atticValidPath = [133, 132, 116, 100, 99, 83, 67, 68, 69, 70, 71, 72, 73, 57, 41, 25,
+                            26, 27, 43, 59, 75, 91, 107, 108, 124, 125, 126, 110, 94, 78, 62];
 }
 
-function bedroom1RoomArtIndexAlter(tileType, index)
+function atticRoomArtIndexAlter(tileType, index)
 {
-    if (bedroom1ShowPath && bedroom1ValidPath.indexOf(index) >= 0) {
+    if (atticShowPath && atticValidPath.indexOf(index) >= 0) {
         tileType += 2;
     }
     return tileType;
 }
 
-function checkBedroom1()
+function checkAttic()
 {
-    if (roomCoordToIndex() != ROOM_ID_BEDROOM1)
+    if (roomCoordToIndex() != ROOM_ID_ATTIC)
     {
         return;
     }
 
+    searchableTileType = 9;
+
     // @todo if walking on non-path tile, reset to room-start
     var tileIndex = getTileIndexAtPixelCoord(roman.x, roman.y);
-    if ((worldGrid[tileIndex] == 1 || worldGrid[tileIndex] == 2) && bedroom1ValidPath.indexOf(tileIndex) < 0) {
-        postMessage(dialogueBedroom1PuzzleSteppedOffPath);
-        roman.x = 107;
-        roman.y = 14;
+    if ((worldGrid[tileIndex] == 1 || worldGrid[tileIndex] == 2) && atticValidPath.indexOf(tileIndex) < 0) {
+        postMessage(dialogueAtticPuzzleSteppedOffPath);
+        roman.resetBeginningOfRoom();
     }
 }
 

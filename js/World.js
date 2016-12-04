@@ -108,9 +108,9 @@ var levelGardenRight =
 ];
 
 var levelAttic =
-	[
-		10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,1,2,1,2,1,5,0,0,1,2,1,2,1,2,10,10,2,1,2,1,2,0,0,0,2,1,2,1,2,1,10,10,1,2,1,2,1,2,1,2,1,2,1,2,1,2,10,10,2,1,2,1,2,1,2,1,2,1,2,1,2,1,10,10,1,2,1,2,1,2,1,2,1,2,1,2,1,2,10,10,2,1,2,1,2,1,2,1,2,1,2,0,0,0,10,10,1,2,1,2,1,2,1,2,1,2,1,0,0,0,10,10,2,1,2,1,2,1,2,1,2,1,2,0,0,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10
-	];
+[
+10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 0, 9, 10, 10, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 0, 0, 10, 10, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 10, 10, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 10, 10, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 10, 10, 2, 1, 2, 1, 2, 0, 0, 0, 2, 1, 2, 1, 2, 1, 10, 10, 1, 2, 1, 2, 1, 0, 0, 0, 1, 2, 1, 2, 1, 2, 10, 10, 2, 1, 2, 1, 2, 5, 0, 0, 2, 1, 2, 1, 2, 1, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10
+];
 
 var levelBedroomOne =
 	[ // Bed, Rug, Nightstand
@@ -232,7 +232,7 @@ var roomLayout =
 				//12        13          14
         -1, -1, -1, //No rooms above the garden area
 				//15                16                  17
-	    levelAttic, levelFoyerEntrance /*Should never see this */, levelBedroomFour,
+	    levelAttic, /*Should never see this */, levelBedroomFour,
 			      //18                19              20
         levelHallwayLeft, levelHallwayMiddle, levelHallwayRight,
 				     //21                22             23                       24 - maybe merges shouldn't go here.
@@ -253,6 +253,7 @@ const ROOM_ID_BASEMENT_GARDEN_EXIT = 3;
 const ROOM_ID_BEDROOM1 = 21;
 const ROOM_ID_BEDROOM4 = 17;
 const ROOM_ID_STUDY = 9;
+const ROOM_ID_ATTIC = 15;
 
 
 var roomNames =
@@ -619,7 +620,7 @@ function drawWorld()
                                         drawTileX, drawTileY, // draw tile x coord at drawTileX, draw tile x coord at drawTileY
                                         WORLD_W, WORLD_H, angleOfDoorRotation); // tile width, tile height, angle of rotation
 			} else if (tileTypeIsRoom(currentRoomArtIndex)) {
-				currentRoomArtIndex = bedroom1RoomArtIndexAlter(currentRoomArtIndex, arrayIndex);
+				currentRoomArtIndex = atticRoomArtIndexAlter(currentRoomArtIndex, arrayIndex);
 			    canvasContext.drawImage(roomStrips, WORLD_W * roomArtSet, WORLD_H * currentRoomArtIndex,
 										WORLD_W, WORLD_H,
 										drawTileX, drawTileY,

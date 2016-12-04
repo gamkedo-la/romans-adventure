@@ -179,11 +179,11 @@ function heroClass()
 		        unmergeRooms();
 		    }
 		}
-		else if (roomIndex == ROOM_ID_BEDROOM1) {
-			bedroom1ShowPath = (walkIntoTileType == TILE_SHOW_PATH);
+		else if (roomIndex == ROOM_ID_ATTIC) {
+			atticShowPath = (walkIntoTileType == TILE_SHOW_PATH);
 
-			if (bedroom1ShowPath) {
-				postMessage(dialogueBedroom1PuzzleShowPath);
+			if (atticShowPath) {
+				postMessage(dialogueAtticPuzzleShowPath);
 			}
 		}
 

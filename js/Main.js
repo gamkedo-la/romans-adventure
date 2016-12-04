@@ -108,12 +108,12 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	            postMessage(dialogueDenPuzzleNotSolved);
 	        }
 	        break;
-	    case ROOM_ID_BEDROOM1:
-	        if (bedroom1PuzzleSolved == false)
+	    case ROOM_ID_ATTIC:
+	        if (atticPuzzleSolved == false)
 	        {
-	            postMessage(dialogueBedroom1PuzzleNotSolved);
+	            postMessage(dialogueAtticPuzzleNotSolved);
 	        }
-	        enterBedroom1();
+	        enterAttic();
 	        break;
 	    case ROOM_ID_GARDEN_MIDDLE:
 	        if (gardenMiddlePuzzleSolved == false)

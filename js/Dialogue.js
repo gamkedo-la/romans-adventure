@@ -7,10 +7,10 @@ var dialogueDiningRoomEntered = "There's a key over there! I should be able to g
 var dialogueDenPuzzleNotSolved = "Hint: Top left piece of the table is already in the correct spot.";
 var dialogueDenPuzzleSolved = "How lucky can you get?";
 
-var dialogueBedroom1PuzzleNotSolved = "Hint: Be careful where you walk!";
-var dialogueBedroom1PuzzleShowPath = "Oh look! That is a safe path!";
-var dialogueBedroom1PuzzleSteppedOffPath = "Huh!? What happened? I must've walked on the wrong tiles.";
-var dialogueBedroom1PuzzleSolved = "Dialogue bark for bedroom 1 puzzle solved.";
+var dialogueAtticPuzzleNotSolved = "Hint: Be careful where you walk!";
+var dialogueAtticPuzzleShowPath = "Oh look! That is a safe path!";
+var dialogueAtticPuzzleSteppedOffPath = "Huh!? What happened? I must've walked on the wrong tiles.";
+var dialogueAtticPuzzleSolved = "Dialogue bark for bedroom 1 puzzle solved.";
 
 var dialogueGardenMiddlePuzzleNotSolved = "Dialogue bark for Garden Middle puzzle.";
 var dialogueGardenMiddlePuzzleSolved = "Dialogue bark for Garden Middle puzzle solved.";
