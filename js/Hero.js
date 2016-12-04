@@ -182,7 +182,7 @@ function heroClass()
 		else if (roomIndex == ROOM_ID_ATTIC) {
 			atticShowPath = (walkIntoTileType == TILE_SHOW_PATH);
 
-			if (atticShowPath) {
+			if (!atticPuzzleSolved && atticShowPath) {
 				postMessage(dialogueAtticPuzzleShowPath);
 			}
 		}
@@ -311,18 +311,21 @@ function heroClass()
 	        Sounds.pick_up.play();
 	        worldGrid[roman.currentIndex] = --searchableTileType;
 	        roomLayout[roomCoordToIndex()][roman.currentIndex] = --searchableTileType;
+
+			// Let the rooms handle some stuff as well!
+			searchRoomLogic();
 	    }
 	    else
 	    {
 	        postMessage("You didn't find anything.");
 	    }
-	}
+	};
 
 	this.resetBeginningOfRoom = function()
 	{
-	    this.x = this.roomLoadedX;
-	    this.y = this.roomLoadedY;
-			roman.currentIndex = getTileIndexAtPixelCoord(this.roomLoadedX, this.roomLoadedY);
+		this.x = this.roomLoadedX;
+		this.y = this.roomLoadedY;
+		roman.currentIndex = getTileIndexAtPixelCoord(this.roomLoadedX, this.roomLoadedY);
 	}
 }
 

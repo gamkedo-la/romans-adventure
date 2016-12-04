@@ -10,7 +10,7 @@ var dialogueDenPuzzleSolved = "How lucky can you get?";
 var dialogueAtticPuzzleNotSolved = "Hint: Be careful where you walk!";
 var dialogueAtticPuzzleShowPath = "Oh look! That is a safe path!";
 var dialogueAtticPuzzleSteppedOffPath = "Huh!? What happened? I must've walked on the wrong tiles.";
-var dialogueAtticPuzzleSolved = "Dialogue bark for bedroom 1 puzzle solved.";
+var dialogueAtticPuzzleSolved = "*Roman hears something* What's that? oh! Looks like the floor is normal now.";
 
 var dialogueGardenMiddlePuzzleNotSolved = "Dialogue bark for Garden Middle puzzle.";
 var dialogueGardenMiddlePuzzleSolved = "Dialogue bark for Garden Middle puzzle solved.";

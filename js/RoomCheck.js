@@ -40,6 +40,11 @@ function checkRoomLogic()
     checkStudy();
 }
 
+function searchRoomLogic()
+{
+    searchAttic();
+}
+
 function enterAttic()
 {
     atticValidPath = [133, 132, 116, 100, 99, 83, 67, 68, 69, 70, 71, 72, 73, 57, 41, 25,
@@ -63,12 +68,28 @@ function checkAttic()
 
     searchableTileType = 9;
 
-    // @todo if walking on non-path tile, reset to room-start
     var tileIndex = getTileIndexAtPixelCoord(roman.x, roman.y);
-    if ((worldGrid[tileIndex] == 1 || worldGrid[tileIndex] == 2) && atticValidPath.indexOf(tileIndex) < 0) {
+    if (!atticPuzzleSolved && (worldGrid[tileIndex] == 1 || worldGrid[tileIndex] == 2) && atticValidPath.indexOf(tileIndex) < 0)
+    {
         postMessage(dialogueAtticPuzzleSteppedOffPath);
         roman.resetBeginningOfRoom();
+	}
+}
+
+function searchAttic()
+{
+    if (roomCoordToIndex() != ROOM_ID_ATTIC)
+    {
+        return;
     }
+
+	var tileIndex = getTileIndexAtPixelCoord(roman.x, roman.y);
+	if (!atticPuzzleSolved && tileIndex == 30)
+	{
+		atticPuzzleSolved = true;
+		var whichItem = searchableTiles[ROOM_ID_ATTIC];
+		postMessage("Roman found the " + idxToTextKey(whichItem) + ". " + dialogueAtticPuzzleSolved);
+	}
 }
 
 function checkGardenMiddle()
