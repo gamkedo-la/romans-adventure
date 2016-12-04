@@ -99,7 +99,7 @@ function checkGardenMiddle()
         if (worldGrid[49] == 21)
         {
             gardenMiddlePuzzleSolved = true;
-            spawnTile(6, 129);
+            spawnTile(6, 129); // Spawn chest containing crowbar
             postMessage(dialogueGardenMiddlePuzzleSolved);
         }
     }

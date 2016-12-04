@@ -11,6 +11,7 @@ var messageToShow = "";
 var framesLeftForMessage = 0;
 const FRAMES_TO_SHOW_MESSAGE = 80;
 
+
 function postMessage(str, showMessageDuration)
 {
     clearMessage();

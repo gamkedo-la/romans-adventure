@@ -1,6 +1,6 @@
 const PLAYER_MOVE_SPEED = 2.0;
 
-var keyStripLimit = 8; // Max number of keys displayed per line in the UI
+var keyStripLimit = 5; // Max number of keys displayed per line in the UI
 var tileUnderPushable = 0;
 var originalRoomState = [];
 
@@ -129,7 +129,8 @@ function heroClass()
 				}
 				else if (roomCoordToIndex() == ROOM_ID_FOYER_ENTRANCE)
 				{
-					Sounds.victory.play();
+				    backgroundMusic.pause();
+				    Sounds.victory.play();
 					postMessage("Make a game over screen you lazy bum!");
 					return;
 				}
@@ -248,28 +249,32 @@ function heroClass()
 			worldGrid[walkIntoTileIndex] = TILE_GROUND;
 			pickedUpItem(keyStrip, whichKey);
 			roomLayout[roomCoordToIndex()][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
-			postMessage("Picked up " + idxToTextKey(whichKey) + ".");
+			postMessage("Picked up the " + idxToTextKey(whichKey) + ".");
 			Sounds.pick_up.play();
 
 		} else if (tileTypeIsDoor(walkIntoTileType)) {
 			var whichDoor = tileTypeToIndexForDoor(walkIntoTileType);
 
 			if(walkIntoTileType == TILE_ALIAS_ICE) {
-				if (this.doorKeyRing[whichDoor] == true) {
+			    if (this.doorKeyRing[whichDoor] == true || this.doorKeyRing[KEYDOOR_IDX_DEBUG] == true)
+			    {
 					this.isSliding = false;
 				} else {
 					this.isSliding = true;
 				}
 			} else { // generic key/door fallback, no special behavior defined
 
-				if (this.doorKeyRing[whichDoor] == true) {
-					this.doorKeyRing[whichDoor] = false;
+			    if (this.doorKeyRing[whichDoor] == true || this.doorKeyRing[KEYDOOR_IDX_DEBUG] == true)
+			    {
+					//this.doorKeyRing[whichDoor] = false; // Removes key from inventory
 					Sounds.unlock.play();
-					postMessage("Used " + idxToTextKey(whichDoor) + " to open "+
+					postMessage("Used the " + idxToTextKey(whichDoor) + " to open "+
 											idxToTextDoor(whichDoor)+".");
 					worldGrid[walkIntoTileIndex] = TILE_GROUND;
 					roomLayout[roomCoordToIndex()][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
-				} else {
+			    }
+			    else
+			    {
 					postMessage("Need something to open "+
 											idxToTextDoor(whichDoor)+".");
 				}
@@ -300,7 +305,7 @@ function heroClass()
 	    var whichItem = searchableTiles[whichRoom];
 	    if (worldGrid[roman.currentIndex] == searchableTileType)
 	    {
-	        postMessage("Roman found " + idxToTextKey(whichItem) + ".");
+	        postMessage("Roman found the " + idxToTextKey(whichItem) + ".");
 	        this.doorKeyRing[whichItem] = true;
 	        pickedUpItem(keyStrip, whichItem);
 	        Sounds.pick_up.play();
@@ -321,9 +326,9 @@ function heroClass()
 	}
 }
 
-function pickedUpItem(artStrip, itemIdx)
+function pickedUpItem(whichArtStrip, itemIdx)
 {
-    var drawTileX = itemIdx * WORLD_W;
+    var drawTileX = itemIdx * WORLD_W - WORLD_W; // -WORLD_W offsets debug key 300, starts row at 301
     var drawTileY = WORLD_H * WORLD_ROWS;
     var imageIdxY = itemIdx * WORLD_H;
 
@@ -332,8 +337,8 @@ function pickedUpItem(artStrip, itemIdx)
         drawTileY = WORLD_H * WORLD_ROWS + WORLD_H;
         drawTileX = (itemIdx - keyStripLimit) * WORLD_W;
     }
-    canvasContext.drawImage(artStrip, 0, imageIdxY, WORLD_W, WORLD_H,
-                                  drawTileX, drawTileY, WORLD_W, WORLD_H);
+    canvasContext.drawImage(whichArtStrip, 0, imageIdxY, WORLD_W, WORLD_H,
+                              drawTileX, drawTileY, WORLD_W, WORLD_H);
 }
 
 function drawTextBoundingBox()

@@ -45,7 +45,7 @@ var levelFoyerEntrance =
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 203,
 		 10, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0, 0, 0, 0, 0, 100, 0, 300, 0, 0, 0, 0, 0, 10,
 		10, 10, 10, 10, 10, 10, 10, 201, 10, 10, 10, 10, 10, 10, 10, 10
     ];
 
@@ -339,81 +339,60 @@ const TILE_START_ENEMY_LAST_ENUM = TILE_START_ENEMY_BOOK;
 // key and door tile consts share offsets to ensure they'll match up
 // these also double as the index values into the keyring array
 const KEYDOOR_IDX_DEBUG = 0;
-const KEYDOOR_IDX_HOUSEENTRANCE = 1;
-const KEYDOOR_IDX_STUDY = 2;
-const KEYDOOR_IDX_DEN = 3;
-const KEYDOOR_IDX_BASEMENT = 4;
-const KEYDOOR_IDX_GARDEN = 5;
-const KEYDOOR_IDX_GARDEN_BASEMENT = 6;
-const KEYDOOR_IDX_STAIRS_SECONDFLOOR = 7;
-const KEYDOOR_IDX_BEDROOMONE = 8;
-const KEYDOOR_IDX_BEDROOMTWO = 9;
-const KEYDOOR_IDX_BEDROOMTHREE = 10;
-const KEYDOOR_IDX_BEDROOMFOUR = 11;
-const KEYDOOR_IDX_ATTIC = 12;
+const KEYDOOR_IDX_DEN = 1;
+const KEYDOOR_IDX_GARDEN = 2;
+const KEYDOOR_IDX_GARDEN_BASEMENT = 3;
+const KEYDOOR_IDX_STAIRS_SECONDFLOOR = 4;
+const KEYDOOR_IDX_BEDROOMFOUR = 5;
+const KEYDOOR_IDX_STUDY = 6;
+const KEYDOOR_IDX_ATTIC = 7;
+const KEYDOOR_IDX_HOUSEENTRANCE = 8;
+//const KEYDOOR_IDX_BASEMENT = 9;
+//const KEYDOOR_IDX_BEDROOMONE = 10;
+//const KEYDOOR_IDX_BEDROOMTWO = 11;
+//const KEYDOOR_IDX_BEDROOMTHREE = 12;
 const KEYDOOR_IDX_FIRST = KEYDOOR_IDX_DEBUG;
-const KEYDOOR_IDX_LAST = KEYDOOR_IDX_ATTIC;
+const KEYDOOR_IDX_LAST = KEYDOOR_IDX_HOUSEENTRANCE;
 
-const ITEM_IDX_FLASHLIGHT = KEYDOOR_IDX_BEDROOMTHREE-1;
+const ITEM_IDX_FLASHLIGHT = KEYDOOR_IDX_ATTIC-1;
 const ITEM_IDX_ICEBOOT = KEYDOOR_IDX_BEDROOMFOUR-1; // -1 offsets debug case of 0
 
 // Door Tiles
 const TILE_DOOR = 200; // base door (only used for debug, otherwise basis for door #s)
+const TILE_DOOR_DEN = TILE_DOOR + KEYDOOR_IDX_DEN; // Door from FoyerEntrance to Den
+const TILE_DOOR_GARDEN = TILE_DOOR + KEYDOOR_IDX_GARDEN; // Door from Kitchen to Garden
+const TILE_DOOR_GARDEN_BASEMENT = TILE_DOOR + KEYDOOR_IDX_GARDEN_BASEMENT; // Door from Garden into Basement
+const TILE_DOOR_STAIRS_SECONDFLOOR = TILE_DOOR + KEYDOOR_IDX_STAIRS_SECONDFLOOR; // Door from Stairs to Hallway (2nd floor)
+const TILE_DOOR_BEDROOMFOUR = TILE_DOOR + KEYDOOR_IDX_BEDROOMFOUR; // Door from Hallway to BedroomFour
+const TILE_DOOR_STUDY = TILE_DOOR + KEYDOOR_IDX_STUDY; // Door from FoyerEntrance to Study
+const TILE_DOOR_ATTIC = TILE_DOOR + KEYDOOR_IDX_ATTIC; // Door from Hallway to Attic
 const TILE_DOOR_HOUSEENTRANCE = TILE_DOOR+KEYDOOR_IDX_HOUSEENTRANCE; // Exit the house, this is the goal!
-const TILE_DOOR_STUDY = TILE_DOOR+KEYDOOR_IDX_STUDY; // Door from FoyerEntrance to Study
-const TILE_DOOR_DEN = TILE_DOOR+KEYDOOR_IDX_DEN; // Door from FoyerEntrance to Den
-const TILE_DOOR_BASEMENT = TILE_DOOR+KEYDOOR_IDX_BASEMENT; // Door from FoyerStairs room to Basement
-const TILE_DOOR_GARDEN = TILE_DOOR+KEYDOOR_IDX_GARDEN; // Door from Kitchen to Garden
-const TILE_DOOR_GARDEN_BASEMENT = TILE_DOOR+KEYDOOR_IDX_GARDEN_BASEMENT; // Door from Garden into Basement
-const TILE_DOOR_STAIRS_SECONDFLOOR = TILE_DOOR+KEYDOOR_IDX_STAIRS_SECONDFLOOR; // Door from Stairs to Hallway (2nd floor)
-const TILE_DOOR_BEDROOMONE = TILE_DOOR+KEYDOOR_IDX_BEDROOMONE; // Door from Hallway to BedroomOne
-const TILE_DOOR_BEDROOMTWO = TILE_DOOR+KEYDOOR_IDX_BEDROOMTWO; // Door from Hallway to BedroomTwo
-const TILE_DOOR_BEDROOMTHREE = TILE_DOOR+KEYDOOR_IDX_BEDROOMTHREE; // Door from Hallway to BedroomThree
-const TILE_DOOR_BEDROOMFOUR = TILE_DOOR+KEYDOOR_IDX_BEDROOMFOUR; // Door from Hallway to BedroomFour
-const TILE_DOOR_ATTIC = TILE_DOOR+KEYDOOR_IDX_ATTIC; // Door from Hallway to Attic
+//const TILE_DOOR_BASEMENT = TILE_DOOR+KEYDOOR_IDX_BASEMENT; // Door from FoyerStairs room to Basement
+//const TILE_DOOR_BEDROOMONE = TILE_DOOR+KEYDOOR_IDX_BEDROOMONE; // Door from Hallway to BedroomOne
+//const TILE_DOOR_BEDROOMTWO = TILE_DOOR+KEYDOOR_IDX_BEDROOMTWO; // Door from Hallway to BedroomTwo
+//const TILE_DOOR_BEDROOMTHREE = TILE_DOOR+KEYDOOR_IDX_BEDROOMTHREE; // Door from Hallway to BedroomThree
 const TILE_DOOR_FIRST = TILE_DOOR;
-const TILE_DOOR_LAST = TILE_DOOR_ATTIC;
+const TILE_DOOR_LAST = TILE_DOOR_HOUSEENTRANCE;
 
 const TILE_ALIAS_ICE = TILE_DOOR+ITEM_IDX_ICEBOOT;
 
 // Key Tiles
 const TILE_KEY = 300; // base key
+const TILE_KEY_DEN = TILE_KEY + KEYDOOR_IDX_DEN; // Key for FoyerEntrance to Den
+const TILE_KEY_GARDEN = TILE_KEY + KEYDOOR_IDX_GARDEN; // Key for Kitchen to Garden
+const TILE_KEY_GARDEN_BASEMENT = TILE_KEY + KEYDOOR_IDX_GARDEN_BASEMENT; // Key for Garden into Basement
+const TILE_KEY_STAIRS_SECONDFLOOR = TILE_KEY + KEYDOOR_IDX_STAIRS_SECONDFLOOR; // Key for Stairs to Hallway (2nd floor)
+const TILE_KEY_BEDROOMFOUR = TILE_KEY + KEYDOOR_IDX_BEDROOMFOUR; // Door from Hallway to BedroomFour
+const TILE_KEY_STUDY = TILE_KEY + KEYDOOR_IDX_STUDY; // Key for FoyerEntrance to Study
+const TILE_KEY_ATTIC = TILE_KEY + KEYDOOR_IDX_ATTIC; // Key for Hallway to Attic
 const TILE_KEY_HOUSEENTRANCE = TILE_KEY+KEYDOOR_IDX_HOUSEENTRANCE; // Exit the house, this is the goal!
-const TILE_KEY_STUDY = TILE_KEY+KEYDOOR_IDX_STUDY; // Key for FoyerEntrance to Study
-const TILE_KEY_DEN = TILE_KEY+KEYDOOR_IDX_DEN; // Key for FoyerEntrance to Den
-const TILE_KEY_BASEMENT = TILE_KEY+KEYDOOR_IDX_BASEMENT; // Key for FoyerStairs room to Basement
-const TILE_KEY_GARDEN = TILE_KEY+KEYDOOR_IDX_GARDEN; // Key for Kitchen to Garden
-const TILE_KEY_GARDEN_BASEMENT = TILE_KEY+KEYDOOR_IDX_GARDEN_BASEMENT; // Key for Garden into Basement
-const TILE_KEY_STAIRS_SECONDFLOOR = TILE_KEY+KEYDOOR_IDX_STAIRS_SECONDFLOOR; // Key for Stairs to Hallway (2nd floor)
-const TILE_KEY_BEDROOMONE = TILE_KEY+KEYDOOR_IDX_BEDROOMONE; // Key for Hallway to BedroomOne
-const TILE_KEY_BEDROOMTWO = TILE_KEY+KEYDOOR_IDX_BEDROOMTWO; // Key for Hallway to BedroomTwo
-const TILE_KEY_BEDROOMTHREE = TILE_KEY+KEYDOOR_IDX_BEDROOMTHREE; // Key for Hallway to BedroomFour
-const TILE_KEY_BEDROOMFOUR = TILE_KEY+KEYDOOR_IDX_BEDROOMFOUR; // Door from Hallway to BedroomFour
-const TILE_KEY_ATTIC = TILE_KEY+KEYDOOR_IDX_ATTIC; // Key for Hallway to Attic
+//const TILE_KEY_BASEMENT = TILE_KEY + KEYDOOR_IDX_BASEMENT; // Key for FoyerStairs room to Basement
+//const TILE_KEY_BEDROOMONE = TILE_KEY+KEYDOOR_IDX_BEDROOMONE; // Key for Hallway to BedroomOne
+//const TILE_KEY_BEDROOMTWO = TILE_KEY+KEYDOOR_IDX_BEDROOMTWO; // Key for Hallway to BedroomTwo
+//const TILE_KEY_BEDROOMTHREE = TILE_KEY+KEYDOOR_IDX_BEDROOMTHREE; // Key for Hallway to BedroomFour
 const TILE_KEY_FIRST = TILE_KEY;
-const TILE_KEY_LAST = TILE_KEY_ATTIC;
+const TILE_KEY_LAST = TILE_KEY_HOUSEENTRANCE;
 const TILE_KEY_ALIAS_SNOWBOOT = TILE_KEY+ITEM_IDX_ICEBOOT;
-
-// Study Tiles
-const TILE_RUG_CENTER = 900;
-const TILE_RUG_TOP_LEFT = 901;
-const TILE_RUG_BOTTOM_LEFT = 902;
-const TILE_RUG_TOP = 903;
-const TILE_RUG_BOTTOM = 904;
-const TILE_RUG_TOP_RIGHT = 905;
-const TILE_RUG_BOTTOM_RIGHT = 906;
-const TILE_BOOKSHELF_A = 910;
-const TILE_BOOKSHELF_B = 911;
-const TILE_BOOKSHELF_C = 912;
-const TILE_BOOKSHELF_D = 913;
-const TILE_BOOKSHELF_E = 914;
-const TILE_BOOKSHELF_F = 915;
-const TILE_BOOKSHELF_G = 916;
-const TILE_BOOKSHELF_H = 917;
-const TILE_BOOKSHELF_I = 918;
-const TILE_BOOKSHELF_J = 919;
-const TILE_STUDY_FIRST = TILE_RUG_CENTER;
-const TILE_STUDY_LAST = TILE_BOOKSHELF_J;
 
 const TILE_ANYROOM_FIRST = 0;
 const TILE_ANYROOM_LAST = 39;
@@ -427,9 +406,17 @@ const TILE_SHOW_PATH = 5;
 
 var doorLabels = [];
 var keyLabels = [];
-doorLabels[KEYDOOR_IDX_STUDY] = "chained door";
+doorLabels[KEYDOOR_IDX_GARDEN_BASEMENT] = "chained door";
 keyLabels[ITEM_IDX_FLASHLIGHT] = "flashlight";
 keyLabels[ITEM_IDX_ICEBOOT] = "spike boot";
+keyLabels[KEYDOOR_IDX_DEBUG] = "DEBUG MASTER KEY";
+keyLabels[KEYDOOR_IDX_DEN] = "den key";
+keyLabels[KEYDOOR_IDX_GARDEN] = "garden key";
+keyLabels[KEYDOOR_IDX_GARDEN_BASEMENT] = "crowbar";
+keyLabels[KEYDOOR_IDX_BEDROOMFOUR] = "bedroom key";
+keyLabels[KEYDOOR_IDX_STUDY] = "study key";
+keyLabels[KEYDOOR_IDX_ATTIC] = "attic key";
+keyLabels[KEYDOOR_IDX_HOUSEENTRANCE] = "house entrance key";
 
 function idxToTextDoor(forIdx) {
 	if(doorLabels[forIdx] !== undefined) {
@@ -579,7 +566,7 @@ function checkBootsStatuePuzzle() {
 }
 
 function isFlashLightNeededButMissing() {
-	var hasFlashLight = roman.doorKeyRing[ITEM_IDX_FLASHLIGHT];
+    var hasFlashLight = roman.doorKeyRing[ITEM_IDX_FLASHLIGHT] || roman.doorKeyRing[KEYDOOR_IDX_DEBUG];
 	return (hasFlashLight != true && roomCoordToIndex() == ROOM_ID_DARKROOM_NEED_LIGHT);
 }
 
