@@ -2,6 +2,7 @@ var denPuzzleSolved = false;
 var atticPuzzleSolved = false;
 var atticShowPath = false;
 var atticValidPath = [];
+var atticSafeZones = [];
 var gardenMiddlePuzzleSolved = false;
 var stairsPuzzleSolved = false;
 var studyPuzzleSolved = false;
@@ -48,13 +49,15 @@ function searchRoomLogic()
 function enterAttic()
 {
     atticValidPath = [133, 132, 116, 100, 99, 83, 67, 68, 69, 70, 71, 72, 73, 57, 41, 25,
-                            26, 27, 43, 59, 75, 91, 107, 108, 124, 125, 126, 110, 94, 78, 62];
+                            26, 27, 43, 59, 75, 91, 107, 108, 124, 125, 126, 110, 94, 78, 62, 46];
+
+	atticSafeZones = [29, 30, 45, 46, 102, 103, 104, 118, 119, 120, 134, 135, 136, 151];
 }
 
 function atticRoomArtIndexAlter(tileType, index)
 {
     if (atticShowPath && atticValidPath.indexOf(index) >= 0) {
-        tileType += 2;
+        tileType += 1;
     }
     return tileType;
 }
@@ -69,7 +72,8 @@ function checkAttic()
     searchableTileType = 9;
 
     var tileIndex = getTileIndexAtPixelCoord(roman.x, roman.y);
-    if (!atticPuzzleSolved && (worldGrid[tileIndex] == 1 || worldGrid[tileIndex] == 2) && atticValidPath.indexOf(tileIndex) < 0)
+    // If the current index is not in the valid-path, reset Roman to the room-beginning.
+    if (!atticPuzzleSolved && atticSafeZones.indexOf(tileIndex) < 0 && atticValidPath.indexOf(tileIndex) < 0)
     {
         postMessage(dialogueAtticPuzzleSteppedOffPath);
         roman.resetBeginningOfRoom();
