@@ -196,7 +196,7 @@ function checkStudy()
                   enemyList[i].isFrozen = true;
                 }
                 studyPuzzleSolved = true;
-                spawnTile(301, 81);
+                spawnTile(308, 81);
             }
         }
 
