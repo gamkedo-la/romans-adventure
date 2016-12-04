@@ -4,6 +4,7 @@ var atticShowPath = false;
 var atticValidPath = [];
 var gardenMiddlePuzzleSolved = false;
 var stairsPuzzleSolved = false;
+var studyPuzzleSolved = false;
 var correctOrderOfBooks = [0, 1, 2, 3, 4, 5];
 var orderOfBooksRead = [];
 
@@ -150,7 +151,7 @@ function checkFoyerEntrance()
 
 function checkStudy()
 {
-    if (roomCoordToIndex() == ROOM_ID_STUDY)
+    if (roomCoordToIndex() == ROOM_ID_STUDY && studyPuzzleSolved == false)
     {
         enemyList[0].passage = "We would be together forever, age and beauty.";
         enemyList[1].passage = "But her father would never understand.";
@@ -173,6 +174,7 @@ function checkStudy()
                 for (var i = 0; i < enemyList.length; i++) {
                   enemyList[i].isFrozen = true;
                 }
+                studyPuzzleSolved = true;
                 spawnTile(301, 81);
             }
         }
