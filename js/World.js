@@ -42,11 +42,11 @@ var levelFoyerEntrance =
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 203,
+		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 201,
 		 10, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 100, 0, 300, 0, 0, 0, 0, 0, 10,
-		10, 10, 10, 10, 10, 10, 10, 201, 10, 10, 10, 10, 10, 10, 10, 10
+		10, 10, 10, 10, 10, 10, 10, 209, 10, 10, 10, 10, 10, 10, 10, 10
     ];
 
 var levelDen =
@@ -56,12 +56,12 @@ var levelDen =
 
 var levelFoyerStairs =
 [
-10,10,10,0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,17,210,17,10,10,10,10,10,10,10,11,10,10,10,10,11,0,210,210,0,13,12,13,12,13,0,0,0,10,10,10,10,0,210,210,210,0,0,0,0,0,0,1,0,10,10,10,16,2,17,15,2,12,12,12,13,13,2,0,0,14,10,204,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,16,0,0,21,0,0,2,0,0,15,0,0,0,14,10,10,10,0,0,0,0,0,18,0,0,0,0,0,0,10,10,10,10,0,1,0,0,0,21,0,15,18,21,1,0,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10
+10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 17, 204, 17, 10, 10, 10, 10, 10, 10, 10, 11, 10, 10, 10, 10, 11, 0, 204, 204, 0, 13, 12, 13, 12, 13, 0, 0, 0, 10, 10, 10, 10, 0, 204, 204, 204, 0, 0, 0, 0, 0, 0, 1, 0, 10, 10, 10, 16, 2, 17, 15, 2, 12, 12, 12, 13, 13, 2, 0, 0, 14, 10, 205, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 16, 0, 0, 21, 0, 0, 2, 0, 0, 15, 0, 0, 0, 14, 10, 10, 10, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 0, 1, 0, 0, 0, 21, 0, 15, 18, 21, 1, 0, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10
 ];
 
 var levelDiningRoom =
 [
-10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,1,0,0,0,0,0,8,0,0,0,0,21,0,0,10,10,0,0,0,3,24,0,24,0,24,0,24,0,0,7,10,10,0,22,16,13,31,13,13,28,13,13,28,17,23,0,10,10,0,0,18,30,29,27,30,27,32,27,26,19,303,21,10,0,9,22,18,26,27,11,32,11,33,11,29,19,23,0,10,10,0,0,14,12,12,12,12,12,12,12,12,15,0,0,10,10,0,0,0,0,25,0,25,0,25,0,25,0,2,0,10,10,0,0,0,5,4,6,0,0,0,8,0,0,0,0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10
+10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,1,0,0,0,0,0,8,0,0,0,0,21,0,0,10,10,0,0,0,3,24,0,24,0,24,0,24,0,0,7,10,10,0,22,16,13,31,13,13,28,13,13,28,17,23,0,10,10,0,0,18,30,29,27,30,27,32,27,26,19,301,21,10,0,9,22,18,26,27,11,32,11,33,11,29,19,23,0,10,10,0,0,14,12,12,12,12,12,12,12,12,15,0,0,10,10,0,0,0,0,25,0,25,0,25,0,25,0,2,0,10,10,0,0,0,5,4,6,0,0,0,8,0,0,0,0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10
 ];
 
 var levelStairs =
@@ -80,7 +80,7 @@ var levelStairs =
 
 var levelKitchen =
 	[ // Cabinets, Counter-tops, Island
-		 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10,
+		 10, 10, 10, 10, 10, 10, 10, 202, 10, 10, 10, 10, 10, 10, 10, 10,
 		 10, 0, 0, 0, 11, 11, 11, 11, 11, 11, 11, 11, 0, 0, 0, 10,
 		 10, 0, 0, 0, 11, 11, 11, 11, 11, 11, 11, 11, 0, 0, 0, 10,
 		 10, 0, 0, 0, 11, 11, 11, 11, 11, 11, 11, 11, 0, 11, 0, 10,
@@ -94,7 +94,7 @@ var levelKitchen =
 
 var levelGardenLeft =
 [
-10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 405, 10, 402, 10, 400, 10, 403, 10, 401, 10, 0, 0, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 206, 10, 10, 10, 10, 10, 10, 10, 10
+10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 203, 10, 10, 10, 10, 10, 10, 10, 10
 ];
 
 var levelGardenMiddle =
@@ -107,23 +107,23 @@ var levelGardenRight =
 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10
 ];
 
-// Second Level Areas
-// var levelBedroomOne =
-// 	[ // Bed, Rug, Nightstand
-// 		 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10,
-// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-// 		 10, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 10,
-// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-// 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-// 		 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
-// 	];
-var levelBedroomOne =
+var levelAttic =
 	[
 		10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,1,2,1,2,1,5,0,0,1,2,1,2,1,2,10,10,2,1,2,1,2,0,0,0,2,1,2,1,2,1,10,10,1,2,1,2,1,2,1,2,1,2,1,2,1,2,10,10,2,1,2,1,2,1,2,1,2,1,2,1,2,1,10,10,1,2,1,2,1,2,1,2,1,2,1,2,1,2,10,10,2,1,2,1,2,1,2,1,2,1,2,0,0,0,10,10,1,2,1,2,1,2,1,2,1,2,1,0,0,0,10,10,2,1,2,1,2,1,2,1,2,1,2,0,0,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10
+	];
+
+var levelBedroomOne =
+	[ // Bed, Rug, Nightstand
+		 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10,
+		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
 	];
 
 var levelBedroomTwo =
@@ -155,37 +155,19 @@ var levelBedroomThree =
 	];
 
 var levelHallwayLeft =
-	[ // Wall lamps, Tables
-		 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10,
-	];
+[
+10, 10, 10, 10, 10, 10, 10, 208, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 210, 10, 10, 10, 10, 10, 10, 10, 10
+];
 
 var levelHallwayMiddle =
 [
-10,10,10,10,10,10,10,10,10,10,10,10,0,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10
+10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 211, 10, 10, 10, 10, 10, 10, 10, 10
 ];
 
 var levelHallwayRight =
-	[ // Wall lamps, Tables
-		 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10,
-		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10,
-	];
+[
+10, 10, 10, 10, 10, 10, 10, 206, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 212, 10, 10, 10, 10, 10, 10, 10, 10
+];
 
 var levelBedroomFour =
 	[ // Bed, Rug, Nightstand
@@ -219,7 +201,7 @@ var levelKitchenBedroomFourMerged =
 
 var levelBasementFoyerEntrance =
 [
-10,0,0,0,0,0,1,4,6,0,0,0,0,0,0,10,10,0,0,0,0,0,2,0,7,0,0,0,0,0,1,10,10,6,0,0,9,0,3,5,8,0,9,0,0,0,3,10,10,7,1,4,4,4,4,4,4,4,4,4,4,6,0,10,10,8,2,24,0,21,0,23,0,22,0,25,0,7,0,10,10,0,2,11,0,11,0,11,0,11,0,11,0,7,0,0,10,0,3,5,5,5,5,5,5,5,5,5,5,8,0,10,10,4,4,4,6,0,0,0,0,0,0,1,4,4,4,10,10,0,9,0,7,0,1,4,4,6,0,2,0,9,0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10
+10, 0, 0, 0, 0, 0, 1, 4, 4, 6, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 7, 0, 0, 0, 0, 1, 10, 10, 6, 0, 0, 9, 0, 3, 5, 5, 8, 0, 9, 0, 0, 3, 10, 10, 7, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6, 0, 10, 10, 8, 2, 24, 0, 21, 0, 23, 0, 22, 0, 25, 0, 7, 0, 10, 10, 0, 2, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 7, 0, 205, 10, 0, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 8, 0, 10, 10, 4, 4, 4, 6, 0, 0, 0, 0, 0, 0, 1, 4, 4, 4, 10, 10, 0, 9, 0, 7, 0, 1, 4, 4, 6, 0, 2, 0, 9, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10
 ];
 
 var levelBasementGardenExit =
@@ -234,20 +216,6 @@ var levelBasementGardenExit =
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 401, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-	];
-
-var levelAttic =
-	[ // Chests, Boxes, Shelves
-		 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10,
 	];
 
 var roomLayout =
@@ -275,6 +243,7 @@ const ROOM_ID_STAIRS = 4; // Based on room layout array ^^
 const ROOM_ID_DININGROOM = 8;
 const ROOM_ID_DEN = 11;
 const ROOM_ID_FOYER_ENTRANCE = 10;
+const ROOM_ID_FOYER_STAIRS = 7;
 const ROOM_ID_UPSTAIRS_GOING_DOWN = 19; // Based on room layout array ^^
 const ROOM_ID_BASEMENT_STATUE_AREA = 6;
 const ROOM_ID_DARKROOM_NEED_LIGHT = 9; // study for now (just a test)
@@ -319,7 +288,7 @@ const TILE_GROUND = 0;
 const TILE_WALKABLE_FIRST = 1;
 const TILE_WALKABLE_LAST = 9;
 const TILE_WALL = 10;
-const TILE_TRANSPARENT_SOLID_FIRST = 11;
+const TILE_TRANSPARENT_SOLID_FIRST = 2;
 const TILE_TRANSPARENT_SOLID_LAST = 39;
 
 // Player And Pickup Tiles
@@ -343,19 +312,19 @@ const KEYDOOR_IDX_DEN = 1;
 const KEYDOOR_IDX_GARDEN = 2;
 const KEYDOOR_IDX_GARDEN_BASEMENT = 3;
 const KEYDOOR_IDX_STAIRS_SECONDFLOOR = 4;
-const KEYDOOR_IDX_BEDROOMFOUR = 5;
-const KEYDOOR_IDX_STUDY = 6;
-const KEYDOOR_IDX_ATTIC = 7;
-const KEYDOOR_IDX_HOUSEENTRANCE = 8;
-//const KEYDOOR_IDX_BASEMENT = 9;
-//const KEYDOOR_IDX_BEDROOMONE = 10;
-//const KEYDOOR_IDX_BEDROOMTWO = 11;
-//const KEYDOOR_IDX_BEDROOMTHREE = 12;
+const KEYDOOR_IDX_BASEMENT = 5;
+const KEYDOOR_IDX_BEDROOMFOUR = 6;
+const KEYDOOR_IDX_STUDY = 7;
+const KEYDOOR_IDX_ATTIC = 8;
+const KEYDOOR_IDX_HOUSEENTRANCE = 9;
+const KEYDOOR_IDX_BEDROOMONE = 10;
+const KEYDOOR_IDX_BEDROOMTWO = 11;
+const KEYDOOR_IDX_BEDROOMTHREE = 12;
 const KEYDOOR_IDX_FIRST = KEYDOOR_IDX_DEBUG;
-const KEYDOOR_IDX_LAST = KEYDOOR_IDX_HOUSEENTRANCE;
+const KEYDOOR_IDX_LAST = KEYDOOR_IDX_BEDROOMTHREE;
 
 const ITEM_IDX_FLASHLIGHT = KEYDOOR_IDX_ATTIC-1;
-const ITEM_IDX_ICEBOOT = KEYDOOR_IDX_BEDROOMFOUR-1; // -1 offsets debug case of 0
+const ITEM_IDX_ICEBOOT = KEYDOOR_IDX_BASEMENT-1; // -1 offsets debug case of 0
 
 // Door Tiles
 const TILE_DOOR = 200; // base door (only used for debug, otherwise basis for door #s)
@@ -363,16 +332,16 @@ const TILE_DOOR_DEN = TILE_DOOR + KEYDOOR_IDX_DEN; // Door from FoyerEntrance to
 const TILE_DOOR_GARDEN = TILE_DOOR + KEYDOOR_IDX_GARDEN; // Door from Kitchen to Garden
 const TILE_DOOR_GARDEN_BASEMENT = TILE_DOOR + KEYDOOR_IDX_GARDEN_BASEMENT; // Door from Garden into Basement
 const TILE_DOOR_STAIRS_SECONDFLOOR = TILE_DOOR + KEYDOOR_IDX_STAIRS_SECONDFLOOR; // Door from Stairs to Hallway (2nd floor)
+const TILE_DOOR_BASEMENT = TILE_DOOR + KEYDOOR_IDX_BASEMENT; // Door from FoyerStairs room to Basement
 const TILE_DOOR_BEDROOMFOUR = TILE_DOOR + KEYDOOR_IDX_BEDROOMFOUR; // Door from Hallway to BedroomFour
 const TILE_DOOR_STUDY = TILE_DOOR + KEYDOOR_IDX_STUDY; // Door from FoyerEntrance to Study
 const TILE_DOOR_ATTIC = TILE_DOOR + KEYDOOR_IDX_ATTIC; // Door from Hallway to Attic
 const TILE_DOOR_HOUSEENTRANCE = TILE_DOOR+KEYDOOR_IDX_HOUSEENTRANCE; // Exit the house, this is the goal!
-//const TILE_DOOR_BASEMENT = TILE_DOOR+KEYDOOR_IDX_BASEMENT; // Door from FoyerStairs room to Basement
-//const TILE_DOOR_BEDROOMONE = TILE_DOOR+KEYDOOR_IDX_BEDROOMONE; // Door from Hallway to BedroomOne
-//const TILE_DOOR_BEDROOMTWO = TILE_DOOR+KEYDOOR_IDX_BEDROOMTWO; // Door from Hallway to BedroomTwo
-//const TILE_DOOR_BEDROOMTHREE = TILE_DOOR+KEYDOOR_IDX_BEDROOMTHREE; // Door from Hallway to BedroomThree
+const TILE_DOOR_BEDROOMONE = TILE_DOOR+KEYDOOR_IDX_BEDROOMONE; // Door from Hallway to BedroomOne
+const TILE_DOOR_BEDROOMTWO = TILE_DOOR+KEYDOOR_IDX_BEDROOMTWO; // Door from Hallway to BedroomTwo
+const TILE_DOOR_BEDROOMTHREE = TILE_DOOR+KEYDOOR_IDX_BEDROOMTHREE; // Door from Hallway to BedroomThree
 const TILE_DOOR_FIRST = TILE_DOOR;
-const TILE_DOOR_LAST = TILE_DOOR_HOUSEENTRANCE;
+const TILE_DOOR_LAST = TILE_DOOR_BEDROOMTHREE;
 
 const TILE_ALIAS_ICE = TILE_DOOR+ITEM_IDX_ICEBOOT;
 
@@ -382,16 +351,16 @@ const TILE_KEY_DEN = TILE_KEY + KEYDOOR_IDX_DEN; // Key for FoyerEntrance to Den
 const TILE_KEY_GARDEN = TILE_KEY + KEYDOOR_IDX_GARDEN; // Key for Kitchen to Garden
 const TILE_KEY_GARDEN_BASEMENT = TILE_KEY + KEYDOOR_IDX_GARDEN_BASEMENT; // Key for Garden into Basement
 const TILE_KEY_STAIRS_SECONDFLOOR = TILE_KEY + KEYDOOR_IDX_STAIRS_SECONDFLOOR; // Key for Stairs to Hallway (2nd floor)
+const TILE_KEY_BASEMENT = TILE_KEY + KEYDOOR_IDX_BASEMENT; // Key for FoyerStairs room to Basement
 const TILE_KEY_BEDROOMFOUR = TILE_KEY + KEYDOOR_IDX_BEDROOMFOUR; // Door from Hallway to BedroomFour
 const TILE_KEY_STUDY = TILE_KEY + KEYDOOR_IDX_STUDY; // Key for FoyerEntrance to Study
 const TILE_KEY_ATTIC = TILE_KEY + KEYDOOR_IDX_ATTIC; // Key for Hallway to Attic
 const TILE_KEY_HOUSEENTRANCE = TILE_KEY+KEYDOOR_IDX_HOUSEENTRANCE; // Exit the house, this is the goal!
-//const TILE_KEY_BASEMENT = TILE_KEY + KEYDOOR_IDX_BASEMENT; // Key for FoyerStairs room to Basement
-//const TILE_KEY_BEDROOMONE = TILE_KEY+KEYDOOR_IDX_BEDROOMONE; // Key for Hallway to BedroomOne
-//const TILE_KEY_BEDROOMTWO = TILE_KEY+KEYDOOR_IDX_BEDROOMTWO; // Key for Hallway to BedroomTwo
-//const TILE_KEY_BEDROOMTHREE = TILE_KEY+KEYDOOR_IDX_BEDROOMTHREE; // Key for Hallway to BedroomFour
+const TILE_KEY_BEDROOMONE = TILE_KEY+KEYDOOR_IDX_BEDROOMONE; // Key for Hallway to BedroomOne
+const TILE_KEY_BEDROOMTWO = TILE_KEY+KEYDOOR_IDX_BEDROOMTWO; // Key for Hallway to BedroomTwo
+const TILE_KEY_BEDROOMTHREE = TILE_KEY+KEYDOOR_IDX_BEDROOMTHREE; // Key for Hallway to BedroomFour
 const TILE_KEY_FIRST = TILE_KEY;
-const TILE_KEY_LAST = TILE_KEY_HOUSEENTRANCE;
+const TILE_KEY_LAST = TILE_KEY_BEDROOMTHREE;
 const TILE_KEY_ALIAS_SNOWBOOT = TILE_KEY+ITEM_IDX_ICEBOOT;
 
 const TILE_ANYROOM_FIRST = 0;
@@ -413,8 +382,8 @@ keyLabels[KEYDOOR_IDX_DEBUG] = "DEBUG MASTER KEY";
 keyLabels[KEYDOOR_IDX_DEN] = "den key";
 keyLabels[KEYDOOR_IDX_GARDEN] = "garden key";
 keyLabels[KEYDOOR_IDX_GARDEN_BASEMENT] = "crowbar";
+keyLabels[KEYDOOR_IDX_BASEMENT] = "basement key";
 keyLabels[KEYDOOR_IDX_BEDROOMFOUR] = "bedroom key";
-keyLabels[KEYDOOR_IDX_STUDY] = "study key";
 keyLabels[KEYDOOR_IDX_ATTIC] = "attic key";
 keyLabels[KEYDOOR_IDX_HOUSEENTRANCE] = "house entrance key";
 
@@ -528,7 +497,11 @@ function removePlayerStarts()
 
 var awardedBootYet = false;
 function checkBootsStatuePuzzle() {
-	var roomIdxHere = roomCoordToIndex();
+    var roomIdxHere = roomCoordToIndex();
+    if (worldGrid[95] == TILE_GROUND) // If you unlock the basement door from inside the basement
+    {
+        roomLayout[ROOM_ID_FOYER_STAIRS][80] = TILE_GROUND; // Remove the basement door from the foyer stairs level
+    }
 	if( awardedBootYet == false &&
 		roomIdxHere == ROOM_ID_BASEMENT_STATUE_AREA) {
 
@@ -545,9 +518,13 @@ function checkBootsStatuePuzzle() {
 			worldGrid[75] == 24) {
 			awardedBootYet = true;
 			var spikeBootDestIdx = 23;
+			var basementKeyDestIdx = 24;
 			worldGrid[spikeBootDestIdx] =
 				roomLayout[roomIdxHere][spikeBootDestIdx] =
 				TILE_KEY_ALIAS_SNOWBOOT;
+			worldGrid[basementKeyDestIdx] =
+                roomLayout[roomIdxHere][basementKeyDestIdx] =
+                TILE_KEY_BASEMENT;
 			for(var i=0;i<WORLD_ROWS * WORLD_COLS;i++) {
 				if(worldGrid[i] == 11) { // unlit box
 					worldGrid[i] =

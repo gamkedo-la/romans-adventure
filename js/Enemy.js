@@ -150,7 +150,8 @@ function EnemyClass()
 	            stairsPuzzleSolved = true;
 	            worldGrid[24] = 20;
 	            postMessage(dialogueStairsPuzzleSolved);
-	        }
+	            spawnTile(6, 29); // Spawn chest containing crowbar
+            }
 	    }
 	};
 
@@ -175,7 +176,7 @@ function EnemyClass()
 	    // Check if ghost enemy and roman are at the same worldGrid index
 	    if (roman.currentIndex == this.currentIndex)
 	    {
-					roman.resetBeginningOfRoom();
+		    roman.resetBeginningOfRoom();
 	    }
 	}
 

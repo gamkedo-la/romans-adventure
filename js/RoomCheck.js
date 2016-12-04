@@ -19,7 +19,7 @@ var searchableTiles =
         //"levelHallwayLeft", "levelHallwayMiddle", "levelHallwayRight",
         //"levelBedroomOne", "levelBedroomTwo", "levelBedroomThree", "levelKitchenBedroomFourMerged"
         -1, KEYDOOR_IDX_GARDEN_BASEMENT, -1,
-        -1, -1, -1,
+        -1, KEYDOOR_IDX_BEDROOMFOUR, -1,
         -1, -1, -1,
         -1, ITEM_IDX_FLASHLIGHT, -1,
         -1, -1, -1,
@@ -132,8 +132,9 @@ function checkStairs()
 {
     if (roomCoordToIndex() == ROOM_ID_STAIRS && stairsPuzzleSolved)
     {
+        searchableTileType = 6;
         roomLayout[roomCoordToIndex()][18] = 0; // Delete original mirror
-        roomLayout[roomCoordToIndex()][24] = 20; // Move fixed mirror to midde
+        roomLayout[roomCoordToIndex()][24] = 20; // Move fixed mirror to middle
         roomLayout[roomCoordToIndex()][140] = 0; // Delete ghost roman
     }
 }
