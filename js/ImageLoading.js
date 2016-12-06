@@ -4,6 +4,10 @@ var doorStrip = document.createElement("img");
 var keyStrip = document.createElement("img");
 var keyStripEmpty = document.createElement("img");
 var roomStrips = document.createElement("img");
+const ANIM_TILE_CLOCK = -1;
+const ANIM_TILE_CANDLE = -2;
+const ANIM_DOUBLE_HEIGHT_BLANK_BLOCKER = -3;
+var animTileStrips = [];
 var enemyArtStrips = [];
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
 var artStripGroupLimit = 10;
@@ -31,6 +35,13 @@ function loadImageForEnemyCode(enemyCode, fileName)
 {
 	enemyArtStrips[enemyCode] = document.createElement("img");
 	beginLoadingImage(enemyArtStrips[enemyCode], fileName);
+}
+
+function loadImageForAnimTileCode(animTileCodeNegative, fileName)
+{
+	var animTileCode = -animTileCodeNegative;
+	animTileStrips[animTileCode] = document.createElement("img");
+	beginLoadingImage(animTileStrips[animTileCode], fileName);
 }
 
 function loadImages()
@@ -62,6 +73,10 @@ function loadImages()
 		{ varName: keyStrip, theFile: "key_strip.png" },
         { varName: keyStripEmpty, theFile: "key_strip_empty.png" },
 
+        // Animated tiles (special cased)
+        { animTile: ANIM_TILE_CLOCK, theFile: "anim-grandfatherclock.png" },
+        { animTile: ANIM_TILE_CANDLE, theFile: "anim-candlesconce.png" },
+        { animTile: ANIM_DOUBLE_HEIGHT_BLANK_BLOCKER, theFile: "anim-blank.png" },
 
         // Room tiles
         { varName: roomStrips, theFile: "roomart.png" }
@@ -76,7 +91,10 @@ function loadImages()
 		{
 			beginLoadingImage(imageList[i].varName, imageList[i].theFile);
 		}
-		else
+		else if(imageList[i].animTile != undefined)
+		{
+			loadImageForAnimTileCode(imageList[i].animTile, imageList[i].theFile);
+		} else
 		{
 			loadImageForEnemyCode(imageList[i].enemyType, imageList[i].theFile);
 		}

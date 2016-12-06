@@ -17,7 +17,7 @@ const EDGE_OF_SCREEN_Y = ((WORLD_H * WORLD_ROWS) - (WORLD_H / 2)); // Distance R
 var worldGrid = [];
 var roomArtSet = 0;
 var rotDoor;
-
+var tileAnimTick = 0;
 
 // ******BEGIN MAP EDITOR******
 
@@ -44,8 +44,8 @@ var levelFoyerEntrance =
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 201,
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-		 10, 0, 0, 0, 0, 0, 0, 100, 0, 300, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0,-3, 0,-2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0,-1, 0, 0, 0, 100, 0, 300, 0, 0, 0, 0, 0, 10,
 		10, 10, 10, 10, 10, 10, 10, 209, 10, 10, 10, 10, 10, 10, 10, 10
     ];
 
@@ -467,7 +467,8 @@ function tileTypeToIndexForStudy(checkTileType) {
 // all tiles with transparency must be listed below
 function tileTypeHasTransparency(checkTileType)
 {
-	return tileTypeIsKey(checkTileType) ||
+	return checkTileType < 0 || // special animated tile
+			tileTypeIsKey(checkTileType) ||
 			tileTypeIsDoor(checkTileType) ||
 	        tileTypeIsTransparent(checkTileType);
 }
@@ -545,6 +546,8 @@ function drawWorld()
 	var drawTileX = 0;
 	var drawTileY = 0;
 
+	tileAnimTick++;
+
 	checkBootsStatuePuzzle();
 
 	if(isFlashLightNeededButMissing()) {
@@ -568,7 +571,24 @@ function drawWorld()
 										WORLD_W, WORLD_H);
 			}
 
-			if(tileTypeIsKey(currentRoomArtIndex)) {
+			if(currentRoomArtIndex < 0) // special animated tiles
+			{
+				var animIdx = -currentRoomArtIndex;
+				var imgWidth = WORLD_W;
+				var imgHeight = WORLD_H;
+				var offsetY = 0;
+				var frameTotal = 3;
+				if(currentRoomArtIndex == ANIM_TILE_CLOCK) {
+					imgHeight = WORLD_H*2;
+					offsetY = -WORLD_H;
+					frameTotal = 6;
+				}
+			     canvasContext.drawImage(animTileStrips[animIdx],
+			     						imgWidth*( (tileAnimTick>>4)%frameTotal ), 0,
+										imgWidth, imgHeight,
+										drawTileX, drawTileY+offsetY,
+										imgWidth, imgHeight);
+			} else if(tileTypeIsKey(currentRoomArtIndex)) {
 				var whichKey = tileTypeToIndexForKey(currentRoomArtIndex);
 				canvasContext.drawImage(keyStrip,0,WORLD_H*whichKey,
 										WORLD_W,WORLD_H,
