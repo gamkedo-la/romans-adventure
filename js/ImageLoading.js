@@ -7,15 +7,18 @@ var roomStrips = document.createElement("img");
 var enemyArtStrips = [];
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
 var artStripGroupLimit = 10;
+var waitForTitleScreen = 900;
+
+
+var titleScreen = document.createElement("img");
 
 function countLoadedImagesAndLaunchIfReady()
 {
-	picsToLoad--;
-	console.log(picsToLoad);
-	if(picsToLoad == 0)
-	{
-		imageLoadingDoneSoStartGame(); // Main.js
-	}
+    picsToLoad--;
+    if (picsToLoad == 0)
+    {
+        imageLoadingDoneSoStartGame(); // Main.js
+    }
 }
 
 function beginLoadingImage(imgVar, fileName)
@@ -34,6 +37,9 @@ function loadImages()
 {
 	var imageList =
 	[
+        // title and menu screens
+        { varName: titleScreen, theFile: "titlescreen.png" },
+
 		// hero and pickup tiles
 		{ varName: heroPicLeft, theFile: "roman_left.png" },
   		{ varName: heroPicRight, theFile: "roman_right.png" },

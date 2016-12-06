@@ -163,6 +163,7 @@ function checkStairs()
         roomLayout[roomCoordToIndex()][18] = 0; // Delete original mirror
         roomLayout[roomCoordToIndex()][24] = 20; // Move fixed mirror to middle
         roomLayout[roomCoordToIndex()][140] = 0; // Delete ghost roman
+        canvasContext.globalAlpha = 1;
     }
 }
 

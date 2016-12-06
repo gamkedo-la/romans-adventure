@@ -4,6 +4,7 @@ const KEY_RIGHT_ARROW = 39;
 const KEY_DOWN_ARROW = 40;
 const KEY_SPACE = 32;
 const KEY_ESC = 27; // Pause game
+const KEY_ENTER = 13;
 
 const KEY_L = 76; // Level Editor enable/disable
 const KEY_F = 70; // Search in-game
@@ -82,6 +83,11 @@ function keyPressed(evt)
 	if (evt.keyCode == KEY_ESC)
 	{
 	    pauseGame();
+	}
+
+	if (evt.keyCode == KEY_ENTER)
+	{
+	    setGameInterval();
 	}
 }
 

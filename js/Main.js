@@ -10,9 +10,10 @@ var canvas, canvasContext;
 var messageToShow = "";
 var framesLeftForMessage = 0;
 const FRAMES_TO_SHOW_MESSAGE = 80;
+var framesPerSecond = 30;
 
 var gamePaused = false;
-var framesPerSecond = 30;
+var titleScreenActive = true;
 
 
 
@@ -40,7 +41,9 @@ window.onload = function()
 {
 	// Get references for gameCanvas
     scaledCanvas = document.getElementById('gameCanvas');
-	canvas = document.createElement('canvas');
+    canvas = document.createElement('canvas');
+    menuCanvas = document.getElementById('menuCanvas');
+
     // Size gameCanvas
 	canvas.width = WORLD_W * WORLD_COLS;
 	canvas.height = WORLD_H * WORLD_ROWS + WORLD_H * UI_ROWS;
@@ -68,31 +71,45 @@ window.onload = function()
 	scaledCanvas.addEventListener("mousemove", updateMousePos);
 	scaledCanvas.addEventListener("mouseup", editTileUnderMousePos);
 
-	backgroundMusic.volume = .4;
+	backgroundMusic.volume = bgMusicSlider.value;
 };
 
 function imageLoadingDoneSoStartGame()
 {
-	game = setInterval(updateAll, 1000/framesPerSecond);
+    scaledContext.drawImage(titleScreen, 0, 0, canvas.width, canvas.height,
+    0, 0, scaledCanvas.width, scaledCanvas.height); // Show title screen
 	setupInput();
 	loadLevel(currentRoomIndex, true);
 	roman.reset("Roman");
 }
 
+function setGameInterval()
+{
+    game = setInterval(updateAll, 1000 / framesPerSecond); // Pressing enter during the title screen sets setInterval rate and starts drawing world
+}
+
 function pauseGame()
 {
+    scaledContext.font = "bold 60px Arial";
+    scaledContext.fillStyle = "red";
+    scaledContext.textAlign = "center";
+
     if (!gamePaused)
     {
         game = clearTimeout(game);
+        scaledContext.fillText("GAME PAUSED", scaledCanvas.width / 2, WORLD_H * WORLD_ROWS * PIXEL_SCALE_UP / 2);
         gamePaused = true;
-        console.log("Game paused.");
     }
     else if (gamePaused)
     {
         game = setInterval(updateAll, 1000 / framesPerSecond);
         gamePaused = false;
-        console.log("Game unpaused.");
     }
+}
+
+function changeVolume()
+{
+    backgroundMusic.volume = bgMusicSlider.value;
 }
 
 function loadLevel(whichLevelIdx, preservePlayerStart)
@@ -139,12 +156,20 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	            postMessage(dialogueGardenMiddlePuzzleNotSolved);
 	        }
 	        break;
-      case ROOM_ID_DININGROOM:
-          if (worldGrid[77] == TILE_KEY_DEN)
-          {
-            postMessage(dialogueDiningRoomEntered);
-          }
+	    case ROOM_ID_DININGROOM:
+	        if (worldGrid[77] == TILE_KEY_DEN)
+	        {
+	            postMessage(dialogueDiningRoomEntered);
+	        }
+	        break;
+	    case ROOM_ID_STAIRS:
+	        if (stairsPuzzleSolved == false)
+	        {
+	            canvasContext.globalAlpha = .3;
+	        }
+	        break;
 	    default:
+	        canvasContext.globalAlpha = 1;
 	        break;
 
 	}
@@ -174,27 +199,30 @@ function moveAll()
 
 function drawAll()
 {
-	animationFrameDelay++;
-	if(animationFrameDelay >= CYCLES_PER_ANIM_FRAME) {
-		animationFrameDelay = 0;
-	}
+    animationFrameDelay++;
+    if (animationFrameDelay >= CYCLES_PER_ANIM_FRAME)
+    {
+        animationFrameDelay = 0;
+    }
     drawWorld();
-	for(var i=0;i<enemyList.length;i++) {
-	    enemyList[i].draw();
-	}
+    for (var i = 0; i < enemyList.length; i++)
+    {
+        enemyList[i].draw();
+    }
     roman.draw();
 
-	scaledContext.drawImage(canvas,0,0,canvas.width,canvas.height,
-		0, 0, scaledCanvas.width, scaledCanvas.height);
+    scaledContext.drawImage(canvas, 0, 0, canvas.width, canvas.height,
+        0, 0, scaledCanvas.width, scaledCanvas.height);
 
-	if (framesLeftForMessage > 0)
-	{
-	    displayUIText(messageToShow, 580, 590);
-	    framesLeftForMessage--;
-	}
+    if (framesLeftForMessage > 0)
+    {
+        displayUIText(messageToShow, 580, 590);
+        framesLeftForMessage--;
+    }
 
-	if (isEditorMode)
-	{
-	    levelGridCoordinate();
-	}
+    if (isEditorMode)
+    {
+        levelGridCoordinate();
+    }
+   
 }

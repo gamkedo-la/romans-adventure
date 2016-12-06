@@ -28,8 +28,8 @@ function heroClass()
 	this.controlKeyDown;
 	this.controlKeyLeft;
 	this.currentIndex;
-	this.roomLoadedX; // Roman's X position when the room was loaded
-	this.roomLoadedY; // Romans Y position when the room was loaded
+	this.roomLoadedX = 105; // Roman's X position when the room was loaded
+	this.roomLoadedY = 119; // Romans Y position when the room was loaded
 
 	this.setupInput = function(upKey, rightKey, downKey, leftKey)
 	{

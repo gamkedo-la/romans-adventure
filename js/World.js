@@ -43,7 +43,7 @@ var levelFoyerEntrance =
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 201,
-		 10, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
 		 10, 0, 0, 0, 0, 0, 0, 100, 0, 300, 0, 0, 0, 0, 0, 10,
 		10, 10, 10, 10, 10, 10, 10, 209, 10, 10, 10, 10, 10, 10, 10, 10
@@ -552,8 +552,6 @@ function drawWorld()
 		return;
 	}
 
-	//START OF WARP GHOST DRAW CODE
-	//handleWarpGhosts();
 
 	for(var eachRow = 0;eachRow<WORLD_ROWS;eachRow++)
 	{
@@ -561,15 +559,6 @@ function drawWorld()
 		{
 			arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 			var currentRoomArtIndex = worldGrid[arrayIndex];
-			// var useImg = roomArtStrips[currentRoomArtIndex];
-			//console.log(currentRoomArtIndex);
-
-			//summon warp ghost???TODO maybe move this back into a function
-			if(currentRoomArtIndex == 402){
-				console.log('boo!');
-				//if(framesLeftUntilWarpGhost == 0)
-					//currentRoomArtIndex = 401;
-			}
 
 			if(tileTypeHasTransparency(currentRoomArtIndex))
 			{
