@@ -11,6 +11,10 @@ var messageToShow = "";
 var framesLeftForMessage = 0;
 const FRAMES_TO_SHOW_MESSAGE = 80;
 
+var gamePaused = false;
+var framesPerSecond = 30;
+
+
 
 function postMessage(str, showMessageDuration)
 {
@@ -69,12 +73,26 @@ window.onload = function()
 
 function imageLoadingDoneSoStartGame()
 {
-	var framesPerSecond = 30;
-
-	setInterval(updateAll, 1000/framesPerSecond);
+	game = setInterval(updateAll, 1000/framesPerSecond);
 	setupInput();
 	loadLevel(currentRoomIndex, true);
 	roman.reset("Roman");
+}
+
+function pauseGame()
+{
+    if (!gamePaused)
+    {
+        game = clearTimeout(game);
+        gamePaused = true;
+        console.log("Game paused.");
+    }
+    else if (gamePaused)
+    {
+        game = setInterval(updateAll, 1000 / framesPerSecond);
+        gamePaused = false;
+        console.log("Game unpaused.");
+    }
 }
 
 function loadLevel(whichLevelIdx, preservePlayerStart)

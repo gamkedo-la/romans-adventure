@@ -3,9 +3,10 @@ const KEY_UP_ARROW = 38;
 const KEY_RIGHT_ARROW = 39;
 const KEY_DOWN_ARROW = 40;
 const KEY_SPACE = 32;
+const KEY_ESC = 27; // Pause game
 
-const KEY_L = 76;
-const KEY_F = 70;
+const KEY_L = 76; // Level Editor enable/disable
+const KEY_F = 70; // Search in-game
 const KEY_1 = 49;
 const KEY_2 = 50;
 const KEY_3 = 51;
@@ -77,6 +78,11 @@ function keyPressed(evt)
 	keySet(evt, true);
 
 	evt.preventDefault();
+
+	if (evt.keyCode == KEY_ESC)
+	{
+	    pauseGame();
+	}
 }
 
 function keyReleased(evt)
