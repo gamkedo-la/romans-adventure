@@ -137,19 +137,19 @@ var levelBedroomThree =
 		 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
 	];
 
-var levelHallwayLeft =
+var levelHallwayLeft = 
 [
-10, 10, 10, 10, 10, 10, 10, 208, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 210, 10, 10, 10, 10, 10, 10, 10, 10
+10,10,10,10,10,10,10,208,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,10,0,-1,9,9,-2,0,0,-2,9,9,-2,0,0,-2,10,10,1,4,4,4,4,4,4,4,4,4,4,4,4,4,10,10,2,6,6,6,6,6,6,6,6,6,6,6,6,6,10,10,3,5,5,5,5,5,5,5,5,5,5,5,5,5,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10
 ];
 
-var levelHallwayMiddle =
+var levelHallwayMiddle = 
 [
-10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 211, 10, 10, 10, 10, 10, 10, 10, 10
+10,10,10,10,10,10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0,10,10,10,0,0,-2,9,9,-2,0,0,-2,9,9,-2,0,0,-2,0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10
 ];
 
-var levelHallwayRight =
+var levelHallwayRight = 
 [
-10, 10, 10, 10, 10, 10, 10, 206, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 212, 10, 10, 10, 10, 10, 10, 10, 10
+10,10,10,10,10,10,10,206,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,-2,0,0,-2,9,9,-2,0,0,-2,9,9,-1,0,10,10,4,4,4,4,4,4,4,4,4,4,4,4,4,6,10,10,1,1,1,1,1,1,1,1,1,1,1,1,1,7,10,10,5,5,5,5,5,5,5,5,5,5,5,5,5,8,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10
 ];
 
 var levelBedroomFour = 
@@ -516,36 +516,41 @@ function checkBootsStatuePuzzle() {
 }
 
 function crashThroughCrackedFloor() {
-	if(crackedFloorBroken == false &&
-			roman.currentIndex == 68 && 
-			roomCoordToIndex() == ROOM_ID_CRACKS_ABOVE_KITCHEN) {
-		crackedFloorBroken = true;
-		Sounds.falling.play();
+	if(roomCoordToIndex() == ROOM_ID_CRACKS_ABOVE_KITCHEN) {
+	    if(crackedFloorBroken == true) {
+			console.log(worldGrid[roman.currentIndex]);
+	    }
 
-		var roomIdxHere = roomCoordToIndex();
-		for(var i=0;i<WORLD_ROWS * WORLD_COLS;i++) {
-			if(worldGrid[i] >= 1 && worldGrid[i] <=9) {
-				worldGrid[i] += 10;
-				roomLayout[roomIdxHere][i] = worldGrid[i];
+		if(crackedFloorBroken == false &&
+			roman.currentIndex == 68) {
+			crackedFloorBroken = true;
+			Sounds.falling.play();
+
+			var roomIdxHere = roomCoordToIndex();
+			for(var i=0;i<WORLD_ROWS * WORLD_COLS;i++) {
+				if(worldGrid[i] >= 1 && worldGrid[i] <=9) {
+					worldGrid[i] += 10;
+					roomLayout[roomIdxHere][i] = worldGrid[i];
+				}
 			}
-		}
-		roomLayout[ROOM_ID_KITCHEN][50] = 7;
-		roomLayout[ROOM_ID_KITCHEN][51] = 8;
-		roomLayout[ROOM_ID_KITCHEN][52] = 8;
-		roomLayout[ROOM_ID_KITCHEN][53] = 8;
-		roomLayout[ROOM_ID_KITCHEN][66] = 7;
-		roomLayout[ROOM_ID_KITCHEN][67] = 8;
-		roomLayout[ROOM_ID_KITCHEN][68] = 8;
-		roomLayout[ROOM_ID_KITCHEN][69] = 8;
-		roomLayout[ROOM_ID_KITCHEN][70] = 9;
-		roomLayout[ROOM_ID_KITCHEN][83] = 8;
-		roomLayout[ROOM_ID_KITCHEN][84] = 8;
-		roomLayout[ROOM_ID_KITCHEN][85] = 8;
-		roomLayout[ROOM_ID_KITCHEN][86] = 9;
+			roomLayout[ROOM_ID_KITCHEN][50] = 7;
+			roomLayout[ROOM_ID_KITCHEN][51] = 8;
+			roomLayout[ROOM_ID_KITCHEN][52] = 8;
+			roomLayout[ROOM_ID_KITCHEN][53] = 8;
+			roomLayout[ROOM_ID_KITCHEN][66] = 7;
+			roomLayout[ROOM_ID_KITCHEN][67] = 8;
+			roomLayout[ROOM_ID_KITCHEN][68] = 8;
+			roomLayout[ROOM_ID_KITCHEN][69] = 8;
+			roomLayout[ROOM_ID_KITCHEN][70] = 9;
+			roomLayout[ROOM_ID_KITCHEN][83] = 8;
+			roomLayout[ROOM_ID_KITCHEN][84] = 8;
+			roomLayout[ROOM_ID_KITCHEN][85] = 8;
+			roomLayout[ROOM_ID_KITCHEN][86] = 9;
 
-		currentRoomFloor--;
-        moveToNextRoom();
-        displayCurrentRoomTiles();
+			currentRoomFloor--;
+	        moveToNextRoom();
+	        displayCurrentRoomTiles();
+	    }
 	}
 }
 
@@ -590,11 +595,11 @@ function drawWorld()
 				var animIdx = -currentRoomArtIndex;
 				var imgWidth = WORLD_W;
 				var imgHeight = WORLD_H;
-				var offsetY = 0;
+				var offsetY = -WORLD_H;
 				var frameTotal = 3;
 				if(currentRoomArtIndex == ANIM_TILE_CLOCK) {
 					imgHeight = WORLD_H*2;
-					offsetY = -WORLD_H;
+					offsetY = -WORLD_H+1;
 					frameTotal = 6;
 				}
 			     canvasContext.drawImage(animTileStrips[animIdx],

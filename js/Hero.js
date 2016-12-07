@@ -279,7 +279,7 @@ function heroClass()
 
 
 		}
-		if (walkIntoTileType >= 0 && // make anim tiles solid
+		if (walkIntoTileType != ANIM_TILE_CLOCK &&
 			(walkIntoTileType < TILES_SOLID_FIRST || walkIntoTileType == TILE_ALIAS_ICE))
 		{
 		    this.isMoving = (this.x != nextX || this.y != nextY);
