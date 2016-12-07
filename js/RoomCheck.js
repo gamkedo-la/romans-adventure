@@ -69,15 +69,18 @@ function checkAttic()
         return;
     }
 
-    searchableTileType = 9;
-
-    var tileIndex = getTileIndexAtPixelCoord(roman.x, roman.y);
-    // If the current index is not in the valid-path, reset Roman to the room-beginning.
-    if (!atticPuzzleSolved && atticSafeZones.indexOf(tileIndex) < 0 && atticValidPath.indexOf(tileIndex) < 0)
+    if (roomCoordToIndex() == ROOM_ID_ATTIC)
     {
-        postMessage(dialogueAtticPuzzleSteppedOffPath);
-        roman.resetBeginningOfRoom();
-	}
+        searchableTileType = 9;
+        var tileIndex = getTileIndexAtPixelCoord(roman.x, roman.y);
+        // If the current index is not in the valid-path, reset Roman to the room-beginning.
+        if (!atticPuzzleSolved && atticSafeZones.indexOf(tileIndex) < 0 && atticValidPath.indexOf(tileIndex) < 0)
+        {
+            postMessage(dialogueAtticPuzzleSteppedOffPath);
+            roman.resetBeginningOfRoom();
+        }
+    }
+
 }
 
 function searchAttic()
@@ -100,33 +103,38 @@ function checkGardenMiddle()
 {
     if (roomCoordToIndex() == ROOM_ID_GARDEN_MIDDLE && gardenMiddlePuzzleSolved == false)
     {
-        searchableTileType = 6;
+        searchableTileType = 7;
         triggerTile(1, 4, spawnTile, 0, 30);
         triggerTile(2, 4, spawnTile, 0, 26);
         triggerTile(3, 4, spawnTile, 0, 119);
+        var skullOnPressurePlate = false;
 
         // Check if Roman is standing on pressure plate
         if (roman.currentIndex == 105 || roman.currentIndex == 49)
         {
-            postMessage("Roman: I need to place something heavy here, it won't budge!");
+            postMessage("I need to place something heavy here, it won't budge!");
         }
 
         // Check if skull is on pressure plate
         if (worldGrid[105] == 21)
         {
-            spawnTile(0, 56);
             if (worldGrid[119] == 10)
             {
                 postMessage("Uh oh, looks like you got ahead of yourself! Guess you'll have to try again.");
                 spawnTile(10, 56);
             }
+            spawnTile(0, 56);
         }
+        //else if (worldGrid[105] != 21 && worldGrid[49] != 21)
+        //{
+        //    skullOnPressurePlate == false;
+        //}
 
         // Check if skull is on final pressure plate
         if (worldGrid[49] == 21)
         {
             gardenMiddlePuzzleSolved = true;
-            spawnTile(6, 129); // Spawn chest containing crowbar
+            spawnTile(7, 129); // Spawn chest containing crowbar
             postMessage(dialogueGardenMiddlePuzzleSolved);
         }
     }
@@ -164,6 +172,10 @@ function checkStairs()
         roomLayout[roomCoordToIndex()][24] = 20; // Move fixed mirror to middle
         roomLayout[roomCoordToIndex()][140] = 0; // Delete ghost roman
         canvasContext.globalAlpha = 1;
+        if (worldGrid[29] == 5) // Check to see if Roman has opened the chest
+        {
+            roomLayout[ROOM_ID_STAIRS][29] = 5; // Replace roomlayout with opened chest art
+        }
     }
 }
 
@@ -221,6 +233,7 @@ function triggerTile(tileType, activatedTileType, funcToExecute, funcParam1, fun
         funcToExecute(funcParam1, funcParam2, funcParam3);
         worldGrid[roman.currentIndex] = activatedTileType;
         roomLayout[roomCoordToIndex()][roman.currentIndex] = activatedTileType;
+        Sounds.unlock.play();
     }
     if (worldGrid[roman.currentIndex] != tileType && romanIsOnTriggerTile == true)
     {

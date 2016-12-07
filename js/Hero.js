@@ -136,9 +136,9 @@ function heroClass()
 					postMessage("Make a game over screen you lazy bum!");
 					return;
 				}
-				currentRoomRow++;
+		    currentRoomRow++;
 		    loadLevel(roomCoordToIndex());
-		    nextY = WORLD_H;
+		    nextY = WORLD_H / 2;
 		    roman.roomLoadedX = roman.x;
 		    roman.roomLoadedY = WORLD_W;
 		}
