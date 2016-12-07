@@ -16,6 +16,7 @@ var Sounds = new (function() {
     open_door: 'sounds/open door',
     pick_up: 'sounds/pick up',
     unlock: 'sounds/unlock',
+    falling: 'sounds/falling',
     victory: 'sounds/victory'
   };
 

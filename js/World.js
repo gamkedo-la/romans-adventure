@@ -18,6 +18,7 @@ var worldGrid = [];
 var roomArtSet = 0;
 var rotDoor;
 var tileAnimTick = 0;
+var crackedFloorBroken = false;
 
 // ******BEGIN MAP EDITOR******
 
@@ -71,7 +72,7 @@ var levelStairs =
 
 var levelKitchen = 
 [
-10,10,10,10,10,10,10,202,10,10,10,10,10,10,10,10,10,19,18,19,19,18,18,0,19,19,18,19,18,19,18,10,10,0,4,11,11,11,2,0,0,0,0,0,0,7,0,10,10,307,4,11,11,11,2,0,0,0,16,13,17,0,16,10,10,0,4,11,11,11,2,0,0,0,13,13,13,0,13,10,10,3,5,11,11,11,2,0,0,9,13,13,13,0,13,10,10,11,11,11,11,11,2,0,0,0,14,12,15,0,14,10,10,1,1,1,1,1,6,0,0,0,0,0,0,8,0,10,10,19,18,18,18,19,18,0,18,19,18,19,19,18,18,10,10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10
+10,10,10,10,10,10,10,202,10,10,10,10,10,10,10,10,10,19,18,19,19,18,18,0,19,19,18,19,18,19,18,10,10,0,4,11,11,11,2,0,0,0,0,0,0,0,0,10,10,307,4,11,11,11,2,0,0,0,16,13,17,0,16,10,10,0,4,11,11,11,2,0,0,0,13,13,13,0,13,10,10,3,5,11,11,11,2,0,0,0,13,13,13,0,13,10,10,11,11,11,11,11,2,0,0,0,14,12,15,0,14,10,10,1,1,1,1,1,6,0,0,0,0,0,0,0,0,10,10,19,18,18,18,19,18,0,18,19,18,19,19,18,18,10,10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10
 ];
 
 var levelGardenLeft =
@@ -225,6 +226,7 @@ const ROOM_ID_KITCHEN = 5;
 const ROOM_ID_BASEMENT_GARDEN_EXIT = 3;
 const ROOM_ID_BEDROOM1 = 21;
 const ROOM_ID_BEDROOM4 = 17;
+const ROOM_ID_CRACKS_ABOVE_KITCHEN = ROOM_ID_BEDROOM4;
 const ROOM_ID_STUDY = 9;
 const ROOM_ID_ATTIC = 15;
 
@@ -510,6 +512,40 @@ function checkBootsStatuePuzzle() {
 				}
 			}
 		}
+	}
+}
+
+function crashThroughCrackedFloor() {
+	if(crackedFloorBroken == false &&
+			roman.currentIndex == 68 && 
+			roomCoordToIndex() == ROOM_ID_CRACKS_ABOVE_KITCHEN) {
+		crackedFloorBroken = true;
+		Sounds.falling.play();
+
+		var roomIdxHere = roomCoordToIndex();
+		for(var i=0;i<WORLD_ROWS * WORLD_COLS;i++) {
+			if(worldGrid[i] >= 1 && worldGrid[i] <=9) {
+				worldGrid[i] += 10;
+				roomLayout[roomIdxHere][i] = worldGrid[i];
+			}
+		}
+		roomLayout[ROOM_ID_KITCHEN][50] = 7;
+		roomLayout[ROOM_ID_KITCHEN][51] = 8;
+		roomLayout[ROOM_ID_KITCHEN][52] = 8;
+		roomLayout[ROOM_ID_KITCHEN][53] = 8;
+		roomLayout[ROOM_ID_KITCHEN][66] = 7;
+		roomLayout[ROOM_ID_KITCHEN][67] = 8;
+		roomLayout[ROOM_ID_KITCHEN][68] = 8;
+		roomLayout[ROOM_ID_KITCHEN][69] = 8;
+		roomLayout[ROOM_ID_KITCHEN][70] = 9;
+		roomLayout[ROOM_ID_KITCHEN][83] = 8;
+		roomLayout[ROOM_ID_KITCHEN][84] = 8;
+		roomLayout[ROOM_ID_KITCHEN][85] = 8;
+		roomLayout[ROOM_ID_KITCHEN][86] = 9;
+
+		currentRoomFloor--;
+        moveToNextRoom();
+        displayCurrentRoomTiles();
 	}
 }
 

@@ -101,6 +101,8 @@ function heroClass()
 			}
 		}
 
+		crashThroughCrackedFloor();
+
 		if(isFlashLightNeededButMissing()) {
 			if(this.movingX < 0) { // disallow moving further into dark room
 				this.movingX = 0; // (note: direction is hardcoded for now...)
@@ -174,20 +176,7 @@ function heroClass()
 		}
 
 		var roomIndex = roomCoordToIndex();
-		if (roomIndex == ROOM_ID_KITCHEN || roomIndex == ROOM_ID_BEDROOM4) // Checks whether in Kitchen or Bedroom 4
-		{
-		    //merging and unmerging rooms
-		    if (walkIntoTileType == TILE_MERGE_ROOMS)
-		    {
-		        mergeRooms();
-		    }
-
-		    if (walkIntoTileType == TILE_UNMERGE_ROOMS)
-		    {
-		        unmergeRooms();
-		    }
-		}
-		else if (roomIndex == ROOM_ID_ATTIC) {
+		if (roomIndex == ROOM_ID_ATTIC) {
 			atticShowPath = (walkIntoTileType == TILE_SHOW_PATH);
 
 			if (!atticPuzzleSolved && atticShowPath) {
