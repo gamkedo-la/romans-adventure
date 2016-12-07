@@ -41,6 +41,7 @@ function displayUIText(text, uiTextPaddingX, uiTextPaddingY)
 {
 	scaledContext.font = "bold 15px Arial";
 	scaledContext.fillStyle = "white";
+	scaledContext.textAlign = "left";
 
 	var maxWidth = scaledCanvas.width - uiTextPaddingX - uiTextPaddingY;
 	var words = text.split(' ');
@@ -67,7 +68,7 @@ function displayUIText(text, uiTextPaddingX, uiTextPaddingY)
 
 }
 
-function drawStrokeRect(canvasContext, topLeftX, topLeftY, boxWidth, boxHeight, strokeColor) 
+function drawStrokeRect(canvasContext, topLeftX, topLeftY, boxWidth, boxHeight, strokeColor)
 {
   canvasContext.strokeStyle = strokeColor;
   canvasContext.strokeRect(topLeftX, topLeftY, boxWidth, boxHeight);
@@ -79,6 +80,7 @@ function wrapText(text)
     uiTextPaddingY = 610;
     scaledContext.font = "bold 15px Arial";
     scaledContext.fillStyle = "white";
+		scaledContext.textAlign = "left";
 
     var maxWidth = scaledCanvas.width - uiTextPaddingX - uiTextPaddingY;
     var words = text.split(' ');
@@ -102,4 +104,3 @@ function wrapText(text)
     }
     scaledContext.fillText(line, uiTextPaddingX, uiTextPaddingY);
 }
-

@@ -482,10 +482,6 @@ function removePlayerStarts()
 var awardedBootYet = false;
 function checkBootsStatuePuzzle() {
     var roomIdxHere = roomCoordToIndex();
-    if (worldGrid[95] == TILE_GROUND) // If you unlock the basement door from inside the basement
-    {
-        roomLayout[ROOM_ID_FOYER_STAIRS][80] = TILE_GROUND; // Remove the basement door from the foyer stairs level
-    }
 	if( awardedBootYet == false &&
 		roomIdxHere == ROOM_ID_BASEMENT_STATUE_AREA) {
 

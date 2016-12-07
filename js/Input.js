@@ -49,30 +49,42 @@ function keySet(keyEvent, setTo)
 
 function keyPressed(evt)
 {
+	if (isShowingTitleScreen == true)
+	{
+			if (evt.keyCode == KEY_SPACE || evt.keyCode == KEY_ENTER)
+			{
+				setGameInterval();
+				isShowingTitleScreen = false;
+			}
+			else
+			{
+				return;
+			}
+	}
 	// console.log("Key pressed: "+evt.keyCode);
-    if (evt.keyCode == KEY_L)
-    {
-        if (isEditorMode)
-        {
-            isEditorMode = false;
-            editorTileSelected = false;
-            colorRect(0, 0, canvas.width, canvas.height, '#444');
-        }
-        else
-        {
-            isEditorMode = true;
-            editorTileSelected = true;
-            displayCurrentRoomTiles();
-        }
-    }
+		if (evt.keyCode == KEY_L)
+		{
+				if (isEditorMode)
+				{
+						isEditorMode = false;
+						editorTileSelected = false;
+						colorRect(0, 0, canvas.width, canvas.height, '#444');
+				}
+				else
+				{
+						isEditorMode = true;
+						editorTileSelected = true;
+						displayCurrentRoomTiles();
+				}
+		}
 
-    if (evt.keyCode == KEY_F)
-    {
-        roman.search(roomCoordToIndex());
-    }
+		if (evt.keyCode == KEY_F)
+		{
+				roman.search(roomCoordToIndex());
+		}
 
-    if (isEditorMode)
-    {
+		if (isEditorMode)
+		{
 		editorKeyHandle(evt);
 	}
 
@@ -80,15 +92,11 @@ function keyPressed(evt)
 
 	evt.preventDefault();
 
-	if (evt.keyCode == KEY_ESC)
+	if (evt.keyCode == KEY_ESC && !isShowingTitleScreen && !isEditorMode)
 	{
-	    pauseGame();
+			pauseGame();
 	}
 
-	if (evt.keyCode == KEY_ENTER)
-	{
-	    setGameInterval();
-	}
 }
 
 function keyReleased(evt)

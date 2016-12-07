@@ -142,6 +142,10 @@ function heroClass()
 		}
 		if (nextX < WORLD_W / 2)
 		{
+			if (roomCoordToIndex() == ROOM_ID_FOYER_STAIRS)
+			{
+				roomLayout[ROOM_ID_BASEMENT_STATUE_AREA][95] = TILE_GROUND; // Remove the basement door from the basement level in the unlikely event player backtracks
+			}
 		    currentRoomCol--;
 		    loadLevel(roomCoordToIndex());
 		    nextX = EDGE_OF_SCREEN_X;
@@ -150,6 +154,10 @@ function heroClass()
 		}
 		if (nextX > EDGE_OF_SCREEN_X)
 		{
+			if (roomCoordToIndex() == ROOM_ID_BASEMENT_STATUE_AREA)
+			{
+				roomLayout[ROOM_ID_FOYER_STAIRS][80] = TILE_GROUND; // Remove the basement door from the foyer stairs level
+			}
 		    currentRoomCol++;
 		    loadLevel(roomCoordToIndex());
 		    nextX = WORLD_W;

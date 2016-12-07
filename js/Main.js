@@ -15,6 +15,8 @@ var framesPerSecond = 30;
 var gamePaused = false;
 var titleScreenActive = true;
 
+var isShowingTitleScreen = false;
+
 
 
 function postMessage(str, showMessageDuration)
@@ -78,6 +80,7 @@ function imageLoadingDoneSoStartGame()
 {
     scaledContext.drawImage(titleScreen, 0, 0, canvas.width, canvas.height,
     0, 0, scaledCanvas.width, scaledCanvas.height); // Show title screen
+    isShowingTitleScreen = true;
 	setupInput();
 	loadLevel(currentRoomIndex, true);
 	roman.reset("Roman");
@@ -102,7 +105,7 @@ function pauseGame()
     }
     else if (gamePaused)
     {
-        game = setInterval(updateAll, 1000 / framesPerSecond);
+        setGameInterval();
         gamePaused = false;
     }
 }
@@ -224,5 +227,5 @@ function drawAll()
     {
         levelGridCoordinate();
     }
-   
+
 }
