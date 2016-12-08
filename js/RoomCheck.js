@@ -38,7 +38,7 @@ function checkRoomLogic()
     checkGardenMiddle();
     checkFoyerEntrance();
     checkAttic();
-    checkStudy();
+    //checkStudy();
 }
 
 function searchRoomLogic()
