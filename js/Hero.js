@@ -81,6 +81,7 @@ function heroClass()
 				&& !this.keyHeld_South && !this.keyHeld_West && !isEditorMode)
 			{
 				this.movingY = -PLAYER_MOVE_SPEED;
+				this.myHeroPic = heroPicUp;
 			}
 			if(this.keyHeld_East && !this.keyHeld_North
 				&& !this.keyHeld_South && !this.keyHeld_West && !isEditorMode)
@@ -92,6 +93,7 @@ function heroClass()
 				&& !this.keyHeld_North && !this.keyHeld_West && !isEditorMode)
 			{
 			    this.movingY = PLAYER_MOVE_SPEED;
+					this.myHeroPic = heroPicLeft;
 			}
 			if(this.keyHeld_West && !this.keyHeld_East
 				&& !this.keyHeld_North && !this.keyHeld_South && !isEditorMode)
@@ -265,15 +267,12 @@ function heroClass()
 			    {
 					//this.doorKeyRing[whichDoor] = false; // Removes key from inventory
 					Sounds.unlock.play();
-					postMessage("Used the " + idxToTextKey(whichDoor) + " to open "+
-											idxToTextDoor(whichDoor)+".");
 					worldGrid[walkIntoTileIndex] = TILE_GROUND;
 					roomLayout[roomCoordToIndex()][walkIntoTileIndex] = TILE_GROUND; // Remembers changed block
 			    }
 			    else
 			    {
-					postMessage("Need something to open "+
-											idxToTextDoor(whichDoor)+".");
+					postMessage("The door is locked, I need a key.");
 				}
 			}
 
