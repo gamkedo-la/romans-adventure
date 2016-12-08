@@ -12,17 +12,22 @@ var dialogueAtticPuzzleShowPath = "Oh look! That is a safe path!";
 var dialogueAtticPuzzleSteppedOffPath = "Huh!? What happened? I must've walked on the wrong tiles.";
 var dialogueAtticPuzzleSolved = "*Roman hears something* What's that? Oh! Looks like the floor is normal now.";
 
-var dialogueGardenMiddlePuzzleNotSolved = "Dialogue bark for Garden Middle puzzle.";
-var dialogueGardenMiddlePuzzleSolved = "Dialogue bark for Garden Middle puzzle solved.";
+var dialogueGardenLeftPuzzleNotSolved = ".";
+
+var dialogueGardenMiddlePuzzleNotSolved = ".";
+var dialogueGardenMiddlePuzzleSolved = "I am amazed you figured it out.";
 
 var dialogueStudyPuzzleNotSolved = "Sorry, but there are no pictures in these books.";
 var dialogueStudyPuzzleSolved = "You read my mind.";
 
 //var dialogueGardenPuzzleNotSolved = "You may catch cold. Maybe it'll become serious...";
-//var dialogueGardenPuzzleSolved = "I am amazed you made it through.";
+//var dialogueGardenPuzzleSolved = "...";
 
 //var dialogueBasementPuzzleNotSolved = "";
 //var dialogueBasementPuzzleSolved = "";
+
+var dialogueBedroomPuzzleNotSolved = "The suspense is killing me. Watching you makes me wish it would...";
+
 
 /*Generic barks
 - "For your sake, you'd better not muddy up my floors.";

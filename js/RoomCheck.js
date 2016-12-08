@@ -112,7 +112,7 @@ function checkGardenMiddle()
         // Check if Roman is standing on pressure plate
         if (roman.currentIndex == 105 || roman.currentIndex == 49)
         {
-            postMessage("I need to place something heavy here, it won't budge!");
+            postMessage("I need to place something heavy here--it won't budge!");
         }
 
         // Check if skull is on pressure plate
