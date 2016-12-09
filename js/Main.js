@@ -168,7 +168,19 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	    case ROOM_ID_STAIRS:
 	        if (stairsPuzzleSolved == false)
 	        {
+	            postMessage(dialogueStairsPuzzleNotSolved);
 	            canvasContext.globalAlpha = .3;
+	            break;
+	        }
+	    case ROOM_ID_STUDY:
+	        if (studyPuzzleSolved == false)
+	        {
+	            postMessage(dialogueStudyPuzzleNotSolved);
+	        }
+	        break;
+	    case ROOM_ID_BEDROOM4:
+	        {
+	            postMessage(dialogueBedroomPuzzleNotSolved);
 	        }
 	        break;
 	    default:

@@ -218,6 +218,7 @@ function checkStudy()
                 spawnTile(5, 58);
                 spawnTile(0, 40);
                 Sounds.tile_moved.play();
+                postMessage(dialogueStudyPuzzleSolved);
             }
         }
     }
