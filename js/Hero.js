@@ -3,7 +3,6 @@ const PLAYER_MOVE_SPEED = 2.0;
 var keyStripLimit = 5; // Max number of keys displayed per line in the UI
 var tileUnderPushable = 0;
 var originalRoomState = [];
-var retriesLeft = 3;
 
 function heroClass()
 {
