@@ -133,6 +133,7 @@ function checkGardenMiddle()
             if (worldGrid[119] == 10)
             {
                 postMessage("Uh oh, looks like you got ahead of yourself! Guess you'll have to try again.");
+                retriesLeft--;
                 spawnTile(10, 56);
             }
             spawnTile(0, 56);
@@ -208,6 +209,7 @@ function checkStudy()
             if (checkForCorrectBookOrder() == false && framesLeftForMessage == 0)
             {
                 postMessage("That doesn't make any sense, I should read these again in a different order.");
+                retriesLeft--;
                 resetBooks();
             }
             else if (checkForCorrectBookOrder() == true)
