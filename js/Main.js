@@ -9,7 +9,7 @@ var canvas, canvasContext;
 
 var messageToShow = "";
 var framesLeftForMessage = 0;
-const FRAMES_TO_SHOW_MESSAGE = 80;
+const FRAMES_TO_SHOW_MESSAGE = 90;
 var framesPerSecond = 30;
 
 var gamePaused = false;

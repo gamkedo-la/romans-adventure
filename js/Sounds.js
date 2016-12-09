@@ -17,7 +17,8 @@ var Sounds = new (function() {
     pick_up: 'sounds/pick up',
     unlock: 'sounds/unlock',
     falling: 'sounds/falling',
-    victory: 'sounds/victory'
+    victory: 'sounds/victory',
+    tile_moved: 'sounds/tile moved'
   };
 
   this.initialize = function(callback) {

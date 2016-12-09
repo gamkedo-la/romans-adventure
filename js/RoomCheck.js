@@ -5,9 +5,21 @@ var atticValidPath = [];
 var atticSafeZones = [];
 var gardenMiddlePuzzleSolved = false;
 var stairsPuzzleSolved = false;
+
 var studyPuzzleSolved = false;
-var correctOrderOfBooks = [0, 1, 2, 3, 4, 5];
 var orderOfBooksRead = [];
+var bookOne = new bookClass();
+var bookTwo = new bookClass();
+var bookThree = new bookClass();
+var bookFour = new bookClass();
+var bookFive = new bookClass();
+bookOne.passage = "We would be together forever, age and beauty. But her...";
+bookTwo.passage = "...father would never understand. So I snuffed...";
+bookThree.passage = "...out his light, the deed was done. Then she...";
+bookFour.passage = "...left to secure land and title. I remained in the house,...";
+bookFive.passage = "...watching for her return. And still I wait, cursed and alone.";
+var correctOrderOfBooks = [bookOne.passage, bookTwo.passage, bookThree.passage, bookFour.passage, bookFive.passage];
+
 
 var searchableTileType = -1;
 var searchableTiles =
@@ -38,7 +50,7 @@ function checkRoomLogic()
     checkGardenMiddle();
     checkFoyerEntrance();
     checkAttic();
-    //checkStudy();
+    checkStudy();
 }
 
 function searchRoomLogic()
@@ -191,34 +203,38 @@ function checkStudy()
 {
     if (roomCoordToIndex() == ROOM_ID_STUDY && studyPuzzleSolved == false)
     {
-        enemyList[0].passage = "We would be together forever, age and beauty.";
-        enemyList[1].passage = "But her father would never understand.";
-        enemyList[2].passage = "So I snuffed out his light, the deed was done.";
-        enemyList[3].passage = "Then she left to secure land and title.";
-        enemyList[4].passage = "I remained in the house, watching for her return.";
-        enemyList[5].passage = "And still I wait, cursed and alone.";
-
-        if (orderOfBooksRead.length == 6)
+        if (orderOfBooksRead.length == 5)
         {
-            if (checkForCorrectBookOrder() == false)
+            if (checkForCorrectBookOrder() == false && framesLeftForMessage == 0)
             {
-              postMessage("Uh oh, looks like you need to start over again.");
-              roman.resetBeginningOfRoom();
-              resetBooks();
+                postMessage("That doesn't make any sense, I should read these again in a different order.");
+                resetBooks();
             }
             else if (checkForCorrectBookOrder() == true)
             {
-                postMessage("You read them in the correct order!");
-                for (var i = 0; i < enemyList.length; i++) {
-                  enemyList[i].isFrozen = true;
-                }
                 studyPuzzleSolved = true;
-                spawnTile(308, 81);
+                spawnTile(14, 90);
+                spawnTile(19, 74);
+                spawnTile(5, 58);
+                spawnTile(0, 40);
+                Sounds.tile_moved.play();
             }
         }
-
-
     }
+}
+
+function bookClass()
+{
+    this.passage = "";
+    this.isRead = false;
+
+    this.readPassage = function()
+    {
+        postMessage(this.passage);
+        orderOfBooksRead.push(this.passage);
+        this.isRead = true;
+    }
+
 }
 
 
@@ -277,9 +293,11 @@ function checkForCorrectBookOrder()
 
 function resetBooks()
 {
-    for (var i = 0; i < enemyList.length; i++)
-    {
-        enemyList[i].isRead = false;
-    }
+    roman.resetBeginningOfRoom();
     orderOfBooksRead = [];
+    bookOne.isRead = false;
+    bookTwo.isRead = false;
+    bookThree.isRead = false;
+    bookFour.isRead = false;
+    bookFive.isRead = false;
 }

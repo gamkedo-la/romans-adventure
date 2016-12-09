@@ -238,6 +238,7 @@ function heroClass()
 		    {
 		        worldGrid[walkIntoTileIndex] = TILE_GROUND;
 		        worldGrid[bumpToTileIndex] = tileTypeBeingBumped;
+		        Sounds.tile_moved.play();
 		    }
 		}
 
@@ -300,22 +301,50 @@ function heroClass()
 	this.search = function(whichRoom)
 	{
 	    var whichItem = searchableTiles[whichRoom];
-	    if (worldGrid[roman.currentIndex] == searchableTileType)
+	    if (roomCoordToIndex() == ROOM_ID_STUDY)
 	    {
-	        postMessage("Roman found the " + idxToTextKey(whichItem) + ".");
-	        this.doorKeyRing[whichItem] = true;
-	        pickedUpItem(keyStrip, whichItem);
-	        Sounds.pick_up.play();
-	        worldGrid[roman.currentIndex] = --searchableTileType;
-	        roomLayout[roomCoordToIndex()][roman.currentIndex] = --searchableTileType;
+	        if (roman.currentIndex == 50 && !bookOne.isRead)
+	        {
+	            bookOne.readPassage();
+	        }
+	        else if (roman.currentIndex == 106 || roman.currentIndex == 107 && !bookTwo.isRead)
+	        {
+	            bookTwo.readPassage();
+	        }
+	        else if (roman.currentIndex == 52 && !bookThree.isRead)
+	        {
+	            bookThree.readPassage();
+	        }
+	        else if (roman.currentIndex == 59 || roman.currentIndex == 60 && !bookFour.isRead)
+	        {
+	            bookFour.readPassage();
+	        }
+	        else if (roman.currentIndex == 98 || roman.currentIndex == 99 || roman.currentIndex == 100
+                       || roman.currentIndex == 101 || roman.currentIndex == 102 && !bookFive.isRead)
+	        {
+	            bookFive.readPassage();
+	        }
+	    }
+	    else if (roomCoordToIndex() != ROOM_ID_STUDY)
+	    {
+	        if (worldGrid[roman.currentIndex] == searchableTileType)
+	        {
+	            postMessage("Roman found the " + idxToTextKey(whichItem) + ".");
+	            this.doorKeyRing[whichItem] = true;
+	            pickedUpItem(keyStrip, whichItem);
+	            Sounds.pick_up.play();
+	            worldGrid[roman.currentIndex] = --searchableTileType;
+	            roomLayout[roomCoordToIndex()][roman.currentIndex] = --searchableTileType;
 
-			// Let the rooms handle some stuff as well!
-			searchRoomLogic();
+	            // Let the rooms handle some stuff as well!
+	            searchRoomLogic();
+	        }
+	        else
+	        {
+	            postMessage("You didn't find anything.");
+	        }
 	    }
-	    else
-	    {
-	        postMessage("You didn't find anything.");
-	    }
+
 	};
 
 	this.resetBeginningOfRoom = function()
