@@ -17,6 +17,8 @@ var titleScreenActive = true;
 
 var isShowingTitleScreen = false;
 var isDebugMode = false;
+var isGameOver = false;
+
 
 
 function postMessage(str, showMessageDuration)
@@ -78,8 +80,8 @@ window.onload = function()
 
 function imageLoadingDoneSoStartGame()
 {
-    scaledContext.drawImage(titleScreen, 0, 0, canvas.width, canvas.height,
-                        0, 0, scaledCanvas.width, scaledCanvas.height); // Show title screen
+    scaledContext.drawImage(titleScreen, 0, 0, canvas.width, canvas.height - WORLD_H * UI_ROWS,
+                                0, 0, scaledCanvas.width, scaledCanvas.height - WORLD_H * PIXEL_SCALE_UP * UI_ROWS); // Show credits background
 
     isShowingTitleScreen = true;
 	setupInput();
@@ -111,14 +113,29 @@ function showCredits()
 {
     scaledContext.font = "bold 15px Arial";
     scaledContext.fillStyle = "black";
-    scaledContext.textAlign = "center";
+    //scaledContext.textAlign = "center";
 
-    scaledContext.drawImage(creditsScreen, 0, 0, canvas.width, canvas.height,
-                            0, 0, scaledCanvas.width, scaledCanvas.height); // Show credits background
+    var gameAreaCanvasW = canvas.width;
+    var gameAreaCanvasH = canvas.height - WORLD_H * UI_ROWS;
+    var gameAreaScaledCanvasW = scaledCanvas.width;
+    var gameAreaScaledCanvasH = scaledCanvas.height - WORLD_H * PIXEL_SCALE_UP * UI_ROWS;
 
-    scaledContext.fillText("Oasis Rim - Project Lead / Programmer", scaledCanvas.width / 2, 120);
-    scaledContext.fillText("Oasis Rim - Project Lead / Programmer", scaledCanvas.width / 2, 140);
+    scaledContext.drawImage(creditsScreen, 0, 0, canvas.width, canvas.height - WORLD_H * UI_ROWS,
+                                0, 0, scaledCanvas.width, scaledCanvas.height - WORLD_H * PIXEL_SCALE_UP * UI_ROWS); // Show credits background
 
+    var gameCredits =
+        [
+
+        ];
+
+    var xPosition = 70;
+    var yPosition = 70;
+
+    for (var i = 0; i < gameCredits.length; i++)
+    {
+        scaledContext.fillText(gameCredits[i], xPosition, yPosition);
+        yPosition += 23;
+    }
 }
 
 function changeVolume()
@@ -205,7 +222,14 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	}
 	searchableTileType = -1; // Reset this variable when loading room
 	originalRoomState = roomLayout[roomCoordToIndex()];
-    //Sounds.enter_room.play();
+}
+
+function endGame()
+{
+    isGameOver = true;
+    backgroundMusic.pause();
+    Sounds.ending.play();
+    roman.myHeroPic = heroPicUp;
 }
 
 function updateAll()
@@ -245,7 +269,6 @@ function drawAll()
         displayUIText(messageToShow, 580, 590);
         framesLeftForMessage--;
     }
-
     if (isEditorMode)
     {
         levelGridCoordinate();

@@ -20,6 +20,7 @@ var rotDoor;
 var tileAnimTick = 0;
 var crackedFloorBroken = false;
 
+
 // ******BEGIN MAP EDITOR******
 
 // First Level Areas
