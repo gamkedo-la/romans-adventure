@@ -17,7 +17,7 @@ var Sounds = new (function() {
     pick_up: 'sounds/pick up',
     unlock: 'sounds/unlock',
     falling: 'sounds/falling',
-    victory: 'sounds/victory',
+    ending: 'music/badending_musicv1',
     tile_moved: 'sounds/tile moved'
   };
 

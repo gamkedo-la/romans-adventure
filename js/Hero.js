@@ -134,8 +134,8 @@ function heroClass()
 				else if (roomCoordToIndex() == ROOM_ID_FOYER_ENTRANCE)
 				{
 				    backgroundMusic.pause();
-				    Sounds.victory.play();
-					postMessage("Make a game over screen you lazy bum!");
+				    Sounds.ending.play();
+					
 					return;
 				}
 		    currentRoomRow++;
