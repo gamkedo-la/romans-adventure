@@ -26,6 +26,11 @@ var dialogueBasementPuzzleSolved = "You'd better not ruin my floors with those!"
 var dialogueBedroomPuzzleNotSolved = "The suspense is killing me. Watching you makes me wish it would...";
 
 
+/*var dialogueEnding = "You did a wonderful job solving the mysteries of my house, Roman--so well that you freed me from my curse. 
+						But every house needs a caretaker, Roman, and you are this house's new one.
+						Now, it's time for me to stretch my new legs and discover what I've missed over the past century.";*/
+
+
 /*Generic barks
 - "For your sake, you'd better not muddy up my floors.";
 - "The suspense is killing me. Watching you makes me wish it would...";
