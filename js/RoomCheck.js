@@ -108,6 +108,14 @@ function searchAttic()
 		atticPuzzleSolved = true;
 		var whichItem = searchableTiles[ROOM_ID_ATTIC];
 		postMessage("Roman found the " + idxToTextKey(whichItem) + ". " + dialogueAtticPuzzleSolved);
+		roomLayout[ROOM_ID_FOYER_ENTRANCE][41] = 19;
+		roomLayout[ROOM_ID_FOYER_ENTRANCE][73] = 19;
+		roomLayout[ROOM_ID_FOYER_ENTRANCE][105] = 19;
+		roomLayout[ROOM_ID_FOYER_ENTRANCE][38] = 20;
+		roomLayout[ROOM_ID_FOYER_ENTRANCE][70] = 20;
+		roomLayout[ROOM_ID_FOYER_ENTRANCE][102] = 20;
+
+
 	}
 }
 

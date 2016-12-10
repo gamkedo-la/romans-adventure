@@ -83,6 +83,11 @@ function imageLoadingDoneSoStartGame()
     scaledContext.drawImage(titleScreen, 0, 0, canvas.width, canvas.height - WORLD_H * UI_ROWS,
                                 0, 0, scaledCanvas.width, scaledCanvas.height - WORLD_H * PIXEL_SCALE_UP * UI_ROWS); // Show credits background
 
+    scaledContext.font = "bold 20px Arial";
+    scaledContext.fillStyle = "black";
+    scaledContext.textAlign = "center";
+    scaledContext.fillText("Press any key to start", scaledCanvas.width / 2, 600);
+
     isShowingTitleScreen = true;
 	setupInput();
 	loadLevel(currentRoomIndex, true);
@@ -198,8 +203,8 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	        {
 	            postMessage(dialogueStairsPuzzleNotSolved);
 	            canvasContext.globalAlpha = .3;
-	            break;
 	        }
+	        break;
 	    case ROOM_ID_STUDY:
 	        if (studyPuzzleSolved == false)
 	        {
@@ -230,6 +235,7 @@ function endGame()
     backgroundMusic.pause();
     Sounds.ending.play();
     roman.myHeroPic = heroPicUp;
+
 }
 
 function updateAll()
