@@ -50,6 +50,7 @@ function keySet(keyEvent, setTo)
 
 function keyPressed(evt)
 {
+    // console.log("Key pressed: "+evt.keyCode);
 	if (isShowingTitleScreen == true)
 	{
 	    document.onkeypress = function (e)
@@ -70,7 +71,6 @@ function keyPressed(evt)
 			return;
 		}
 	}
-	// console.log("Key pressed: "+evt.keyCode);
 	if (evt.keyCode == KEY_L && isDebugMode)
 		{
 				if (isEditorMode)
