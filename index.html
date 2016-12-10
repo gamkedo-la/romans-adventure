@@ -1,44 +1,41 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Roman's Adventure</title>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Roman's Adventure</title>
 
-	<style>
-	canvas
-	{
-	  image-rendering: optimizeSpeed;             /* Older versions of FF          */
-	  image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
-	  image-rendering: -webkit-optimize-contrast; /* Safari                        */
-	  image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
-	  image-rendering: pixelated;                 /* Awesome future-browsers       */
-	  -ms-interpolation-mode: nearest-neighbor;   /* IE                            */
-	}
-	</style>
-</head>
-
-<body>
-<canvas id="gameCanvas"></canvas>
-<canvas id="menuCanvas"></canvas>
-<p id="levelEditorOutputText"></p>
-
-<script src="js/GraphicsCommon.js"></script>
-<script src="js/ImageLoading.js"></script>
-<script src="js/Sounds.js"></script>
-<script src="js/Hero.js"></script>
-<script src="js/Enemy.js"></script>
-<script src="js/World.js"></script>
-<script src="js/Input.js"></script>
-<script src="js/Main.js"></script>
-<script src="js/LevelEditor.js"></script>
-<script src="js/Dialogue.js"></script>
-<script src="js/RoomCheck.js"></script>
-<input id="bgMusicSlider" type="range" min="0" max="1" step=".05" value="1" onchange="changeVolume(this.value)">
-<audio id="backgroundMusic" loop autoplay>
-    <source src="music/background_music.ogg"
-            type="audio/ogg" />
-    <source src="music/background_musicv2.mp3"
-        type="audio/mp3"/>
-</audio>
-</body>
+        <style>
+            canvas {
+                image-rendering: optimizeSpeed; /* Older versions of FF          */
+                image-rendering: -moz-crisp-edges; /* FF 6.0+                       */
+                image-rendering: -webkit-optimize-contrast; /* Safari                        */
+                image-rendering: -o-crisp-edges; /* OS X & Windows Opera (12.02+) */
+                image-rendering: pixelated; /* Awesome future-browsers       */
+                -ms-interpolation-mode: nearest-neighbor; /* IE                            */
+            }
+        </style>
+    </head>
+    <body>
+            <canvas id="gameCanvas"></canvas>
+            <canvas id="menuCanvas"></canvas>
+            <p id="levelEditorOutputText"></p>
+            <input id="bgMusicSlider" type="range" min="0" max="1" step=".05" value="1" onchange="changeVolume(this.value)">
+        <script src="js/GraphicsCommon.js"></script>
+        <script src="js/ImageLoading.js"></script>
+        <script src="js/Sounds.js"></script>
+        <script src="js/Hero.js"></script>
+        <script src="js/Enemy.js"></script>
+        <script src="js/World.js"></script>
+        <script src="js/Input.js"></script>
+        <script src="js/Main.js"></script>
+        <script src="js/LevelEditor.js"></script>
+        <script src="js/Dialogue.js"></script>
+        <script src="js/RoomCheck.js"></script>
+        <audio id="backgroundMusic" loop autoplay>
+            <source src="music/background_music.ogg"
+                    type="audio/ogg" />
+            <source src="music/background_musicv2.mp3"
+                    type="audio/mp3" />
+        </audio>
+    </body>
 </html>

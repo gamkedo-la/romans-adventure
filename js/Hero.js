@@ -73,7 +73,7 @@ function heroClass()
 			enemyList[i].move();
 		}
 
-		if(this.isSliding == false) {
+		if(this.isSliding == false && !isGameOver) {
 			this.movingX = 0;
 			this.movingY = 0;
 
@@ -128,21 +128,22 @@ function heroClass()
 		}
 		if (nextY > EDGE_OF_SCREEN_Y)
 		{
-				if (roomCoordToIndex() == ROOM_ID_STAIRS && nextX > canvas.width / 2) {
-					currentRoomFloor++;
-				}
-				else if (roomCoordToIndex() == ROOM_ID_FOYER_ENTRANCE)
-				{
-				    backgroundMusic.pause();
-				    Sounds.ending.play();
-					
-					return;
-				}
-		    currentRoomRow++;
-		    loadLevel(roomCoordToIndex());
-		    nextY = WORLD_H / 2;
-		    roman.roomLoadedX = roman.x;
-		    roman.roomLoadedY = WORLD_W;
+		    if (roomCoordToIndex() == ROOM_ID_FOYER_ENTRANCE && !isGameOver)
+		    {
+		        endGame();
+		        return;
+		    }
+			else if (roomCoordToIndex() == ROOM_ID_STAIRS && nextX > canvas.width / 2) {
+				currentRoomFloor++;
+			}
+			else if (roomCoordToIndex() != ROOM_ID_FOYER_ENTRANCE)
+			{
+			    currentRoomRow++;
+			    loadLevel(roomCoordToIndex());
+			    nextY = WORLD_H / 2;
+			    roman.roomLoadedX = roman.x;
+			    roman.roomLoadedY = WORLD_W;
+			}
 		}
 		if (nextX < WORLD_W / 2)
 		{
