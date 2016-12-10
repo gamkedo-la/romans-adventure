@@ -14,6 +14,7 @@ var picsToLoad = 0; // set automatically based on imageList in loadImages()
 var artStripGroupLimit = 10;
 
 var titleScreen = document.createElement("img");
+var creditsScreen = document.createElement("img");
 
 function countLoadedImagesAndLaunchIfReady()
 {
@@ -49,6 +50,8 @@ function loadImages()
 	[
     // title and menu screens
     { varName: titleScreen, theFile: "titlescreen.png" },
+    { varName: creditsScreen, theFile: "creditsscreen.png" },
+
 
 		// hero and pickup tiles
 		{ varName: heroPicLeft, theFile: "roman_left.png" },

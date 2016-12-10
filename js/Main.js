@@ -79,7 +79,8 @@ window.onload = function()
 function imageLoadingDoneSoStartGame()
 {
     scaledContext.drawImage(titleScreen, 0, 0, canvas.width, canvas.height,
-    0, 0, scaledCanvas.width, scaledCanvas.height); // Show title screen
+                            0, 0, scaledCanvas.width, scaledCanvas.height); // Show title screen
+
     isShowingTitleScreen = true;
 	setupInput();
 	loadLevel(currentRoomIndex, true);
@@ -100,7 +101,8 @@ function pauseGame()
     if (!gamePaused)
     {
         game = clearTimeout(game);
-        scaledContext.fillText("GAME PAUSED", scaledCanvas.width / 2, WORLD_H * WORLD_ROWS * PIXEL_SCALE_UP / 2);
+        //scaledContext.fillText("GAME PAUSED", scaledCanvas.width / 2, WORLD_H * WORLD_ROWS * PIXEL_SCALE_UP / 2);
+        showCredits();
         gamePaused = true;
     }
     else if (gamePaused)
@@ -108,6 +110,20 @@ function pauseGame()
         setGameInterval();
         gamePaused = false;
     }
+}
+
+function showCredits()
+{
+    scaledContext.font = "bold 15px Arial";
+    scaledContext.fillStyle = "black";
+    scaledContext.textAlign = "center";
+
+    scaledContext.drawImage(creditsScreen, 0, 0, canvas.width, canvas.height,
+                            0, 0, scaledCanvas.width, scaledCanvas.height); // Show credits background
+
+    scaledContext.fillText("Oasis Rim - Project Lead / Programmer", scaledCanvas.width / 2, 120);
+    //scaledContext.fillText("Oasis Rim - Project Lead / Programmer", scaledCanvas.width / 2, 130);
+
 }
 
 function changeVolume()
