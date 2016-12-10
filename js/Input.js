@@ -8,6 +8,7 @@ const KEY_ENTER = 13;
 
 const KEY_L = 76; // Level Editor enable/disable
 const KEY_F = 70; // Search in-game
+const KEY_D = 68;
 const KEY_1 = 49;
 const KEY_2 = 50;
 const KEY_3 = 51;
@@ -51,18 +52,26 @@ function keyPressed(evt)
 {
 	if (isShowingTitleScreen == true)
 	{
-			if (evt.keyCode == KEY_SPACE || evt.keyCode == KEY_ENTER)
-			{
-				setGameInterval();
-				isShowingTitleScreen = false;
-			}
-			else
-			{
-				return;
-			}
+	    document.onkeypress = function (e)
+	    {
+	        if (isDebugMode == true)
+	        {
+	            worldGrid[137] = 300;
+	        }
+	        setGameInterval();
+	        isShowingTitleScreen = false;
+	    }
+		if (evt.keyCode == KEY_D)
+		{
+			isDebugMode = true;
+		}
+		else
+		{
+			return;
+		}
 	}
 	// console.log("Key pressed: "+evt.keyCode);
-		if (evt.keyCode == KEY_L)
+	if (evt.keyCode == KEY_L && isDebugMode)
 		{
 				if (isEditorMode)
 				{

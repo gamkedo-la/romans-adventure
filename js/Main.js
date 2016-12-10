@@ -16,7 +16,7 @@ var gamePaused = false;
 var titleScreenActive = true;
 
 var isShowingTitleScreen = false;
-
+var isDebugMode = false;
 
 
 function postMessage(str, showMessageDuration)
@@ -79,7 +79,7 @@ window.onload = function()
 function imageLoadingDoneSoStartGame()
 {
     scaledContext.drawImage(titleScreen, 0, 0, canvas.width, canvas.height,
-                            0, 0, scaledCanvas.width, scaledCanvas.height); // Show title screen
+                        0, 0, scaledCanvas.width, scaledCanvas.height); // Show title screen
 
     isShowingTitleScreen = true;
 	setupInput();
@@ -89,19 +89,14 @@ function imageLoadingDoneSoStartGame()
 
 function setGameInterval()
 {
-    game = setInterval(updateAll, 1000 / framesPerSecond); // Pressing enter during the title screen sets setInterval rate and starts drawing world
+    game = setInterval(updateAll, 1000 / framesPerSecond); // Pressing enter or space during the title screen sets setInterval rate and starts drawing world
 }
 
 function pauseGame()
 {
-    scaledContext.font = "bold 60px Arial";
-    scaledContext.fillStyle = "red";
-    scaledContext.textAlign = "center";
-
     if (!gamePaused)
     {
         game = clearTimeout(game);
-        //scaledContext.fillText("GAME PAUSED", scaledCanvas.width / 2, WORLD_H * WORLD_ROWS * PIXEL_SCALE_UP / 2);
         showCredits();
         gamePaused = true;
     }
@@ -122,7 +117,7 @@ function showCredits()
                             0, 0, scaledCanvas.width, scaledCanvas.height); // Show credits background
 
     scaledContext.fillText("Oasis Rim - Project Lead / Programmer", scaledCanvas.width / 2, 120);
-    //scaledContext.fillText("Oasis Rim - Project Lead / Programmer", scaledCanvas.width / 2, 130);
+    scaledContext.fillText("Oasis Rim - Project Lead / Programmer", scaledCanvas.width / 2, 140);
 
 }
 
@@ -254,6 +249,13 @@ function drawAll()
     if (isEditorMode)
     {
         levelGridCoordinate();
+    }
+    if (isDebugMode)
+    {
+        scaledContext.font = "bold 12px Arial";
+        scaledContext.fillStyle = "red";
+        scaledContext.fillText("DEBUG MODE", 30, 30);
+        scaledContext.fillText("Press L to enable editor", 30, 50);
     }
 
 }
