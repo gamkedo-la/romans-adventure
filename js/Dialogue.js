@@ -4,7 +4,7 @@ var dialogueStairsPuzzleSolved = "Your vanity knows no bounds.";
 
 var dialogueDiningRoomEntered = "There's a key over there! I should be able to get to it if I push this stuff out of the way.";
 
-var dialogueDenPuzzleNotSolved = "The last adventurer only finished one portion of the table before he...";
+var dialogueDenPuzzleNotSolved = "The last adventurer only finished one portion of the table.";
 var dialogueDenPuzzleSolved = "Hmph! I still say they don't make them like they used to.";
 
 var dialogueAtticPuzzleNotSolved = "Hint: Be careful where you walk!";
