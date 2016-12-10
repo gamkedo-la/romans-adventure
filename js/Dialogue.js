@@ -20,8 +20,8 @@ var dialogueGardenMiddlePuzzleSolved = "I am amazed you figured it out.";
 var dialogueStudyPuzzleNotSolved = "Sorry, but there are no pictures in these books.";
 var dialogueStudyPuzzleSolved = "You read my mind.";
 
-var dialogueBasementPuzzleNotSolved = ".";
-var dialogueBasementPuzzleSolved = ".";
+var dialogueBasementPuzzleNotSolved = "Now, don't these look familiar?";
+var dialogueBasementPuzzleSolved = "You'd better not ruin my floors with those!";
 
 var dialogueBedroomPuzzleNotSolved = "The suspense is killing me. Watching you makes me wish it would...";
 
