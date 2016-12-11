@@ -84,7 +84,7 @@ function imageLoadingDoneSoStartGame()
                                 0, 0, scaledCanvas.width, scaledCanvas.height - WORLD_H * PIXEL_SCALE_UP * UI_ROWS); // Show credits background
 
     scaledContext.font = "bold 20px Arial";
-    scaledContext.fillStyle = "black";
+    scaledContext.fillStyle = "white";
     scaledContext.textAlign = "center";
     scaledContext.fillText("Press any key to start", scaledCanvas.width / 2, 600);
 
