@@ -13,12 +13,19 @@
                 image-rendering: pixelated; /* Awesome future-browsers       */
                 -ms-interpolation-mode: nearest-neighbor; /* IE                            */
             }
+
+            body {
+                background-image: url("img/background.png");
+                background-repeat: no-repeat;
+                background-color: #001032;
+                background-position: center;
+            }
         </style>
     </head>
-    <body bgcolor="001032">
-        <canvas id="gameCanvas"></canvas>
-        <input id="bgMusicSlider" type="range" min="0" max="1" step=".05" value="1" onchange="changeVolume(this.value)">
-        <p id="levelEditorOutputText"></p>
+    <body>
+        <center>
+            <canvas id="gameCanvas"></canvas>
+            <p id="levelEditorOutputText"></p>
             <script src="js/GraphicsCommon.js"></script>
             <script src="js/ImageLoading.js"></script>
             <script src="js/Sounds.js"></script>
@@ -36,9 +43,10 @@
                 <source src="music/background_musicv2.mp3"
                         type="audio/mp3" />
             </audio>
-        <center>
-            <font face="arial" color="white">Made by members of <a href="http://www.gamkedo.club" target="_blank" style="color:deepskyblue">Gamkedo Club</a></font>
+            <p><input id="bgMusicSlider" type="range" min="0" max="1" step=".05" value="1" onchange="changeVolume(this.value)"></p>
+            <p><font face="arial" color="white">Made by members of <a href="http://www.gamkedo.club" target="_blank" style="color:deepskyblue">Gamkedo Club</a></font></p>
         </center>
+
     </body>
 
 </html>
