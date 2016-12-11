@@ -482,7 +482,8 @@ function checkBootsStatuePuzzle() {
 			worldGrid[71] == 25 &&
 			worldGrid[73] == 21 &&
 			worldGrid[75] == 24) {
-			awardedBootYet = true;
+		    awardedBootYet = true;
+		    Sounds.puzzle_solved.play();
 			var spikeBootDestIdx = 23;
 			var basementKeyDestIdx = 24;
 			worldGrid[spikeBootDestIdx] =

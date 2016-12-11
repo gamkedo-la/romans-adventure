@@ -15,7 +15,8 @@ var Sounds = new (function() {
     unlock: 'sounds/unlock',
     falling: 'sounds/falling',
     ending: 'music/badending_musicv1',
-    tile_moved: 'sounds/tile moved'
+    tile_moved: 'sounds/tile moved',
+    puzzle_solved: 'music/SolvePuzzleMusicv1'
   };
 
   this.initialize = function(callback) {

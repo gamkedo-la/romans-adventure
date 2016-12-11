@@ -130,7 +130,19 @@ function showCredits()
 
     var gameCredits =
         [
-
+           "Oasis Rim - Lead, Programmer, Level Design, Art",
+           "Matthew Ko - Environment Art, TitleScreen Art, Animated Character Art (Bat, Blob, Grey Skull)",
+           "Chris DeLeon - Programmer, Level Design, Art",
+           "Chris Markle - Writer",
+           "Jessica Fichot - Music, Puzzle Completion Sound Effect",
+           "Micky Turner - Sound Effects",
+           "Caspar Dunant - Programmer (Sound, Attic Puzzle), Attic Level Art and Design",
+           "Paul Diaz - Programmer (Keys/Doors)",
+           "Federico Leites - Environment Art (Study)",
+           "April Blair - Animated Character Art (Pumpkin), Item Art (Flashlight)",
+           "Ashleigh Morris - Programmer (Ghost, Kitchen Puzzle Alpha), Kitchen/Bedroom Level Design",
+           "Nick Baker - Animated Environment Art (Clock, Sconces, Plants) ",
+           "c: Games - Character Art (Ghost)"
         ];
 
     var xPosition = 70;

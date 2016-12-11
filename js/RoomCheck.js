@@ -110,7 +110,8 @@ function searchAttic()
 	var tileIndex = getTileIndexAtPixelCoord(roman.x, roman.y);
 	if (!atticPuzzleSolved && tileIndex == 30)
 	{
-		atticPuzzleSolved = true;
+	    atticPuzzleSolved = true;
+	    Sounds.puzzle_solved.play();
 		var whichItem = searchableTiles[ROOM_ID_ATTIC];
 		postMessage("Roman found the " + idxToTextKey(whichItem) + ". " + dialogueAtticPuzzleSolved);
 		worldGrid[41] = 19;
@@ -157,6 +158,7 @@ function checkGardenMiddle()
         if (worldGrid[49] == 21)
         {
             gardenMiddlePuzzleSolved = true;
+            Sounds.puzzle_solved.play();
             spawnTile(7, 129); // Spawn chest containing crowbar
             postMessage(dialogueGardenMiddlePuzzleSolved);
         }
@@ -175,6 +177,7 @@ function checkDen()
                 && denPuzzleSolved == false) // Check if all table pieces are assembled in the correct order
         {
             denPuzzleSolved = true;
+            Sounds.puzzle_solved.play();
             spawnTile(TILE_KEY_GARDEN, 94);
             postMessage(dialogueDenPuzzleSolved);
             roomLayout[roomCoordToIndex()] = worldGrid; // Save state of the room
@@ -223,6 +226,7 @@ function checkStudy()
             if (checkForCorrectBookOrder() == true)
             {
                 studyPuzzleSolved = true;
+                Sounds.puzzle_solved.play();
                 spawnTile(14, 90);
                 spawnTile(19, 74);
                 spawnTile(5, 58);
