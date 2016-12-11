@@ -139,12 +139,6 @@ function searchAttic()
 	    Sounds.puzzle_solved.play();
 		var whichItem = searchableTiles[ROOM_ID_ATTIC];
 		postMessage("Roman found the " + idxToTextKey(whichItem) + ". " + dialogueAtticPuzzleSolved);
-		worldGrid[41] = 19;
-		worldGrid[73] = 19;
-		worldGrid[105] = 19;
-		worldGrid[38] = 19;
-		worldGrid[70] = 19;
-		worldGrid[102] = 19;
 	}
 }
 
