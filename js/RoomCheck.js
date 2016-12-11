@@ -56,6 +56,31 @@ function checkRoomLogic()
     {
         postMessage("Press 'F' to search");
     }
+    if (roomCoordToIndex() == ROOM_ID_STUDY && studyPuzzleSolved == false)
+    {
+        switch(roman.currentIndex) {
+            case 50:
+            case 52:
+            case 59:
+            case 60:
+            case 98:
+            case 99:
+            case 100:
+            case 101:
+            case 102:
+            case 106:
+            case 107:
+            if(framesLeftForMessage == 0) {
+                postMessage("Press 'F' to read");
+            }
+            break;
+            default:
+            if(messageToShow == "Press 'F' to read") {
+                clearMessage();
+            }
+            break;
+        }
+    }
 }
 
 function searchRoomLogic()
