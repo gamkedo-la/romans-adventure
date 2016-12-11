@@ -150,6 +150,10 @@ function changeVolume()
 
 function loadLevel(whichLevelIdx, preservePlayerStart)
 {
+    if (roomCoordToIndex() == ROOM_ID_STUDY && studyPuzzleSolved == false) {
+    	resetBooks(); // ensure books are in valid state upon entering room
+    }
+
 	if (preservePlayerStart === undefined)
 	{
 		preservePlayerStart = false;

@@ -214,14 +214,13 @@ function checkStudy()
 {
     if (roomCoordToIndex() == ROOM_ID_STUDY && studyPuzzleSolved == false)
     {
+        if (orderOfBooksRead.length > 5)
+        {
+            orderOfBooksRead.shift();
+        }
         if (orderOfBooksRead.length == 5)
         {
-            if (checkForCorrectBookOrder() == false && framesLeftForMessage == 0)
-            {
-                postMessage("That doesn't make any sense, I should read these again in a different order.");
-                resetBooks();
-            }
-            else if (checkForCorrectBookOrder() == true)
+            if (checkForCorrectBookOrder() == true)
             {
                 studyPuzzleSolved = true;
                 spawnTile(14, 90);
@@ -238,13 +237,11 @@ function checkStudy()
 function bookClass()
 {
     this.passage = "";
-    this.isRead = false;
 
     this.readPassage = function()
     {
         postMessage(this.passage);
         orderOfBooksRead.push(this.passage);
-        this.isRead = true;
     }
 
 }
@@ -284,32 +281,15 @@ function checkForCorrectBookOrder()
     }
     for (var i = 0, l = orderOfBooksRead.length; i < l; i++)
     {
-        if (orderOfBooksRead[i] instanceof Array && correctOrderOfBooks[i] instanceof Array)
-        {
-            if (!orderOfBooksRead[i].equals(correctOrderOfBooks[i]))
-            {
-              return false;
-            }
-            else if (orderOfBooksRead[i] != correctOrderOfBooks[i])
-            {
-                return false;
-            }
-        }
-        else if (orderOfBooksRead[i] != correctOrderOfBooks[i])
+        if (orderOfBooksRead[i] != correctOrderOfBooks[i])
         {
             return false;
         }
-        return true;
     }
+    return true;
 }
 
 function resetBooks()
 {
-    roman.resetBeginningOfRoom();
     orderOfBooksRead = [];
-    bookOne.isRead = false;
-    bookTwo.isRead = false;
-    bookThree.isRead = false;
-    bookFour.isRead = false;
-    bookFive.isRead = false;
 }
