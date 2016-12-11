@@ -51,6 +51,11 @@ function checkRoomLogic()
     checkFoyerEntrance();
     checkAttic();
     checkStudy();
+
+    if (worldGrid[roman.currentIndex] == searchableTileType)
+    {
+        postMessage("Press 'F' to search");
+    }
 }
 
 function searchRoomLogic()
@@ -108,14 +113,12 @@ function searchAttic()
 		atticPuzzleSolved = true;
 		var whichItem = searchableTiles[ROOM_ID_ATTIC];
 		postMessage("Roman found the " + idxToTextKey(whichItem) + ". " + dialogueAtticPuzzleSolved);
-		roomLayout[ROOM_ID_FOYER_ENTRANCE][41] = 19;
-		roomLayout[ROOM_ID_FOYER_ENTRANCE][73] = 19;
-		roomLayout[ROOM_ID_FOYER_ENTRANCE][105] = 19;
-		roomLayout[ROOM_ID_FOYER_ENTRANCE][38] = 20;
-		roomLayout[ROOM_ID_FOYER_ENTRANCE][70] = 20;
-		roomLayout[ROOM_ID_FOYER_ENTRANCE][102] = 20;
-
-
+		worldGrid[41] = 19;
+		worldGrid[73] = 19;
+		worldGrid[105] = 19;
+		worldGrid[38] = 19;
+		worldGrid[70] = 19;
+		worldGrid[102] = 19;
 	}
 }
 

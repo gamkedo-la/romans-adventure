@@ -71,6 +71,14 @@ function keyPressed(evt)
 			return;
 		}
 	}
+	if (isAbleToRestartGame)
+	{
+	    document.onkeypress = function (e)
+	    {
+	        location.reload();
+	    }
+	    return;
+	}
 	if (evt.keyCode == KEY_L && isDebugMode)
 		{
 				if (isEditorMode)
@@ -89,7 +97,7 @@ function keyPressed(evt)
 
 		if (evt.keyCode == KEY_F)
 		{
-				roman.search(roomCoordToIndex());
+		    roman.search(roomCoordToIndex());
 		}
 
 		if (isEditorMode)

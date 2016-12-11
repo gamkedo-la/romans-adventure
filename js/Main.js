@@ -18,7 +18,7 @@ var titleScreenActive = true;
 var isShowingTitleScreen = false;
 var isDebugMode = false;
 var isGameOver = false;
-
+var isAbleToRestartGame = false;
 
 
 function postMessage(str, showMessageDuration)
@@ -118,7 +118,7 @@ function showCredits()
 {
     scaledContext.font = "bold 15px Arial";
     scaledContext.fillStyle = "black";
-    //scaledContext.textAlign = "center";
+    scaledContext.textAlign = "left";
 
     var gameAreaCanvasW = canvas.width;
     var gameAreaCanvasH = canvas.height - WORLD_H * UI_ROWS;
@@ -235,7 +235,28 @@ function endGame()
     backgroundMusic.pause();
     Sounds.ending.play();
     roman.myHeroPic = heroPicUp;
+    tileAnimTick = 0;
+    worldGrid[57] = -4;
+    worldGrid[89] = -4;
+    worldGrid[121] = -4;
+    worldGrid[54] = -5;
+    worldGrid[86] = -5;
+    worldGrid[118] = -5;
+}
 
+function showEndGameScreen()
+{
+    scaledContext.drawImage(endGameScreen, 0, 0, canvas.width, canvas.height - WORLD_H * UI_ROWS,
+                            0, 0, scaledCanvas.width, scaledCanvas.height - WORLD_H * PIXEL_SCALE_UP * UI_ROWS);
+
+    displayUIText(dialogueEnding, 350, 590);
+    isAbleToRestartGame = true;
+
+    scaledContext.font = "bold 15px Arial";
+    scaledContext.fillStyle = "white";
+    scaledContext.textAlign = "center";
+
+    scaledContext.fillText("Press any key to restart.", scaledCanvas.width / 2, 30);
 }
 
 function updateAll()
@@ -243,6 +264,14 @@ function updateAll()
 	moveAll();
 	drawAll();
 	checkRoomLogic();
+	if (isGameOver)
+	{
+	    if (tileAnimTick > 200)
+	    {
+	        game = clearTimeout(game);
+	        showEndGameScreen();
+	    }
+	}
 }
 
 function moveAll()
@@ -272,7 +301,7 @@ function drawAll()
 
     if (framesLeftForMessage > 0)
     {
-        displayUIText(messageToShow, 580, 590);
+        displayUIText(messageToShow, 350, 590);
         framesLeftForMessage--;
     }
     if (isEditorMode)
@@ -286,5 +315,4 @@ function drawAll()
         scaledContext.fillText("DEBUG MODE", 30, 30);
         scaledContext.fillText("Press L to enable editor", 30, 50);
     }
-
 }

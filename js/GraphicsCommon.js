@@ -52,7 +52,7 @@ function displayUIText(text, uiTextPaddingX, uiTextPaddingY)
 	    var testLine = line + words[n] + ' ';
 	    var metrics = scaledContext.measureText(testLine);
 	    var testWidth = metrics.width;
-	    if (testWidth > 286 && n > 0)
+	    if (testWidth > 540 && n > 0)
 	    {
 	        scaledContext.fillText(line, uiTextPaddingX, uiTextPaddingY);
 	        line = words[n] + ' ';
@@ -74,33 +74,33 @@ function drawStrokeRect(canvasContext, topLeftX, topLeftY, boxWidth, boxHeight, 
   canvasContext.strokeRect(topLeftX, topLeftY, boxWidth, boxHeight);
 }
 
-function wrapText(text)
-{
-    uiTextPaddingX = 580;
-    uiTextPaddingY = 610;
-    scaledContext.font = "bold 15px Arial";
-    scaledContext.fillStyle = "white";
-		scaledContext.textAlign = "left";
+//function wrapText(text)
+//{
+//    uiTextPaddingX = 580;
+//    uiTextPaddingY = 610;
+//    scaledContext.font = "bold 15px Arial";
+//    scaledContext.fillStyle = "white";
+//		scaledContext.textAlign = "left";
 
-    var maxWidth = scaledCanvas.width - uiTextPaddingX - uiTextPaddingY;
-    var words = text.split(' ');
-    var line = '';
+//    var maxWidth = scaledCanvas.width - uiTextPaddingX - uiTextPaddingY;
+//    var words = text.split(' ');
+//    var line = '';
 
-    for (var n = 0; n < words.length; n++)
-    {
-        var testLine = line + words[n] + ' ';
-        var metrics = scaledContext.measureText(testLine);
-        var testWidth = metrics.width;
-        if (testWidth > 286 && n > 0)
-        {
-            scaledContext.fillText(line, uiTextPaddingX, uiTextPaddingY);
-            line = words[n] + ' ';
-            uiTextPaddingY += 20;
-        }
-        else
-        {
-            line = testLine;
-        }
-    }
-    scaledContext.fillText(line, uiTextPaddingX, uiTextPaddingY);
-}
+//    for (var n = 0; n < words.length; n++)
+//    {
+//        var testLine = line + words[n] + ' ';
+//        var metrics = scaledContext.measureText(testLine);
+//        var testWidth = metrics.width;
+//        if (testWidth > 286 && n > 0)
+//        {
+//            scaledContext.fillText(line, uiTextPaddingX, uiTextPaddingY);
+//            line = words[n] + ' ';
+//            uiTextPaddingY += 20;
+//        }
+//        else
+//        {
+//            line = testLine;
+//        }
+//    }
+//    scaledContext.fillText(line, uiTextPaddingX, uiTextPaddingY);
+//}
