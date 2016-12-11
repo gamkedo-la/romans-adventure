@@ -19,6 +19,7 @@ var isShowingTitleScreen = false;
 var isDebugMode = false;
 var isGameOver = false;
 var isAbleToRestartGame = false;
+var backgroundMusic, bgMusicSlider;
 
 
 function postMessage(str, showMessageDuration)
@@ -46,7 +47,6 @@ window.onload = function()
 	// Get references for gameCanvas
     scaledCanvas = document.getElementById('gameCanvas');
     canvas = document.createElement('canvas');
-    menuCanvas = document.getElementById('menuCanvas');
 
     // Size gameCanvas
 	canvas.width = WORLD_W * WORLD_COLS;
@@ -75,7 +75,9 @@ window.onload = function()
 	scaledCanvas.addEventListener("mousemove", updateMousePos);
 	scaledCanvas.addEventListener("mouseup", editTileUnderMousePos);
 
-	backgroundMusic.volume = bgMusicSlider.value;
+	backgroundMusic = document.getElementById('backgroundMusic');
+	bgMusicSlider = document.getElementById('bgMusicSlider');
+	changeVolume();
 };
 
 function imageLoadingDoneSoStartGame()
@@ -158,6 +160,7 @@ function showCredits()
 function changeVolume()
 {
     backgroundMusic.volume = bgMusicSlider.value;
+	Sounds.volume = bgMusicSlider.value;
 }
 
 function loadLevel(whichLevelIdx, preservePlayerStart)

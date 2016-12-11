@@ -7,6 +7,8 @@ var Sounds = new (function() {
     this.audioFormat = '.ogg';
   }
 
+  this.volume = 1;
+
   var sounds = {
     // key: 'sounds/file_name'
     ghost: 'sounds/Ghost',
@@ -67,6 +69,7 @@ var Sounds = new (function() {
       if (Date.now() - lastPlay > timeOut) {
         lastPlay = Date.now();
         queue[index].currentTime = 0;
+        queue[index].volume = Sounds.volume;
         queue[index].play();
         var s = queue[index];
 

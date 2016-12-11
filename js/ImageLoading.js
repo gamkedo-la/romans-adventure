@@ -55,7 +55,7 @@ function loadImages()
         // title and menu screens
         { varName: titleScreen, theFile: "titlescreen.png" },
         { varName: creditsScreen, theFile: "creditsscreen.png" },
-        { varName: endGameScreen, theFile: "endgamescreen.png" },
+        { varName: endGameScreen, theFile: "endGameScreen.png" },
 
 	    // hero and pickup tiles
 	    { varName: heroPicLeft, theFile: "roman_left.png" },

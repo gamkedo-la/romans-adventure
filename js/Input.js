@@ -61,7 +61,7 @@ function keyPressed(evt)
 	        }
 	        setGameInterval();
 	        isShowingTitleScreen = false;
-	    }
+	    };
 		if (evt.keyCode == KEY_D)
 		{
 			isDebugMode = true;
@@ -76,7 +76,7 @@ function keyPressed(evt)
 	    document.onkeypress = function (e)
 	    {
 	        location.reload();
-	    }
+	    };
 	    return;
 	}
 	if (evt.keyCode == KEY_L && isDebugMode)
