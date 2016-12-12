@@ -136,7 +136,7 @@ function showCredits()
            "Matthew Ko - Environment Art, TitleScreen Art, Animated Character Art (Bat, Blob, Grey Skull)",
            "Chris DeLeon - Programmer, Level Design, Art",
            "Chris Markle - Writer",
-           "Jessica Fichot - Music,
+           "Jessica Fichot - Music",
            "Micky Turner - Sound Effects",
            "Caspar Dunant - Programmer (Sound, Attic Puzzle), Attic Level Art and Design",
            "Paul Diaz - Programmer (Keys/Doors)",
