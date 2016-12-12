@@ -98,9 +98,6 @@ function keyPressed(evt)
 		if (evt.keyCode == KEY_F)
 		{
 		    roman.search(roomCoordToIndex());
-		    backgroundMusic.pause();
-		    Sounds.puzzle_solved.play();
-		    backgroundMusic.play();
 		}
 
 		if (isEditorMode)
