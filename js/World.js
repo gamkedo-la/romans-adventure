@@ -68,9 +68,9 @@ var levelKitchen =
 10,10,10,10,10,10,10,202,10,10,10,10,10,10,10,10,10,19,18,19,19,18,18,0,19,19,18,19,18,19,18,10,10,0,4,11,11,11,2,0,0,0,0,0,0,0,0,10,10,307,4,11,11,11,2,0,0,0,16,13,17,0,16,10,10,0,4,11,11,11,2,0,0,0,13,13,13,0,13,10,10,3,5,11,11,11,2,0,0,0,13,13,13,0,13,10,10,11,11,11,11,11,2,0,0,0,14,12,15,0,14,10,10,1,1,1,1,1,6,0,0,0,0,0,0,0,0,10,10,19,18,18,18,19,18,0,18,19,18,19,19,18,18,10,10,10,10,10,10,10,10,0,10,10,10,10,10,10,10,10
 ];
 
-var levelGardenLeft =
+var levelGardenLeft = 
 [
-10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 405, 10, 402, 10, 400, 10, 403, 10, 401, 10, 0, 0, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 203, 10, 10, 10, 10, 10, 10, 10, 10
+10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0,10,405,10,402,10,400,10,403,10,401,10,0,0,10,10,0,10,10,10,10,10,10,10,10,10,10,10,0,0,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,0,0,0,0,0,0,-3,0,0,0,0,0,0,0,10,10,0,0,-3,0,-3,-3,-3,-3,-3,0,-3,0,0,0,0,10,0,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,0,0,10,10,0,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-6,0,0,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,10,10,10,10,10,10,203,10,10,10,10,10,10,10,10
 ];
 
 var levelGardenMiddle = 
@@ -589,9 +589,16 @@ function drawWorld()
 				var animIdx = -currentRoomArtIndex;
 				var imgWidth = WORLD_W;
 				var imgHeight = WORLD_H;
+				var offsetX = 0;
 				var offsetY = -WORLD_H;
 				var frameTotal = Math.floor(animTileStrips[animIdx].width / FRAME_DIM);
-				if(currentRoomArtIndex == ANIM_TILE_CLOCK) {
+				if(currentRoomArtIndex == STANDALONE_GIANT_FOUNTAIN) {
+					frameTotal = 1;
+					imgWidth = animTileStrips[animIdx].width;
+					imgHeight = animTileStrips[animIdx].height;
+					offsetX = -142;
+					offsetY = -43;
+				} else if(currentRoomArtIndex == ANIM_TILE_CLOCK) {
 					imgHeight = WORLD_H*2;
 					offsetY = -WORLD_H+1;
 					frameTotal = 6;
@@ -599,7 +606,7 @@ function drawWorld()
 			     canvasContext.drawImage(animTileStrips[animIdx],
 			     						imgWidth*( (tileAnimTick>>5)%frameTotal ), 0,
 										imgWidth, imgHeight,
-										drawTileX, drawTileY+offsetY,
+										drawTileX+offsetX, drawTileY+offsetY,
 										imgWidth, imgHeight);
 			} else if(tileTypeIsKey(currentRoomArtIndex)) {
 				var whichKey = tileTypeToIndexForKey(currentRoomArtIndex);

@@ -10,6 +10,7 @@ const ANIM_TILE_CANDLE = -2;
 const ANIM_DOUBLE_HEIGHT_BLANK_BLOCKER = -3;
 const ANIM_MIRROR_FACING_LEFT = -4;
 const ANIM_MIRROR_FACING_RIGHT = -5;
+const STANDALONE_GIANT_FOUNTAIN = -6;
 var animTileStrips = [];
 var enemyArtStrips = [];
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
@@ -84,7 +85,7 @@ function loadImages()
         { animTile: ANIM_DOUBLE_HEIGHT_BLANK_BLOCKER, theFile: "anim-blank.png" },
         { animTile: ANIM_MIRROR_FACING_LEFT, theFile: "anim-mirror-facing-left.png" },
         { animTile: ANIM_MIRROR_FACING_RIGHT, theFile: "anim-mirror-facing-right.png" },
-
+        { animTile: STANDALONE_GIANT_FOUNTAIN, theFile: "fountain.png" },
 
         // Room tiles
         { varName: roomStrips, theFile: "roomart.png" }

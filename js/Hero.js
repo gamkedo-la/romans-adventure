@@ -281,6 +281,8 @@ function heroClass()
 
 		}
 		if (walkIntoTileType != ANIM_TILE_CLOCK &&
+			walkIntoTileType != ANIM_DOUBLE_HEIGHT_BLANK_BLOCKER &&
+			walkIntoTileType != STANDALONE_GIANT_FOUNTAIN &&
 			(walkIntoTileType < TILES_SOLID_FIRST || walkIntoTileType == TILE_ALIAS_ICE))
 		{
 		    this.isMoving = (this.x != nextX || this.y != nextY);
