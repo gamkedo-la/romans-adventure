@@ -205,10 +205,22 @@ function loadLevel(whichLevelIdx, preservePlayerStart)
 	        }
 	        enterAttic();
 	        break;
+	    case ROOM_ID_GARDEN_LEFT:
+	        if (awardedBootYet == false)
+	        {
+	            postMessage(dialogueGardenLeftPuzzleNotSolved);
+	        }
+	        break;
 	    case ROOM_ID_GARDEN_MIDDLE:
 	        if (gardenMiddlePuzzleSolved == false)
 	        {
 	            postMessage(dialogueGardenMiddlePuzzleNotSolved);
+	        }
+	        break;
+	    case ROOM_ID_BASEMENT_STATUE_AREA:
+	        if (awardedBootYet == false)
+	        {
+	            postMessage(dialogueBasementPuzzleNotSolved);
 	        }
 	        break;
 	    case ROOM_ID_DININGROOM:

@@ -214,6 +214,7 @@ const ROOM_ID_FOYER_STAIRS = 7;
 const ROOM_ID_UPSTAIRS_GOING_DOWN = 19; // Based on room layout array ^^
 const ROOM_ID_BASEMENT_STATUE_AREA = 6;
 const ROOM_ID_DARKROOM_NEED_LIGHT = 9; // study for now (just a test)
+const ROOM_ID_GARDEN_LEFT = 0;
 const ROOM_ID_GARDEN_MIDDLE = 1;
 const ROOM_ID_KITCHEN = 5;
 const ROOM_ID_BASEMENT_GARDEN_EXIT = 3;
@@ -484,6 +485,7 @@ function checkBootsStatuePuzzle() {
 			worldGrid[75] == 24) {
 		    awardedBootYet = true;
 		    Sounds.puzzle_solved.play();
+		    postMessage(dialogueBasementPuzzleSolved);
 			var spikeBootDestIdx = 23;
 			var basementKeyDestIdx = 24;
 			worldGrid[spikeBootDestIdx] =
