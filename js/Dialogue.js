@@ -1,6 +1,6 @@
-var dialogueStairsPuzzleNotSolved = "You two can't take your eyes off one another."; 
-var dialogueGhostRoman = "You're always getting in your own way."; 
-var dialogueStairsPuzzleSolved = "Your vanity knows no bounds."; 
+var dialogueStairsPuzzleNotSolved = "You two can't take your eyes off one another.";
+var dialogueGhostRoman = "You're always getting in your own way.";
+var dialogueStairsPuzzleSolved = "Your vanity knows no bounds.";
 
 var dialogueDiningRoomEntered = "There's a key over there! I should be able to get to it if I push this stuff out of the way.";
 
@@ -18,7 +18,7 @@ var dialogueGardenMiddlePuzzleNotSolved = "Can you feel the pressure now? The we
 var dialogueGardenMiddlePuzzleSolved = "I am amazed you figured it out.";
 
 var dialogueStudyPuzzleNotSolved = "Sorry, but there are no pictures in these books.";
-var dialogueStudyPuzzleSolved = "You read my mind.";
+//var dialogueStudyPuzzleSolved = "You read my mind.";
 
 var dialogueBasementPuzzleNotSolved = "Now, don't these look familiar?";
 var dialogueBasementPuzzleSolved = "You'd better not ruin my floors with those!";
