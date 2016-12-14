@@ -27,29 +27,115 @@
             a {
                 color: deepskyblue;
             }
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 7.65px 0;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  height: 5.7px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #e6e6e6;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1.6px #000000, 0px 0px 1px #0d0d0d;
+  border: 1.8px solid #4800aa;
+  height: 21px;
+  width: 8px;
+  border-radius: 11px;
+  background: #bfc0bf;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7.85px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #f8f8f8;
+}
+input[type=range]::-moz-range-track {
+  height: 5.7px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #e6e6e6;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1.6px #000000, 0px 0px 1px #0d0d0d;
+  border: 1.8px solid #4800aa;
+  height: 21px;
+  width: 8px;
+  border-radius: 11px;
+  background: #bfc0bf;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  height: 5.7px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #d4d4d4;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #e6e6e6;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1.6px #000000, 0px 0px 1px #0d0d0d;
+  border: 1.8px solid #4800aa;
+  height: 21px;
+  width: 8px;
+  border-radius: 11px;
+  background: #bfc0bf;
+  cursor: pointer;
+  height: 5.7px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #e6e6e6;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #f8f8f8;
+}
+
         </style>
     </head>
     <body>
         <center>
             <canvas id="gameCanvas"></canvas>
-            <script src="js/GraphicsCommon.js"></script>
-            <script src="js/ImageLoading.js"></script>
-            <script src="js/Sounds.js"></script>
-            <script src="js/Hero.js"></script>
-            <script src="js/Enemy.js"></script>
-            <script src="js/World.js"></script>
-            <script src="js/Input.js"></script>
-            <script src="js/Main.js"></script>
-            <script src="js/LevelEditor.js"></script>
-            <script src="js/Dialogue.js"></script>
-            <script src="js/RoomCheck.js"></script>
+            <script src="js/GraphicsCommon.js?a=5"></script>
+            <script src="js/ImageLoading.js?a=5"></script>
+            <script src="js/Sounds.js?a=5"></script>
+            <script src="js/Hero.js?a=5"></script>
+            <script src="js/Enemy.js?a=5"></script>
+            <script src="js/World.js?a=5"></script>
+            <script src="js/Input.js?a=5"></script>
+            <script src="js/Main.js?a=5"></script>
+            <script src="js/LevelEditor.js?a=5"></script>
+            <script src="js/Dialogue.js?a=5"></script>
+            <script src="js/RoomCheck.js?a=5"></script>
             <audio id="backgroundMusic" loop autoplay>
                 <source src="music/background_music.ogg"
                         type="audio/ogg" />
                 <source src="music/background_musicv2.mp3"
                         type="audio/mp3" />
             </audio>
-            <p><input id="bgMusicSlider" type="range" min="0" max="1" step=".05" value="1" onchange="changeVolume()" title="Music and sound volume"></p>
+            <table><tr>
+                <td><img src="img/volume.png"></td>
+                <td><input id="bgMusicSlider" type="range" min="0" max="1" step=".05" value="1" onchange="changeVolume()" title="Music and sound volume"></td>
+            </tr></table>
             <p>Made by members of <a href="http://www.gamkedo.club" target="_blank">Gamkedo Club</a>. Press Esc in-game for full credits.</p>
         </center>
             <p id="levelEditorOutputText"></p>
