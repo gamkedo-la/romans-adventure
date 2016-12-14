@@ -68,7 +68,7 @@ window.onload = function()
 	scaledContext.msImageSmoothingEnabled = false;
 	scaledContext.imageSmoothingEnabled = false;
 
-	colorRect(0,WORLD_H * WORLD_ROWS, canvas.width,canvas.height, '#444'); // Draws the UI box background
+	colorRect(0,WORLD_H * WORLD_ROWS, canvas.width,canvas.height, '#f00'); // Draws the UI box background
 	//colorText("LOADING IMAGES", canvas.width/2, canvas.height/2, 'white');
 	Sounds.initialize(loadImages);
 
@@ -82,6 +82,10 @@ window.onload = function()
 
 function imageLoadingDoneSoStartGame()
 {
+	// ui background
+	canvasContext.drawImage(uibg,0,0,uibg.width,uibg.height,
+								0,WORLD_H * WORLD_ROWS,uibg.width,uibg.height);
+
     scaledContext.drawImage(titleScreen, 0, 0, canvas.width, canvas.height - WORLD_H * UI_ROWS,
                                 0, 0, scaledCanvas.width, scaledCanvas.height - WORLD_H * PIXEL_SCALE_UP * UI_ROWS); // Show credits background
 

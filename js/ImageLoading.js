@@ -16,6 +16,7 @@ var enemyArtStrips = [];
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
 var artStripGroupLimit = 10;
 
+var uibg = document.createElement("img");
 var titleScreen = document.createElement("img");
 var creditsScreen = document.createElement("img");
 var endGameScreen = document.createElement("img");
@@ -54,6 +55,7 @@ function loadImages()
 	var imageList =
 	[
         // title and menu screens
+        { varName: uibg, theFile: "interface.png" },
         { varName: titleScreen, theFile: "titlescreen.png" },
         { varName: creditsScreen, theFile: "creditsscreen.png" },
         { varName: endGameScreen, theFile: "endGameScreen.png" },
